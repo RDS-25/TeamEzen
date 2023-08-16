@@ -118,6 +118,18 @@ public class GameManager : MonoBehaviour
             return null;
         }
     }
+
+    //string NAME
+    //{
+    //    get 
+    //    {
+    //        return LoadFild("name");
+    //    }
+    //    set
+    //    {
+    //        saveFile("key", value);
+    //    }
+    //}
     // DataWrite
     // 데이터 주소와 Dictionary 형태로 데이터를 받아와 json 파일로 저장
     public void DataWrite(string sPath, Dictionary<string, string> dictData)
