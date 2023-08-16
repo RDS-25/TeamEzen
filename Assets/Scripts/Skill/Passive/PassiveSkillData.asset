@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228dd2990a602894a8452ff2b615aeec, type: 3}
+  m_Name: PassiveSkillData
+  m_EditorClassIdentifier: 
+  fId: 0
+  sName: 
+  fSkillLevel: 1
+  fSkillRequireExp: 0
+  fSkillExp: 0
+  fUnlockLevel: 0
+  fUnlockHidenLevel: 0
+  fTimer: 0
+  fCoolTime: 0
+  fDuration: 0
+  fSkillCoolReduce: 0
+  fBuffDuration: 0
+  fRange: 0
+  fValue: 0
+  fMagnification: 0
+  fTargetCount: 0
+  fAttackCount: 0
+  fBulletCount: 0
+  isUnlockSkill: 0
+  canUse: 0
+  isAtctivate: 0
