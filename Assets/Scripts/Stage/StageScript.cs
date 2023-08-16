@@ -4,55 +4,6 @@ using UnityEngine;
 using Params;
 using RandomL;
 
-public class LoadParamsSimulator
-{
-    public bool bClear = false;
-    public int nMaxRoomCount = 5;
-    public int nRoomcount = 0;
-    public int nClearRoomCount = 0;
-    public int nBossCount = 0;
-    public string strStageName = "";
-    public GameObject gPlayer = null;
-    public StageParams.STAGE_TYPE type = StageParams.STAGE_TYPE.CHAPTER1;
-
-    private static LoadParamsSimulator _instance;
-    public static LoadParamsSimulator Instans
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new LoadParamsSimulator();
-            }
-
-            return _instance;
-        }
-    }
-
-    StageParams stageParams = new StageParams();
-    private LoadParamsSimulator()
-    {
-        stageParams.nBossCount = this.nBossCount;
-        stageParams.nMaxRoomCount = this.nMaxRoomCount;
-        stageParams.bClear = this.bClear;
-        stageParams.nClearRoomCount = this.nClearRoomCount;
-        stageParams.nRoomcount = this.nRoomcount;
-        stageParams.strStageName = this.strStageName;
-        stageParams.gPlayer = this.gPlayer;
-        stageParams.typeChapter = this.type;
-    }
-
-    public void SaveParams(StageParams value)
-    {
-        stageParams = value;
-    }
-
-    public StageParams LoadParams()
-    {
-        return stageParams;
-    }
-}
-
 public class StageScript : MonoBehaviour
 {
     //기믹 룸의 총 갯수
@@ -63,8 +14,6 @@ public class StageScript : MonoBehaviour
     //스테이지 파라미터
     private StageParams sParams = new StageParams();
     //시뮬레이터 삭제 예정
-    public LoadParamsSimulator lParamsSimulator = LoadParamsSimulator.Instans;
-    //펙토리 시뮬레이터 삭제예정
     private GameObject[] objRoomPositions;
     private bool _bCreateRoom = false;
     //RoomPositionData 저장 변수
@@ -91,11 +40,22 @@ public class StageScript : MonoBehaviour
     }
 
     //초기화 함수
-    bool Initialize(string strEpisodeName)
+    bool Initialize(StageParams.STAGE_TYPE staygeType)
     {
         try
         {
-            sParams = lParamsSimulator.LoadParams();
+            factoryManager = new FactoryManager();
+            //sParams = lParamsSimulator.LoadParams();
+            string path = "ScriptableObjects\\StageDefaultData\\StageScriptableData" + ((int)staygeType).ToString("D2");
+            StageScriptableData stageData = (StageScriptableData)Resources.Load(path);
+            if (stageData == null)
+                return false;
+
+            if (!stageData.ChapterTypeCompare(staygeType))
+                return false;
+
+            stageData.DataInit(sParams);
+
             //및의 부분을 분리할지 고민중
             _nMaxRoomCount = sParams.nMaxRoomCount;
             _nMinRoomCount = _nMaxRoomCount - 2;
@@ -148,14 +108,17 @@ public class StageScript : MonoBehaviour
             print(e.Message);
         }
     }
+    private void OnEnable()
+    {
+        if (StageManager.Instance != null)
+            StageManager.Instance.EpisodeBtnClicked += Initialize;
+    }
     private void OnDisable()
     {
         _bCreateRoom = false;
+        StageManager.Instance.EpisodeBtnClicked -= Initialize;
     }
-    private void Start()
-    {
-        Initialize("Episode1");
-    }
+
     //Event Delegate?
     //void StageClear()
     //{ 

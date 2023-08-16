@@ -6,6 +6,7 @@ public class testbutton : MonoBehaviour
 {
     public void _Button()
     {
+
         SceneManager.LoadScene("StageScene");
     }
 }
