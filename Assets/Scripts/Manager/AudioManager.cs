@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         // 경로 불러오기
-        _strJsonVolumeValuePath = Application.persistentDataPath + "/" + FilePath.STR_JSON_VOLUME_VALUE;
+        _strJsonVolumeValuePath = Application.persistentDataPath + "/ParamsFolder/" + FilePath.STR_JSON_VOLUME_VALUE;
 
         if (instance == null)
         {
