@@ -101,6 +101,10 @@ public class GameManager : MonoBehaviour
     {
         return Directory.Exists(sPath);
     }
+    public void CreateFoler(string sPath)
+    {
+        Directory.CreateDirectory(sPath);
+    }
     public Dictionary<string, string> DataRead(string sPath)
     {
         try

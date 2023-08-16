@@ -59,8 +59,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        // 경로 불러오기
-        _strJsonVolumeValuePath = Application.persistentDataPath + "/ParamsFolder/" + FilePath.STR_JSON_VOLUME_VALUE;
 
         if (instance == null)
         {
@@ -80,9 +78,18 @@ public class AudioManager : MonoBehaviour
     }
     private void Init()
     {
-        // 세팅하기. -> 파일이 이미있다면 그파일 데이터 읽기 아니면 초기값 설정//
-        //if(GameManager.instance.FileCheck())
-        ReadVolumes();
+        _strJsonVolumeValuePath = Application.persistentDataPath + "/ParamsFolder/";
+        // 경로 불러오기
+        if (!GameManager.instance.FolderExists(_strJsonVolumeValuePath))
+            GameManager.instance.CreateFoler(_strJsonVolumeValuePath);
+
+        _strJsonVolumeValuePath += FilePath.STR_JSON_VOLUME_VALUE;
+
+            // 세팅하기. -> 파일이 이미있다면 그파일 데이터 읽기 아니면 초기값 설정//
+        if (GameManager.instance.FileExists(_strJsonVolumeValuePath))
+            ReadVolumes();
+        else
+            WriteVolumes();
         // else
         // 초기값 설정
         // 오디오 클립 임시 배열 리소스폴더의 SoundClip 폴더 내 모든 audioclip 등록
