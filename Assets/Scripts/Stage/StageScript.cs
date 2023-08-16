@@ -70,6 +70,7 @@ public class StageScript : MonoBehaviour
     //RoomPositionData 저장 변수
     private RoomPositionData[] _rpdPositionData;
 
+    FactoryManager factoryManager;
     //룸 포지션 셋팅
     bool RoomPosInit(object[] objRoomDataArray)
     {
@@ -128,7 +129,8 @@ public class StageScript : MonoBehaviour
 
             for (int i = 0; i < objRoomPositions.Length; i++)
             {
-                objRoomPositions[i] = GameManager.Instance.objfRoomFectory.GetObject();
+                objRoomPositions[i] = factoryManager.GetObject();
+                //수정필요
                 _rpdPositionData[lstIdxList[i]].SetRoomPosData(objRoomPositions[i]);
                 for (int gimmick_idx = 0; gimmick_idx < objRoomPositions[i].transform.childCount; gimmick_idx++)
                 {
