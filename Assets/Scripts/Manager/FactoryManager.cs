@@ -38,6 +38,8 @@ public class FactoryManager : MonoBehaviour
     bool isCreate = false;
     private GameObject _gPrefab;
     private Queue<GameObject> quePool = new Queue<GameObject>();
+    int size = 10;
+
     void Start()
     {
         Init();
@@ -63,7 +65,7 @@ public class FactoryManager : MonoBehaviour
             CreateObject(_gPrefab);
         }
     }
-    private GameObject CreateObject(GameObject gPrefab)
+    public GameObject CreateObject(GameObject gPrefab)
     {
         GameObject gNewObj = Instantiate(gPrefab, transform);
         quePool.Enqueue(gNewObj);

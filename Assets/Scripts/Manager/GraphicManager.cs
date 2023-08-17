@@ -1,7 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#region 타임라인
+/* 20230816
+ * 
+ * 파일 존재 체크
+ * 
+ */
+/*  
+ * 
+ * 
+ * 
+ */
+#endregion
 public class GraphicManager : MonoBehaviour
 {
     private static string _strGraphicPath;
