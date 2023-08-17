@@ -20,7 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Charactor/SelectCharactor.unity
     guid: d9152a3ddc86b5f4aab146f264cac3ca
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/StageScene.unity
-    guid: 0597dcc56412c424ba9bc74aacf77237
+    path: Assets/Scenes/Charactor/CharactorAction.unity
+    guid: 33946e6801ad5ce49b79bf1e458028ef
   m_configObjects: {}

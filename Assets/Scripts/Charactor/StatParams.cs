@@ -9,6 +9,8 @@ namespace Params
     {
         //인덱스
         public float fId;
+        //캐릭터 사진
+        public Sprite sImage;
         //이름
         public string strName;
         //레벨

@@ -101,4 +101,7 @@ public class FactoryManager : MonoBehaviour
         gObj.SetActive(false);
         quePool.Enqueue(gObj);
     }
+
+
+   
 }
