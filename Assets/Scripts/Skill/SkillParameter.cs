@@ -32,6 +32,9 @@ namespace SkillParameter
         public float fBulletCount;//발사체 갯수
         public bool bisUnlockSkill = false;//스킬 해금
         public bool bisCanUse = false;//스킬이 사용가능한지
-        public bool bisAtctivate = false;//스킬 발동여부                                      
-    }    
+        public bool bisActtivate = false;//스킬 발동여부
+        public bool bisUnlockHiden = false;//스킬 추가기능 해금                                         
+    }
+    
+
 }

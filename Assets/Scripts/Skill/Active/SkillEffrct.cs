@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SkillEffrct : MonoBehaviour
+    //해당캐릭 
 {//적과의 충돌감지,대미지관련값 받아오고 마저 계산(o)
     //몬스터와 캐릭터에게 대미지값 전달
     public Charater1 Charater1;
@@ -12,9 +14,9 @@ public class SkillEffrct : MonoBehaviour
     float fMonDefense;
     float fMonCriresi;
     float fTotalDamage;
-   
+    public Action SkillHit;//스킬 이펙트가 몬스터에게 충돌했을때
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Monster")
         {
@@ -22,9 +24,10 @@ public class SkillEffrct : MonoBehaviour
             fMonDadge = component.dodge;
             fMonCriresi = component.criticalresist;
             fMonDefense = component.defense;
-            float fRancri = Random.Range(0f, 100f);
-            float fRanmondod = Random.Range(0f, 100f);
+            float fRancri = UnityEngine.Random.Range(0f, 100f);
+            float fRanmondod = UnityEngine.Random.Range(0f, 100f);            
             CalculDamage();
+            SkillHit?.Invoke();//X?  X가 만족하면 뒤에거 실행  나중 실제 이펙트쪽으로 옮기기
             //몬스터 피해입는곳
         }
     }
@@ -60,7 +63,8 @@ public class SkillEffrct : MonoBehaviour
         }
         
     }
-
+    
+    
 }
 /*public virtual float CalculDamage(float damage, float critical, float criticaldamage,
         float defensepierce, int chaprotype, float mondodge, float mondsfense, float moncriresi, int monprotype)

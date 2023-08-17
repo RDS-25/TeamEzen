@@ -7,4 +7,6 @@ using SkillParameter;
 public class Skilldatas : ScriptableObject
 {
     public List<SkillParameter.SkilParams> Skills;
+    
+    
 }

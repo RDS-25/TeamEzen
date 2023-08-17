@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Charater1 : MonoBehaviour
 {
+    public float Level = 10;
     public float damage = 100;
     public float critical = 20;
     public float criticaldamage = 100;

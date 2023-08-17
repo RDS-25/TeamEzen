@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SkillParameter;
+using System;
 
 
 public class Skill: MonoBehaviour
 {//1.스킬 해금 2.스킬 발동 3.강화 4.효과거리 5.지속시간
     //스킬 레벨/거리/시간
-    SkillParameter.SkilParams SkilParams = new SkillParameter.SkilParams();
+    
+    
     private void Start()
     {
         InitParams();
@@ -25,39 +27,42 @@ public class Skill: MonoBehaviour
 
     }
     
-    public virtual void SkillUnLock(float CharacterLevel)//스킬 해금
+    public virtual void SkillUnlock()//스킬 해금
     {
-        if (CharacterLevel > SkilParams.fUnlockLevel)
-            SkilParams.bisUnlockSkill = true;
-        //활성화 시키기
+    //    if (CharacterLevel > SkilParams.fUnlockLevel)
+    //        SkilParams.bisUnlockSkill = true;
+    //    //활성화 시키기
     }
-    public virtual void SkillCoolDown()
-    {//쿨타임동안 사용불가 쿨타임 종료시 사용가능
-        SkilParams.fTimer += Time.deltaTime;
-        if (SkilParams.fTimer >= SkilParams.fCoolTime)
-            SkilParams.bisCanUse = true;
+   public virtual void SkillHidenUnlock()
+    {
+        //if (CharacterLevel > SkilParams.fUnlockHidenLevel)
+        //    SkilParams.bisUnlockHiden = true;
     }
     public virtual void SkillTriger()//스킬 발동(단발형)
     {//애니메이션, 효과음, 투사체발사, 범위내 대미지주기, 
-               
+                   
         
                        
     }
-    
-    public virtual void SkillLevelUp(float damage, float magnification,
-        float attackcount,float targetcount)//스킬 레벨업(강화)
+    public virtual void SkillExpUp(float exp)
+    {
+
+    }
+    public virtual void SkillLevelUp()//스킬 레벨업(강화)
     {//상승후 딕셔너리에 다시 정보주기
-        SkilParams.fSkillLevel++;
+        /*SkilParams.fSkillLevel++;
         SkilParams.fValue += damage;//기본대미지 증가
         SkilParams.fMagnification += magnification;//스킬배율 증가
         SkilParams.fAttackCount += attackcount;//타격횟수 증가
         SkilParams.fTargetCount += targetcount;//타겟수 증가
-        SkilParams.fSkillRequireExp += SkilParams.fSkillLevel *10;//요구경험치 증가                                               
+        SkilParams.fSkillRequireExp += SkilParams.fSkillLevel *10;//요구경험치 증가
+        float plusdam, float pulsmag,
+        float plusattackcount,float plustargetcount*/
     }
-    
-   
-  
-   
+
+
+
+
 }
 /*public virtual void ActSkill(float characterstat, float value, float magnification,
        float attackcount, float tartgetcount, float fduration)//스킬작동(대미지형)
