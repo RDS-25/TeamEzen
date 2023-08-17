@@ -29,7 +29,7 @@ public class LobbyUIManager : MonoBehaviour
     // 캐릭터 버튼
     public void ButtonCharacter()
     {
-
+        SceneManager.LoadScene("SelectCharactor");
     }
     // 스킬 버튼
     public void ButtonSkill()
