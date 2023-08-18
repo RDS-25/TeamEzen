@@ -32,6 +32,13 @@ using UnityEngine;
  * public GameObject gPrefab { get { return _gPrefab; } }
  * 프리팹 get
  */
+/* 20230818
+ * quePool을 List로 변경
+ * public void CreateFactory(string sPath)
+ * path 의 프리팹 하나씩 전부 생성 오버로딩
+ * public void CreateObject(GameObject[] gPrefabs)
+ * 오브젝트 배열로 생성 오버로딩
+ */
 #endregion
 public class FactoryManager
 {
@@ -78,7 +85,7 @@ public class FactoryManager
     // 오브젝트 하나만 생성
     public GameObject CreateObject(GameObject gPrefab)
     {
-        GameObject gNewObj = GameObject.Instantiate(gPrefab);
+        GameObject gNewObj = GameObject.Instantiate(gPrefab, GameManager.instance.gameObject.transform);
         gNewObj.name = gNewObj.name.Replace("(Clone)", "").Trim();
         listPool.Add(gNewObj);
         gNewObj.SetActive(false);
@@ -101,20 +108,22 @@ public class FactoryManager
         }
     }
 
-    // 오브젝트 리스트에서 꺼내오기
+    // 오브젝트 리스트 맨뒤에서 꺼내오기
+    // 원하는 리스트 번호 뽑기
+    // 리스트 다빼오기
+    // 리스트 원하는 갯수 빼오기
     public GameObject GetObject()
     {
         
         if(listPool.Count > 0)
         {
             GameObject gObjInPool = listPool[^1];
-            gObjInPool.SetActive(true);
+            // removeat필요
             return gObjInPool;
         }
         else
         {
             GameObject gNewObj = CreateObject(_gPrefab);
-            gNewObj.SetActive(true);
             return gNewObj;
         }
     }

@@ -31,6 +31,9 @@ using Newtonsoft.Json;
  * public void CreateFoler(string sPath)
  * 폴더 만들기
  */
+/* 
+ * 
+ */
 /*
 추가해야할 기능
 게임 시작시 게임 데이터 확인 -> 제대로 깔렸는지, 업데이트 되었는지
@@ -83,6 +86,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        Debug.Log(DataRead(Application.persistentDataPath) + "/");
     }
     // Initialize
     private void InitalizeGameData(string sId)
@@ -98,12 +102,12 @@ public class GameManager : MonoBehaviour
     }
     // DataRead
     // 데이터 주소 받아와서 그 주소의 json 파일을 Dictionary 형태로 데이터 반환
-    public Dictionary<string, string> DataRead(string sPath)
+    public Dictionary<string, string> DataRead(string sPathFileName)
     {
         try
         {
             // 임시 변수 선언, 경로의 파일 읽어오기
-            string sData = File.ReadAllText(sPath);
+            string sData = File.ReadAllText(sPathFileName);
             // 임시 Dictionary 선언 Newtonsoft.json 의 클래스를 사용해 json을 Dictionary로 바꿈
             Dictionary<string, string> dictResult = JsonConvert.DeserializeObject<Dictionary<string, string>>(sData);
             //Dictionary 반환
@@ -111,24 +115,30 @@ public class GameManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"[{sPath}]에서 데이터 읽기에 실패하였습니다.{ex}");
+            Debug.LogError($"[{sPathFileName}]에서 데이터 읽기에 실패하였습니다.{ex}");
             return null;
         }
     }
+    // 데이터 리드 폴더 전부
+    //public Dictionary<string, string>[] DataRead(string sPathFolder)
+    //{
+    //    return
+    //}
+
     // DataWrite
     // 데이터 주소와 Dictionary 형태로 데이터를 받아와 json 파일로 저장
-    public void DataWrite(string sPath, Dictionary<string, string> dictData)
+    public void DataWrite(string sPathFileName, Dictionary<string, string> dictData)
     {
         try
         {
             // Newtonsoft.json 의 클래스를 사용해 Dictionay를 json으로 바꿈
             string sJson = JsonConvert.SerializeObject(dictData);
             // 경로에 json 파일 저장
-            File.WriteAllText(sPath, sJson);
+            File.WriteAllText(sPathFileName, sJson);
         }
         catch (Exception ex)
         {
-            Debug.LogError($"[{sPath}]에 데이터 쓰기에 실패하였습니다.{ex}");
+            Debug.LogError($"[{sPathFileName}]에 데이터 쓰기에 실패하였습니다.{ex}");
         }
     }
     public string GetValue(string sPath, string sKey)
