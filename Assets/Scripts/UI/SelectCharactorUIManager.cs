@@ -8,60 +8,41 @@ using UnityEngine.EventSystems;
 public class SelectCharactorUIManager : MonoBehaviour
 {
 	AudioSource audio;
-	[SerializeField]
-	Slot SelectSlot;
 
-	//씬매니저
-	public static SelectCharactorUIManager Instance;
-	public string information;
+	
 	//씬매니저
 
-
-	private void Awake()
-	{
-		if (Instance == null)
-		{
-			Instance = this;
-			DontDestroyOnLoad(gameObject);
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
-	}
 	private void Start()
 	{
+		string a = Application.persistentDataPath + "/";
 		audio = GetComponent<AudioSource>();
-
-		
-	}
+		var data = GameManager.instance.DataRead(a + FilePath.STR_JSON_CHARACTER_PARAMS_TEST);
+		Debug.Log(float.Parse(data["fId"]));
+	}	
 	void Update()
 	{
+		//로컬에 json데이터 있는지 없는지 확인 
+
+		
 		
 	}
 	//버튼 
 	public void Back() {
 		SceneManager.LoadScene("LobbyScene");
 	}
-	public void ShowDetail(Slot slot)
+	//캐릭서 상세 
+	public void ShowDetail()
 	{
-		
-		SceneManager.LoadScene("CharactorAction");
-
+		SceneManager.LoadScene("CharactorAction"); 
 	}
 	//캐릭터 셀렉트 음악
 	void BackgroundMusic() {
 		AudioManager.instance.PlayBackgroundSound(audio, AudioName.STR_CHARACTER_SELECT_1);
 	}
 
-	//캐릭터 정보들 가져오기
-	public void SelectOne() {
-		GameObject clickedObject = EventSystem.current.currentSelectedGameObject;
-		Slot slot = clickedObject.GetComponentInChildren<Slot>();
-		SelectSlot = slot;
-		Debug.Log(slot);
 	
-	}
+
+
 
 	
 

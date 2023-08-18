@@ -13,5 +13,7 @@ public class FilePath : MonoBehaviour
     public const string STR_JSON_CHARACTER_PARAMS_3 = "SNCharacterStat.json";
     public const string STR_JSON_CHARACTER_PARAMS_4 = "SWCharacterStat.json";
 
+    public const string STR_JSON_CHARACTER_PARAMS_TEST = "Char.json";
+
     public const string STR_JSON_GAME_MANAGER_PARAMS = "GameManagerParams.json";
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 using System;
 using Newtonsoft.Json;
-
+using UnityEngine.UI;
 #region 타임라인
 /*20230809
  * Dictionary<string, string> DataRead(string sPath)
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+   
     // 게임매니저 파람스 만들어야됨
     private string _sGameId;
     private string _sFirstCharacterId;
@@ -51,7 +52,9 @@ public class GameManager : MonoBehaviour
     private string _sThirdCharacterId;
     public string sGameId { get; }
 
-    
+    public GameObject[] slots = new GameObject[8];
+   
+
     void Awake()
     {
         #region 싱글톤
@@ -67,8 +70,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         #endregion
     }
-    // Initialize
-    private void InitalizeGameData(string sId)
+
+	// Initialize
+	private void InitalizeGameData(string sId)
     {
         // 파일이 존재하는지 확인해야함
         // 데이터 베이스에서 긁어와서 초기화
