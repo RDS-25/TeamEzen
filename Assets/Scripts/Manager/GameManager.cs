@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 using System;
 using Newtonsoft.Json;
@@ -61,7 +62,9 @@ public class GameManager : MonoBehaviour
     private string _sThirdCharacterId;
     public string sGameId { get; }
 
-    public FactoryManager roomFactory;
+
+    
+    public StageFactory stageFactory = new StageFactory();
 
     void Awake()
     {
@@ -77,6 +80,9 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         #endregion
+    }
+    void Start()
+    {
     }
     // Initialize
     private void InitalizeGameData(string sId)
@@ -149,6 +155,15 @@ public class GameManager : MonoBehaviour
     //        saveFile("key", value);
     //    }
     //}
+    public bool CheckExist(string sFolderPath, string sFileName)
+    {
+        if (!FolderExists(sFolderPath))
+            CreateFoler(sFolderPath);
+        if (FileExists(sFolderPath + sFileName))
+            return true;
+        else
+            return false;
+    }
     // 파일 존재 체크
     public bool FileExists(string sPath)
     {
