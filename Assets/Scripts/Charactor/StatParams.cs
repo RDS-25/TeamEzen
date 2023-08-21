@@ -10,8 +10,8 @@ namespace Params
     {
         //인덱스
         public float fId;
-        //캐릭터 사진
-        public Sprite sImage;
+        //사진경로
+        public string sImagepath;
         //이름
         public string strName;
         //레벨
@@ -62,5 +62,7 @@ namespace Params
         public float fType;
         //궁극기 게이지
         public float fUltimateGauge;
+        //소유하고있는지 없는지
+        public bool bIsOwn;
     }
 }

@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log(DataRead(Application.persistentDataPath) + "/");
+      
     }
     // Initialize
     private void InitalizeGameData(string sId)

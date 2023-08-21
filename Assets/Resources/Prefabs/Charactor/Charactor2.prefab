@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2297615434443153672}
   - component: {fileID: 2297615434443153783}
   - component: {fileID: 2297615434443153782}
-  - component: {fileID: -5011082369931412399}
+  - component: {fileID: -4078920663398166577}
   m_Layer: 0
   m_Name: Charactor2
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-5011082369931412399
+--- !u!114 &-4078920663398166577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,11 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3465751e90e8f5c4684399f706a9cd6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fId: 2
-  sImage: {fileID: 21300000, guid: 2f1eaeeaad36ee5469eff7ff158f37ba, type: 3}
-  strName: Cube
+  fId: 0
+  sImage: {fileID: 0}
+  strName: 0
   fLevel: 0
-  fHealth: 50
+  fHealth: 0
   fAtk: 0
   fDef: 0
   fCriticalPer: 0
@@ -137,3 +137,5 @@ MonoBehaviour:
   strDescription: 
   fType: 0
   fUltimateGauge: 0
+  bIsOwn: 0
+  stat: {fileID: 11400000, guid: 6abd62476718b674fa5179503b2ccf31, type: 2}

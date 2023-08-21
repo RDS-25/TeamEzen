@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3465751e90e8f5c4684399f706a9cd6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fId: 1
-  sImage: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
-  strName: UnityChan
+  fId: 0
+  sImage: {fileID: 0}
+  strName: 0
   fLevel: 0
-  fHealth: 100
+  fHealth: 0
   fAtk: 0
   fDef: 0
   fCriticalPer: 0
@@ -71,3 +71,5 @@ MonoBehaviour:
   strDescription: 
   fType: 0
   fUltimateGauge: 0
+  bIsOwn: 0
+  stat: {fileID: 11400000, guid: a6ca8a81af029e54c95dfdbdb5e73553, type: 2}

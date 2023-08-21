@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57905fa716f8a9e4abe13d56a6702a7a, type: 3}
+  m_Name: character2
+  m_EditorClassIdentifier: 
+  fId: 2
+  sImage: C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/RPG_inventory_icons.apple.png
+  strName: "\uC720\uB2C8\uD2F02"
+  fLevel: 2
+  fHealth: 103
+  fAtk: 5
+  fDef: 7
+  fCriticalPer: 5.9
+  fCriticalDmg: 300
+  fMiss: 12
+  fMoveSpeed: 257
+  fAtkSpeed: 5
+  fCoolDownReduction: 2
+  fExp: 111100
+  fDefBreak: 20
+  fCriticalResist: 2
+  fDamageReduction: 565
+  fHealthSteel: 546
+  fIBD: 23
+  fHRR: 0
+  fRecoveryRate: 213
+  fSightRange: 8
+  fDefaultRange: 578
+  fProperty: 789
+  strDescription: "\uC124\uBA852"
+  fType: 1
+  fUltimateGauge: 1
+  bIsOwn: 0
