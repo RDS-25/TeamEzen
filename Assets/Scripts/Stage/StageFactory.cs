@@ -14,9 +14,7 @@ public class StageFactory
 
     public void SelectCharacterInit()
     {
-        roomFactory.CreateFactory("Prefabs/");
-        roomFactory.listPool[1].SetActive(true);
-        Debug.Log(roomFactory.listPool);
+
         //monsterFactory.     CreateFactory("", nSize);
         //basicSkillFactory.  CreateFactory(FilePath.STR_PREFAB_SKILL_EFFECT_1, nSize);
         //activeSkillFactory. CreateFactory("", nSize);

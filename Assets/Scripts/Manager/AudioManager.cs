@@ -51,8 +51,11 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     private static string _strJsonVolumeValuePath;
 
+    [SerializeField]
     private float _fMasterVolume = 1.0f;
+    [SerializeField]
     private float _fBackgroundVolume = 1.0f;
+    [SerializeField]
     private float _fEffectVolume = 1.0f;
 
     public float fMasterVolume { get { return _fMasterVolume; } }
@@ -83,12 +86,9 @@ public class AudioManager : MonoBehaviour
     {
         // 폴더 경로
         _strJsonVolumeValuePath = Application.persistentDataPath + "/ParamsFolder/";
-        // 폴더가 존재하지 않으면 폴더 만들기
-        if (!GameManager.instance.FolderExists(_strJsonVolumeValuePath))
-            GameManager.instance.CreateFoler(_strJsonVolumeValuePath);
         // 파일경로
         _strJsonVolumeValuePath += FilePath.STR_JSON_VOLUME_VALUE;
-        // 파일이 이미있다면 그파일 데이터 읽기 아니면 초기값 설정
+        // 파일이 이미있다면 그파일 데이터 읽기, 아니면 초기값 설정
         if (GameManager.instance.FileExists(_strJsonVolumeValuePath))
             ReadVolumes();
         else

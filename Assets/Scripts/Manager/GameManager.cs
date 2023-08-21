@@ -31,8 +31,9 @@ using Newtonsoft.Json;
  * public void CreateFoler(string sPath)
  * 폴더 만들기
  */
-/* 
- * 
+/* 20230821
+ * public List<Dictionary<string,string>> DataReadAll(string sFolderPath)
+ * 폴더 내의 json 파일 전부읽고 list<dictionary<stirng,string>> 형태로 반환
  */
 /*
 추가해야할 기능
@@ -86,11 +87,12 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log(DataRead(Application.persistentDataPath) + "/");
     }
     // Initialize
     private void InitalizeGameData(string sId)
     {
+        // 프리팹 팩토리 전부 만들어놓기?
+
         // 파일이 존재하는지 확인해야함
         // 데이터 베이스에서 긁어와서 초기화
         // 데이터 베이스가 없으니 json 데이터 긁어와서 초기화
@@ -119,6 +121,7 @@ public class GameManager : MonoBehaviour
             return null;
         }
     }
+    // 폴더 안의 json 데이터 전부 읽어오기
     public List<Dictionary<string,string>> DataReadAll(string sFolderPath)
     {
         try
@@ -139,12 +142,6 @@ public class GameManager : MonoBehaviour
             return null;
         }
     }
-    // 데이터 리드 폴더 전부
-    //public Dictionary<string, string>[] DataRead(string sPathFolder)
-    //{
-    //    return
-    //}
-
     // DataWrite
     // 데이터 주소와 Dictionary 형태로 데이터를 받아와 json 파일로 저장
     public void DataWrite(string sPathFileName, Dictionary<string, string> dictData)
@@ -210,26 +207,3 @@ public class GameManager : MonoBehaviour
         Directory.CreateDirectory(sPath);
     }
 }
-
-#region 테스트
-/*
-        string path = Application.persistentDataPath + "/";
-        string filename = "testFile.json";
-        Dictionary<string, string> test = new Dictionary<string, string>();
-        test.Add("level", "1");
-        test.Add("name", "test");
-        test.Add("attack", "12");
-        test.Add("hp", "10");
-
-        DataWrite(path + filename, test);
-
-        Dictionary<string, string> RoadData = DataRead(path + filename);
-
-        foreach (string value in RoadData.Keys)
-        {
-            Debug.Log("Key : " + value + " value : " + RoadData[value]);
-        }
-
-        Debug.Log(DataRead(path + filename)); 
-*/
-#endregion
