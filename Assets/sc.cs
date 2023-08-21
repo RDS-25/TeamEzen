@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class sc : MonoBehaviour
 {
-    public GameObject ga;
+    public GameObject[] ga;
     void Start()
     {
-       GameObject a= Instantiate(ga,transform.position,transform.rotation);
-        a.transform.parent = transform;
+
+        for (int i = 0; i < ga.Length; i++) {
+            Instantiate(ga[i], transform.position, transform.rotation);
+            
+        }
+     
         
     }
 

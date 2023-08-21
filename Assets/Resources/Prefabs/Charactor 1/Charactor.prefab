@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fId: 1
   sImage: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
-  strName: UnityChan
+  strName: 
   fLevel: 0
   fHealth: 100
   fAtk: 0
