@@ -30,11 +30,12 @@ public class GraphicManager : MonoBehaviour
     private static string _strGraphicValueFolderPath;
     private static string _strGraphicValueFileName;
 
-    private int _frameRate = 30;
-    private int _antiAliasing = 0;
-    private string _shadowResolution = "Low";
-    private int _textureQuality = 0;
+    private int _nFrameRate = 30;
+    private int _nAntiAliasing = 0;
+    private string _sShadowResolution = "Low";
+    private int _nTextureQuality = 0;
     private int _nVSyncCount = 0;
+
     void Awake()
     {
 
@@ -67,23 +68,24 @@ public class GraphicManager : MonoBehaviour
     private void ReadValues()
     {
         Dictionary<string, string> dictVolumeValues = GameManager.instance.DataRead(_strGraphicValueFolderPath + _strGraphicValueFileName);
-        _frameRate = int.Parse(dictVolumeValues["FrameRate"]);
-        _antiAliasing= int.Parse(dictVolumeValues["AntiAliasing"]);
-        _shadowResolution = dictVolumeValues["ShadowResolution"];
-        _textureQuality = int.Parse(dictVolumeValues["TextureQuality"]);
+        _nFrameRate = int.Parse(dictVolumeValues["FrameRate"]);
+        _nAntiAliasing= int.Parse(dictVolumeValues["AntiAliasing"]);
+        _sShadowResolution = dictVolumeValues["ShadowResolution"];
+        _nTextureQuality = int.Parse(dictVolumeValues["TextureQuality"]);
         _nVSyncCount = int.Parse(dictVolumeValues["vSyncCount"]);
     }
     // 데이터 json 저장
     private void WriteValues()
     {
         Dictionary<string, string> dictVolumeValues = new();
-        dictVolumeValues.Add("FrameRate", _frameRate.ToString());
-        dictVolumeValues.Add("AntiAliasing", _antiAliasing.ToString());
-        dictVolumeValues.Add("ShadowResolution", _shadowResolution);
-        dictVolumeValues.Add("TextureQuality", _textureQuality.ToString());
+        dictVolumeValues.Add("FrameRate", _nFrameRate.ToString());
+        dictVolumeValues.Add("AntiAliasing", _nAntiAliasing.ToString());
+        dictVolumeValues.Add("ShadowResolution", _sShadowResolution);
+        dictVolumeValues.Add("TextureQuality", _nTextureQuality.ToString());
         dictVolumeValues.Add("vSyncCount", _nVSyncCount.ToString());
         GameManager.instance.DataWrite(_strGraphicValueFolderPath + _strGraphicValueFileName, dictVolumeValues);
     }
+    // String To ShadowResolution 컨버터
     private ShadowResolution ConvertStringToShadowResolution(string shadowResolution)
     {
         return (ShadowResolution)System.Enum.Parse(typeof(ShadowResolution), shadowResolution);
@@ -92,25 +94,25 @@ public class GraphicManager : MonoBehaviour
     // 프레임 설정 30 60
     public void SetFrameRate(int nFrameRate)
     {
-        _frameRate = nFrameRate;
+        _nFrameRate = nFrameRate;
         Application.targetFrameRate = nFrameRate;
     }
     // 안티앨리어싱 설정 0 2 4 8
     public void SetAntiAliasing(int nAntiNum)
     {
-        QualitySettings.antiAliasing = 1;
+        QualitySettings.antiAliasing = nAntiNum;
     }
     // 그림자 품질 High Low Medium VeryHigh 
     public void SetShadowResolution(string sShadowRes)
     {
-        _shadowResolution = sShadowRes;
+        _sShadowResolution = sShadowRes;
         QualitySettings.shadowResolution = ConvertStringToShadowResolution(sShadowRes);
     }
     // 텍스처 품질 0 1 2
     public void SetTextureQuality(int nTextureNum)
     {
-        _textureQuality = nTextureNum;
-        QualitySettings.masterTextureLimit = _textureQuality;
+        _nTextureQuality = nTextureNum;
+        QualitySettings.SetQualityLevel(_nTextureQuality);
     }
     // 수직 동기화 0 1
     public void SetvSyncCount(int vSyncCount)

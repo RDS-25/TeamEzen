@@ -50,11 +50,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
     private static string _strJsonVolumeValuePath;
-    [SerializeField]
+
     private float _fMasterVolume = 1.0f;
-    [SerializeField]
     private float _fBackgroundVolume = 1.0f;
-    [SerializeField]
     private float _fEffectVolume = 1.0f;
 
     public float fMasterVolume { get { return _fMasterVolume; } }

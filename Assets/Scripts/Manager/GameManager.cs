@@ -119,6 +119,26 @@ public class GameManager : MonoBehaviour
             return null;
         }
     }
+    public List<Dictionary<string,string>> DataReadAll(string sFolderPath)
+    {
+        try
+        {
+            List<Dictionary<string, string>> listTemp = null;
+            string[] arrTemp = Directory.GetFiles(sFolderPath);
+            foreach(string sJsonPath in arrTemp)
+            {
+                string sData = File.ReadAllText(sJsonPath);
+                Dictionary<string, string> dictTemp = JsonConvert.DeserializeObject<Dictionary<string, string>>(sData);
+                listTemp.Add(dictTemp);
+            }
+            return listTemp;
+        }
+        catch( Exception ex)
+        {
+            Debug.LogError($"[{sFolderPath}]에서 데이터 읽기에 실패하였습니다.{ex}");
+            return null;
+        }
+    }
     // 데이터 리드 폴더 전부
     //public Dictionary<string, string>[] DataRead(string sPathFolder)
     //{
