@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class _TestScript : FactoryManager
+public class _TestScript : MonoBehaviour
 {
-    FactoryManager monsterFactory;
-    FactoryManager trapFactory;
-
     void Start()
     {
-        //CreateFactory("", 5);
+        GameManager.instance.stageFactory.SelectCharacterInit();
     }
 
     // Update is called once per frame

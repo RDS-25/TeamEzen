@@ -23,6 +23,9 @@ public class StageScriptableData : ScriptableObject
     [SerializeField]
     //보스 수
     private int nBossCount = 0;
+    //상점 유무
+    [SerializeField]
+    private int nStoreCount = 0;
     [SerializeField]
     //스테이지 이름
     public string strStageName = "";
@@ -39,5 +42,6 @@ public class StageScriptableData : ScriptableObject
         sparam.nClearRoomCount = nClearRoomCount;
         sparam.nBossCount = nBossCount;
         sparam.strStageName = strStageName;
+        sparam.nStoreCount = nStoreCount;
     }
 }

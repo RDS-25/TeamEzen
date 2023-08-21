@@ -134,7 +134,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6913026464206492491}
   - component: {fileID: 8410948585450086530}
-  - component: {fileID: 8898589004764002074}
   m_Layer: 2
   m_Name: GimmickRoomPrefabs
   m_TagString: GIMMICKROOM
@@ -175,18 +174,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8898589004764002074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8023707853613405566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43372199e04ebcf4b855addd59039df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8081405525197461425
 GameObject:
   m_ObjectHideFlags: 0

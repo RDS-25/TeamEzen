@@ -39,6 +39,8 @@ namespace Params
         public bool bClear = false;
         //현재 챕터의 클리어 여부
         public bool bChapterClear = false;
+        //상점 유무
+        public int nStoreCount = 0;
         //최대 만들수 있는 기믹룸 수
         public int nMaxRoomCount = 0;
         //만들어진 기믹룸 수
@@ -60,10 +62,10 @@ namespace Params
         //기믹룸 타입
         public enum ROOM_TYPE
         {
-            MONSTER_ROOM,
-            PUZZLE_ROOM,
-            TRAP_ROOM,
-            STORE_ROOM,
+            MONSTER_ROOM,//60
+            PUZZLE_ROOM,//20
+            TRAP_ROOM,//20
+            STORE_ROOM,//50%로 있나 없나
             BOSS_ROOM,
             NONE
         }
