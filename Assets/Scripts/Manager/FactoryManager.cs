@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 #region 타임라인
 /*20230809
  * public void PoolConstruct(string path, int nSize)
@@ -26,28 +25,31 @@ using UnityEngine;
  * public void Init()
  * 프리팹 초기화, 큐 초기화
  */
-/*
-추가해야할 기능
-프리팹을 전역변수로 선언해야되나? -> 중요
-CreateFactory 에서 지역변수로 선언해야하나?
-*/
+/* 20230817
+ * public void CreateObject(GameObject gPrefab)
+ * public void CreateObject(GameObject gPrefab, int nSize)
+ * CreateObject 오버로딩
+ * public GameObject gPrefab { get { return _gPrefab; } }
+ * 프리팹 get
+ */
+/* 20230818
+ * quePool을 List로 변경
+ * public void CreateFactory(string sPath)
+ * path 의 프리팹 하나씩 전부 생성 오버로딩
+ * public void CreateObject(GameObject[] gPrefabs)
+ * 오브젝트 배열로 생성 오버로딩
+ */
 #endregion
-
-public class FactoryManager : MonoBehaviour
+public class FactoryManager
 {
     bool isCreate = false;
     private GameObject _gPrefab;
-    private Queue<GameObject> quePool = new Queue<GameObject>();
-    void Start()
-    {
-        Init();
-    }
-    // 이니셜라이즈
-    public void Init()
-    {
-        _gPrefab = null;
-        quePool.Clear();
-    }
+    private GameObject[] _gCharacterPrefab;
+
+    public List<GameObject> listPool = new List<GameObject>();
+
+    public GameObject gPrefab { get { return _gPrefab; } }
+
     // 메모리풀 생성
     public void CreateFactory(string sPath, int nSize)
     {
@@ -58,48 +60,78 @@ public class FactoryManager : MonoBehaviour
         }
         isCreate = true;
         _gPrefab = Resources.Load<GameObject>(sPath);
-        for (int i = 0; i < nSize; i++)
-        {
-            CreateObject(_gPrefab);
-        }
+        CreateObject(_gPrefab, nSize);
     }
-    private GameObject CreateObject(GameObject gPrefab)
+    // 메모리풀 생성 배열로 받아서 하나씩
+    public void CreateFactory(string sPath)
     {
-        GameObject gNewObj = Instantiate(gPrefab, transform);
-        quePool.Enqueue(gNewObj);
-        gNewObj.SetActive(false);
-        return gNewObj;
+        if (isCreate == true)
+        {
+            Debug.Log("이미 존재합니다.");
+            return;
+        }
+        isCreate = true;
+        _gCharacterPrefab = Resources.LoadAll<GameObject>(sPath);
+        CreateObject(_gCharacterPrefab);
     }
     // 메모리풀 소멸
     // 할당된 리스트 소멸해주는 함수
     public void DeCreatePool()
     {
         isCreate = false;
-        quePool.Clear();
-        quePool = null;
+        listPool.Clear();
+        listPool = null;
     }
-    // 오브젝트 Queue에서 꺼내오기
+    // 오브젝트 하나만 생성
+    public GameObject CreateObject(GameObject gPrefab)
+    {
+        GameObject gNewObj = GameObject.Instantiate(gPrefab, GameManager.instance.gameObject.transform);
+        gNewObj.name = gNewObj.name.Replace("(Clone)", "").Trim();
+        listPool.Add(gNewObj);
+        gNewObj.SetActive(false);
+        return gNewObj;
+    }
+    // 오브젝트 사이즈 받아서 여러개 생성
+    public void CreateObject(GameObject gPrefab, int nSize)
+    {
+        for(int i = 0; i < nSize; i++)
+        {
+            CreateObject(gPrefab);
+        }
+    }
+    // 오브젝트 배열을 받아서 하나씩 생성
+    public void CreateObject(GameObject[] gPrefabs)
+    {
+        foreach(GameObject gPrefab in gPrefabs)
+        {
+            CreateObject(gPrefab);
+        }
+    }
+
+    // 오브젝트 리스트 맨뒤에서 꺼내오기
+    // 원하는 리스트 번호 뽑기
+    // 리스트 다빼오기
+    // 리스트 원하는 갯수 빼오기
     public GameObject GetObject()
     {
-        if(quePool.Count > 0)
+        
+        if(listPool.Count > 0)
         {
-            GameObject gObjInPool = quePool.Dequeue();
-            gObjInPool.SetActive(true);
+            GameObject gObjInPool = listPool[^1];
+            // removeat필요
             return gObjInPool;
         }
         else
         {
             GameObject gNewObj = CreateObject(_gPrefab);
-            Debug.Assert(gNewObj != null, "팩토리 먼저 만들기");
-            gNewObj.SetActive(true);
             return gNewObj;
         }
     }
-    // 오브젝트 Queue 안으로 넣어주기
+    // 오브젝트 리스트 안으로 넣어주기
     public void SetObject(GameObject gObj)
     {
         gObj.SetActive(false);
-        quePool.Enqueue(gObj);
+        listPool.Add(gObj);
     }
 
 

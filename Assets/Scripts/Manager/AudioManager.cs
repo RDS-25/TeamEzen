@@ -33,9 +33,14 @@ using System;
  */
 /* 20230816
  * private void WriteVolumes()
+ * 볼륨값 저장
  * private void ReadVolumes()
+ * 볼륨값 불러오기
+ * private void Init()
+ * 파일 경로 설정// 파일, 폴더 존재 체크
  * 
- * 
+ */
+/*  
  * 
  * 
  * 
@@ -45,11 +50,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
     private static string _strJsonVolumeValuePath;
-    [SerializeField]
+
     private float _fMasterVolume = 1.0f;
-    [SerializeField]
     private float _fBackgroundVolume = 1.0f;
-    [SerializeField]
     private float _fEffectVolume = 1.0f;
 
     public float fMasterVolume { get { return _fMasterVolume; } }
@@ -78,20 +81,18 @@ public class AudioManager : MonoBehaviour
     }
     private void Init()
     {
+        // 폴더 경로
         _strJsonVolumeValuePath = Application.persistentDataPath + "/ParamsFolder/";
-        // 경로 불러오기
+        // 폴더가 존재하지 않으면 폴더 만들기
         if (!GameManager.instance.FolderExists(_strJsonVolumeValuePath))
             GameManager.instance.CreateFoler(_strJsonVolumeValuePath);
-
+        // 파일경로
         _strJsonVolumeValuePath += FilePath.STR_JSON_VOLUME_VALUE;
-
-            // 세팅하기. -> 파일이 이미있다면 그파일 데이터 읽기 아니면 초기값 설정//
+        // 파일이 이미있다면 그파일 데이터 읽기 아니면 초기값 설정
         if (GameManager.instance.FileExists(_strJsonVolumeValuePath))
             ReadVolumes();
         else
             WriteVolumes();
-        // else
-        // 초기값 설정
         // 오디오 클립 임시 배열 리소스폴더의 SoundClip 폴더 내 모든 audioclip 등록
         AudioClip[] audioClips = Resources.LoadAll<AudioClip>("SoundClip");
         // 배열에 담긴 audioClip을 _dictAudioClip에 이름을 키값으로 넣어줌

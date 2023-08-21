@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 using System;
 using Newtonsoft.Json;
-using UnityEngine.UI;
+
 #region 타임라인
 /*20230809
  * Dictionary<string, string> DataRead(string sPath)
@@ -18,6 +19,19 @@ using UnityEngine.UI;
 /* 20230814
  * 
  * 
+ * 
+ */
+/* 20230816
+ * public string GetValue(string sPath, string sKey)
+ * json 파일에서 키 값에 해당하는 값만 가져오기
+ * public bool FileExists(string sPath)
+ * 파일 존재하는지 체크
+ * public bool FolderExists(string sPath)
+ * 폴더 존재하는지 체크
+ * public void CreateFoler(string sPath)
+ * 폴더 만들기
+ */
+/* 
  * 
  */
 /*
@@ -44,7 +58,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-   
     // 게임매니저 파람스 만들어야됨
     private string _sGameId;
     private string _sFirstCharacterId;
@@ -52,8 +65,9 @@ public class GameManager : MonoBehaviour
     private string _sThirdCharacterId;
     public string sGameId { get; }
 
-    public GameObject[] slots = new GameObject[8];
-   
+
+    
+    public StageFactory stageFactory = new StageFactory();
 
     void Awake()
     {
@@ -70,9 +84,12 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         #endregion
     }
-
-	// Initialize
-	private void InitalizeGameData(string sId)
+    void Start()
+    {
+        Debug.Log(DataRead(Application.persistentDataPath) + "/");
+    }
+    // Initialize
+    private void InitalizeGameData(string sId)
     {
         // 파일이 존재하는지 확인해야함
         // 데이터 베이스에서 긁어와서 초기화
@@ -83,38 +100,14 @@ public class GameManager : MonoBehaviour
 
         // 아직 잘 모르겠음
     }
-    // LoadScene
-    //public void LoadScene(string sSceneName)
-    //{
-    //    SceneManager.LoadScene(sSceneName);
-    //    // 씬 로드할 때 처리해주어야할것들
-    //    // 배경음악 재생
-    //    // 스테이지 팩토리 정리
-    //    // 열려있는 창이있으면 정리
-    //    // 데이터 저장
-    //    // 등등
-    //}
-
     // DataRead
     // 데이터 주소 받아와서 그 주소의 json 파일을 Dictionary 형태로 데이터 반환
-    public bool FileExists(string sPath)
-    {
-        return File.Exists(sPath);
-    }
-    public bool FolderExists(string sPath)
-    {
-        return Directory.Exists(sPath);
-    }
-    public void CreateFoler(string sPath)
-    {
-        Directory.CreateDirectory(sPath);
-    }
-    public Dictionary<string, string> DataRead(string sPath)
+    public Dictionary<string, string> DataRead(string sPathFileName)
     {
         try
         {
             // 임시 변수 선언, 경로의 파일 읽어오기
-            string sData = File.ReadAllText(sPath);
+            string sData = File.ReadAllText(sPathFileName);
             // 임시 Dictionary 선언 Newtonsoft.json 의 클래스를 사용해 json을 Dictionary로 바꿈
             Dictionary<string, string> dictResult = JsonConvert.DeserializeObject<Dictionary<string, string>>(sData);
             //Dictionary 반환
@@ -122,11 +115,65 @@ public class GameManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"[{sPath}]에서 데이터 읽기에 실패하였습니다.{ex}");
+            Debug.LogError($"[{sPathFileName}]에서 데이터 읽기에 실패하였습니다.{ex}");
             return null;
         }
     }
+    public List<Dictionary<string,string>> DataReadAll(string sFolderPath)
+    {
+        try
+        {
+            List<Dictionary<string, string>> listTemp = null;
+            string[] arrTemp = Directory.GetFiles(sFolderPath);
+            foreach(string sJsonPath in arrTemp)
+            {
+                string sData = File.ReadAllText(sJsonPath);
+                Dictionary<string, string> dictTemp = JsonConvert.DeserializeObject<Dictionary<string, string>>(sData);
+                listTemp.Add(dictTemp);
+            }
+            return listTemp;
+        }
+        catch( Exception ex)
+        {
+            Debug.LogError($"[{sFolderPath}]에서 데이터 읽기에 실패하였습니다.{ex}");
+            return null;
+        }
+    }
+    // 데이터 리드 폴더 전부
+    //public Dictionary<string, string>[] DataRead(string sPathFolder)
+    //{
+    //    return
+    //}
 
+    // DataWrite
+    // 데이터 주소와 Dictionary 형태로 데이터를 받아와 json 파일로 저장
+    public void DataWrite(string sPathFileName, Dictionary<string, string> dictData)
+    {
+        try
+        {
+            // Newtonsoft.json 의 클래스를 사용해 Dictionay를 json으로 바꿈
+            string sJson = JsonConvert.SerializeObject(dictData);
+            // 경로에 json 파일 저장
+            File.WriteAllText(sPathFileName, sJson);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"[{sPathFileName}]에 데이터 쓰기에 실패하였습니다.{ex}");
+        }
+    }
+    public string GetValue(string sPath, string sKey)
+    {
+        Dictionary<string, string> dictTemp = DataRead(sPath);
+        if (dictTemp.ContainsKey(sKey))
+        {
+            return dictTemp[sKey];
+        }
+        else
+        {
+            Debug.LogError($"[{sPath}]에 키값 존재하지 않음");
+            return null;
+        }
+    }
     //string NAME
     //{
     //    get 
@@ -138,23 +185,30 @@ public class GameManager : MonoBehaviour
     //        saveFile("key", value);
     //    }
     //}
-    // DataWrite
-    // 데이터 주소와 Dictionary 형태로 데이터를 받아와 json 파일로 저장
-    public void DataWrite(string sPath, Dictionary<string, string> dictData)
+    public bool CheckExist(string sFolderPath, string sFileName)
     {
-        try
-        {
-            // Newtonsoft.json 의 클래스를 사용해 Dictionay를 json으로 바꿈
-            string sJson = JsonConvert.SerializeObject(dictData);
-            // 경로에 json 파일 저장
-            File.WriteAllText(sPath, sJson);
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError($"[{sPath}]에 데이터 쓰기에 실패하였습니다.{ex}");
-        }
+        if (!FolderExists(sFolderPath))
+            CreateFoler(sFolderPath);
+        if (FileExists(sFolderPath + sFileName))
+            return true;
+        else
+            return false;
     }
-
+    // 파일 존재 체크
+    public bool FileExists(string sPath)
+    {
+        return File.Exists(sPath);
+    }
+    // 폴더 존재 체크
+    public bool FolderExists(string sPath)
+    {
+        return Directory.Exists(sPath);
+    }
+    // 폴더 만들기
+    public void CreateFoler(string sPath)
+    {
+        Directory.CreateDirectory(sPath);
+    }
 }
 
 #region 테스트
