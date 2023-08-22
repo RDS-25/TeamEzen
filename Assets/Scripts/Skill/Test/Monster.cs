@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    float fHp = 100f;
     public float dodge = 5f;
     public float criticalresist = 10f;
     public float defense = 10f;

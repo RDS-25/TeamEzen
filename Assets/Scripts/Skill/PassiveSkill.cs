@@ -10,6 +10,16 @@ public class PassiveSkill : Skill
     {
         //캐릭터 출전할때
     }
-    
-    
+    public virtual void CheckAcitvate()
+    {
+
+    }
+    public virtual void OnPassive()
+    {
+        
+    }
+    public virtual void OffPAssive()
+    {
+
+    }
 }

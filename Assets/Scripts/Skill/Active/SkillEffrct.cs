@@ -8,28 +8,17 @@ public class SkillEffrct : MonoBehaviour
 {//적과의 충돌감지,대미지관련값 받아오고 마저 계산(o)
     //몬스터와 캐릭터에게 대미지값 전달
     public Charater1 Charater1;
-    float fRancri;
-    float fRanmondod;
-    float fMonDadge;
-    float fMonDefense;
-    float fMonCriresi;
-    float fTotalDamage;
-    public Action SkillHit;//스킬 이펙트가 몬스터에게 충돌했을때
+    public float fRancri;
+    public float fRanmondod;
+    public float fMonDadge;
+    public float fMonDefense;
+    public float fMonCriresi;
+    public float fTotalDamage;
+    
 
-    protected virtual void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Monster")
-        {
-            var component = other.GetComponent<Monster>();
-            fMonDadge = component.dodge;
-            fMonCriresi = component.criticalresist;
-            fMonDefense = component.defense;
-            float fRancri = UnityEngine.Random.Range(0f, 100f);
-            float fRanmondod = UnityEngine.Random.Range(0f, 100f);            
-            CalculDamage();
-            SkillHit?.Invoke();//X?  X가 만족하면 뒤에거 실행  나중 실제 이펙트쪽으로 옮기기
-            //몬스터 피해입는곳
-        }
+        
     }
     public virtual float CalculDamage()
     {//계산된 대미지,크리티컬확률,크리티컬대미지,방어구관통,캐릭터속성,
@@ -93,4 +82,16 @@ public class SkillEffrct : MonoBehaviour
             return calculdamage;
         }//속성???
     }
+}*/
+/*if (other.tag == "Monster")
+{
+    var component = other.GetComponent<Monster>();
+    fMonDadge = component.dodge;
+    fMonCriresi = component.criticalresist;
+    fMonDefense = component.defense;
+    float fRancri = UnityEngine.Random.Range(0f, 100f);
+    float fRanmondod = UnityEngine.Random.Range(0f, 100f);
+    CalculDamage();
+    SkillHit?.Invoke();//X?  X가 만족하면 뒤에거 실행  나중 실제 이펙트쪽으로 옮기기
+                       //몬스터 피해입는곳
 }*/

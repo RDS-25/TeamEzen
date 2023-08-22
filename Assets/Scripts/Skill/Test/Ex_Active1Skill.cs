@@ -5,25 +5,27 @@ using System;
 using System.IO;
 public class Ex_Active1Skill : DamageSkill
 {
-    private string _sExActive1SkillPath;//파일경로
+    private string _strExActive1SkillPath;//파일경로
     public Skilldatas scriptabledata;//스크립터블오브젝트 인스펙터창
-    public Charater1 Charater1;
+    public Charater1 Charater1;    
     Dictionary<string, string> dictActive1SkillStat;//딕셔너리 사용
     SkillParameter.SkilParams Ex_Active1Params = new SkillParameter.SkilParams();
-    public Action skillTirger;
+    //public Action skillTirger;
+    public Transform FirePoint;
+    public GameObject EffectPrefab;
     void Start()
     {
        
     }
     public override void InitParams()
     {//데이터파일 있으면 LoadParams() 없으면 SetParams()
-        _sExActive1SkillPath = Application.persistentDataPath + "/ActiveSkill/";//폴더명
-        if (!GameManager.instance.FolderExists(_sExActive1SkillPath))
+        _strExActive1SkillPath = Application.persistentDataPath + "/ActiveSkill/";//폴더명
+        if (!GameManager.instance.FolderExists(_strExActive1SkillPath))
             //GameManager.instance.CreateFolder(_sExActive1SkillPath);
-            Directory.CreateDirectory(_sExActive1SkillPath);
+            Directory.CreateDirectory(_strExActive1SkillPath);
 
-        _sExActive1SkillPath += "exActive1.json";//파일명 추가
-        if (GameManager.instance.FileExists(_sExActive1SkillPath))
+        _strExActive1SkillPath += "exActive1.json";//파일명 추가
+        if (GameManager.instance.FileExists(_strExActive1SkillPath))
             LoadParams();
         else
             SetParams();
@@ -81,7 +83,7 @@ public class Ex_Active1Skill : DamageSkill
             dictActive1SkillStat.Add("bisCanUse", Ex_Active1Params.bisCanUse.ToString());
             Ex_Active1Params.bisActtivate = scriptabledata.Skills[0].bisActtivate;
             dictActive1SkillStat.Add("bisActtivate", Ex_Active1Params.bisActtivate.ToString());
-            GameManager.instance.DataWrite(_sExActive1SkillPath, dictActive1SkillStat);
+            GameManager.instance.DataWrite(_strExActive1SkillPath, dictActive1SkillStat);
         }
         
     }
@@ -103,20 +105,20 @@ public class Ex_Active1Skill : DamageSkill
     }
     public override void SkillLevelUp()
     {
-        float plusdam = 10f;
+        float plusval = 10f;
         float pulsmag = 10f;
         float plusattackcount = 0;
         float plustargetcount = 0;
         if(Ex_Active1Params.fSkillLevel==5|| Ex_Active1Params.fSkillLevel == 10)
         {
-            plusdam = 20;
+            plusval = 20;
             pulsmag = 20;
             plusattackcount = 1;
             plustargetcount = 1;
         }
         Ex_Active1Params.fSkillLevel++;//레벨
         dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fSkillLevel.ToString());        
-        Ex_Active1Params.fValue += plusdam;//기본대미지
+        Ex_Active1Params.fValue += plusval;//기본대미지
         dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fValue.ToString());        
         Ex_Active1Params.fMagnification += pulsmag;//대미지상승량
         dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fMagnification.ToString());
@@ -126,7 +128,7 @@ public class Ex_Active1Skill : DamageSkill
         dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fAttackCount.ToString());
         Ex_Active1Params.fTargetCount += plustargetcount;//타겟수 증가
         dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fTargetCount.ToString());
-        GameManager.instance.DataWrite(_sExActive1SkillPath, dictActive1SkillStat);//쓰기
+        GameManager.instance.DataWrite(_strExActive1SkillPath, dictActive1SkillStat);//쓰기
         SkillHidenUnlock();
         SkillUnlock();
     }
@@ -150,8 +152,18 @@ public class Ex_Active1Skill : DamageSkill
     }
     public override void SkillTriger()
     {//이펙트 나가게
-        base.SkillTriger();
-        skillTirger?.Invoke();
+        if(Ex_Active1Params.bisCanUse==true|| Ex_Active1Params.bisActtivate == false)
+        {
+            Ex_Active1Params.bisCanUse = false;
+
+            Ex_Active1Params.bisActtivate = true;
+
+            Ex_Active1Params.fTimer = 0f;
+            SkillCoolDown();
+            EffectStart();//이펙트 있는 스킬인 경우
+        }
+
+        //skillTirger?.Invoke();
     }
    
     public override void SkillCoolDown()
@@ -160,5 +172,12 @@ public class Ex_Active1Skill : DamageSkill
         if (Ex_Active1Params.fTimer >= Ex_Active1Params.fCoolTime)
             Ex_Active1Params.bisCanUse = true;
     }
-   
+    public void EffectStart()
+    {
+        Instantiate(EffectPrefab, FirePoint.position, FirePoint.rotation);
+    }
+    private void Update()
+    {
+        
+    }
 }
