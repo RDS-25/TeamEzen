@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a549751268f6974bbc812064d57ade1, type: 3}
   m_Name: RoomPositionData02
   m_EditorClassIdentifier: 
-  fPos_x: 20
+  fPos_x: -72.9
   fPos_y: 0
-  fPos_z: 20
+  fPos_z: 65.1
   fGimmick_pos_x:
-  - 0
-  - 12
-  - 10
-  - -12
-  - -5
+  - -29.3
+  - 41.9
+  - -9.4
+  - 17.4
+  - -28.6
   fGimmick_pos_y:
   - 0
   - 0
@@ -28,8 +28,8 @@ MonoBehaviour:
   - 0
   - 0
   fGimmick_pos_z:
-  - 5
-  - -8
-  - -12
-  - 10
-  - -13
+  - 40.5
+  - 11.4
+  - -2.1
+  - -40.6
+  - -39.4
