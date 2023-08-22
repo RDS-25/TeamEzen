@@ -11,9 +11,9 @@ public class LobbyUIManager : MonoBehaviour
     // 메인 로비 UI 버튼
     public GameObject gSettingPanel;
 
-    public GameObject gLooby;
-    public GameObject gCharacterSelect;
-    public GameObject gCharacterDetail;
+    public GameObject gSkill; //스킬
+    public GameObject gCharacterSelect;//캐릭터 
+    public GameObject gStage;//스테이지
 
     // 설정 버튼
     public void ButtonSetting()
@@ -33,7 +33,12 @@ public class LobbyUIManager : MonoBehaviour
     public void ButtonCharacter()
     {
         gCharacterSelect.SetActive(true);
-        gSettingPanel.SetActive(false);
+        
+    }
+    public void ButtonBack()
+    {
+        gCharacterSelect.SetActive(false);
+
     }
     // 스킬 버튼
     public void ButtonSkill()

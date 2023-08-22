@@ -1179,6 +1179,7 @@ GameObject:
   - component: {fileID: 3955521184578160940}
   - component: {fileID: 3955521184578160941}
   - component: {fileID: 3955521184578160943}
+  - component: {fileID: -4233778701461047961}
   m_Layer: 0
   m_Name: TestChar
   m_TagString: Untagged
@@ -1267,6 +1268,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ee3a11d40ad204aa30c3e7c5ead955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4233778701461047961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2881366798198852434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3465751e90e8f5c4684399f706a9cd6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fId: 0
+  sImagepath: 
+  strName: 
+  fLevel: 0
+  fHealth: 0
+  fAtk: 0
+  fDef: 0
+  fCriticalPer: 0
+  fCriticalDmg: 0
+  fMiss: 0
+  fMoveSpeed: 0
+  fAtkSpeed: 0
+  fCoolDownReduction: 0
+  fExp: 0
+  fDefBreak: 0
+  fCriticalResist: 0
+  fDamageReduction: 0
+  fHealthSteel: 0
+  fIBD: 0
+  fHRR: 0
+  fRecoveryRate: 0
+  fSightRange: 0
+  fDefaultRange: 0
+  fProperty: 0
+  strDescription: 
+  fType: 0
+  fUltimateGauge: 0
+  bIsOwn: 0
+  stat: {fileID: 11400000, guid: a6ca8a81af029e54c95dfdbdb5e73553, type: 2}
 --- !u!1 &2958257409294944158
 GameObject:
   m_ObjectHideFlags: 0

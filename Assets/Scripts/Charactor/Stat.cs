@@ -13,20 +13,21 @@ public class Stat : StatParams
 	// 기능들구현  공격 
 	private string _sFolderPath;
     private string _sFileName;
-	private void Awake()
+
+
+	private void OnDisable()
 	{
-		
-	}
-	void Start()
-    {
+        if (fId != 0) {
+            Debug.Log("이미 정보 들어감");
+            return;
+        }
         _sFolderPath = Application.persistentDataPath + "/ParamsFolder/CharParams/";
-        _sFileName = FileName.STR_JSON_CHARACTER_PARAMS_2;
+        _sFileName = FileName.STR_JSON_CHARACTER_PARAMS_TEST;
         Init();
         // SpriteRenderer 컴포넌트 가져오기
         spriteRenderer = GetComponent<SpriteRenderer>();
-      
     }
-    
+
     void Init()
 	{
         if(GameManager.instance.CheckExist(_sFolderPath, _sFileName))
@@ -38,6 +39,17 @@ public class Stat : StatParams
             WriteParams();
         }
 	}
+
+    void PlusStat() { 
+        //fatk + 장비스텟.text;
+    }
+
+    void enterstage() {
+       // fatk + 장비스텟 더해서 스테이지로 전달
+       // 끝나면 JSon다시 불러오기
+    }
+
+   
     void ReadParams()
     {
         Dictionary<string, string> dictTemp = GameManager.instance.DataRead(_sFolderPath + _sFileName);

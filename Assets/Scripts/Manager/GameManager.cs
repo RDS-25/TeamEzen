@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            List<Dictionary<string, string>> listTemp = null;
+            List<Dictionary<string, string>> listTemp = new List<Dictionary<string,string>>();
             string[] arrTemp = Directory.GetFiles(sFolderPath);
             foreach(string sJsonPath in arrTemp)
             {

@@ -12,6 +12,7 @@ public class sc : MonoBehaviour
             Instantiate(ga[i], transform.position, transform.rotation);
             
         }
+      
      
         
     }

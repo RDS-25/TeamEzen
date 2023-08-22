@@ -14,7 +14,7 @@ public class FolderPath
     public const string PARAMS_GRAPHIC         = PARAMS + "GraphicParmas/";
     public const string PARAMS_SKILL           = PARAMS + "SkillParams/";
 
-    public const string PREFABS                = "/Prefabs/";
+    public const string PREFABS                = "Prefabs/";
     public const string PREFABS_CHARACTER      = PREFABS + "Characters/";
     public const string PREFABS_MONSTER        = PREFABS + "Monsters/";
     public const string PREFABS_SKILL_EFFECT   = PREFABS + "SkillEffects/";
