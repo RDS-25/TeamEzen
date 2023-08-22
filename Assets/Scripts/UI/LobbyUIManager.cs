@@ -28,7 +28,6 @@ public class LobbyUIManager : MonoBehaviour
     // 스테이지 버튼
     public void ButtonStage()
     {
-        SceneManager.LoadScene("SelectStageScene");
     }
     // 캐릭터 버튼
     public void ButtonCharacter()

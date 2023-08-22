@@ -49,10 +49,13 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    private static string _strJsonVolumeValuePath;
-
+    private string _strSoundFolderPath;
+    private string _strSoundFileName;
+    [SerializeField]
     private float _fMasterVolume = 1.0f;
+    [SerializeField]
     private float _fBackgroundVolume = 1.0f;
+    [SerializeField]
     private float _fEffectVolume = 1.0f;
 
     public float fMasterVolume { get { return _fMasterVolume; } }
@@ -82,14 +85,11 @@ public class AudioManager : MonoBehaviour
     private void Init()
     {
         // 폴더 경로
-        _strJsonVolumeValuePath = Application.persistentDataPath + "/ParamsFolder/";
-        // 폴더가 존재하지 않으면 폴더 만들기
-        if (!GameManager.instance.FolderExists(_strJsonVolumeValuePath))
-            GameManager.instance.CreateFoler(_strJsonVolumeValuePath);
+        _strSoundFolderPath = FolderPath.PARAMS_SOUND;
         // 파일경로
-        _strJsonVolumeValuePath += FileName.STR_JSON_CHARACTER_PARAMS_2;
-        // 파일이 이미있다면 그파일 데이터 읽기 아니면 초기값 설정
-        if (GameManager.instance.FileExists(_strJsonVolumeValuePath))
+        _strSoundFileName = FileName.STR_SOUND_VALUES;
+        // 파일이 이미있다면 그파일 데이터 읽기, 아니면 초기값 설정
+        if (GameManager.instance.CheckExist(_strSoundFolderPath, _strSoundFileName))
             ReadVolumes();
         else
             WriteVolumes();
@@ -107,7 +107,7 @@ public class AudioManager : MonoBehaviour
     private void ReadVolumes()
     {
         // 게임매니저로 데이터 읽어오기
-        Dictionary<string, string> dictVolumeValues = GameManager.instance.DataRead(_strJsonVolumeValuePath);
+        Dictionary<string, string> dictVolumeValues = GameManager.instance.DataRead(_strSoundFolderPath + _strSoundFileName);
         // 볼륨값 저장된 값으로 지정
         _fMasterVolume      = float.Parse(dictVolumeValues["MasterVolume"]);
         _fBackgroundVolume  = float.Parse(dictVolumeValues["BackgroundVolume"]);
@@ -120,7 +120,7 @@ public class AudioManager : MonoBehaviour
         dictVolumeValues.Add("BackgroundVolume",_fBackgroundVolume.ToString());
         dictVolumeValues.Add("EffectVolume",    _fEffectVolume.ToString());
 
-        GameManager.instance.DataWrite(_strJsonVolumeValuePath, dictVolumeValues);
+        GameManager.instance.DataWrite(_strSoundFolderPath + _strSoundFileName, dictVolumeValues);
     }
     // 외부에서 호출할 배경음악 재생기
     public void PlayBackgroundSound(AudioSource audioSource, string strClipName)
