@@ -44,6 +44,10 @@ using UnityEngine;
  * 자신의 프리팹 배열에서 해당 번호의 프리팹 생성
  * public List<GameObject> GetObjects(int nSize)
  * 리스트 원하는 갯수 빼오기
+ * public GameObject GetObject(int nListNum)
+ * 원하는 리스트 번호 뽑기
+ * public List<GameObject> GetObjectAll()
+ * 리스트 다빼오기
  */
 #endregion
 public class FactoryManager
@@ -56,8 +60,8 @@ public class FactoryManager
 
     public GameObject gPrefab { get { return _gPrefab; } }
 
-    // 메모리풀 생성
-    public void CreateFactory(string sPath, int nSize)
+    // 메모리풀 생성 Resources/ 이 다음 경로 + 파일명 넣어주기
+    public void CreateFactory(string sPrefabPathPrefabName, int nSize)
     {
         if (isCreate == true)
         {
@@ -65,7 +69,7 @@ public class FactoryManager
             return;
         }
         isCreate = true;
-        _gPrefab = Resources.Load<GameObject>(sPath);
+        _gPrefab = Resources.Load<GameObject>(sPrefabPathPrefabName);
         CreateObject(_gPrefab, nSize);
     }
     // 메모리풀 생성 배열로 받아서 하나씩
@@ -91,7 +95,12 @@ public class FactoryManager
     // 오브젝트 하나만 생성
     public GameObject CreateObject(GameObject gPrefab)
     {
-        GameObject gNewObj = GameObject.Instantiate(gPrefab, GameManager.instance.gameObject.transform);
+        if(gPrefab == null)
+        {
+            Debug.LogError("게임오브젝트가 없습니다.");
+            return null;
+        }
+        GameObject gNewObj = GameObject.Instantiate(gPrefab, GameManager.instance.gameObject.transform.GetChild(0));
         gNewObj.name = gNewObj.name.Replace("(Clone)", "").Trim();
         listPool.Add(gNewObj);
         gNewObj.SetActive(false);
@@ -100,7 +109,11 @@ public class FactoryManager
     // 오브젝트 사이즈 받아서 여러개 생성
     public void CreateObject(GameObject gPrefab, int nSize)
     {
-        for(int i = 0; i < nSize; i++)
+        if (gPrefab == null)
+        {
+            Debug.LogError("게임오브젝트가 없습니다.");
+        }
+        for (int i = 0; i < nSize; i++)
         {
             CreateObject(gPrefab);
         }
@@ -108,7 +121,11 @@ public class FactoryManager
     // 오브젝트 배열을 받아서 하나씩 생성
     public void CreateObject(GameObject[] gPrefabs)
     {
-        foreach(GameObject gPrefab in gPrefabs)
+        if (gPrefab == null)
+        {
+            Debug.LogError("게임오브젝트가 없습니다.");
+        }
+        foreach (GameObject gPrefab in gPrefabs)
         {
             CreateObject(gPrefab);
         }
@@ -142,6 +159,11 @@ public class FactoryManager
     // 리스트 다빼오기
     public List<GameObject> GetObjectAll()
     {
+        if(listPool.Count <= 0)
+        {
+            Debug.LogError("리스트가 비어있습니다.");
+            return null;
+        }
         List<GameObject> listTemp = null;
         foreach(GameObject gObj in listPool)
         {

@@ -30,8 +30,8 @@ using UnityEngine;
 public class GraphicManager : MonoBehaviour
 {
     public static GraphicManager instance;
-    private static string _strGraphicValueFolderPath;
-    private static string _strGraphicValueFileName;
+    private string _strGraphicFolderPath;
+    private string _strGraphicFileName;
 
     private int _nFrameRate = 30;
     private int _nAntiAliasing = 0;
@@ -66,11 +66,11 @@ public class GraphicManager : MonoBehaviour
     private void Init()
     {
         // 폴더 경로
-        _strGraphicValueFolderPath = Application.persistentDataPath + "/ParamsFolder/";
+        _strGraphicFolderPath = FolderPath.PARAMS_GRAPHIC;
         // 파일경로
-        _strGraphicValueFileName = FilePath.STR_JSON_GRAPHIC_VALUE;
+        _strGraphicFileName = FileName.STR_GRAPHIC_VAULES;
         // 파일이 이미있다면 그파일 데이터 읽기, 아니면 초기값 설정
-        if (GameManager.instance.CheckExist(_strGraphicValueFolderPath, _strGraphicValueFileName))
+        if (GameManager.instance.CheckExist(_strGraphicFolderPath, _strGraphicFileName))
             ReadValues();
         else
             WriteValues();
@@ -83,7 +83,7 @@ public class GraphicManager : MonoBehaviour
     // 데이터 읽어오기
     private void ReadValues()
     {
-        Dictionary<string, string> dictVolumeValues = GameManager.instance.DataRead(_strGraphicValueFolderPath + _strGraphicValueFileName);
+        Dictionary<string, string> dictVolumeValues = GameManager.instance.DataRead(_strGraphicFolderPath + _strGraphicFileName);
         _nFrameRate = int.Parse(dictVolumeValues["FrameRate"]);
         _nAntiAliasing= int.Parse(dictVolumeValues["AntiAliasing"]);
         _sShadowResolution = dictVolumeValues["ShadowResolution"];
@@ -99,7 +99,7 @@ public class GraphicManager : MonoBehaviour
         dictVolumeValues.Add("ShadowResolution", _sShadowResolution);
         dictVolumeValues.Add("TextureQuality", _nTextureQuality.ToString());
         dictVolumeValues.Add("vSyncCount", _nVSyncCount.ToString());
-        GameManager.instance.DataWrite(_strGraphicValueFolderPath + _strGraphicValueFileName, dictVolumeValues);
+        GameManager.instance.DataWrite(_strGraphicFolderPath + _strGraphicFileName, dictVolumeValues);
     }
     // String To ShadowResolution 컨버터
     private ShadowResolution ConvertStringToShadowResolution(string shadowResolution)
@@ -149,5 +149,4 @@ public class GraphicManager : MonoBehaviour
         WriteValues();
     }
 
-    
 }

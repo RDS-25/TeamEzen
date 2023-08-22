@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class _TestScript : MonoBehaviour
+public class TiltleStart : MonoBehaviour
 {
     void Start()
     {
@@ -14,7 +14,7 @@ public class _TestScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("LobbyScene");
+            LoadingSceneManager.LoadScene("LobbyScene");
         }
     }
 

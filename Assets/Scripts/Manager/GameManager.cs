@@ -58,12 +58,19 @@ CurrentState 같이 현재 정보들을 가지고 있어야할듯
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    private string _strGameManagerFolderPath;
+    private string _strGameManagerFileName;
     // 게임매니저 파람스 만들어야됨
     private string _sGameId;
     private string _sFirstCharacterId;
     private string _sSecondCharacterId;
     private string _sThirdCharacterId;
+    private string _sFirstSkillId;
+    private string _sSecondSkillId;
+    private string _sThirdSkillId;
+
+    private bool _bTargetingDistance;
+    public bool bTargetingDistance { get { return _bTargetingDistance; } set { _bTargetingDistance = value; } }
     public string sGameId { get; }
 
 
@@ -87,29 +94,48 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        if (!FolderExists(FolderPath.PREFABS))
+            CreateFoler(FolderPath.PREFABS);
+        if (!FolderExists(FolderPath.PARAMS))
+            CreateFoler(FolderPath.PARAMS);
     }
     // Initialize
-    private void InitalizeGameData(string sId)
+    private void Init()
     {
-        // 프리팹 팩토리 전부 만들어놓기?
-
-        // 파일이 존재하는지 확인해야함
-        // 데이터 베이스에서 긁어와서 초기화
-        // 데이터 베이스가 없으니 json 데이터 긁어와서 초기화
+        // 폴더경로
+        _strGameManagerFolderPath = FolderPath.PARAMS_GAMEMANAGER;
+        // 파일경로
+        _strGameManagerFileName = FileName.STR_GAME_MANAGER;
+        // 파일이 이미있다면 그파일 데이터 읽기, 아니면 초기값 설정
+        if (GameManager.instance.CheckExist(_strGameManagerFolderPath, _strGameManagerFileName))
+            ReadValues();
+        else
+            WriteValues();
         DataRead("");
         // 여러 데이터를 긁어와야대는데?
         // 게임매니저 파람스 필요
 
         // 아직 잘 모르겠음
     }
+
+    private void ReadValues()
+    {
+
+    }
+    private void WriteValues()
+    {
+
+    }
+
+
     // DataRead
     // 데이터 주소 받아와서 그 주소의 json 파일을 Dictionary 형태로 데이터 반환
-    public Dictionary<string, string> DataRead(string sPathFileName)
+    public Dictionary<string, string> DataRead(string sFolderPathFileNameJson)
     {
         try
         {
             // 임시 변수 선언, 경로의 파일 읽어오기
-            string sData = File.ReadAllText(sPathFileName);
+            string sData = File.ReadAllText(sFolderPathFileNameJson);
             // 임시 Dictionary 선언 Newtonsoft.json 의 클래스를 사용해 json을 Dictionary로 바꿈
             Dictionary<string, string> dictResult = JsonConvert.DeserializeObject<Dictionary<string, string>>(sData);
             //Dictionary 반환
@@ -117,7 +143,7 @@ public class GameManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"[{sPathFileName}]에서 데이터 읽기에 실패하였습니다.{ex}");
+            Debug.LogError($"[{sFolderPathFileNameJson}]에서 데이터 읽기에 실패하였습니다.{ex}");
             return null;
         }
     }
@@ -144,30 +170,30 @@ public class GameManager : MonoBehaviour
     }
     // DataWrite
     // 데이터 주소와 Dictionary 형태로 데이터를 받아와 json 파일로 저장
-    public void DataWrite(string sPathFileName, Dictionary<string, string> dictData)
+    public void DataWrite(string sFolderPathFileNameJson, Dictionary<string, string> dictData)
     {
         try
         {
             // Newtonsoft.json 의 클래스를 사용해 Dictionay를 json으로 바꿈
             string sJson = JsonConvert.SerializeObject(dictData);
             // 경로에 json 파일 저장
-            File.WriteAllText(sPathFileName, sJson);
+            File.WriteAllText(sFolderPathFileNameJson, sJson);
         }
         catch (Exception ex)
         {
-            Debug.LogError($"[{sPathFileName}]에 데이터 쓰기에 실패하였습니다.{ex}");
+            Debug.LogError($"[{sFolderPathFileNameJson}]에 데이터 쓰기에 실패하였습니다.{ex}");
         }
     }
-    public string GetValue(string sPath, string sKey)
+    public string GetValue(string sFolderPathFileNameJson, string sKey)
     {
-        Dictionary<string, string> dictTemp = DataRead(sPath);
+        Dictionary<string, string> dictTemp = DataRead(sFolderPathFileNameJson);
         if (dictTemp.ContainsKey(sKey))
         {
             return dictTemp[sKey];
         }
         else
         {
-            Debug.LogError($"[{sPath}]에 키값 존재하지 않음");
+            Debug.LogError($"[{sFolderPathFileNameJson}]에 키값 존재하지 않음");
             return null;
         }
     }
@@ -192,18 +218,18 @@ public class GameManager : MonoBehaviour
             return false;
     }
     // 파일 존재 체크
-    public bool FileExists(string sPath)
+    public bool FileExists(string sFolderPathFileNameJson)
     {
-        return File.Exists(sPath);
+        return File.Exists(sFolderPathFileNameJson);
     }
     // 폴더 존재 체크
-    public bool FolderExists(string sPath)
+    public bool FolderExists(string sFolderPath)
     {
-        return Directory.Exists(sPath);
+        return Directory.Exists(sFolderPath);
     }
     // 폴더 만들기
-    public void CreateFoler(string sPath)
+    public void CreateFoler(string sFolderPath)
     {
-        Directory.CreateDirectory(sPath);
+        Directory.CreateDirectory(sFolderPath);
     }
 }
