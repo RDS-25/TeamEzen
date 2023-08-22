@@ -31,6 +31,10 @@ using Newtonsoft.Json;
  * public void CreateFoler(string sPath)
  * 폴더 만들기
  */
+/* 20230821
+ * public List<Dictionary<string,string>> DataReadAll(string sFolderPath)
+ * 폴더 내의 json 파일 전부읽고 list<dictionary<stirng,string>> 형태로 반환
+ */
 /*
 추가해야할 기능
 게임 시작시 게임 데이터 확인 -> 제대로 깔렸는지, 업데이트 되었는지
@@ -87,6 +91,8 @@ public class GameManager : MonoBehaviour
     // Initialize
     private void InitalizeGameData(string sId)
     {
+        // 프리팹 팩토리 전부 만들어놓기?
+
         // 파일이 존재하는지 확인해야함
         // 데이터 베이스에서 긁어와서 초기화
         // 데이터 베이스가 없으니 json 데이터 긁어와서 초기화
@@ -98,12 +104,12 @@ public class GameManager : MonoBehaviour
     }
     // DataRead
     // 데이터 주소 받아와서 그 주소의 json 파일을 Dictionary 형태로 데이터 반환
-    public Dictionary<string, string> DataRead(string sPath)
+    public Dictionary<string, string> DataRead(string sPathFileName)
     {
         try
         {
             // 임시 변수 선언, 경로의 파일 읽어오기
-            string sData = File.ReadAllText(sPath);
+            string sData = File.ReadAllText(sPathFileName);
             // 임시 Dictionary 선언 Newtonsoft.json 의 클래스를 사용해 json을 Dictionary로 바꿈
             Dictionary<string, string> dictResult = JsonConvert.DeserializeObject<Dictionary<string, string>>(sData);
             //Dictionary 반환
@@ -111,24 +117,45 @@ public class GameManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"[{sPath}]에서 데이터 읽기에 실패하였습니다.{ex}");
+            Debug.LogError($"[{sPathFileName}]에서 데이터 읽기에 실패하였습니다.{ex}");
+            return null;
+        }
+    }
+    // 폴더 안의 json 데이터 전부 읽어오기
+    public List<Dictionary<string,string>> DataReadAll(string sFolderPath)
+    {
+        try
+        {
+            List<Dictionary<string, string>> listTemp = null;
+            string[] arrTemp = Directory.GetFiles(sFolderPath);
+            foreach(string sJsonPath in arrTemp)
+            {
+                string sData = File.ReadAllText(sJsonPath);
+                Dictionary<string, string> dictTemp = JsonConvert.DeserializeObject<Dictionary<string, string>>(sData);
+                listTemp.Add(dictTemp);
+            }
+            return listTemp;
+        }
+        catch( Exception ex)
+        {
+            Debug.LogError($"[{sFolderPath}]에서 데이터 읽기에 실패하였습니다.{ex}");
             return null;
         }
     }
     // DataWrite
     // 데이터 주소와 Dictionary 형태로 데이터를 받아와 json 파일로 저장
-    public void DataWrite(string sPath, Dictionary<string, string> dictData)
+    public void DataWrite(string sPathFileName, Dictionary<string, string> dictData)
     {
         try
         {
             // Newtonsoft.json 의 클래스를 사용해 Dictionay를 json으로 바꿈
             string sJson = JsonConvert.SerializeObject(dictData);
             // 경로에 json 파일 저장
-            File.WriteAllText(sPath, sJson);
+            File.WriteAllText(sPathFileName, sJson);
         }
         catch (Exception ex)
         {
-            Debug.LogError($"[{sPath}]에 데이터 쓰기에 실패하였습니다.{ex}");
+            Debug.LogError($"[{sPathFileName}]에 데이터 쓰기에 실패하였습니다.{ex}");
         }
     }
     public string GetValue(string sPath, string sKey)
@@ -180,26 +207,3 @@ public class GameManager : MonoBehaviour
         Directory.CreateDirectory(sPath);
     }
 }
-
-#region 테스트
-/*
-        string path = Application.persistentDataPath + "/";
-        string filename = "testFile.json";
-        Dictionary<string, string> test = new Dictionary<string, string>();
-        test.Add("level", "1");
-        test.Add("name", "test");
-        test.Add("attack", "12");
-        test.Add("hp", "10");
-
-        DataWrite(path + filename, test);
-
-        Dictionary<string, string> RoadData = DataRead(path + filename);
-
-        foreach (string value in RoadData.Keys)
-        {
-            Debug.Log("Key : " + value + " value : " + RoadData[value]);
-        }
-
-        Debug.Log(DataRead(path + filename)); 
-*/
-#endregion
