@@ -13,13 +13,13 @@ public class LoadingSceneManager : MonoBehaviour
     {
         StartCoroutine(LoadScene());
     }
-
+    // ¾À·Îµå
     public static void LoadScene(string sceneName)
     {
         nextScene = sceneName;
         SceneManager.LoadScene("LoadingScene");
     }
-
+    // Async »ç¿ë ¾À·Îµå
     IEnumerator LoadScene()
     {
         yield return null;
@@ -30,6 +30,7 @@ public class LoadingSceneManager : MonoBehaviour
         {
             yield return null;
             timer += Time.deltaTime;
+            // 
             progressText.text = (progressBar.value * 100).ToString("F0") + " %";
             if (op.progress < 0.9f)
             {

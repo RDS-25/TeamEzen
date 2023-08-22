@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
     private string _sFirstSkillId;
     private string _sSecondSkillId;
     private string _sThirdSkillId;
+    
+    private List<Vector3> _listRoomPosition;
 
     private bool _bTargetingDistance;
     public bool bTargetingDistance { get { return _bTargetingDistance; } set { _bTargetingDistance = value; } }
