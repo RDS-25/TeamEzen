@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviour
         if (!GameManager.instance.FolderExists(_strJsonVolumeValuePath))
             GameManager.instance.CreateFoler(_strJsonVolumeValuePath);
         // 파일경로
-        _strJsonVolumeValuePath += FilePath.STR_JSON_VOLUME_VALUE;
+        _strJsonVolumeValuePath += FileName.STR_JSON_CHARACTER_PARAMS_2;
         // 파일이 이미있다면 그파일 데이터 읽기 아니면 초기값 설정
         if (GameManager.instance.FileExists(_strJsonVolumeValuePath))
             ReadVolumes();

@@ -20,7 +20,7 @@ public class Stat : StatParams
 	void Start()
     {
         _sFolderPath = Application.persistentDataPath + "/ParamsFolder/CharParams/";
-        _sFileName = FilePath.STR_JSON_CHARACTER_PARAMS_TEST;
+        _sFileName = FileName.STR_JSON_CHARACTER_PARAMS_2;
         Init();
         // SpriteRenderer 컴포넌트 가져오기
         spriteRenderer = GetComponent<SpriteRenderer>();

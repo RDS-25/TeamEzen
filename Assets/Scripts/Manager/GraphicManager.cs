@@ -58,7 +58,7 @@ public class GraphicManager : MonoBehaviour
     private void Init()
     {
         _strGraphicValueFolderPath = Application.persistentDataPath + "/ParamsFolder/";
-        _strGraphicValueFileName = FilePath.STR_JSON_GRAPHIC_VALUE;
+        _strGraphicValueFileName = FileName.STR_GRAPHIC_VAULES;
         if(GameManager.instance.CheckExist(_strGraphicValueFolderPath, _strGraphicValueFileName))
             ReadValues();
         else

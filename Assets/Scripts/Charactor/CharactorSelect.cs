@@ -81,7 +81,7 @@ public class CharactorSelect : MonoBehaviour
     void CheckCharactor() {
         //로컬에 있는 캐릭터 Id와 초기화된 캐릭터 Id를 체크  있으면  Chacters배열에 add 하기 
         a = Application.persistentDataPath + "/"; 
-        var data = GameManager.instance.DataRead(a + FilePath.STR_JSON_CHARACTER_PARAMS_TEST);
+        var data = GameManager.instance.DataRead(a + FileName.STR_JSON_CHARACTER_PARAMS_2);
         Debug.Log(float.Parse(data["fId"]));//로컬 캐릭
       
 

@@ -16,7 +16,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 	{
 		string a = Application.persistentDataPath + "/";
 		audio = GetComponent<AudioSource>();
-		var data = GameManager.instance.DataRead(a + FilePath.STR_JSON_CHARACTER_PARAMS_TEST);
+		var data = GameManager.instance.DataRead(a + FileName.STR_JSON_CHARACTER_PARAMS_2);
 		Debug.Log(float.Parse(data["fId"]));
 	}	
 	void Update()
