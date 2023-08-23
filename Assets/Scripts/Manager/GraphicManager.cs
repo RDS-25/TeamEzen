@@ -1,32 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#region 타임라인
-/* 20230816
- * 파일 체크
- */
-/* 20230818
- * private void Init()
- * json 있으면 받아오기 없으면 새로만들기
- * private void ReadValues()
- * 데이터 받아오기
- * private void WriteValues()
- * 데이터 쓰기
- * public void SetFrameRate(int nFrameRate)
- * 프레임 설정 30 60
- * public void SetAntiAliasing(int nAntiNum)
- * 안티앨리어싱 설정 0 2 4 8
- * public void SetShadowResolution(string sShadowRes)
- * 그림자 품질 High Low Medium VeryHigh 
- * public void SetTextureQuality(int nTextureNum)
- * 텍스처 품질 0 1 2
- * public void SetvSyncCount(int vSyncCount) 
- * 수직 동기화 0 1
- */
-/* 20230821
- * 
- */
-#endregion
 public class GraphicManager : MonoBehaviour
 {
     public static GraphicManager instance;
@@ -110,7 +84,6 @@ public class GraphicManager : MonoBehaviour
     // 프레임 설정 30 60
     public void SetFrameRate(int nFrameRate)
     {
-        Debug.Log($"SetFrameRate{nFrameRate}");
         _nFrameRate = nFrameRate;
         Application.targetFrameRate = nFrameRate;
         WriteValues();
@@ -118,7 +91,6 @@ public class GraphicManager : MonoBehaviour
     // 안티앨리어싱 설정 0 2 4 8
     public void SetAntiAliasing(int nAntiNum)
     {
-        Debug.Log($"SetAntiAliasing{nAntiNum}");
         _nAntiAliasing = nAntiNum;
         QualitySettings.antiAliasing = nAntiNum;
         WriteValues();
@@ -126,7 +98,6 @@ public class GraphicManager : MonoBehaviour
     // 그림자 품질 Low Medium High VeryHigh 
     public void SetShadowResolution(string sShadowRes)
     {
-        Debug.Log($"SetShadowResolution{sShadowRes}");
         _sShadowResolution = sShadowRes;
         QualitySettings.shadowResolution = ConvertStringToShadowResolution(sShadowRes);
         WriteValues();
@@ -134,7 +105,6 @@ public class GraphicManager : MonoBehaviour
     // 텍스처 품질 0 1 2
     public void SetTextureQuality(int nTextureNum)
     {
-        Debug.Log($"SetTextureQuality{nTextureNum}");
         _nTextureQuality = nTextureNum;
         QualitySettings.masterTextureLimit = _nTextureQuality;
         //QualitySettings.SetQualityLevel(_nTextureQuality);
@@ -143,7 +113,6 @@ public class GraphicManager : MonoBehaviour
     // 수직 동기화 0 1
     public void SetvSyncCount(int vSyncCount)
     {
-        Debug.Log($"SetvSyncCount{vSyncCount}");
         _nVSyncCount = vSyncCount;
         QualitySettings.vSyncCount = vSyncCount;
         WriteValues();

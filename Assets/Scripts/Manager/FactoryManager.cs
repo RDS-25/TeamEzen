@@ -1,55 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#region 타임라인
-/*20230809
- * public void PoolConstruct(string path, int nSize)
- * public void PoolDeAllocate()
- * public GameObject GetObject(int nSize)
- * 큐 해제는 추가 구현 필요
- * get오브젝트 추가 구현 필요
- * get한 오브젝트 setActive false시 enqueue해주는 과정 필요
- */
-/*20230810
- * 리스트 대신 Queue 사용
- * PoolConstruct -> public void CreateFactory(string sPath, int nSize)
- * 이름 바꿈, 메모리풀 생성, 게임오브젝트 타입으로 지정
- * PoolDeAllocate -> public void DeCreatePool()
- * 큐 클리어
- * private GameObject CreateObject(GameObject gPrefab)
- * 프리팹으로 게임 오브젝트 생성 반환
- * public GameObject GetObject()
- * Pool에서 DeQueue, 없다면 새로 생성
- * public void SetObject(GameObject gObj)
- * 사용 종료된 오브젝트 EnQueue
- * public void Init()
- * 프리팹 초기화, 큐 초기화
- */
-/* 20230817
- * public void CreateObject(GameObject gPrefab)
- * public void CreateObject(GameObject gPrefab, int nSize)
- * CreateObject 오버로딩
- * public GameObject gPrefab { get { return _gPrefab; } }
- * 프리팹 get
- */
-/* 20230818
- * quePool을 List로 변경
- * public void CreateFactory(string sPath)
- * path 의 프리팹 하나씩 전부 생성 오버로딩
- * public void CreateObject(GameObject[] gPrefabs)
- * 오브젝트 배열로 생성 오버로딩
- */
-/* 20230821
- * public void CreateObject(int nPrefabNum)
- * 자신의 프리팹 배열에서 해당 번호의 프리팹 생성
- * public List<GameObject> GetObjects(int nSize)
- * 리스트 원하는 갯수 빼오기
- * public GameObject GetObject(int nListNum)
- * 원하는 리스트 번호 뽑기
- * public List<GameObject> GetObjectAll()
- * 리스트 다빼오기
- */
-#endregion
+
 public class FactoryManager
 {
     bool isCreate = false;

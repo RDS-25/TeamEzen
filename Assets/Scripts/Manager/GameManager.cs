@@ -6,77 +6,28 @@ using System.IO;
 using System;
 using Newtonsoft.Json;
 
-#region 타임라인
-/*20230809
- * Dictionary<string, string> DataRead(string sPath)
- * json 데이터 읽어오기 구현
- * public void DataWrite(string sPath, Dictionary<string, string> dicData)
- * Dictionary 데이터 json 데이터로 저장
- */
-/*20230810
- * DataRead DataWrite에 try catch 추가
- */
-/* 20230814
- * 
- * 
- * 
- */
-/* 20230816
- * public string GetValue(string sPath, string sKey)
- * json 파일에서 키 값에 해당하는 값만 가져오기
- * public bool FileExists(string sPath)
- * 파일 존재하는지 체크
- * public bool FolderExists(string sPath)
- * 폴더 존재하는지 체크
- * public void CreateFoler(string sPath)
- * 폴더 만들기
- */
-/* 20230821
- * public List<Dictionary<string,string>> DataReadAll(string sFolderPath)
- * 폴더 내의 json 파일 전부읽고 list<dictionary<stirng,string>> 형태로 반환
- */
-/*
-추가해야할 기능
-게임 시작시 게임 데이터 확인 -> 제대로 깔렸는지, 업데이트 되었는지
-************ 중요
-무슨 데이터 가지고 있을것인지?   캐릭터 선택값 스킬 선택값 등등
-캐릭터 선택 정보
-사운드 정보
-계정 정보
-스킬 선택 정보
-
-CurrentState 같이 현재 정보들을 가지고 있어야할듯
-************
-게임 시작시 계정에 저장된 데이터 초기화 추가
-로드 씬 추가
-로딩 기능 추가
-타이틀, 로비, 등등 어느 씬인지 확인
-임시파일 생성
-경로 인터페이스
-*/
-#endregion
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private string _strGameManagerFolderPath;
     private string _strGameManagerFileName;
-    // 게임매니저 파람스 만들어야됨
-    private string _sGameId;
-    private string _sFirstCharacterId;
-    private string _sSecondCharacterId;
-    private string _sThirdCharacterId;
-    private string _sFirstSkillId;
-    private string _sSecondSkillId;
-    private string _sThirdSkillId;
-    
-    private List<Vector3> _listRoomPosition;
 
-    private bool _bTargetingDistance;
+    private bool _bTargetingDistance = false;
+
+    private float _fFirstCharacterId = -1;
+    private float _fSecondCharacterId = -1;
+    private float _fThirdCharacterId = -1;
+
+    private float _fStageNumber = -1;
+
     public bool bTargetingDistance { get { return _bTargetingDistance; } set { _bTargetingDistance = value; } }
-    public string sGameId { get; }
+    public float fFirstCharacterId { get { return _fFirstCharacterId; } set { _fFirstCharacterId = value; } }
+    public float fSecondCharacterId { get { return _fSecondCharacterId; } set { _fSecondCharacterId = value; } }
+    public float fThirdCharacterId { get { return _fThirdCharacterId; } set { _fThirdCharacterId = value; } }
+    public float fStageNumber { get { return _fStageNumber; } set { _fStageNumber = value; } }
 
 
-    
+
     public StageFactory stageFactory = new StageFactory();
 
     void Awake()
@@ -93,14 +44,13 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         #endregion
-    }
-    void Start()
-    {
-        if (!FolderExists(FolderPath.PREFABS))
-            CreateFoler(FolderPath.PREFABS);
+        if (!FolderExists("Assets/Resources/" + FolderPath.PREFABS))
+            CreateFoler("Assets/Resources/" + FolderPath.PREFABS);
         if (!FolderExists(FolderPath.PARAMS))
             CreateFoler(FolderPath.PARAMS);
+        Init();
     }
+
     // Initialize
     private void Init()
     {
@@ -113,7 +63,6 @@ public class GameManager : MonoBehaviour
             ReadValues();
         else
             WriteValues();
-        DataRead("");
         // 여러 데이터를 긁어와야대는데?
         // 게임매니저 파람스 필요
 
@@ -122,13 +71,42 @@ public class GameManager : MonoBehaviour
 
     private void ReadValues()
     {
-
+        Dictionary<string, string> dictTemp = DataRead(FolderPath.PARAMS_GAMEMANAGER + FileName.STR_GAME_MANAGER);
+        bTargetingDistance  = Convert.ToBoolean(dictTemp["TargetingDistance"]);
+        fFirstCharacterId   =  float.Parse(dictTemp["FirstCharacterId"]);
+        fSecondCharacterId  = float.Parse(dictTemp["SecondCharacterId"]);
+        fThirdCharacterId   = float.Parse(dictTemp["ThirdCharacterId"]);
     }
     private void WriteValues()
     {
-
+        Dictionary<string, string> dictTemp = new Dictionary<string, string>();
+        dictTemp.Add("TargetingDistance",   bTargetingDistance.ToString());
+        dictTemp.Add("FirstCharacterId",    fFirstCharacterId.ToString());
+        dictTemp.Add("SecondCharacterId",   fSecondCharacterId.ToString());
+        dictTemp.Add("ThirdCharacterId",    fThirdCharacterId.ToString());
+        DataWrite(FolderPath.PARAMS_GAMEMANAGER + FileName.STR_GAME_MANAGER, dictTemp);
     }
-
+    public void SetTargeting(bool bTargeting)
+    {
+        Debug.Log($"{bTargeting}");
+        bTargetingDistance = bTargeting;
+        WriteValues();
+    }
+    public void SetFirstChar(float fId)
+    {
+        fFirstCharacterId = fId;
+        WriteValues();
+    }
+    public void SetSecondChar(float fId)
+    {
+        fSecondCharacterId = fId;
+        WriteValues();
+    }
+    public void SetThirdChar(float fId)
+    {
+        fThirdCharacterId = fId;
+        WriteValues();
+    }
 
     // DataRead
     // 데이터 주소 받아와서 그 주소의 json 파일을 Dictionary 형태로 데이터 반환

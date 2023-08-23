@@ -3,21 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-#region 타임라인
-/* 20230816
- * void Init(Dictionary<string, string> dict)
- * 그래픽 설정값 불러오기
- * 
- */
-/* 20230818
- * frame, anti, vsync, shadow, texture 각 버튼용 함수 생성
- */
-/* 20230821
- * 텍스처, 안티앨리어싱, 수직동기화, 프레임, 그림자 토글버튼 추가
- * void Init()
- * 데이터 저장된 값으로 초기화하여 일치시키기
- */
-#endregion
 public class GraphicSetting : MonoBehaviour
 {
     public Toggle texture0Toggle;
@@ -40,7 +25,7 @@ public class GraphicSetting : MonoBehaviour
     public Toggle shadowHigh;
     public Toggle shadowVeryHigh;
 
-    void Awake()
+    void Start()
     {
         Init();
     }

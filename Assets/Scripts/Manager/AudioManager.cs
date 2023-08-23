@@ -2,50 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-#region 타임라인
-/* 20230811
- * 싱글톤 패턴 추가
- * Init() 추가
- * 
- * public void PlayBackgroundSound(AudioSource audioSource, string sClipName)
- * AudioSource sClipName 받아와서 private void BackgroundSound 에 넘겨줌
- * 
- * private void BackgroundSound(AudioSource audioSource, AudioClip audioClip)
- * AudioSource에 AudioClip을 넣어주고 loop시켜 재생
- * 
- * private void EffectSound(AudioSource audioSource, AudioClip audioClip)
- * AudioSource에 AudioClip을 넣어주고 한번 재생
- * 
- * public void SetMasterVolume(float fVolume)       마스터 볼륨 셋
- * public void SetBackgroundVolume(float fVolume)   배경음악 볼륨 셋
- * public void SetEffectVolume(float fVolume)       이펙트 볼륨 셋
- */
-/* 20230814
- * 파일경로 지정
- * void SetVolumes()
- * 볼륨 초기값 불러오기 설정
- * public float fMasterVolume { get { return _fMasterVolume; } }
- * public float fBackgroundVolume { get { return _fBackgroundVolume; } }
- * public float fEffectVolume { get { return _fEffectVolume; } }
- * private 볼륨값 public get 설정
- * void UpdateAllAudioSource()
- * 오디오 소스 전부 찾아서 볼륨 적용하기
- */
-/* 20230816
- * private void WriteVolumes()
- * 볼륨값 저장
- * private void ReadVolumes()
- * 볼륨값 불러오기
- * private void Init()
- * 파일 경로 설정// 파일, 폴더 존재 체크
- * 
- */
-/*  
- * 
- * 
- * 
- */
-#endregion
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
