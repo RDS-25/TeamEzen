@@ -92,7 +92,7 @@ namespace Params
     public interface DefaultRoom
     {
         //초기화 함수
-        bool Initialize(GameObject[] positionObjects, Object roomType);
+        bool Initialize(GameObject positionObjects, Object roomType, GameObject player);
         //오브젝트 팩토리 형성 함수
         bool CreateObjectFactory(string objectName);
         //기믹 오브젝트를 특정 포지션에 배치

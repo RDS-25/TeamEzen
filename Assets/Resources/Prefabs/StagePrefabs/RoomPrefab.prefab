@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8410948585450086530}
   - component: {fileID: 1278838417379538576}
   m_Layer: 2
-  m_Name: RoomPrefab
+  m_Name: RoomPreFab
   m_TagString: GIMMICKROOM
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

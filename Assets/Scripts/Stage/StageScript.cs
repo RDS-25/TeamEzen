@@ -18,7 +18,8 @@ public class StageScript : MonoBehaviour
     private bool _bCreateRoom = false;
     //RoomPositionData 저장 변수
     private RoomPositionData[] _rpdPositionData;
-
+    [SerializeField]
+    Transform trStartPosition;
     FactoryManager factoryManager;
     //룸 포지션 셋팅
     bool RoomPosInit(object[] objRoomDataArray)
@@ -40,7 +41,7 @@ public class StageScript : MonoBehaviour
     }
 
     //초기화 함수
-    bool Initialize(StageParams.STAGE_TYPE staygeType)
+    bool Initialize(StageParams.STAGE_TYPE staygeType, GameObject target = null)
     {
         try
         {
@@ -67,6 +68,12 @@ public class StageScript : MonoBehaviour
 
             CreateStage(sParams.typeChapter);
             SetRoomType();
+
+            if (target != null)
+            {
+                sParams.gPlayer = target;
+                sParams.gPlayer.transform.position = trStartPosition.position;
+            }
 
             return true;
         }
@@ -154,14 +161,12 @@ public class StageScript : MonoBehaviour
     }
     private void OnEnable()
     {
-        if (StageManager.Instance != null)
-            StageManager.Instance.EpisodeBtnClicked += Initialize;
+        StageManager.EpisodeBtnClicked += Initialize;
     }
     private void OnDisable()
     {
         _bCreateRoom = false;
-        if (StageManager.Instance != null)
-            StageManager.Instance.EpisodeBtnClicked -= Initialize;
+        StageManager.EpisodeBtnClicked -= Initialize;
     }
 
     //Event Delegate?

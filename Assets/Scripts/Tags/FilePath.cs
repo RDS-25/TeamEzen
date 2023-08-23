@@ -14,5 +14,5 @@ public class FilePath : MonoBehaviour
     public const string STR_JSON_CHARACTER_PARAMS_4 = "SWCharacterStat.json";
 
     public const string STR_JSON_GAME_MANAGER_PARAMS = "GameManagerParams.json";
-    public const string STR_ROOM_PREFAB_PATH = "Prefabs\\StagePrefabs\\GimmickRoomPrefabs";
+    public const string STR_ROOM_PREFAB_PATH = "Prefabs\\StagePrefabs\\RoomPreFab";
 }
