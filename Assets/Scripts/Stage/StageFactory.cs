@@ -15,8 +15,11 @@ public class StageFactory
     public FactoryManager characterFactory = new FactoryManager();
     public FactoryManager monsterFactory = new FactoryManager();
 
+    // ½ºÅ³
+    public FactoryManager skill1EffectFactory = new FactoryManager();
     public void SelectCharacterInit()
     {
+
         characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
         //roomFactory.CreateFactory()
 
