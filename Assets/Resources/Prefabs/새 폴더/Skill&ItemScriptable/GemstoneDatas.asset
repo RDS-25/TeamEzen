@@ -14,12 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   GemstoneParams:
-  - fId: 0
-    fUpMagnification: 0
-    fDropRate: 0
-  - fId: 0
-    fUpMagnification: 0
-    fDropRate: 0
-  - fId: 0
-    fUpMagnification: 0
-    fDropRate: 0
+  - fId: 200
+    fUpMagnification: 30
+    fDropRate: 3
+  - fId: 201
+    fUpMagnification: 30
+    fDropRate: 3
+  - fId: 202
+    fUpMagnification: 30
+    fDropRate: 3
+  - fId: 203
+    fUpMagnification: 30
+    fDropRate: 3
+  - fId: 204
+    fUpMagnification: 30
+    fDropRate: 3
+  - fId: 205
+    fUpMagnification: 30
+    fDropRate: 3

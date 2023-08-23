@@ -9,19 +9,20 @@ public class Ex_Active1Skill : DamageSkill
     public Skilldatas scriptabledata;//스크립터블오브젝트 인스펙터창
     public Charater1 Charater1;    
     Dictionary<string, string> dictActive1SkillStat;//딕셔너리 사용
-    SkillParameter.SkilParams Ex_Active1Params = new SkillParameter.SkilParams();
+    public SkillParameter.SkilParams Ex_Active1Params = new SkillParameter.SkilParams();
     //public Action skillTirger;
     public Transform FirePoint;
     public GameObject EffectPrefab;
     void Start()
     {
-       
+        InitParams();
+        
     }
     public override void InitParams()
     {//데이터파일 있으면 LoadParams() 없으면 SetParams()
         _strExActive1SkillPath = Application.persistentDataPath + "/ActiveSkill/";//폴더명
         if (!GameManager.instance.FolderExists(_strExActive1SkillPath))
-            //GameManager.instance.CreateFolder(_sExActive1SkillPath);
+            //gamemanager.instance.createfolder(_sexactive1skillpath);
             Directory.CreateDirectory(_strExActive1SkillPath);
 
         _strExActive1SkillPath += "exActive1.json";//파일명 추가
@@ -32,7 +33,8 @@ public class Ex_Active1Skill : DamageSkill
     }
     public override void SetParams( )
     {
-        
+        Debug.Log(scriptabledata.Skills[0].fId);
+
         if (scriptabledata.Skills[0].fId == 1)
         { //scriptabledata.Skills[0].strName = "이름";//스크립터블 오브젝트에 정보 넣을때
             //scriptabledata.Skills[0].fSkillLevel = 100;
@@ -43,8 +45,6 @@ public class Ex_Active1Skill : DamageSkill
             dictActive1SkillStat.Add("fId", Ex_Active1Params.fId.ToString());
             Ex_Active1Params.strName = scriptabledata.Skills[0].strName;//스크립터블 오브젝트에서 꺼내올때
             dictActive1SkillStat.Add("strName", Ex_Active1Params.strName);
-            Ex_Active1Params.fSkillLevel = scriptabledata.Skills[0].fSkillLevel;
-            dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fSkillLevel.ToString());
             Ex_Active1Params.strDiscription = scriptabledata.Skills[0].strDiscription;
             dictActive1SkillStat.Add("strDiscription", Ex_Active1Params.strDiscription);
             Ex_Active1Params.fSkillRequireExp = scriptabledata.Skills[0].fSkillRequireExp;
@@ -69,7 +69,7 @@ public class Ex_Active1Skill : DamageSkill
             dictActive1SkillStat.Add("fValue", Ex_Active1Params.fValue.ToString());
             Ex_Active1Params.fMagnification = scriptabledata.Skills[0].fMagnification;
             dictActive1SkillStat.Add("fMagnification", Ex_Active1Params.fMagnification.ToString());
-            Ex_Active1Params.fTargetCount = scriptabledata.Skills[0].fTargetCount;
+            Ex_Active1Params.fTargetCount =   scriptabledata.Skills[0].fTargetCount;
             dictActive1SkillStat.Add("fTargetCount", Ex_Active1Params.fTargetCount.ToString());
             Ex_Active1Params.fAttackCount = scriptabledata.Skills[0].fAttackCount;
             dictActive1SkillStat.Add("fAttackCount", Ex_Active1Params.fAttackCount.ToString());
@@ -83,13 +83,37 @@ public class Ex_Active1Skill : DamageSkill
             dictActive1SkillStat.Add("bisCanUse", Ex_Active1Params.bisCanUse.ToString());
             Ex_Active1Params.bisActtivate = scriptabledata.Skills[0].bisActtivate;
             dictActive1SkillStat.Add("bisActtivate", Ex_Active1Params.bisActtivate.ToString());
+            // 이펙트이름
+
             GameManager.instance.DataWrite(_strExActive1SkillPath, dictActive1SkillStat);
+
         }
         
     }
     public override void LoadParams()
     {
-        
+        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(_strExActive1SkillPath);
+        Ex_Active1Params.fSkillLevel        = float.Parse(dictTemp["fSkillLevel"]);
+        Ex_Active1Params.fId                = float.Parse(dictTemp["fId"]);
+        Ex_Active1Params.strName            = dictTemp["strName"];
+        Ex_Active1Params.fSkillRequireExp   = float.Parse(dictTemp["fSkillRequireExp"]);
+        Ex_Active1Params.strDiscription     = dictTemp["strDiscription"];
+        Ex_Active1Params.fUnlockLevel       = float.Parse(dictTemp["fUnlockLevel"]);
+        Ex_Active1Params.fUnlockHidenLevel  = float.Parse(dictTemp["fUnlockHidenLevel"]);
+        Ex_Active1Params.fTimer             = float.Parse(dictTemp["fTimer"]);
+        Ex_Active1Params.fCoolTime          = float.Parse(dictTemp["fCoolTime"]);
+        Ex_Active1Params.fDuration          = float.Parse(dictTemp["fDuration"]);
+        Ex_Active1Params.fSkillCoolReduce   = float.Parse(dictTemp["fSkillCoolReduce"]);
+        Ex_Active1Params.fRange             = float.Parse(dictTemp["fRange"]);
+        Ex_Active1Params.fValue             = float.Parse(dictTemp["fValue"]);
+        Ex_Active1Params.fMagnification     = float.Parse(dictTemp["fMagnification"]);
+        Ex_Active1Params.fTargetCount       = float.Parse(dictTemp["fTargetCount"]);
+        Ex_Active1Params.fAttackCount       = float.Parse(dictTemp["fAttackCount"]);
+        Ex_Active1Params.fBuffDuration      = float.Parse(dictTemp["fBulletCount"]);
+        Ex_Active1Params.bisUnlockSkill     = Convert.ToBoolean(dictTemp["bisUnlockSkill"]);
+        Ex_Active1Params.bisUnlockHiden     = Convert.ToBoolean(dictTemp["bisUnlockHiden"]);
+        Ex_Active1Params.bisCanUse          = Convert.ToBoolean(dictTemp["bisCanUse"]);
+        Ex_Active1Params.bisActtivate       = Convert.ToBoolean(dictTemp["bisActtivate"]);
     }
     public override void SkillExpUp(float exp)
     {
@@ -159,22 +183,25 @@ public class Ex_Active1Skill : DamageSkill
             Ex_Active1Params.bisActtivate = true;
 
             Ex_Active1Params.fTimer = 0f;
-            SkillCoolDown();
+            
             EffectStart();//이펙트 있는 스킬인 경우
+            StartCoroutine(SkillCoolDown());
         }
 
         //skillTirger?.Invoke();
     }
-   
-    public override void SkillCoolDown()
+    
+   public override IEnumerator SkillCoolDown()
     {
-        Ex_Active1Params.fTimer += Time.deltaTime;
-        if (Ex_Active1Params.fTimer >= Ex_Active1Params.fCoolTime)
-            Ex_Active1Params.bisCanUse = true;
+        yield return new WaitForSeconds(Ex_Active1Params.fCoolTime);
+        Ex_Active1Params.bisCanUse = true;
+        Ex_Active1Params.bisActtivate = false;
     }
+    
     public void EffectStart()
     {
-        Instantiate(EffectPrefab, FirePoint.position, FirePoint.rotation);
+        EffectPrefab.GetComponent<Ex_Active1Effect>().fRange = this.Ex_Active1Params.fRange;//이펙트의 사거리
+        Instantiate(EffectPrefab, FirePoint.position, FirePoint.rotation);//팩토리로 바꾸기
     }
     private void Update()
     {

@@ -13,4 +13,25 @@ MonoBehaviour:
   m_Name: EquipDatas
   m_EditorClassIdentifier: 
   ItemType: 0
-  EquipParams: []
+  EquipParams:
+  - fId: 100
+    fDropRate: 5
+    fDamage: 10
+    fDefense: 5
+    fSpeed: 2
+    fCrtical: 0
+    fCriticalDamage: 0
+  - fId: 101
+    fDropRate: 5
+    fDamage: 20
+    fDefense: 0
+    fSpeed: 0
+    fCrtical: 10
+    fCriticalDamage: 10
+  - fId: 102
+    fDropRate: 5
+    fDamage: 0
+    fDefense: 20
+    fSpeed: 3
+    fCrtical: 0
+    fCriticalDamage: 0

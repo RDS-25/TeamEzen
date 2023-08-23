@@ -21,12 +21,16 @@ public class ActiveSkill : Skill
         //else
         //    return;
     }
-    public virtual void SkillCoolDown()
-    {//쿨타임동안 사용불가 쿨타임 종료시 사용가능
+    public virtual IEnumerator SkillCoolDown()
+    {
+        yield return new WaitForSeconds(0);
+    }
+    
+    //쿨타임동안 사용불가 쿨타임 종료시 사용가능
         //skilParams.fTimer += Time.deltaTime;
         //if (skilParams.fTimer >= skilParams.fCoolTime)
         //    skilParams.bisCanUse = true;
-    }
+    
     public virtual void PlayAnimation()
     {
 

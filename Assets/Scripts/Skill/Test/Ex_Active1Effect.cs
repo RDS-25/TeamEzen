@@ -7,14 +7,15 @@ using System;
 public class Ex_Active1Effect : SkillEffrct
 {
     //public Charater1 Charater1;
-    public Ex_Active1Skill Ex_Active1Skill;
+    public Ex_Active1Skill ex_Active1Skill;
     float fSpeed = 100f;
     public Action SkillHit;//스킬 이펙트가 몬스터에게 충돌했을때    
     public Vector3 Firepiont;
 
 
     void Start()
-    {        
+    {
+        
         MoveEffect();
         fRancri = UnityEngine.Random.Range(0f, 100f);
         fRanmondod = UnityEngine.Random.Range(0f, 100f);
@@ -69,10 +70,15 @@ public class Ex_Active1Effect : SkillEffrct
     }
     public void CheckDistance()
     {
+        
         float distance = Vector3.Distance(Firepiont, this.transform.position);
-        if (distance > 4)//Ex_Active1Params의 Range를 가져오는 방법??
+        Debug.Log("ran" + fRange);
+        Debug.Log("dis"+ distance);
+       // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
+        if (distance > fRange)//Ex_Active1Params의 Range를 가져오는 방법??
         {
-            Destroy(gameObject);
+
+            Destroy(this.gameObject);
         }
         else
             return;

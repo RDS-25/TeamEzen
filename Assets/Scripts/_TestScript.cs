@@ -17,7 +17,7 @@ public class _TestScript : FactoryManager
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("LobbyScene");
+            LoadingSceneManager.LoadScene("SkillTest");
         }
     }
 

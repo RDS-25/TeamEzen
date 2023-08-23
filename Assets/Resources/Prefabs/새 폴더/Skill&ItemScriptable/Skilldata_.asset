@@ -13,25 +13,26 @@ MonoBehaviour:
   m_Name: Skilldata_
   m_EditorClassIdentifier: 
   Skills:
-  - fId: 0
-    strName: 
-    fSkillLevel: 0
-    strDiscription: 
-    fSkillRequireExp: 0
-    fSkillExp: 0
-    fUnlockLevel: 0
-    fUnlockHidenLevel: 0
-    fTimer: 0
-    fCoolTime: 0
-    fDuration: 0
-    fSkillCoolReduce: 0
-    fBuffDuration: 0
-    fRange: 0
-    fValue: 0
-    fMagnification: 0
-    fTargetCount: 0
-    fAttackCount: 0
-    fBulletCount: 0
-    bisUnlockSkill: 0
-    bisCanUse: 0
-    bisActtivate: 0
+  - fId: 1
+    strName: 10
+    fSkillLevel: 10
+    strDiscription: 10
+    fSkillRequireExp: 10
+    fSkillExp: 10
+    fUnlockLevel: 10
+    fUnlockHidenLevel: 10
+    fTimer: 10
+    fCoolTime: 10
+    fDuration: 10
+    fSkillCoolReduce: 10
+    fBuffDuration: 10
+    fRange: 5
+    fValue: 10
+    fMagnification: 10
+    fTargetCount: 10
+    fAttackCount: 10
+    fBulletCount: 10
+    bisUnlockSkill: 1
+    bisCanUse: 1
+    bisActtivate: 1
+    bisUnlockHiden: 1

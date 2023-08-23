@@ -9,6 +9,10 @@ public class Inven : MonoBehaviour
     {
         
     }
+    public void GetItem()
+    {
+
+    }
     public void OnItemClick()//아이템 클릭시
     {
 

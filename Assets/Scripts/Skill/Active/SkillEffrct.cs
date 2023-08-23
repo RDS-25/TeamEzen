@@ -14,7 +14,7 @@ public class SkillEffrct : MonoBehaviour
     public float fMonDefense;
     public float fMonCriresi;
     public float fTotalDamage;
-    
+    public float fRange;
 
     public virtual void OnTriggerEnter(Collider other)
     {
