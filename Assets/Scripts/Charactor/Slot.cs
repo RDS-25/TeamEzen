@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class Slot : MonoBehaviour
 {
     [SerializeField] Image image;
     private Stat _Stat;
-    public SpriteRenderer spriteRenderer; // Sprite를 표시할 SpriteRenderer
 
+
+
+    //이미지 가져오기 
     public Stat Stat
     {
         get { return _Stat; }
@@ -17,6 +20,7 @@ public class Slot : MonoBehaviour
             _Stat = value;
             if (_Stat != null)
             {
+               
                 image.sprite =LoadAndSetSprite(_Stat.sImagepath);
                 image.color = new Color(1, 1, 1, 1);
             }
@@ -26,19 +30,30 @@ public class Slot : MonoBehaviour
             }
         }
     }
+
+    //바이트 배열로 가져오기 
     private Sprite LoadAndSetSprite(string imagePath)
     {
-        // Resources 폴더 내에 이미지 파일이 있어야 합니다.
-        Sprite loadedSprite = Resources.Load<Sprite>(imagePath);
+        string path = Path.Combine(imagePath);
 
-        if (loadedSprite != null)
+        Debug.Log("경로는"+path);
+        if (File.Exists(path))
         {
-            // SpriteRenderer에 Sprite 설정
-          return loadedSprite;
+            byte[] imageBytes = File.ReadAllBytes(path);
+            Texture2D texture = new Texture2D(2, 2);
+            if (texture.LoadImage(imageBytes))
+            {
+                return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            }
+            else
+            {
+                Debug.LogError("Failed to load image: " + imagePath);
+                return null;
+            }
         }
         else
         {
-            Debug.LogError("Sprite를 찾을 수 없습니다: " + imagePath);
+            Debug.LogError("Image file not found: " + path);
             return null;
         }
     }

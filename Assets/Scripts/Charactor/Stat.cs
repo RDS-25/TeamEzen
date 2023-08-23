@@ -6,6 +6,7 @@ using Params;
 
 public class Stat : StatParams
 {
+    public float objectId;
     public CharacterData stat;
     private SpriteRenderer spriteRenderer;
 
@@ -17,15 +18,25 @@ public class Stat : StatParams
 
 	private void OnDisable()
 	{
+        objectId = stat.fId;
         if (fId != 0) {
             Debug.Log("이미 정보 들어감");
             return;
         }
         _sFolderPath = Application.persistentDataPath + "/ParamsFolder/CharParams/";
-        _sFileName = FileName.STR_JSON_CHARACTER_PARAMS_TEST;
+        _sFileName = _sFileName = LoadParams(objectId);
         Init();
         // SpriteRenderer 컴포넌트 가져오기
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    //오브젝트아이디
+    private string LoadParams(float id)
+    {
+        // 파일 이름이나 경로를 ID를 기반으로 생성하고 데이터를 불러오는 로직을 구현합니다.
+        // 예를 들어, 파일 이름을 "CharParams_" + id + ".json"으로 설정할 수 있습니다.
+        string fileName = "TESTChar" + id + ".json";
+        // 필요한 데이터를 불러오는 코드를 여기에 구현합니다.
+        return fileName;
     }
 
     void Init()
@@ -53,7 +64,7 @@ public class Stat : StatParams
     void ReadParams()
     {
         Dictionary<string, string> dictTemp = GameManager.instance.DataRead(_sFolderPath + _sFileName);
-        Debug.Log(dictTemp[CharPath.IMAGE]);
+       // Debug.Log(dictTemp[CharPath.IMAGE]);
 
         fId = float.Parse(dictTemp[CharPath.ID]);
         sImagepath = dictTemp[CharPath.IMAGE];
@@ -141,9 +152,5 @@ public class Stat : StatParams
         GameManager.instance.DataWrite(_sFolderPath + _sFileName, dicTemp);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }

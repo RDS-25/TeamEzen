@@ -18,6 +18,7 @@ public class CharactorSelect : MonoBehaviour
     //json들의 정보 대입 (id, sprite)
     public List<Stat> Chacters;
 
+    //게임에서 전부 가지고 있는 캐릭터
     public List<GameObject> InitChar;
 
     //슬롯을 가지고있는 부모 오브젝트
@@ -26,28 +27,23 @@ public class CharactorSelect : MonoBehaviour
     //슬롯 배열
     [SerializeField]
     private Slot[] s_Slots;
-    string a;
-    string _sFolderPath;
+    
+    public string _sFolderPath;
 
+
+    //내가 가지고 있는 캐릭터
     public List<string> L_ID;
     
 
 
 	void Start()
     {
-
         _sFolderPath= Application.persistentDataPath + "/ParamsFolder/CharParams/";
-        FreshSlot();
         L_ID = RoadChar(_sFolderPath);
-
+        //리스트풀 만들어서 init 리스트에 넣기 
         InitChar = GameManager.instance.stageFactory.characterFactory.listPool;
         addChar() ;
-      
-      /*  string a = Application.persistentDataPath + "/";
-        var data = GameManager.instance.DataRead(a + FilePath.STR_JSON_CHARACTER_PARAMS_TEST);
-
-     
-        Debug.Log(data);*/
+        FreshSlot();
     }
 
  
@@ -68,28 +64,17 @@ public class CharactorSelect : MonoBehaviour
 
     void addChar() {
         //L_ID의 저장된 값과 팩토리의 값이 같으면 캐릭터에 추가 (L_ID 길이만큼)
-        if (float.Parse(L_ID[0]) == InitChar[0].GetComponent<Stat>().fId) {
-            Chacters.Add(InitChar[0].GetComponent<Stat>());
-        }
+        for(int i = 0; i < InitChar.Count; i++)
+		{
+            for(int j = 0; j < L_ID.Count; j++)
+			{
+                if (InitChar[i].GetComponent<Stat>().fId == float.Parse(L_ID[j]))
+                    Chacters.Add(InitChar[i].GetComponent<Stat>());
+			}
+		}
+ 
     }
-
-
-
-    /*
-    void CheckCharactor() {
-        //로컬에 있는 캐릭터 Id와 초기화된 캐릭터 Id를 체크  있으면  Chacters배열에 add 하기 
-        a = Application.persistentDataPath + "/"; 
-        var data = GameManager.instance.DataRead(a + FileName.STR_JSON_CHARACTER_PARAMS_2);
-        Debug.Log(float.Parse(data["fId"]));//로컬 캐릭
-      
-
-        
-        //JOSN 전부 가져와서   로컬 JSON하고 비교 후  있으면 가져오기 
-        if (float.Parse(data["fId"]) == InitChar[0].GetComponent<Stat>().fId) {
-            Chacters.Add(InitChar[0].GetComponent<Stat>());
-        }
-    }*/
-
+    //보유하고있는  캐릭터를 확인해서 리스트에 넣기 
     List<string> RoadChar(string sPath) {
         List<string> list = new List<string>();
         List<Dictionary<string, string>> listTemp = GameManager.instance.DataReadAll(sPath);
@@ -102,13 +87,7 @@ public class CharactorSelect : MonoBehaviour
             }
 
         }
-        
         return list;
-    }
-
-    void CheckChar() { 
-    
-    
     }
 
 

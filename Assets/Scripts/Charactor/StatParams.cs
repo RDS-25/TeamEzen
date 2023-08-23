@@ -64,5 +64,7 @@ namespace Params
         public float fUltimateGauge;
         //소유하고있는지 없는지
         public bool bIsOwn;
+
+     
     }
 }
