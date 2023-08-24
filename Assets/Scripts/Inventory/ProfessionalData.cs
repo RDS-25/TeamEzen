@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ItemParameter;
 
-public class ProfessionalInfo : MonoBehaviour
+public class ProfessionalData : MonoBehaviour
 {
     [SerializeField]
     ItemParameter.ItemType ItemType = ItemParameter.ItemType.PROFESSIONAL;

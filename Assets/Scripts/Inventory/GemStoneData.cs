@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ItemParameter;
 
-public class GemStoneInfo : MonoBehaviour
+public class GemStoneData : MonoBehaviour
 {
     [SerializeField]
     ItemParameter.ItemType itemType = ItemParameter.ItemType.GEMSTONE;

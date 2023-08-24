@@ -401,7 +401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   GemstoneParams:
-    fId: 0
+    fId: 4
     strName: 4
     strDiscription: 4
     fUpMagnification: 4

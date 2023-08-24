@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ItemParameter;
 
-public class MaterialInfo : MonoBehaviour
+public class MaterialData : MonoBehaviour
 {
     [SerializeField]
     ItemParameter.ItemType itemType = ItemParameter.ItemType.MATERIAL;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ItemParameter;
 
-public class EquipInfo : MonoBehaviour
+public class EquipData : MonoBehaviour
 {
     [SerializeField]
     ItemParameter.ItemType itemType = ItemParameter.ItemType.EQUIPMENT;
