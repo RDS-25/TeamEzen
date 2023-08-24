@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2236643829734787505}
   - component: {fileID: 2236643829734787506}
   - component: {fileID: 2428636436128271626}
-  - component: {fileID: 6585847016648267011}
+  - component: {fileID: 7093466535218149645}
   m_Layer: 5
   m_Name: necklac
   m_TagString: Untagged
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6585847016648267011
+--- !u!114 &7093466535218149645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,10 +109,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2236643829734787504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0f3a6f018a2de429ab95cddd204cab, type: 3}
+  m_Script: {fileID: 11500000, guid: 0530ce874084dd64780fb94a5151fe03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptabledata: {fileID: 11400000, guid: 22bb51c257f89be4e889f2e70249d87d, type: 2}
+  itemType: 1
+  GemstoneParams:
+    fId: 5
+    strName: 5
+    strDiscription: 5
+    fUpMagnification: 5
+    fNumber: 5
+    fDropRate: 5
 --- !u!1 &2236643830544324343
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,4 +22,8 @@ public class Scrollview : MonoBehaviour
         }
         this.GetComponent<ScrollRect>().vertical = myItemCount > THRESHHOLD;
     }
+    public void GetItem()
+    {
+
+    }
 }

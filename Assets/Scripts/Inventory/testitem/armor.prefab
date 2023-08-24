@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 8702925326580480056}
   - component: {fileID: 8702925326580480059}
   - component: {fileID: 5078116681117744259}
-  - component: {fileID: 4370892113246676106}
+  - component: {fileID: 2084100148281721676}
   m_Layer: 5
   m_Name: armor
   m_TagString: Untagged
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4370892113246676106
+--- !u!114 &2084100148281721676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -396,7 +396,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8702925326580480057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0f3a6f018a2de429ab95cddd204cab, type: 3}
+  m_Script: {fileID: 11500000, guid: ab9b3e1fc6f85274b8edd96051827413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptabledata: {fileID: 11400000, guid: 22bb51c257f89be4e889f2e70249d87d, type: 2}
+  itemType: 0
+  EquipParams:
+    fId: 1
+    strName: 1
+    strDiscription: 1
+    fDropRate: 1
+    fDamage: 1
+    fDefense: 1
+    fSpeed: 1
+    fCrtical: 1
+    fCriticalDamage: 1

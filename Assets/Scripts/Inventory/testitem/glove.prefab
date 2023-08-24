@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6205755844112278510}
   - component: {fileID: 6205755844112278509}
   - component: {fileID: 7539410886952986453}
-  - component: {fileID: 1328774434837135196}
+  - component: {fileID: 5934118346421902797}
   m_Layer: 5
   m_Name: glove
   m_TagString: Untagged
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1328774434837135196
+--- !u!114 &5934118346421902797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,10 +109,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6205755844112278511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0f3a6f018a2de429ab95cddd204cab, type: 3}
+  m_Script: {fileID: 11500000, guid: 6904e43189389664e9fdd689ce86295c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptabledata: {fileID: 11400000, guid: 22bb51c257f89be4e889f2e70249d87d, type: 2}
+  itemType: 3
+  MaterialParams:
+    fId: 3
+    strName: 3
+    strDiscription: 3
+    fExp: 3
+    fNumber: 3
+    fDropRate: 3
 --- !u!1 &6205755844930141352
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ItemParameter;
-public class item : MonoBehaviour
+
+public class InventoryInfo : MonoBehaviour
 {
-    ItemParameter.ItemType itemType = ItemParameter.ItemType.EQUIPMENT;
-    public EquipDatas scriptabledata;
+    // Start is called before the first frame update
     void Start()
     {
         

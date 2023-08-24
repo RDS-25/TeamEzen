@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2043738930034903542}
   - component: {fileID: 2043738930034903541}
   - component: {fileID: 2513793594348293453}
-  - component: {fileID: 6355519139185268036}
+  - component: {fileID: -8371583185152881132}
   m_Layer: 5
   m_Name: scroll
   m_TagString: Untagged
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6355519139185268036
+--- !u!114 &-8371583185152881132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,10 +109,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2043738930034903543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0f3a6f018a2de429ab95cddd204cab, type: 3}
+  m_Script: {fileID: 11500000, guid: 6904e43189389664e9fdd689ce86295c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptabledata: {fileID: 11400000, guid: 22bb51c257f89be4e889f2e70249d87d, type: 2}
+  itemType: 3
+  MaterialParams:
+    fId: 8
+    strName: 8
+    strDiscription: 8
+    fExp: 8
+    fNumber: 8
+    fDropRate: 8
 --- !u!1 &2043738930844440240
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4953373206849640613}
   - component: {fileID: 4953373206849640614}
   - component: {fileID: 8792138070790216734}
-  - component: {fileID: 59230628679140375}
+  - component: {fileID: -2543238781578643153}
   m_Layer: 5
   m_Name: ring
   m_TagString: Untagged
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &59230628679140375
+--- !u!114 &-2543238781578643153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,10 +109,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4953373206849640612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0f3a6f018a2de429ab95cddd204cab, type: 3}
+  m_Script: {fileID: 11500000, guid: ab9b3e1fc6f85274b8edd96051827413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptabledata: {fileID: 11400000, guid: 22bb51c257f89be4e889f2e70249d87d, type: 2}
+  itemType: 0
+  EquipParams:
+    fId: 7
+    strName: 7
+    strDiscription: 7
+    fDropRate: 7
+    fDamage: 7
+    fDefense: 7
+    fSpeed: 7
+    fCrtical: 7
+    fCriticalDamage: 7
 --- !u!1 &4953373207667492835
 GameObject:
   m_ObjectHideFlags: 0
