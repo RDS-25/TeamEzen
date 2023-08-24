@@ -63,6 +63,10 @@ public class GameManager : MonoBehaviour
             ReadValues();
         else
             WriteValues();
+        SetFirstChar(fFirstCharacterId);
+        SetSecondChar(fSecondCharacterId);
+        SetThirdChar(fThirdCharacterId);
+        SetTargeting(bTargetingDistance);
         // 여러 데이터를 긁어와야대는데?
         // 게임매니저 파람스 필요
 
