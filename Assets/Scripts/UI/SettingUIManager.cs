@@ -15,7 +15,8 @@ public class SettingUIManager : MonoBehaviour
     public GameObject gAccountPanel;
     public GameObject gGamePanel;
 
-    void Start()
+
+    void OnEnable()
     {
         Init();
     }
@@ -26,11 +27,6 @@ public class SettingUIManager : MonoBehaviour
         gGraphicPanel.SetActive(false);
         gAccountPanel.SetActive(false);
         gGamePanel.SetActive(false);
-    }
-    public void ButtonExit()
-    {
-        Init();
-        gSettingPanel.SetActive(false);
     }
     public void ButtonSound()
     {
