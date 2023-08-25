@@ -21,6 +21,7 @@ public class StageFactory
     {
 
         characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
+      
         //roomFactory.CreateFactory()
 
         //monsterFactory.     CreateFactory("", nSize);

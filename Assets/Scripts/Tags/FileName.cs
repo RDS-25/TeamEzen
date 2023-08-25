@@ -10,6 +10,11 @@ public class FileName
     public const string STR_JSON_CHARACTER_PARAMS_2     = "ARCharacterStat.json";
     public const string STR_JSON_CHARACTER_PARAMS_3     = "SNCharacterStat.json";
     public const string STR_JSON_CHARACTER_PARAMS_4     = "SWCharacterStat.json";
+    public const string STR_JSON_CHARACTER_PARAMS_TEST  = "TESTChar.json";
+    public const string STR_JSON_CHARACTER_PARAMS_TEST_2 = "TESTChar2.json";
+    public const string STR_JSON_CHARACTER_PARAMS_TEST_3 = "TESTChar3.json";
+    public const string STR_JSON_CHARACTER_PARAMS_TEST_4 = "TESTChar4.json";
+
 
     public const string STR_GAME_MANAGER        = "GameManagerParams.json";
     public const string STR_GRAPHIC_VAULES      = "GraphicParams.json";
