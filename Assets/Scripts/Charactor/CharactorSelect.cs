@@ -38,7 +38,7 @@ public class CharactorSelect : MonoBehaviour
 
 	void Start()
     {
-        _sFolderPath= Application.persistentDataPath + "/ParamsFolder/CharParams/";
+        _sFolderPath= Application.persistentDataPath + "/Params/CharParams/";
         L_ID = RoadChar(_sFolderPath);
         //리스트풀 만들어서 init 리스트에 넣기 
         InitChar = GameManager.instance.stageFactory.characterFactory.listPool;
