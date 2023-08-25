@@ -25,6 +25,7 @@ public class SoundSetting : MonoBehaviour
     public Slider sliderBackgroundVolume;
     public Slider sliderEffectVolume;
 
+
     private void Start()
     {
         Init();
