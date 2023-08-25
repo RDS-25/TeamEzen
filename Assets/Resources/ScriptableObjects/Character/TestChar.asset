@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestChar
   m_EditorClassIdentifier: 
   fId: 1
-  sImage: C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/RPG_inventory_icons/apple.png
+  sImage: C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Download/RPG_inventory_icons/apple.png
   strName: UnityChan3
   fLevel: 1
   fHealth: 100

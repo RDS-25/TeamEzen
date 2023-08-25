@@ -1403,6 +1403,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c5489638be8d54fb9f1f0cfb3e4c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  preChr: {fileID: 0}
+  CharDetail: {fileID: 0}
+  Lobby: {fileID: 0}
+  CharSelect: {fileID: 0}
 --- !u!1 &926448615
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,6 +2164,7 @@ MonoBehaviour:
   - {fileID: 250197470}
   - {fileID: 733987641}
   - {fileID: 56116604}
+  _sFolderPath: 
   L_ID: []
 --- !u!1 &1322376603
 GameObject:
