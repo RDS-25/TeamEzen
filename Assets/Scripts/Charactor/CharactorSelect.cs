@@ -59,7 +59,9 @@ public class CharactorSelect : MonoBehaviour
         for (; i < s_Slots.Length; i++)
         {
             s_Slots[i].Stat = null;
+            s_Slots[i].transform.parent.gameObject.SetActive(false);
         }
+           
     }
 
     void addChar() {
