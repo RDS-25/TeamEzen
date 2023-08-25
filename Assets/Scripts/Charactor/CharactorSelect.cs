@@ -30,6 +30,8 @@ public class CharactorSelect : MonoBehaviour
     
     public string _sFolderPath;
 
+  
+
 
     //내가 가지고 있는 캐릭터
     public List<string> L_ID;

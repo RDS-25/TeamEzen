@@ -5,7 +5,16 @@ using UnityEngine.UI;
 
 public class Detail : MonoBehaviour
 {
+    public Text TLevel;
+    public Text THp;
+    public Text TAtk;
+    public Text TDef;
+    public Text TCritiper;
+
+
     public CharactorSelect cSelect;
+
+    SelectCharactorUIManager SelectCharactorUI;
 
     //리스트는 초기화를 무조건해주기
     [SerializeField]
@@ -27,10 +36,19 @@ public class Detail : MonoBehaviour
                 if (int.Parse(lJson[i]["ID"]) == int.Parse(cSelect.L_ID[j]))
                 {
                     lOwn.Add(lJson[i]);
-             
                 }
+               
             }
         }
+    }
+
+	private void Update()
+	{
+        TLevel.text ="레벨 :"+lOwn[0][CharPath.LEVEL];
+        THp.text ="체력 :"+lOwn[0][CharPath.HEALTH];
+        TAtk.text = "공격력 :" + lOwn[0][CharPath.ATK];
+        TDef.text = "방어력 :" + lOwn[0][CharPath.DEF];
+        TCritiper.text = "크티리컬 확률 :" + lOwn[0][CharPath.CRITIPER];
     }
 
 }

@@ -8,8 +8,9 @@ using UnityEngine.EventSystems;
 public class SelectCharactorUIManager : MonoBehaviour
 {
 	AudioSource audio;
-	[SerializeField]
-	GameObject preChr = null;
+
+
+	public GameObject preChr = null;
 
 
 	[SerializeField]
@@ -58,6 +59,11 @@ public class SelectCharactorUIManager : MonoBehaviour
 			n.SetActive(true);
 			preChr = n;
 		}
+		
+	}
+
+	//캐릭터 스텟상세보기
+	public void StatDetail() { 
 		
 	}
 	//캐릭터 셀렉트 음악
