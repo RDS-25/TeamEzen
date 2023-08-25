@@ -30,7 +30,8 @@ public class Ex_Active1Effect : SkillEffrct
             fMonCriresi = component.criticalresist;
             fMonDefense = component.defense;            
             CalculDamage();
-            SkillHit?.Invoke();//X?  X가 만족하면 뒤에거 실행  나중 실제 이펙트쪽으로 옮기기
+            // 오류 있음
+            SkillHit?.Invoke("1",1);//X?  X가 만족하면 뒤에거 실행  나중 실제 이펙트쪽으로 옮기기
             //몬스터 피해입는곳
             Debug.Log(other.tag);
         }
