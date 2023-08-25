@@ -6,7 +6,7 @@ public class TiltleStart : MonoBehaviour
 {
     void Start()
     {
-        //GameManager.instance.stageFactory.SelectCharacterInit();
+        GameManager.instance.stageFactory.SelectCharacterInit();
     }
 
     // Update is called once per frame

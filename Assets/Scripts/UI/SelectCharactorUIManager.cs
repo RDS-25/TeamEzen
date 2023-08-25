@@ -32,10 +32,6 @@ public class SelectCharactorUIManager : MonoBehaviour
 		Debug.Log(float.Parse(data["fId"]));*/
 	}	
 
-	//버튼 
-	public void Back() {
-		SceneManager.LoadScene("LobbyScene");
-	}
 	//캐릭서 상세 
 	public void ShowDetail()
 	{

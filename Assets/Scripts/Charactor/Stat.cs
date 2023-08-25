@@ -23,8 +23,8 @@ public class Stat : StatParams
             Debug.Log("이미 정보 들어감");
             return;
         }
-        _sFolderPath = Application.persistentDataPath + "/ParamsFolder/CharParams/";
-        _sFileName = _sFileName = LoadParams(objectId);
+        _sFolderPath = FolderPath.PARAMS_CHARACTER;
+        _sFileName = LoadParams(objectId);
         Init();
         // SpriteRenderer 컴포넌트 가져오기
         spriteRenderer = GetComponent<SpriteRenderer>();

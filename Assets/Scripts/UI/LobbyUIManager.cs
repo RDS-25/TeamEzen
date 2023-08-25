@@ -13,6 +13,7 @@ public class LobbyUIManager : MonoBehaviour
     public GameObject gSelectStagePanel;
     public GameObject gSelectCharacterPanel;
     public GameObject gSkillPanel;
+    public GameObject gCharacterDetail;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class LobbyUIManager : MonoBehaviour
         gSelectStagePanel.SetActive(false);
         gSelectCharacterPanel.SetActive(false);
         gSkillPanel.SetActive(false);
+        gCharacterDetail.SetActive(false);
     }
     // 인벤토리 버튼
     public void ButtonInventory()
@@ -37,6 +39,8 @@ public class LobbyUIManager : MonoBehaviour
         gSelectStagePanel.SetActive(false);
         gSelectCharacterPanel.SetActive(false);
         gSkillPanel.SetActive(false);
+        gCharacterDetail.SetActive(false);
+
     }
     // 스테이지 버튼
     public void ButtonSelectStage()
@@ -47,6 +51,8 @@ public class LobbyUIManager : MonoBehaviour
         gSelectStagePanel.SetActive(true);
         gSelectCharacterPanel.SetActive(false);
         gSkillPanel.SetActive(false);
+        gCharacterDetail.SetActive(false);
+
     }
     // 캐릭터 버튼
     public void ButtonCharacter()
@@ -57,6 +63,8 @@ public class LobbyUIManager : MonoBehaviour
         gSelectStagePanel.SetActive(false);
         gSelectCharacterPanel.SetActive(true);
         gSkillPanel.SetActive(false);
+        gCharacterDetail.SetActive(false);
+
     }
     // 스킬 버튼
     public void ButtonSkill()
@@ -67,6 +75,8 @@ public class LobbyUIManager : MonoBehaviour
         gSelectStagePanel.SetActive(false);
         gSelectCharacterPanel.SetActive(false);
         gSkillPanel.SetActive(true);
+        gCharacterDetail.SetActive(false);
+
     }
     public void ButtonLobby()
     {
@@ -76,5 +86,6 @@ public class LobbyUIManager : MonoBehaviour
         gSelectStagePanel.SetActive(false);
         gSelectCharacterPanel.SetActive(false);
         gSkillPanel.SetActive(false);
+        gCharacterDetail.SetActive(false);
     }
 }
