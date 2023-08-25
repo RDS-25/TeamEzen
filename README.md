@@ -17,3 +17,5 @@ Ex)MyFunction()
 변하지 않는 값
 
 EX)const MAX_HP 
+
+https://wmmu.tistory.com/entry/%EA%B9%83%ED%97%88%EB%B8%8C-%EB%A8%B8%EC%A7%80-%EC%B6%A9%EB%8F%8C-%EB%8C%80%EC%9D%91%EB%B2%95
