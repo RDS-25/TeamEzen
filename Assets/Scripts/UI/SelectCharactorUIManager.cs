@@ -16,9 +16,11 @@ public class SelectCharactorUIManager : MonoBehaviour
 	[SerializeField]
 	GameObject CharDetail;
 	[SerializeField]
-	GameObject Lobby;
-	[SerializeField]
 	GameObject CharSelect;
+	[SerializeField]
+	GameObject	gStatDetail;
+	[SerializeField]
+	GameObject gExit;
 
 
 	//씬매니저
@@ -36,8 +38,8 @@ public class SelectCharactorUIManager : MonoBehaviour
 	public void ShowDetail()
 	{
 		CharDetail.SetActive(true);
-		Lobby.SetActive(false);
-		CharSelect.SetActive(false);
+		
+	
 	}
 
 	//누르면 캐릭터 보여주기 
@@ -59,9 +61,14 @@ public class SelectCharactorUIManager : MonoBehaviour
 	}
 
 	//캐릭터 스텟상세보기
-	public void StatDetail() { 
-		
+	public void StatDetail() {
+		gStatDetail.SetActive(true);
 	}
+
+	public void StatDetailExit() {
+		gStatDetail.SetActive(false);
+	}
+
 	//캐릭터 셀렉트 음악
 	void BackgroundMusic() {
 		AudioManager.instance.PlayBackgroundSound(audio, AudioName.STR_CHARACTER_SELECT_1);
