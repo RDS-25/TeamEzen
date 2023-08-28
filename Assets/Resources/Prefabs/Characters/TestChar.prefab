@@ -1310,7 +1310,7 @@ MonoBehaviour:
   fUltimateGauge: 0
   bIsOwn: 0
   objectId: 0
-  stat: {fileID: 11400000, guid: a6ca8a81af029e54c95dfdbdb5e73553, type: 2}
+  stat: {fileID: 11400000, guid: b7557b7945216304eb6f12b6d757de07, type: 2}
 --- !u!114 &2251482627342054853
 MonoBehaviour:
   m_ObjectHideFlags: 0

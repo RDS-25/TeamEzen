@@ -1308,7 +1308,8 @@ MonoBehaviour:
   fType: 0
   fUltimateGauge: 0
   bIsOwn: 0
-  stat: {fileID: 11400000, guid: 7688a05f536b0f84c885a91c0a0d1c60, type: 2}
+  objectId: 0
+  stat: {fileID: 11400000, guid: 093cfd0fd9da4f44cb08507905c59656, type: 2}
 --- !u!1 &2958257409294944158
 GameObject:
   m_ObjectHideFlags: 0
