@@ -13,6 +13,7 @@ namespace ItemParameter
         public float fId;//장비 고유번호
         public string strName;//장비 이름
         public string strDiscription;//장비 설명
+        public string strImage;//아이템 이미지 주소
         public float fDropRate;//장비 드랍율
         public float fPassiveSkillValue;//장비가 올려주는 패시브 스킬값        
         public float fDamage;
@@ -27,6 +28,7 @@ namespace ItemParameter
         public float fId;//보석 고유번호
         public string strName;//보석 이름
         public string strDiscription;//장비 설명
+        public string strImage;//아이템 이미지 주소
         public float fDropRate;//보석 드랍율
         public float fUpDamage;//보석이 올려주는 스킬 대미지비율
         public float fNumber;//갯수
@@ -38,6 +40,7 @@ namespace ItemParameter
         public float fId=1;
         public string strName;//장비 이름
         public string strDiscription;//장비 설명
+        public string strImage;//아이템 이미지 주소
         public float fDropRate;
         public float fDamage;
         public float fDefense;
@@ -52,6 +55,7 @@ namespace ItemParameter
         public float fId;
         public string strName;
         public string strDiscription;
+        public string strImage;//아이템 이미지 주소
         public float fDropRate;
         public float fExp;
         public float fNumber;//갯수
