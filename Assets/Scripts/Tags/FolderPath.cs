@@ -22,5 +22,7 @@ public class FolderPath
     public const string PREFABS_STAGE_ROOM     = PREFABS + "StagePrefabs/";
     public const string PREFABS_STAGE_OBJECT   = PREFABS + "StageObjects/";
 
+    public const string INVEN                  = MAIN_ROOT + "/Inven/";
+
 
 }

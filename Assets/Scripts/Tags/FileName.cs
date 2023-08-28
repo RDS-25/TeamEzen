@@ -19,4 +19,5 @@ public class FileName
     public const string STR_GAME_MANAGER        = "GameManagerParams.json";
     public const string STR_GRAPHIC_VAULES      = "GraphicParams.json";
     public const string STR_SOUND_VALUES        = "SoundParams.json";
+    public const string STR_JSON_INVEN_ITEMS    = "getItemtest.json";
 }
