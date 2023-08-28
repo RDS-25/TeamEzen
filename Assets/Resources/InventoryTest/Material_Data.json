@@ -1,0 +1,38 @@
+[
+  {
+    "fId": "400",
+    "strName": "a",
+    "sprite_name": "",
+    "strDiscription": "a",
+    "fDropRate": "5",
+    "fNumber": "1",
+    "fExp": "10"
+  },
+  {
+    "fId": "401",
+    "strName": "b",
+    "sprite_name": "",
+    "strDiscription": "b",
+    "fDropRate": "5",
+    "fNumber": "1",
+    "fExp": "10"
+  },
+  {
+    "fId": "402",
+    "strName": "c",
+    "sprite_name": "",
+    "strDiscription": "c",
+    "fDropRate": "5",
+    "fNumber": "1",
+    "fExp": "10"
+  },
+  {
+    "fId": "403",
+    "strName": "d",
+    "sprite_name": "",
+    "strDiscription": "d",
+    "fDropRate": "5",
+    "fNumber": "1",
+    "fExp": "10"
+  }
+]

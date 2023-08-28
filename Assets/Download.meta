@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Download.meta
 guid: d6ae8936894ec4d4a95ea62c9991668e
+========
+guid: 969a58d93c02c6147bb4ec4dda32a2da
+>>>>>>>> Jang:Assets/Scripts/Inventory.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/SD Unity-Chan Haon Custom/Scenes/Catalog - Haon SD Series.unity.meta
 guid: 094b054a45c717d488b99d545e3177b0
+========
+guid: ca501b5ac236d9b47900df3754d4ff84
+>>>>>>>> Jang:Assets/Scripts/Skill/Test/SkillTest.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animation.meta
 guid: 90fedff2092873c40b3e8fc82959913c
+========
+guid: 5654cfeab9f7e084dbba6b6b70022f8d
+>>>>>>>> Jang:Assets/Resources/InventoryTest.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
