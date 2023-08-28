@@ -10,6 +10,12 @@ public class ItemDatamanager : MonoBehaviour
     public static readonly ItemDatamanager instance = new ItemDatamanager();
     string _strInvenItemPath;
     string STR_JSON_INVEN_ITEMS;
+
+    List<Dictionary<string, string>> InItem = new List<Dictionary<string, string>>();
+    private void Start()
+    {
+        InitInven();
+    }
     public void InitInven()
     {
         _strInvenItemPath = Application.dataPath + "/InvenItem/";
@@ -27,12 +33,23 @@ public class ItemDatamanager : MonoBehaviour
     }
     public void LoadInvenData()
     {
-        GameManager.instance.DataRead(STR_JSON_INVEN_ITEMS);
+        //InItem = GameManager.instance.DataRead(STR_JSON_INVEN_ITEMS)
+         
     }
     public void DisplayEmpty()
     {//½½·Ô¿¡ ºóÄ­ Ç¥½Ã
 
     }
+    public void CheckItem()
+    {
+        for(int i=0;i<InItem.Count ;i++)
+        {
+            
+            //if (int.Parse(InItem[i]["fId"]))
+        }
+       
+    }
+    
     public void LoadEquipData()
     {
         //Debug.Log(equip.fId);

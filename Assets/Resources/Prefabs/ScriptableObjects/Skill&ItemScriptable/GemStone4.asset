@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: GemStone4
   m_EditorClassIdentifier: 
   itemType: 1
-  Gemstone: []
+  fId: 0
+  strName: 
+  strDiscription: 
+  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/book.png
+  fDropRate: 0
+  fUpDamage: 0
+  fNumber: 0
