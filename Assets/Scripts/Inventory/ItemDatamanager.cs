@@ -8,33 +8,51 @@ using System.IO;
 public class ItemDatamanager : MonoBehaviour
 {//제이슨 파일 가져와서 배열로
     public static readonly ItemDatamanager instance = new ItemDatamanager();
-    string _strInvenItemPath;
-    string STR_JSON_INVEN_ITEMS;
+    string _strInvenItemPath;//경로
+    string HaveInvenItem;//파일이름
+   
 
-    List<Dictionary<string, string>> InItem = new List<Dictionary<string, string>>();
+    Dictionary<string, string> InItem = new Dictionary<string, string>();
+    List<string> ItemId = new List<string>();//존재하는 아이템 아이디 리스트
+    List<GameObject> Itemdatas = new List<GameObject>();
     private void Start()
     {
+        //Itemdatas.Add()
+        _strInvenItemPath = FolderPath.INVEN;
+        HaveInvenItem = FileName.STR_JSON_INVEN_ITEMS;//제이슨 파일 만들때 컨버터에 딕셔너리확인
         InitInven();
+        Debug.Log(GameManager.instance.DataRead(_strInvenItemPath + HaveInvenItem));
     }
     public void InitInven()
     {
-        _strInvenItemPath = Application.dataPath + "/InvenItem/";
-        if (!GameManager.instance.FolderExists(_strInvenItemPath))        
-            Directory.CreateDirectory("_strInvenItemPath");
-            _strInvenItemPath += "ItemInInven.json";
-        if (GameManager.instance.FileExists(_strInvenItemPath))
+
+        if (GameManager.instance.CheckExist(_strInvenItemPath, HaveInvenItem))
         {//있을때
             LoadInvenData();
         }
         //없을때
         else
-            DisplayEmpty();
+            File.Create(_strInvenItemPath + HaveInvenItem);//파일 만들기
+        WriteData();
+        //파일에 모든 장비 갯수0개로 쓰기 함수 따로
         
     }
     public void LoadInvenData()
     {
-        //InItem = GameManager.instance.DataRead(STR_JSON_INVEN_ITEMS)
-         
+        InItem = GameManager.instance.DataRead(HaveInvenItem);
+
+        foreach(string key in InItem.Keys)//배열의 첫 값이 키
+        {
+            if (int.Parse(InItem[key]) != 0)
+                ItemId.Add(key);//아이디와 스크립터블의 아이디가 같으면 슬롯에 정보주기
+        }
+    }
+    public void ToSolt()
+    {
+        foreach(string key in InItem.Keys)
+        {
+            
+        }
     }
     public void DisplayEmpty()
     {//슬롯에 빈칸 표시
@@ -49,7 +67,10 @@ public class ItemDatamanager : MonoBehaviour
         }
        
     }
-    
+    public void WriteData()
+    {
+
+    }
     public void LoadEquipData()
     {
         //Debug.Log(equip.fId);
