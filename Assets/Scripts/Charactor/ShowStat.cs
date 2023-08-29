@@ -9,23 +9,39 @@ public class ShowStat : MonoBehaviour
     List<Text> Statlist;
     [SerializeField]
     Detail detail;
+    
+    string _value = "";
+    public string value
+    {
+        get { return _value;}
+        set { _value = value; }
+    }
+
 
     void Start()
     {
 
+     
+        GameObject curChar = detail.gSelectCharM.OwnChar[detail.gSelectCharM.curCharID];
+
         Debug.Log(transform.GetChild(0).GetChild(0).childCount);
-        Debug.Log(detail.lOwn.Count);
+   
 
         for (int i = 0; i < transform.GetChild(0).GetChild(0).childCount; i++)
         {
             Statlist.Add(transform.GetChild(0).GetChild(0).GetChild(i).gameObject.GetComponent<Text>());
         }
-        
-            for (int i = 0; i < Statlist.Count; i++)
-            {
-                Debug.Log($"{Statlist[i].name}");
-               Statlist[i].text = Statlist[i].name + ":" + detail.lOwn[0][Statlist[i].name];
-            }
+        Stat charStats = curChar.GetComponent<Stat>();
+
+
+
+        for (int i = 0; i < Statlist.Count; i++)
+        {
+           curChar.GetComponent<Stat>().GetType().GetProperty("fId").GetValue(value);
+           string a = value.ToString();
+           Statlist[i].text = Statlist[i].name + ":"+ curChar.GetComponent<Stat>().GetType().GetProperty(Statlist[i].name).GetValue(GetComponent<Stat>()).ToString(); 
+        }
+       
        
     }
 
