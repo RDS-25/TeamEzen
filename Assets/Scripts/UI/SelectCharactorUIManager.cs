@@ -57,7 +57,9 @@ public class SelectCharactorUIManager : MonoBehaviour
 	//캐릭서 상세 
 	public void ShowDetail()
 	{
+		Debug.Log("캐릭터 선택창에서 상세보기창누르기");
 		CharDetail.SetActive(true);
+		gStatDetail.SetActive(false);
 	}
 
 

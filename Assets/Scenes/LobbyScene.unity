@@ -1461,7 +1461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1826446534517570742, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2417242922491743584, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1493,11 +1493,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242922527042753, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fMoveSpeed
+      value: ATKSPEED
       objectReference: {fileID: 0}
     - target: {fileID: 2417242922568123916, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fIBD
+      value: HRR
       objectReference: {fileID: 0}
     - target: {fileID: 2417242922568123919, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1525,7 +1525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242922646146306, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fCriticalPer
+      value: CRITIDMG
       objectReference: {fileID: 0}
     - target: {fileID: 2417242922646146333, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1577,7 +1577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242922815646711, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fRecoveryRate
+      value: SIGHTRANGE
       objectReference: {fileID: 0}
     - target: {fileID: 2417242922905482189, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1617,11 +1617,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242922993449599, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fAtkSpeed
+      value: COOLDOWNREDUCTION
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923017531958, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923079210728, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1649,7 +1649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923079210729, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fMiss
+      value: MOVESPEED
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923374906012, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1677,7 +1677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923374906013, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fExp
+      value: DEFBREAK
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923523999489, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1705,7 +1705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923523999494, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fCriticalDmg
+      value: MISS
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923576580372, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1733,7 +1733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923576580373, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fDef
+      value: CRITIPER
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923781403722, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1761,11 +1761,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923781403723, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fCoolDownReduction
+      value: EXP
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923813461016, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fProperty
+      value: DESCRIPTION
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923813461019, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1817,7 +1817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923960644822, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fDamageReduction
+      value: HEALTHSTEEL
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924047349874, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1845,11 +1845,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924047349875, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fDefBreak
+      value: CRITICALRESIST
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924190564098, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fHealthSteel
+      value: IBD
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924190564125, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1901,7 +1901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924222159482, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fDefaultRange
+      value: PROPERTY
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924345545766, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1929,7 +1929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924345545767, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fAtk
+      value: DEF
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924491252853, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1957,7 +1957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924491252858, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fSightRange
+      value: DEFAULTRANGE
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924503734330, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1985,7 +1985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924503734331, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fHRR
+      value: RECOVERYRATE
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924508441354, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2013,7 +2013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924508441355, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fCriticalResist
+      value: DAMAGEREDUCTION
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924533665514, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2041,7 +2041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242924533665515, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fId
+      value: ATK
       objectReference: {fileID: 0}
     - target: {fileID: 4407156218241880622, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Pivot.x
@@ -2129,7 +2129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4839763088874104096, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: strDescription
+      value: TYPE
       objectReference: {fileID: 0}
     - target: {fileID: 4839763088874104099, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2181,7 +2181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4839763089520662671, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fUltimateGauge
+      value: ID
       objectReference: {fileID: 0}
     - target: {fileID: 4839763089533132030, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2209,11 +2209,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4839763089533132031, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
-      value: fType
+      value: UITIMATEGAUGE
       objectReference: {fileID: 0}
     - target: {fileID: 4839763089988626396, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4839763089988626398, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: gSelectCharM

@@ -9,49 +9,42 @@ public class ShowStat : MonoBehaviour
     List<Text> Statlist;
     [SerializeField]
     Detail detail;
-    
-    string _value = "";
-    public string value
-    {
-        get { return _value;}
-        set { _value = value; }
-    }
+
+
+    List<Dictionary<string, string>> AllChar;
+
+
+    Dictionary<string, string> curDic;
 
 
     void Start()
     {
-
-     
-        GameObject curChar = detail.gSelectCharM.OwnChar[detail.gSelectCharM.curCharID];
-
-        Debug.Log(transform.GetChild(0).GetChild(0).childCount);
-   
-
+        AllChar = GameManager.instance.DataReadAll(FolderPath.PARAMS_CHARACTER);
+      
         for (int i = 0; i < transform.GetChild(0).GetChild(0).childCount; i++)
         {
             Statlist.Add(transform.GetChild(0).GetChild(0).GetChild(i).gameObject.GetComponent<Text>());
         }
-        Stat charStats = curChar.GetComponent<Stat>();
-
-
-
-        for (int i = 0; i < Statlist.Count; i++)
-        {
-           curChar.GetComponent<Stat>().GetType().GetProperty("fId").GetValue(value);
-           string a = value.ToString();
-           Statlist[i].text = Statlist[i].name + ":"+ curChar.GetComponent<Stat>().GetType().GetProperty(Statlist[i].name).GetValue(GetComponent<Stat>()).ToString(); 
-        }
-       
-       
     }
-
-	
-    
-    
 
 	// Update is called once per frame
 	void Update()
     {
-        
+        GameObject curChar = detail.gSelectCharM.OwnChar[detail.gSelectCharM.curCharID];
+    
+
+        for (int i = 0; i < AllChar.Count; i++)
+        {
+            if (int.Parse(AllChar[i][CharPath.ID]) == curChar.GetComponent<Stat>().fId)
+            {
+                curDic = AllChar[i];
+            }
+        }
+
+        for (int i = 0; i < Statlist.Count; i++)
+        {
+            Statlist[i].text = Statlist[i].name + ":" + curDic[Statlist[i].name];
+        }
+
     }
 }
