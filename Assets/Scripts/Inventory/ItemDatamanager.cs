@@ -10,14 +10,20 @@ public class ItemDatamanager : MonoBehaviour
     public static readonly ItemDatamanager instance = new ItemDatamanager();
     string _strInvenItemPath;//경로
     string HaveInvenItem;//파일이름
-   
+    public UiCellView itemPrefab;
+    public EquipData[] EquipDatas;//100~
+    public MaterialData[] MaterialDatas;//300~
+    public ProfessionalData[] ProfessionalDatas;//0~
+    public GemStoneData[] GemStoneDatas;//200~
 
     Dictionary<string, string> InItem = new Dictionary<string, string>();
     List<string> ItemId = new List<string>();//존재하는 아이템 아이디 리스트
-    List<GameObject> Itemdatas = new List<GameObject>();
+    List<UiCellView> Items = new List<UiCellView>();//장비 프리
+    
+    
     private void Start()
     {
-        //Itemdatas.Add()
+        
         _strInvenItemPath = FolderPath.INVEN;
         HaveInvenItem = FileName.STR_JSON_INVEN_ITEMS;//제이슨 파일 만들때 컨버터에 딕셔너리확인
         InitInven();
@@ -44,14 +50,59 @@ public class ItemDatamanager : MonoBehaviour
         foreach(string key in InItem.Keys)//배열의 첫 값이 키
         {
             if (int.Parse(InItem[key]) != 0)
-                ItemId.Add(key);//아이디와 스크립터블의 아이디가 같으면 슬롯에 정보주기
+                ItemId.Add(key);//>>아이디와 스크립터블의 아이디가 같으면 슬롯에 정보주기
         }
     }
-    public void ToSolt()
+    public void CreateItem()
     {
-        foreach(string key in InItem.Keys)
+        foreach (string key in InItem.Keys)
         {
-            
+            if (int.Parse(key) < 100)
+            {
+                for (int i = 0; i < ProfessionalDatas.Length; i++)
+                    if (int.Parse(key) == ProfessionalDatas[i].fId)
+                    {
+                        UiCellView Item = Instantiate(itemPrefab);
+                        Item.transform.SetParent(this.transform);
+                        Items.Add(Item);
+                    }
+            }
+            if (int.Parse(key) < 200)
+            {
+                for (int i = 0+100; i < EquipDatas.Length; i++)
+                {
+                    if (int.Parse(key) == EquipDatas[i].fId)
+                    {
+                        UiCellView Item = Instantiate(itemPrefab);
+                        Item.transform.SetParent(this.transform);
+                        Items.Add(Item);
+                    }
+                }
+            }
+            if (int.Parse(key) < 300)
+            {
+                for (int i = 0+200; i < GemStoneDatas.Length; i++)
+                {
+                    if (int.Parse(key) == GemStoneDatas[i].fId)
+                    {
+                        UiCellView Item = Instantiate(itemPrefab);
+                        Item.transform.SetParent(this.transform);
+                        Items.Add(Item);
+                    }
+                }
+            }
+            if (int.Parse(key) < 300)
+            {
+                for (int i = 0+300; i < MaterialDatas.Length; i++)
+                {
+                    if (int.Parse(key) == MaterialDatas[i].fId)
+                    {
+                        UiCellView Item = Instantiate(itemPrefab);
+                        Item.transform.SetParent(this.transform);
+                        Items.Add(Item);
+                    }
+                }
+            }
         }
     }
     public void DisplayEmpty()
@@ -60,15 +111,12 @@ public class ItemDatamanager : MonoBehaviour
     }
     public void CheckItem()
     {
-        for(int i=0;i<InItem.Count ;i++)
-        {
-            
-            //if (int.Parse(InItem[i]["fId"]))
-        }
+        
+        
        
     }
     public void WriteData()
-    {
+    {//초기 인벤토리 모든 장비 0
 
     }
     public void LoadEquipData()

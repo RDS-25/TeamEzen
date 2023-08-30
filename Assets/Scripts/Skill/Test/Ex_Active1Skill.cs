@@ -13,8 +13,16 @@ public class Ex_Active1Skill : DamageSkill
     //public Action skillTirger;
     public Transform FirePoint;
     public GameObject EffectPrefab;
+    //스킬레벨업 변수들 스킬마다 써주기
+    const float PLUS_VAL = 10f;
+    const float PLUS_MAG = 10f;
+    const float PLUS_TARGET_COUNT = 0f;
+    const float PLUS_ATTACK_COUNT = 0f;
+
+
     void Start()
     {
+        LevelUpValue();
         InitParams();
     }
     public override void InitParams()
@@ -29,6 +37,13 @@ public class Ex_Active1Skill : DamageSkill
             LoadParams();
         else
             SetParams();
+    }
+    void LevelUpValue()
+    {
+        plusval = PLUS_VAL;
+        pulsmag = PLUS_MAG;
+        plustargetcount = PLUS_TARGET_COUNT;
+        plusattackcount = PLUS_ATTACK_COUNT;
     }
     public override void SetParams()
     {
@@ -131,17 +146,17 @@ public class Ex_Active1Skill : DamageSkill
     }
     public override void SkillLevelUp()
     {
-        float plusval = 10f;
-        float pulsmag = 10f;
-        float plusattackcount = 0;
-        float plustargetcount = 0;
-        if(Ex_Active1Params.fSkillLevel==5|| Ex_Active1Params.fSkillLevel == 10)
-        {
-            plusval = 20;
-            pulsmag = 20;
-            plusattackcount = 1;
-            plustargetcount = 1;
-        }
+
+        if (Ex_Active1Params.fSkillLevel % 5 == 0)
+            a = 1f;
+        else
+            a = 0f;
+
+        plusval = PLUS_VAL + (a * 10f);
+        pulsmag = PLUS_MAG + (a * 10f);
+        plusattackcount = PLUS_ATTACK_COUNT + (a * 1f);
+        plustargetcount = PLUS_TARGET_COUNT + (a * 1f);
+
         Ex_Active1Params.fSkillLevel++;//레벨
         dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fSkillLevel.ToString());        
         Ex_Active1Params.fValue += plusval;//기본대미지

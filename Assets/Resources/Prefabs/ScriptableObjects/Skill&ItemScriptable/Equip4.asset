@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Equip4
   m_EditorClassIdentifier: 
   itemType: 0
-  fId: 1
+  fId: 103
   strName: 
   strDiscription: 
   strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/boots.png

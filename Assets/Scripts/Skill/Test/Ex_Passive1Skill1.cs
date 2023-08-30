@@ -15,9 +15,11 @@ public class Ex_Passive1Skill1 : PassiveSkill
     float UpStatVale;
     float UpStatHiden;
     float HidenValue;
+    public List<GameObject> EquipDatas = new List<GameObject>();
 
     void Start()
     {
+        //EquipDatas.Add()
         _strExPassive1SkillPath = FolderPath.PARAMS_SKILL + "/PassiveSkill/";
         Passive1Params = FileName.STR_JSON_PASSIVESKILL1_PARAS;
         InitParams();

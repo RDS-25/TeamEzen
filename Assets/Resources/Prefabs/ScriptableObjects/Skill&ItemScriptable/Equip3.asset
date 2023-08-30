@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Equip3
   m_EditorClassIdentifier: 
   itemType: 0
-  fId: 1
+  fId: 102
   strName: 
   strDiscription: 
   strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/belts.png

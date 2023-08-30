@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Material3
   m_EditorClassIdentifier: 
   itemType: 3
-  fId: 0
+  fId: 303
   strName: 
   strDiscription: 
   strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/scroll.png

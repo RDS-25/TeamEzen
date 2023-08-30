@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Professional3
   m_EditorClassIdentifier: 
   ItemType: 2
-  fId: 0
+  fId: 2
   strName: 
   strDiscription: 
   strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/sword.png

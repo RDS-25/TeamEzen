@@ -10,6 +10,7 @@ namespace ItemParameter
    [Serializable]
     public class ProfessionalEquipParams
     {//전용 장비가 올려줄수 있는 캐릭터의 파라미터값
+        public ItemType ItemType = ItemType.PROFESSIONAL;
         public float fId;//장비 고유번호
         public string strName;//장비 이름
         public string strDiscription;//장비 설명
@@ -25,6 +26,7 @@ namespace ItemParameter
     [Serializable]
     public class GemstoneParams
     {//보석마다 해당 스킬의 배율 상승
+        public ItemType ItemType = ItemType.GEMSTONE;
         public float fId;//보석 고유번호
         public string strName;//보석 이름
         public string strDiscription;//장비 설명
@@ -37,6 +39,7 @@ namespace ItemParameter
     [Serializable]
     public class EquipParams
     {
+        public ItemType ItemType = ItemType.EQUIPMENT;
         public float fId=1;
         public string strName;//장비 이름
         public string strDiscription;//장비 설명
@@ -52,6 +55,7 @@ namespace ItemParameter
     [Serializable]
     public class MaterialParams
     {
+        public ItemType ItemType = ItemType.MATERIAL;
         public float fId;
         public string strName;
         public string strDiscription;

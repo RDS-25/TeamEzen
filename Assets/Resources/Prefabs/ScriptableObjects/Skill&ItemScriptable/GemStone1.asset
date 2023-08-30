@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GemStone1
   m_EditorClassIdentifier: 
   itemType: 1
-  fId: 0
+  fId: 200
   strName: 
   strDiscription: 
   strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/book.png
