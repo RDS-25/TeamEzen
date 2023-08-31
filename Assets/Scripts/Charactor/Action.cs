@@ -12,7 +12,7 @@ public class Action : MonoBehaviour
     Animator ani;
 
     //입장 했는가 ?
-    bool isEntries = true;
+    bool isEntries = false;
 
     void Start()
     {
