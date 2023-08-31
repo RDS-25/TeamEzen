@@ -40,3 +40,7 @@ MonoBehaviour:
   fType: 1
   fUltimateGauge: 100
   bIsOwn: 0
+  skill1: 0
+  skill2: 0
+  skill3: 0
+  skill4: 0

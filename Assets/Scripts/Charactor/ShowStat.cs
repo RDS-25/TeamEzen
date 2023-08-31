@@ -10,32 +10,41 @@ public class ShowStat : MonoBehaviour
     [SerializeField]
     Detail detail;
 
+
+    List<Dictionary<string, string>> AllChar;
+
+
+    Dictionary<string, string> curDic;
+
+
     void Start()
     {
-
-        Debug.Log(transform.GetChild(0).GetChild(0).childCount);
-        Debug.Log(detail.lOwn.Count);
-
+        AllChar = GameManager.instance.DataReadAll(FolderPath.PARAMS_CHARACTER);
+      
         for (int i = 0; i < transform.GetChild(0).GetChild(0).childCount; i++)
         {
             Statlist.Add(transform.GetChild(0).GetChild(0).GetChild(i).gameObject.GetComponent<Text>());
         }
-        
-            for (int i = 0; i < Statlist.Count; i++)
-            {
-                Debug.Log($"{Statlist[i].name}");
-               Statlist[i].text = Statlist[i].name + ":" + detail.lOwn[0][Statlist[i].name];
-            }
-       
     }
-
-	
-    
-    
 
 	// Update is called once per frame
 	void Update()
     {
-        
+        GameObject curChar = detail.gSelectCharM.OwnChar[detail.gSelectCharM.curCharID];
+    
+
+        for (int i = 0; i < AllChar.Count; i++)
+        {
+            if (int.Parse(AllChar[i][CharPath.ID]) == curChar.GetComponent<Stat>().fId)
+            {
+                curDic = AllChar[i];
+            }
+        }
+
+        for (int i = 0; i < Statlist.Count; i++)
+        {
+            Statlist[i].text = Statlist[i].name + ":" + curDic[Statlist[i].name];
+        }
+
     }
 }

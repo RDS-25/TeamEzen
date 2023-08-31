@@ -16,7 +16,7 @@ public class CharactorSelect : MonoBehaviour
 
     //내가 가지고 있는 캐릭터 
     //json들의 정보 대입 (id, sprite)
-    public List<Stat> Chacters;
+    public List<GameObject> Chacters;
 
     //게임에서 전부 가지고 있는 캐릭터
     public List<GameObject> InitChar;
@@ -26,7 +26,7 @@ public class CharactorSelect : MonoBehaviour
     private Transform tSlotParent;
     //슬롯 배열
     [SerializeField]
-    private Slot[] s_Slots;
+    public Slot[] s_Slots;
     
     public string _sFolderPath;
 
@@ -56,7 +56,7 @@ public class CharactorSelect : MonoBehaviour
         int i = 0;
         for (; i < Chacters.Count && i < s_Slots.Length; i++)
         {
-            s_Slots[i].Stat = Chacters[i];
+            s_Slots[i].Stat = Chacters[i].GetComponent<Stat>();
         }
         for (; i < s_Slots.Length; i++)
         {
@@ -73,7 +73,7 @@ public class CharactorSelect : MonoBehaviour
             for(int j = 0; j < L_ID.Count; j++)
 			{
                 if (InitChar[i].GetComponent<Stat>().fId == float.Parse(L_ID[j]))
-                    Chacters.Add(InitChar[i].GetComponent<Stat>());
+                    Chacters.Add(InitChar[i]);
 			}
 		}
  

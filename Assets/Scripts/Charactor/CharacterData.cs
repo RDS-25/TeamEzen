@@ -62,5 +62,21 @@ public class CharacterData : ScriptableObject
     public float fUltimateGauge;
     //소유하고있는지 없는지
     public bool bIsOwn;
+
+
+    //ID 값 저장
+    //스킬 1
+    public float skill1;
+    //스킬 2
+    public float skill2;
+    //스킬 3
+    public float skill3;
+    //스킬 4
+    public float skill4;
+
+
+
+
  
+
 }

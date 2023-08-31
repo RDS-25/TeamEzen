@@ -8,8 +8,10 @@ public class Stat : StatParams
 {
     public float objectId;
     public CharacterData stat;
-    private SpriteRenderer spriteRenderer;
 
+    //장비 오브젝트 정보 넣기 스크립터블 오브젝트로
+    
+   
 
 	// 기능들구현  공격 
 	private string _sFolderPath;
@@ -27,7 +29,7 @@ public class Stat : StatParams
         _sFileName = LoadParams(objectId);
         Init();
         // SpriteRenderer 컴포넌트 가져오기
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
     //오브젝트아이디
     private string LoadParams(float id)
@@ -143,6 +145,8 @@ public class Stat : StatParams
         dicTemp.Add(CharPath.TYPE, stat.fType.ToString());
         dicTemp.Add(CharPath.UITIMATEGAUGE, stat.fUltimateGauge.ToString());
         dicTemp.Add(CharPath.ISOWN, stat.bIsOwn.ToString());
+
+        //스킬 JSON 1,2,3,4 넣기
 
 
 
