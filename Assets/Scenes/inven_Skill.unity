@@ -725,25 +725,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c7614a4ac4b774293e832a6f3ee10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 7871255568270053370, guid: a49c7381e49466c499547634d23cbe31, type: 3}
+  ProfessionalDatas:
+  - {fileID: 11400000, guid: c0ea2d2fdabf86047b1dd7f320330415, type: 2}
+  - {fileID: 11400000, guid: 93c1a7cadb8f6004e85e76ae2e3e0777, type: 2}
+  - {fileID: 11400000, guid: 8c56a9b1f5b0e4646b543965fef26e2a, type: 2}
   EquipDatas:
   - {fileID: 11400000, guid: 025d8cb8b612b0f4cb18c04644ed6e85, type: 2}
   - {fileID: 11400000, guid: a71d70eac7e09a746a6b283df55cdf77, type: 2}
   - {fileID: 11400000, guid: b3e02a9cdafae4e4483066c4d577bf18, type: 2}
   - {fileID: 11400000, guid: 3865653c5ea09c841902748c53d30c8d, type: 2}
-  MaterialDatas:
-  - {fileID: 11400000, guid: 28c2e26de977dab40875b6e02ea953aa, type: 2}
-  - {fileID: 11400000, guid: 56b86534a7303a54e96d3b5ce554a987, type: 2}
-  - {fileID: 11400000, guid: 4ace81867d3003f4eae549a0915bb1ac, type: 2}
-  ProfessionalDatas:
-  - {fileID: 11400000, guid: c0ea2d2fdabf86047b1dd7f320330415, type: 2}
-  - {fileID: 11400000, guid: 93c1a7cadb8f6004e85e76ae2e3e0777, type: 2}
-  - {fileID: 11400000, guid: 8c56a9b1f5b0e4646b543965fef26e2a, type: 2}
   GemStoneDatas:
   - {fileID: 11400000, guid: b3e6b1c2c3688614f9efbcd38b4d0d0a, type: 2}
   - {fileID: 11400000, guid: 2e89b3523af5e1b4ba92effcb8c98f60, type: 2}
   - {fileID: 11400000, guid: 684d73f310eb6e74f866e3f9a3b57f77, type: 2}
   - {fileID: 11400000, guid: c4cc0abc0d26d6448b75de9885c6145c, type: 2}
+  MaterialDatas:
+  - {fileID: 11400000, guid: 28c2e26de977dab40875b6e02ea953aa, type: 2}
+  - {fileID: 11400000, guid: 56b86534a7303a54e96d3b5ce554a987, type: 2}
+  - {fileID: 11400000, guid: 4ace81867d3003f4eae549a0915bb1ac, type: 2}
 --- !u!4 &2131947868
 Transform:
   m_ObjectHideFlags: 0
@@ -1557,6 +1557,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3534212587712053044, guid: 7def28e72941f0c44bb637085fa20155, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534212587802792138, guid: 7def28e72941f0c44bb637085fa20155, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3534212587802792139, guid: 7def28e72941f0c44bb637085fa20155, type: 3}

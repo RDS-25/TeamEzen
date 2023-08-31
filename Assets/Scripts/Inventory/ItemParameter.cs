@@ -24,6 +24,22 @@ namespace ItemParameter
         public float fCriticalDamage;
     }
     [Serializable]
+    public class EquipParams
+    {
+        public ItemType ItemType = ItemType.EQUIPMENT;
+        public float fId = 1;
+        public string strName;//장비 이름
+        public string strDiscription;//장비 설명
+        public string strImage;//아이템 이미지 주소
+        public float fDropRate;
+        public float fDamage;
+        public float fDefense;
+        public float fSpeed;
+        public float fCrtical;
+        public float fCriticalDamage;
+
+    }
+    [Serializable]
     public class GemstoneParams
     {//보석마다 해당 스킬의 배율 상승
         public ItemType ItemType = ItemType.GEMSTONE;
@@ -36,22 +52,7 @@ namespace ItemParameter
         public float fNumber;//갯수
         
     }
-    [Serializable]
-    public class EquipParams
-    {
-        public ItemType ItemType = ItemType.EQUIPMENT;
-        public float fId=1;
-        public string strName;//장비 이름
-        public string strDiscription;//장비 설명
-        public string strImage;//아이템 이미지 주소
-        public float fDropRate;
-        public float fDamage;
-        public float fDefense;
-        public float fSpeed;
-        public float fCrtical;
-        public float fCriticalDamage;
-
-    }
+    
     [Serializable]
     public class MaterialParams
     {

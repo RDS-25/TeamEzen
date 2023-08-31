@@ -11,10 +11,12 @@ public class ItemDatamanager : MonoBehaviour
     string _strInvenItemPath;//경로
     string HaveInvenItem;//파일이름
     public UiCellView itemPrefab;
-    public EquipData[] EquipDatas;//100~
-    public MaterialData[] MaterialDatas;//300~
     public ProfessionalData[] ProfessionalDatas;//0~
+    public EquipData[] EquipDatas;//100~
     public GemStoneData[] GemStoneDatas;//200~
+    public MaterialData[] MaterialDatas;//300~
+   
+    
 
     Dictionary<string, string> InItem = new Dictionary<string, string>();
     List<string> ItemId = new List<string>();//존재하는 아이템 아이디 리스트
@@ -62,43 +64,52 @@ public class ItemDatamanager : MonoBehaviour
                 for (int i = 0; i < ProfessionalDatas.Length; i++)
                     if (int.Parse(key) == ProfessionalDatas[i].fId)
                     {
+                        var data = ProfessionalDatas[i]; 
                         UiCellView Item = Instantiate(itemPrefab);
                         Item.transform.SetParent(this.transform);
+                        Item.SetUp(data);
                         Items.Add(Item);
                     }
             }
             if (int.Parse(key) < 200)
             {
-                for (int i = 0+100; i < EquipDatas.Length; i++)
+                for (int i = 100; i < EquipDatas.Length; i++)
                 {
                     if (int.Parse(key) == EquipDatas[i].fId)
                     {
+                        var data = EquipDatas[i];
                         UiCellView Item = Instantiate(itemPrefab);
                         Item.transform.SetParent(this.transform);
+                        Item.SetUp(data);
                         Items.Add(Item);
                     }
                 }
             }
             if (int.Parse(key) < 300)
             {
-                for (int i = 0+200; i < GemStoneDatas.Length; i++)
+                for (int i = 200; i < GemStoneDatas.Length; i++)
                 {
                     if (int.Parse(key) == GemStoneDatas[i].fId)
                     {
+                        var data = GemStoneDatas[i];
                         UiCellView Item = Instantiate(itemPrefab);
                         Item.transform.SetParent(this.transform);
+                        Item.SetUp(data);
                         Items.Add(Item);
                     }
                 }
             }
-            if (int.Parse(key) < 300)
+            if (int.Parse(key) < 400)
             {
-                for (int i = 0+300; i < MaterialDatas.Length; i++)
+                for (int i = 300; i < MaterialDatas.Length; i++)
                 {
                     if (int.Parse(key) == MaterialDatas[i].fId)
                     {
+                        var data = MaterialDatas[i];
+                        MaterialData materialData = MaterialDatas[i];
                         UiCellView Item = Instantiate(itemPrefab);
                         Item.transform.SetParent(this.transform);
+                        Item.SetUp(data);
                         Items.Add(Item);
                     }
                 }
