@@ -1455,6 +1455,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -2.73
       objectReference: {fileID: 0}
+    - target: {fileID: 714984141964435449, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1826446534517570742, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_Name
       value: CharSelectPanel
@@ -1621,7 +1625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923017531958, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2417242923079210728, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2213,7 +2217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4839763089988626396, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4839763089988626398, guid: 7b222ad5696408b499f656234e175ffd, type: 3}
       propertyPath: gSelectCharM
