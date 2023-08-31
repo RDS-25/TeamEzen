@@ -16,13 +16,12 @@ public class SettingUIManager : MonoBehaviour
     public GameObject gGamePanel;
 
 
-    void OnEnable()
+    void Start()
     {
         Init();
     }
     private void Init()
     {
-        gSettingPanel.SetActive(false);
         gSoundPanel.SetActive(true);
         gGraphicPanel.SetActive(false);
         gAccountPanel.SetActive(false);
@@ -58,10 +57,7 @@ public class SettingUIManager : MonoBehaviour
     }public void ButtonExit()
     {
         gSettingPanel.SetActive(false);
-        gSoundPanel.SetActive(true);
-        gGraphicPanel.SetActive(false);
-        gAccountPanel.SetActive(false);
-        gGamePanel.SetActive(false);
+        Init();
     }
 
 }

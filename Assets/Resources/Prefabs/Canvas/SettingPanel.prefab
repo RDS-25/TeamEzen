@@ -6673,8 +6673,8 @@ MonoBehaviour:
   texture1Toggle: {fileID: 3587685623662908107}
   texture2Toggle: {fileID: 3587685621626110128}
   antix0: {fileID: 3587685622649199847}
-  antix2: {fileID: 3587685622211953935}
-  antix4: {fileID: 0}
+  antix2: {fileID: 3587685621624121327}
+  antix4: {fileID: 3587685622211953935}
   antix8: {fileID: 3587685622807112590}
   vSyncOn: {fileID: 3587685623497275007}
   vSyncOff: {fileID: 3587685623166511075}
@@ -7109,7 +7109,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3587685622930318752}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -76,7 +76,7 @@ public class AudioManager : MonoBehaviour
         dictVolumeValues.Add("MasterVolume",    _fMasterVolume.ToString());
         dictVolumeValues.Add("BackgroundVolume",_fBackgroundVolume.ToString());
         dictVolumeValues.Add("EffectVolume",    _fEffectVolume.ToString());
-
+        
         GameManager.instance.DataWrite(_strSoundFolderPath + _strSoundFileName, dictVolumeValues);
     }
     // 외부에서 호출할 배경음악 재생기
