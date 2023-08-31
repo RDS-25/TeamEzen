@@ -160,6 +160,7 @@ public class GameManager : MonoBehaviour
         {
             // Newtonsoft.json 의 클래스를 사용해 Dictionay를 json으로 바꿈
             string sJson = JsonConvert.SerializeObject(dictData);
+            
             // 경로에 json 파일 저장
             File.WriteAllText(sFolderPathFileNameJson, sJson);
         }
@@ -179,6 +180,19 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError($"[{sFolderPathFileNameJson}]에 키값 존재하지 않음");
             return null;
+        }
+    }
+    public void WriteKeyValue(string sFolderPathFileNameJson, string sKey, string sValue)
+    {
+        Dictionary<string, string> dictTemp = DataRead(sFolderPathFileNameJson);
+        if (dictTemp.ContainsKey(sKey))
+        {
+            dictTemp[sKey] = sValue;
+            DataWrite(sFolderPathFileNameJson, dictTemp);
+        }
+        else
+        {
+            Debug.LogError($"[{sFolderPathFileNameJson}]에 키값 존재하지 않음");
         }
     }
     //string NAME

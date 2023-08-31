@@ -65,6 +65,24 @@ namespace Params
         //소유하고있는지 없는지
         public bool bIsOwn;
 
-     
+        // 스킬 ID
+        //스킬 1 
+        public float skill1;
+        //스킬 2 
+        public float skill2;
+        //스킬 3
+        public float skill3;
+        //스킬 4
+        public float skill4;
+
+
+        // 기본 장비
+        public float Equip;
+        // 전용 장비
+        public float PersonalEquip;
+        // 스킬 증가 돌 
+        public float Stone;
+
+
     }
 }
