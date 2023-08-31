@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class DamageSkill : ActiveSkill
 {
+    protected float plusval=10f;
+    protected float pulsmag = 10f;
+    protected float plusattackcount = 0;
+    protected float plustargetcount = 0;
+
+    protected float a;
     public override void SetParams()
     {
         base.SetParams();

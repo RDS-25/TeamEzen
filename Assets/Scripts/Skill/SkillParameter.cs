@@ -8,13 +8,17 @@ namespace SkillParameter
  //타겟수, 공격횟수
     [Serializable]
     public enum SkillType { PASSIVE, ACTIVE, ULTIMATE }
+
+  
     [Serializable]
     public class SkilParams
-    {        
+    {
+        public SkillType skillType;
         public float fId;//식별자
         public string strName;//이름        
         public float fSkillLevel = 1f;//스킬레벨
         public string strDiscription;//스킬 설명
+        public string strFilepath;//스킬아이콘 경로
         public float fSkillRequireExp;//스킬 레벨업 필요경험치
         public float fSkillExp;//스킬경험치
         public float fUnlockLevel;//스킬해금 필요캐릭터레벨

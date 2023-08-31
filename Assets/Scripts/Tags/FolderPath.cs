@@ -14,6 +14,7 @@ public class FolderPath
     public const string PARAMS_GRAPHIC         = PARAMS + "GraphicParmas/";
     public const string PARAMS_SKILL           = PARAMS + "SkillParams/";
 
+
     public const string PREFABS                = "Prefabs/";
     public const string PREFABS_CHARACTER      = PREFABS + "Characters/";
     public const string PREFABS_MONSTER        = PREFABS + "Monsters/";
@@ -22,7 +23,7 @@ public class FolderPath
     public const string PREFABS_STAGE_ROOM     = PREFABS + "StagePrefabs/";
     public const string PREFABS_STAGE_OBJECT   = PREFABS + "StageObjects/";
 
-    public const string INVEN                  = MAIN_ROOT + "/Inven/";
+    public const string INVEN                  = "C:/Users/EZEN/teampro/TeamEzen/Assets/Resources/InventoryTest/";
 
 
 }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryInfo : MonoBehaviour
+public class Ex_Active2Skill : MonoBehaviour
 {
-    
+    // Start is called before the first frame update
     void Start()
     {
         

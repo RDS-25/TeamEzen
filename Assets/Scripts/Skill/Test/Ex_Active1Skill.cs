@@ -13,10 +13,17 @@ public class Ex_Active1Skill : DamageSkill
     //public Action skillTirger;
     public Transform FirePoint;
     public GameObject EffectPrefab;
+    //스킬레벨업 변수들 스킬마다 써주기
+    const float PLUS_VAL = 10f;
+    const float PLUS_MAG = 10f;
+    const float PLUS_TARGET_COUNT = 0f;
+    const float PLUS_ATTACK_COUNT = 0f;
+
+
     void Start()
     {
+        LevelUpValue();
         InitParams();
-        
     }
     public override void InitParams()
     {//데이터파일 있으면 LoadParams() 없으면 SetParams()
@@ -31,9 +38,16 @@ public class Ex_Active1Skill : DamageSkill
         else
             SetParams();
     }
-    public override void SetParams( )
+    void LevelUpValue()
     {
-        Debug.Log(scriptabledata.Skills[0].fId);
+        plusval = PLUS_VAL;
+        pulsmag = PLUS_MAG;
+        plustargetcount = PLUS_TARGET_COUNT;
+        plusattackcount = PLUS_ATTACK_COUNT;
+    }
+    public override void SetParams()
+    {
+        //Debug.Log(scriptabledata.Skills[0].fId);
 
         if (scriptabledata.Skills[0].fId == 1)
         { //scriptabledata.Skills[0].strName = "이름";//스크립터블 오브젝트에 정보 넣을때
@@ -47,6 +61,8 @@ public class Ex_Active1Skill : DamageSkill
             dictActive1SkillStat.Add("strName", Ex_Active1Params.strName);
             Ex_Active1Params.strDiscription = scriptabledata.Skills[0].strDiscription;
             dictActive1SkillStat.Add("strDiscription", Ex_Active1Params.strDiscription);
+            Ex_Active1Params.fSkillExp = scriptabledata.Skills[0].fSkillExp;
+            dictActive1SkillStat.Add("fSkillExp", Ex_Active1Params.strDiscription);
             Ex_Active1Params.fSkillRequireExp = scriptabledata.Skills[0].fSkillRequireExp;
             dictActive1SkillStat.Add("fSkillRequireExp", Ex_Active1Params.fSkillRequireExp.ToString());
             Ex_Active1Params.fUnlockLevel = scriptabledata.Skills[0].fUnlockLevel;
@@ -96,6 +112,7 @@ public class Ex_Active1Skill : DamageSkill
         Ex_Active1Params.fSkillLevel        = float.Parse(dictTemp["fSkillLevel"]);
         Ex_Active1Params.fId                = float.Parse(dictTemp["fId"]);
         Ex_Active1Params.strName            = dictTemp["strName"];
+        Ex_Active1Params.fSkillExp          = float.Parse(dictTemp["fSkillExp"]);
         Ex_Active1Params.fSkillRequireExp   = float.Parse(dictTemp["fSkillRequireExp"]);
         Ex_Active1Params.strDiscription     = dictTemp["strDiscription"];
         Ex_Active1Params.fUnlockLevel       = float.Parse(dictTemp["fUnlockLevel"]);
@@ -129,29 +146,29 @@ public class Ex_Active1Skill : DamageSkill
     }
     public override void SkillLevelUp()
     {
-        float plusval = 10f;
-        float pulsmag = 10f;
-        float plusattackcount = 0;
-        float plustargetcount = 0;
-        if(Ex_Active1Params.fSkillLevel==5|| Ex_Active1Params.fSkillLevel == 10)
-        {
-            plusval = 20;
-            pulsmag = 20;
-            plusattackcount = 1;
-            plustargetcount = 1;
-        }
+
+        if (Ex_Active1Params.fSkillLevel % 5 == 0)
+            a = 1f;
+        else
+            a = 0f;
+
+        plusval = PLUS_VAL + (a * 10f);
+        pulsmag = PLUS_MAG + (a * 10f);
+        plusattackcount = PLUS_ATTACK_COUNT + (a * 1f);
+        plustargetcount = PLUS_TARGET_COUNT + (a * 1f);
+
         Ex_Active1Params.fSkillLevel++;//레벨
         dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fSkillLevel.ToString());        
         Ex_Active1Params.fValue += plusval;//기본대미지
-        dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fValue.ToString());        
+        dictActive1SkillStat.Add("fValue", Ex_Active1Params.fValue.ToString());        
         Ex_Active1Params.fMagnification += pulsmag;//대미지상승량
-        dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fMagnification.ToString());
+        dictActive1SkillStat.Add("fMagnification", Ex_Active1Params.fMagnification.ToString());
         Ex_Active1Params.fSkillRequireExp += Ex_Active1Params.fSkillLevel * 10;//요구경험치 증가
-        dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fSkillRequireExp.ToString());
+        dictActive1SkillStat.Add("fSkillRequireExp", Ex_Active1Params.fSkillRequireExp.ToString());
         Ex_Active1Params.fAttackCount += plusattackcount;//타격횟수 증가
-        dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fAttackCount.ToString());
+        dictActive1SkillStat.Add("fAttackCount", Ex_Active1Params.fAttackCount.ToString());
         Ex_Active1Params.fTargetCount += plustargetcount;//타겟수 증가
-        dictActive1SkillStat.Add("fSkillLevel", Ex_Active1Params.fTargetCount.ToString());
+        dictActive1SkillStat.Add("fTargetCount", Ex_Active1Params.fTargetCount.ToString());
         GameManager.instance.DataWrite(_strExActive1SkillPath, dictActive1SkillStat);//쓰기
         SkillHidenUnlock();
         SkillUnlock();
@@ -160,6 +177,7 @@ public class Ex_Active1Skill : DamageSkill
     {
         if (Charater1.Level > Ex_Active1Params.fUnlockLevel)
         {
+            Ex_Active1Params.bisUnlockSkill = true;
             dictActive1SkillStat.Add("bisUnlockSkill", true.ToString());
         }
         //추가기능
@@ -169,7 +187,8 @@ public class Ex_Active1Skill : DamageSkill
     {
         if (Charater1.Level > Ex_Active1Params.fUnlockHidenLevel)
         {
-            dictActive1SkillStat.Add("bisUnlockSkill", true.ToString());
+            Ex_Active1Params.bisUnlockHiden = true;
+            dictActive1SkillStat.Add("bisUnlockHiden", true.ToString());
         }
         //추가기능
 

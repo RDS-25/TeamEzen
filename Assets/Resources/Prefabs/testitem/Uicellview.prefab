@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 7871255568270053370}
   - component: {fileID: 6017452807380732738}
   m_Layer: 5
-  m_Name: Uicellview
+  m_Name: UiCellView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

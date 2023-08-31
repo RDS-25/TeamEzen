@@ -13,4 +13,13 @@ MonoBehaviour:
   m_Name: Equip1
   m_EditorClassIdentifier: 
   itemType: 0
-  Equip: []
+  fId: 100
+  strName: 
+  strDiscription: 
+  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/armor.png
+  fDropRate: 0
+  fDamage: 0
+  fDefense: 0
+  fSpeed: 0
+  fCrtical: 0
+  fCriticalDamage: 0
