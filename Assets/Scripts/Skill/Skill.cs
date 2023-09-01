@@ -5,19 +5,32 @@ using SkillParameter;
 using System;
 
 
-public class Skill: MonoBehaviour
+public class Skill: SkilParams
 {//1.스킬 해금 2.스킬 발동 3.강화 4.효과거리 5.지속시간
     //스킬 레벨/거리/시간
     
-    
+
+    //스킬마다 지정된값 써주기
+    //const float PLUS_VAL = 10f;
+    //const float PLUS_MAG = 10f;
+    //const float PLUS_TARGET_COUNT = 0f;
+    //const float PLUS_ATTACK_COUNT = 0f;
+
     private void Start()
     {
         InitParams();
+        SetType();
     }
     public virtual void InitParams()
     {//데이터파일 있으면 LoadParams() 없으면 SetParams()
 
     }
+    public virtual void SetType()
+    {
+
+    }
+
+
     public virtual void SetParams()//스킬 파라미터 적용
     {
 
@@ -27,6 +40,7 @@ public class Skill: MonoBehaviour
 
     }
     
+
     public virtual void SkillUnlock()//스킬 해금
     {
     //    if (CharacterLevel > SkilParams.fUnlockLevel)
