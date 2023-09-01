@@ -4,6 +4,9 @@ using UnityEngine;
 using Params;
 using RandomL;
 
+//º¸½ºÆ÷ÅÐÁÖ´ÂÇü½ÄÀ¸·Î º¯°æ
+//º¸½º·ëÁ¦ÀÛ
+
 public class StageScript : MonoBehaviour
 {
     //±â¹Í ·ëÀÇ ÃÑ °¹¼ö
@@ -20,7 +23,6 @@ public class StageScript : MonoBehaviour
     private RoomPositionData[] _rpdPositionData;
     [SerializeField]
     Transform trStartPosition;
-    FactoryManager factoryManager;
     //·ë Æ÷Áö¼Ç ¼ÂÆÃ
     bool RoomPosInit(object[] objRoomDataArray)
     {
@@ -45,7 +47,6 @@ public class StageScript : MonoBehaviour
     {
         try
         {
-            factoryManager = new FactoryManager();
             //sParams = lParamsSimulator.LoadParams();
             string path = "ScriptableObjects\\StageDefaultData\\StageScriptableData" + ((int)staygeType).ToString("D2");
             StageScriptableData stageData = Resources.Load<StageScriptableData>(path);
@@ -105,10 +106,14 @@ public class StageScript : MonoBehaviour
     public void SetRoomType()
     {
         List<int> listUseRoom = RandomList.Inistance.NotDuplicatedRandomList(0, objRoomPositions.Length, objRoomPositions.Length);
+        int nBossRoomIdx = listUseRoom[Random.Range(0, listUseRoom.Count)];
 
         //º¸½º ·ë ¹èÄ¡
         //objRoomPositions[listUseRoom[0]].GetComponent<Room>().SetRoomType(GimmickRoomParams.ROOM_TYPE.BOSS_ROOM,objRoomPositions[listUseRoom[0]]);
-        listUseRoom.RemoveAt(0);
+        //GimmickRoomParams.ROOM_TYPE a = GimmickRoomParams.ROOM_TYPE.BOSS_ROOM | GimmickRoomParams.ROOM_TYPE.MONSTER_ROOM;
+        //print("Type : " + a + " B : " + GimmickRoomParams.ROOM_TYPE.BOSS_ROOM + " M : " + GimmickRoomParams.ROOM_TYPE.MONSTER_ROOM);
+        //print("Sub Type : " + ((a & GimmickRoomParams.ROOM_TYPE.PUZZLE_ROOM) == GimmickRoomParams.ROOM_TYPE.PUZZLE_ROOM));
+        //listUseRoom.RemoveAt(0);
         //»óÁ¡ ¹èÄ¡
         if (Random.Range(0, 2) == 1 ? true : false)
         {
@@ -118,7 +123,16 @@ public class StageScript : MonoBehaviour
         //±â¹Í ¹èÄ¡
         foreach (int idx in listUseRoom)
         {
-            //objRoomPositions[listUseRoom[0]].GetComponent<Room>().SetRoomType(RoomType(Random.Range(0, 100)));
+            if (idx == nBossRoomIdx)
+            {
+                //objRoomPositions[listUseRoom[0]].GetComponent<Room>().SetRoomType(RoomType(Random.Range(0, 100)));
+
+            }
+            else
+            {
+                //objRoomPositions[listUseRoom[0]].GetComponent<Room>().SetRoomType(RoomType(Random.Range(0, 100)));
+
+            }
         }
     }
 

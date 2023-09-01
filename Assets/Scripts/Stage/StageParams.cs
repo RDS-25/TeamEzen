@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Params;
-using Fectories;
 
 namespace Params
 {
@@ -62,12 +61,12 @@ namespace Params
         //기믹룸 타입
         public enum ROOM_TYPE
         {
+            NONE,
             MONSTER_ROOM,//60
             PUZZLE_ROOM,//20
             TRAP_ROOM,//20
             STORE_ROOM,//50%로 있나 없나
             BOSS_ROOM,
-            NONE
         }
         
         public ROOM_TYPE roomType = ROOM_TYPE.NONE;
@@ -92,7 +91,7 @@ namespace Params
     public interface DefaultRoom
     {
         //초기화 함수
-        bool Initialize(GameObject positionObjects, Object roomType, GameObject player);
+        bool Initialize(GameObject positionObjects, Object roomType, GameObject player, bool bUseBoss);
         //오브젝트 팩토리 형성 함수
         bool CreateObjectFactory(string objectName);
         //기믹 오브젝트를 특정 포지션에 배치
