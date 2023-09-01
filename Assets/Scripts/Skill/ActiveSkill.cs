@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ActiveSkill : Skill
 {
-    [SerializeField]
-    SkillParameter.SkillType SkillType = SkillParameter.SkillType.ACTIVE;
-    
+
+    public override void SetType()
+    {
+        skillType = SkillType.ACTIVE;
+    }
     public override void SkillTriger()
     {
         //if (skilParams.bisCanUse == true && skilParams.bisActtivate == false)

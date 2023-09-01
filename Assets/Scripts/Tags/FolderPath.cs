@@ -13,6 +13,8 @@ public class FolderPath
     public const string PARAMS_SOUND           = PARAMS + "SoundParams/";
     public const string PARAMS_GRAPHIC         = PARAMS + "GraphicParmas/";
     public const string PARAMS_SKILL           = PARAMS + "SkillParams/";
+    public const string PARAMS_PASSIVE_SKILL   = PARAMS_SKILL + "PassiveSkill/";
+
 
 
     public const string PREFABS                = "Prefabs/";
