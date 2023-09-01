@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour
+public class SwitchSkill : MonoBehaviour
 {
-    Image ItemIcon;
-    Text ItemCount;
+    
     void Start()
     {
         

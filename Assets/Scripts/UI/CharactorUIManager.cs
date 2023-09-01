@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InventoryInfo : MonoBehaviour
+public class CharactorUIManager : MonoBehaviour
 {
-    
+    // Start is called before the first frame update
     void Start()
     {
         
