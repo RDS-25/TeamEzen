@@ -7,16 +7,35 @@ public class Enemy : MonoBehaviour
 {
     NavMeshAgent nav;
     public Transform target;
+    Animator ani;
+
    
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
+        ani = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        nav.destination = target.position;
-        Debug.Log(target.position);
+      
+
+
+        //멈추면 공격
+        if (Vector3.Distance(target.position, transform.position) <= nav.stoppingDistance) {
+            ani.SetBool("doWalk", false);
+            //바로 멈추기 
+            nav.SetDestination(transform.position);
+            ani.SetBool("doAttack", true);
+        }
+        //아니면 이동 
+        else {
+            ani.SetBool("doWalk", true);
+            ani.SetBool("doAttack", false);
+            nav.SetDestination(target.position);
+            ani.SetBool("doAttack", false);
+        }
+
     }
 }
