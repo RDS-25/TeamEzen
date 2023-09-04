@@ -22,7 +22,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 	[SerializeField]
 	GameObject gExit;
 
-
+	//내가 가지고 있는 캐릭터 
 	 public List<GameObject> OwnChar;
 
 	 public int curCharID;
@@ -41,9 +41,16 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 	private void Start()
 	{
+		
+
 		audio = GetComponent<AudioSource>();
 
+		//내가 가지고 있는 캐릭터 리스트를 끌어올곳 
 		OwnChar = CharSelect.GetComponentInChildren<CharactorSelect>().Chacters;
+
+		GameManager.instance.stageFactory.ownCharFactory.listPool = OwnChar;
+
+		
 
 		transformCharSelect = CharSelect.transform; //charSelectPanel
 
@@ -59,6 +66,10 @@ public class SelectCharactorUIManager : MonoBehaviour
 	{
 		CharDetail.SetActive(true);
 		gStatDetail.SetActive(false);
+	}
+	public void ExitDetail() {
+
+		CharDetail.SetActive(false);
 	}
 
 
@@ -139,6 +150,14 @@ public class SelectCharactorUIManager : MonoBehaviour
 			curCharID--;
 		OwnChar[curCharID].SetActive(true);
 	}
+
+	public void BtnSelectCharExit() {
+		CharSelect.SetActive(false);
+	}
+
+
+
+
 
 
 	public void TestMove() {
