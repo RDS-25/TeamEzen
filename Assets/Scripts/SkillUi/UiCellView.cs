@@ -73,22 +73,21 @@ public class UiCellView : MonoBehaviour
     }
     Sprite SetImage(string imagePath)//보고 따라함
     {
-
+        //https://202psj.tistory.com/1296
         string path = Path.Combine(imagePath);
         if (File.Exists(path))
         {
             byte[] imageByte = File.ReadAllBytes(path);
-            Texture2D Image = new Texture2D(20, 20);
-            return Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
-            //if (texture.LoadImage(imageByte))
-            //{
-            //    return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            //}
-            //else
-            //{
-            //    Debug.LogError("파일 불러오기실패");
-            //    return null;
-            //}
+            Texture2D texture = new Texture2D(20, 20);
+            if (texture.LoadImage(imageByte))
+            {
+                return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            }
+            else
+            {
+                Debug.LogError("파일 불러오기실패");
+                return null;
+            }
         }
         else
         {
