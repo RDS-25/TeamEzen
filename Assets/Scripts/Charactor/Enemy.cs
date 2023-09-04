@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
             ani.SetBool("doWalk", false);
             //바로 멈추기 
             nav.SetDestination(transform.position);
+            transform.LookAt(target.position);
             ani.SetBool("doAttack", true);
         }
         //아니면 이동 
