@@ -41,7 +41,7 @@ public class Ex_Passive1Skill : PassiveSkill
         
     }
    public override void SetParams()
-    {
+    {//스크립터블 지우고 새로 쓰기
         if (scriptabledata.Skills[1].fId == 1)
         {
             dic_Passive1SkillStat = new Dictionary<string, string>();

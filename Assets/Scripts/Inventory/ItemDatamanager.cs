@@ -20,9 +20,14 @@ public class ItemDatamanager : MonoBehaviour
 
     Dictionary<string, string> InItem = new Dictionary<string, string>();
     List<string> ItemId = new List<string>();//존재하는 아이템 아이디 리스트
-    List<UiCellView> Items = new List<UiCellView>();//장비 프리팹 리스트
-    
-    
+    List<UiCellView> TotalItems = new List<UiCellView>();//장비 프리팹 리스트
+    List<UiCellView> ProI = new List<UiCellView>();
+    List<UiCellView> EquipI = new List<UiCellView>();
+    List<UiCellView> Gem = new List<UiCellView>();
+    List<UiCellView> Mate = new List<UiCellView>();
+
+
+
     private void Start()
     {
         
@@ -30,6 +35,8 @@ public class ItemDatamanager : MonoBehaviour
         HaveInvenItem = FileName.STR_JSON_INVEN_ITEMS;//제이슨 파일 만들때 컨버터에 딕셔너리확인
         InitInven();
         Debug.Log(GameManager.instance.DataRead(_strInvenItemPath + HaveInvenItem));
+        CreateItem();
+        
     }
     public void InitInven()
     {
@@ -40,36 +47,39 @@ public class ItemDatamanager : MonoBehaviour
         }
         //없을때
         else
-            File.Create(_strInvenItemPath + HaveInvenItem);//파일 만들기
-        WriteData();
+            WriteData();//파일 만들기
         //파일에 모든 장비 갯수0개로 쓰기 함수 따로
         
     }
     public void LoadInvenData()
     {
-        InItem = GameManager.instance.DataRead(HaveInvenItem);
+        InItem = GameManager.instance.DataRead(_strInvenItemPath + HaveInvenItem);
 
         foreach(string key in InItem.Keys)//배열의 첫 값이 키
         {
             if (int.Parse(InItem[key]) != 0)
                 ItemId.Add(key);//>>아이디와 스크립터블의 아이디가 같으면 슬롯에 정보주기
+            
         }
     }
     public void CreateItem()
-    {
-        foreach (string key in InItem.Keys)
+    {//처음0번대만 만들어지고 뒷번호들 안만들어짐
+        foreach (string key in ItemId)
         {
             if (int.Parse(key) < 100)
             {
                 for (int i = 0; i < ProfessionalDatas.Length; i++)
                     if (int.Parse(key) == ProfessionalDatas[i].fId)
                     {
-                        var data = ProfessionalDatas[i]; 
+                        var data = ProfessionalDatas[i];
                         UiCellView Item = Instantiate(itemPrefab);
                         //Item.transform.SetParent(this.transform);
                         Item.SetUp(data);
-                        Items.Add(Item);
+                        ProI.Add(Item);
+                        TotalItems.Add(Item);
+
                     }
+                Debug.Log("0:" + TotalItems.Count);
             }
             if (int.Parse(key) < 200)
             {
@@ -81,7 +91,8 @@ public class ItemDatamanager : MonoBehaviour
                         UiCellView Item = Instantiate(itemPrefab);
                         //Item.transform.SetParent(this.transform);
                         Item.SetUp(data);
-                        Items.Add(Item);
+                        TotalItems.Add(Item);
+                        EquipI.Add(Item);
                     }
                 }
             }
@@ -95,26 +106,33 @@ public class ItemDatamanager : MonoBehaviour
                         UiCellView Item = Instantiate(itemPrefab);
                         //Item.transform.SetParent(this.transform);
                         Item.SetUp(data);
-                        Items.Add(Item);
+                        TotalItems.Add(Item);
+                        Gem.Add(Item);
                     }
                 }
-            }
+            }         
+            
             if (int.Parse(key) < 400)
             {
                 for (int i = 300; i < MaterialDatas.Length; i++)
                 {
                     if (int.Parse(key) == MaterialDatas[i].fId)
                     {
+                        //MaterialData materialData = MaterialDatas[i];
                         var data = MaterialDatas[i];
-                        MaterialData materialData = MaterialDatas[i];
                         UiCellView Item = Instantiate(itemPrefab);
                         //Item.transform.SetParent(this.transform);
                         Item.SetUp(data);
-                        Items.Add(Item);
+                        TotalItems.Add(Item);
+                        Mate.Add(Item);
                     }
                 }
+
             }
         }
+        Debug.Log(TotalItems.Count);
+        Debug.Log(Mate.Count);
+        Debug.Log(MaterialDatas.Length);
     }
     public void DisplayEmpty()
     {//슬롯에 빈칸 표시
@@ -128,7 +146,25 @@ public class ItemDatamanager : MonoBehaviour
     }
     public void WriteData()
     {//초기 인벤토리 모든 장비 0
+        Dictionary<string, string> dictTemp = new Dictionary<string, string>();
+        dictTemp.Add("0", "0");
+        dictTemp.Add("1", "0");
+        dictTemp.Add("2", "0");
+        dictTemp.Add("3", "0");
+        dictTemp.Add("100", "0");
+        dictTemp.Add("101", "0");
+        dictTemp.Add("102", "0");
+        dictTemp.Add("103", "0");
+        dictTemp.Add("200", "0");
+        dictTemp.Add("201", "0");
+        dictTemp.Add("202", "0");
+        dictTemp.Add("203", "0");
+        dictTemp.Add("300", "0");
+        dictTemp.Add("301", "0");
+        dictTemp.Add("302", "0");
+        dictTemp.Add("303", "0");
 
+        GameManager.instance.DataWrite(_strInvenItemPath + HaveInvenItem, dictTemp);
     }
     public void LoadEquipData()
     {

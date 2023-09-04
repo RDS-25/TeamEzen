@@ -30,6 +30,7 @@ public class UiCellView : MonoBehaviour
         professionalParams.fCriticalDamage      = professionalData.fCriticalDamage;
         //이미지 넣는 함수
         SetImage(professionalData.strImage);
+        Debug.Log(professionalData.strImage);
     }
     public void SetUp(EquipData equipData)
     {
@@ -72,21 +73,22 @@ public class UiCellView : MonoBehaviour
     }
     Sprite SetImage(string imagePath)//보고 따라함
     {
-        string path = Path.Combine(imagePath);
 
+        string path = Path.Combine(imagePath);
         if (File.Exists(path))
         {
             byte[] imageByte = File.ReadAllBytes(path);
-            Texture2D texture = new Texture2D(100, 100);
-            if (texture.LoadImage(imageByte))
-            {
-                return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            }
-            else
-            {
-                Debug.LogError("파일 불러오기실패");
-                return null;
-            }
+            Texture2D Image = new Texture2D(20, 20);
+            return Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
+            //if (texture.LoadImage(imageByte))
+            //{
+            //    return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            //}
+            //else
+            //{
+            //    Debug.LogError("파일 불러오기실패");
+            //    return null;
+            //}
         }
         else
         {
@@ -96,3 +98,24 @@ public class UiCellView : MonoBehaviour
         
     }
 }
+//string path = Path.Combine(imagePath);
+
+//if (File.Exists(path))
+//{
+//    byte[] imageByte = File.ReadAllBytes(path);
+//    Texture2D texture = new Texture2D(100, 100);
+//    if (texture.LoadImage(imageByte))
+//    {
+//        return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+//    }
+//    else
+//    {
+//        Debug.LogError("파일 불러오기실패");
+//        return null;
+//    }
+//}
+//else
+//{
+//    Debug.LogError("이미지파일 없음");
+//    return null;
+//}

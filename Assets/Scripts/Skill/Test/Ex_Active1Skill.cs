@@ -6,6 +6,7 @@ using System.IO;
 public class Ex_Active1Skill : ActiveSkill
 {
     private string _strExActive1SkillPath;//파일경로
+    string ActiveParams;
     public Skilldatas scriptabledata;//스크립터블오브젝트 인스펙터창
     public Charater1 Charater1;    
     Dictionary<string, string> dictActive1SkillStat;//딕셔너리 사용
@@ -19,24 +20,24 @@ public class Ex_Active1Skill : ActiveSkill
     const float PLUS_ATTACK_COUNT = 0f;
 
 
+
     void Start()
     {
+        _strExActive1SkillPath = Application.persistentDataPath + "/ActiveSkill/";//폴더명
+        ActiveParams = FileName.STR_JSON_ACTIVESKILL1_PARAS;//파일명 추가
         LevelUpValue();
         InitParams();
     }
     public override void InitParams()
     {//데이터파일 있으면 LoadParams() 없으면 SetParams()
-        _strExActive1SkillPath = Application.persistentDataPath + "/ActiveSkill/";//폴더명
-        if (!GameManager.instance.FolderExists(_strExActive1SkillPath))
-            //gamemanager.instance.createfolder(_sexactive1skillpath);
-            Directory.CreateDirectory(_strExActive1SkillPath);
 
-        _strExActive1SkillPath += "exActive1.json";//파일명 추가
-        if (GameManager.instance.FileExists(_strExActive1SkillPath))
+        if (GameManager.instance.CheckExist(_strExActive1SkillPath, ActiveParams))
+        {
             LoadParams();
+        }
         else
         {
-            SetScriptable();
+            SetDefault();
             SetParams();
         }
     }
@@ -47,8 +48,8 @@ public class Ex_Active1Skill : ActiveSkill
         plustargetcount = PLUS_TARGET_COUNT;
         plusattackcount = PLUS_ATTACK_COUNT;
     }
-    public void SetScriptable()
-    {
+    public void SetDefault()
+    {//스크립터블 지우고 새로 설정하기
         SkillParameter.SkilParams scriptable = scriptabledata.Skills[0];
         fSkillLevel = scriptable.fSkillLevel;
         fId = scriptable.fId;
@@ -76,11 +77,10 @@ public class Ex_Active1Skill : ActiveSkill
     }
     public override void SetParams()
     {
-        //Debug.Log(scriptabledata.Skills[0].fId);
-        SkillParameter.SkilParams scriptable = scriptabledata.Skills[0];
+       
 
-        if (scriptable.fId == 1)
-        { //scriptable.strName = "이름";//스크립터블 오브젝트에 정보 넣을때
+        
+         //scriptable.strName = "이름";//스크립터블 오브젝트에 정보 넣을때
             Dictionary<string, string> dictTemp = new Dictionary<string, string>();
             dictTemp.Add("fSkillLevel", fSkillLevel.ToString());
             dictTemp.Add("fId", fId.ToString());
@@ -109,7 +109,7 @@ public class Ex_Active1Skill : ActiveSkill
 
             GameManager.instance.DataWrite(_strExActive1SkillPath, dictTemp);
 
-        }
+        
         
     }
     public override void LoadParams()
