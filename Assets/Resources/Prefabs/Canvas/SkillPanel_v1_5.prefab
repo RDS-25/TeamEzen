@@ -7014,7 +7014,7 @@ GameObject:
   - component: {fileID: 4587573645497564394}
   - component: {fileID: 1130942081589655562}
   m_Layer: 5
-  m_Name: SkillPanel_v1_4 1
+  m_Name: SkillPanel_v1_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
