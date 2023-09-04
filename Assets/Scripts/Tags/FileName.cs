@@ -25,7 +25,7 @@ public class FileName
 
     public const string STR_JSON_INVEN_ITEMS    = "itemCount.json";
 
-
+    public const string STR_JSON_ACTIVESKILL1_PARAS = "Active1Params.json";
     public const string STR_JSON_PASSIVESKILL1_PARAS = "Passive1Params.json";
     public const string STR_JSON_PASSIVESKILL2_PARAS = "Passive2Params.json";
 }
