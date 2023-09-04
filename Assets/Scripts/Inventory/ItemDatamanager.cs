@@ -26,7 +26,7 @@ public class ItemDatamanager : MonoBehaviour
     private void Start()
     {
         
-        _strInvenItemPath = FolderPath.INVEN;
+        _strInvenItemPath = FolderPath.PARAMS_ITEM_COUNT;
         HaveInvenItem = FileName.STR_JSON_INVEN_ITEMS;//제이슨 파일 만들때 컨버터에 딕셔너리확인
         InitInven();
         Debug.Log(GameManager.instance.DataRead(_strInvenItemPath + HaveInvenItem));
