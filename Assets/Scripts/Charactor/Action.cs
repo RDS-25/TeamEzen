@@ -30,13 +30,11 @@ public class Action : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (isEntries) {
             onMove();
         }
-        if (isEntries) {
-            transform.GetChild(4).gameObject.SetActive(true);
-        }
+        
 
         if (Input.GetMouseButtonDown(0) && isEntries)
         {

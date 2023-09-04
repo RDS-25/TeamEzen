@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     private float _fStageNumber = -1;
 
+    
+
     public bool bTargetingDistance { get { return _bTargetingDistance; } set { _bTargetingDistance = value; } }
     public float fFirstCharacterId { get { return _fFirstCharacterId; } set { _fFirstCharacterId = value; } }
     public float fSecondCharacterId { get { return _fSecondCharacterId; } set { _fSecondCharacterId = value; } }
