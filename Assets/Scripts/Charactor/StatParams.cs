@@ -67,13 +67,13 @@ namespace Params
 
         // 스킬 ID
         //스킬 1 
-        public float skill1;
+        public float PassiveSkill;
         //스킬 2 
-        public float skill2;
+        public float BasicSkill;
         //스킬 3
-        public float skill3;
+        public float ActiveSkill;
         //스킬 4
-        public float skill4;
+        public float UltimateSkill;
 
 
         // 기본 장비

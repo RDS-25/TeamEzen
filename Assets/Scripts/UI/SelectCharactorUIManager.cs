@@ -141,6 +141,13 @@ public class SelectCharactorUIManager : MonoBehaviour
 		OwnChar[curCharID].SetActive(true);
 	}
 
+
+	public void TestMove() {
+
+		SceneManager.LoadScene("characterMove");
+	
+	}
+
 	
 
 
