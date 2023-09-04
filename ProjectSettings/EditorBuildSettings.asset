@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: 3f55fd8daf713fe4ebcb1caf316c0774
+  - enabled: 1
+    path: Assets/Scenes/Charactor/characterMove.unity
+    guid: 6eb4b72d19f1e944aba8d0b7bbb46860
   m_configObjects: {}

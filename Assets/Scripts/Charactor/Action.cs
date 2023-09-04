@@ -17,7 +17,7 @@ public class Action : MonoBehaviour
     public Transform Bulletpos;
 
     //입장 했는가 ?
-    bool isEntries = true;
+    public bool isEntries = true;
 
     void Start()
     {
