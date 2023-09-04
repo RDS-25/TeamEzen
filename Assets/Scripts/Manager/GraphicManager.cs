@@ -86,6 +86,8 @@ public class GraphicManager : MonoBehaviour
     {
         _nFrameRate = nFrameRate;
         Application.targetFrameRate = nFrameRate;
+        Debug.Log("세팅됨");
+
         WriteValues();
     }
     // 안티앨리어싱 설정 0 2 4 8
@@ -93,6 +95,8 @@ public class GraphicManager : MonoBehaviour
     {
         _nAntiAliasing = nAntiNum;
         QualitySettings.antiAliasing = nAntiNum;
+        Debug.Log("세팅됨");
+
         WriteValues();
     }
     // 그림자 품질 Low Medium High VeryHigh 
@@ -100,6 +104,8 @@ public class GraphicManager : MonoBehaviour
     {
         _sShadowResolution = sShadowRes;
         QualitySettings.shadowResolution = ConvertStringToShadowResolution(sShadowRes);
+        Debug.Log("세팅됨");
+
         WriteValues();
     }
     // 텍스처 품질 0 1 2
@@ -107,7 +113,7 @@ public class GraphicManager : MonoBehaviour
     {
         _nTextureQuality = nTextureNum;
         QualitySettings.masterTextureLimit = _nTextureQuality;
-        //QualitySettings.SetQualityLevel(_nTextureQuality);
+        Debug.Log("세팅됨");
         WriteValues();
     }
     // 수직 동기화 0 1
@@ -115,6 +121,8 @@ public class GraphicManager : MonoBehaviour
     {
         _nVSyncCount = vSyncCount;
         QualitySettings.vSyncCount = vSyncCount;
+        Debug.Log("세팅됨");
+
         WriteValues();
     }
 
