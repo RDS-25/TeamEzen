@@ -33,25 +33,7 @@ public class SkillUiManager : MonoBehaviour
         gSkillLevelUpPanel.SetActive(false);
         gSkillChangePanel.SetActive(false);
     }
-
-    public void ButtonPassiveSkill()
-    {
-        ButtonSkillLevelUpPanel();
-        // 스킬 값 넘겨주기
-    }
-    public void ButtonBasicSkill()
-    {
-        ButtonSkillLevelUpPanel();
-    }
-    public void ButtonActiveSkill()
-    {
-        ButtonSkillLevelUpPanel();
-    }
-    public void ButtonUltSkill()
-    {
-        ButtonSkillLevelUpPanel();
-    }
-    void ButtonSkillLevelUpPanel()
+    public void ButtonSkillLevelUpPanel()
     {
         gSkillPanel.SetActive(false);
         gSkillLevelUpPanel.SetActive(true);
@@ -63,6 +45,4 @@ public class SkillUiManager : MonoBehaviour
         gSkillLevelUpPanel.SetActive(false);
         gSkillChangePanel.SetActive(true);
     }
-
-
 }
