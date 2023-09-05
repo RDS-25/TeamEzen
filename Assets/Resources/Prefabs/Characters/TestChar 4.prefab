@@ -1240,7 +1240,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!136 &3955521184578160941
 CapsuleCollider:
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 0}
   Bulletpos: {fileID: 0}
-  isEntries: 1
+  isEntries: 0
 --- !u!114 &-4233778701461047961
 MonoBehaviour:
   m_ObjectHideFlags: 0
