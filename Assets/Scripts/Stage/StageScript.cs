@@ -108,12 +108,6 @@ public class StageScript : MonoBehaviour
         List<int> listUseRoom = RandomList.Inistance.NotDuplicatedRandomList(0, objRoomPositions.Length, objRoomPositions.Length);
         int nBossRoomIdx = listUseRoom[Random.Range(0, listUseRoom.Count)];
 
-        //보스 룸 배치
-        //objRoomPositions[listUseRoom[0]].GetComponent<Room>().SetRoomType(GimmickRoomParams.ROOM_TYPE.BOSS_ROOM,objRoomPositions[listUseRoom[0]]);
-        //GimmickRoomParams.ROOM_TYPE a = GimmickRoomParams.ROOM_TYPE.BOSS_ROOM | GimmickRoomParams.ROOM_TYPE.MONSTER_ROOM;
-        //print("Type : " + a + " B : " + GimmickRoomParams.ROOM_TYPE.BOSS_ROOM + " M : " + GimmickRoomParams.ROOM_TYPE.MONSTER_ROOM);
-        //print("Sub Type : " + ((a & GimmickRoomParams.ROOM_TYPE.PUZZLE_ROOM) == GimmickRoomParams.ROOM_TYPE.PUZZLE_ROOM));
-        //listUseRoom.RemoveAt(0);
         //상점 배치
         if (Random.Range(0, 2) == 1 ? true : false)
         {
