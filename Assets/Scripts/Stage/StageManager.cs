@@ -14,7 +14,7 @@ public class StageManager : MonoBehaviour
     public static event EpisodeBtnClickedDelegate EpisodeBtnClicked;
     public List<GameObject> Charactors;
     //임시로 넣어 놓은 플레이어
-    public GameObject target;
+    public GameObject player;
 
     public void InitializeStage(StageParams.STAGE_TYPE type, GameObject player)
     {
@@ -38,8 +38,9 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
+        print(GameManager.instance.stageType.ToString());
         //게임메니저에서 데이터 받아오기
-        InitializeStage(StageParams.STAGE_TYPE.CHAPTER1, target);
+        InitializeStage(GameManager.instance.stageType, player);
     }
 
 

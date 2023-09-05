@@ -17,7 +17,7 @@ public class StageCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        trPlayer = StageManager.Instance.target.transform;
+        trPlayer = StageManager.Instance.player.transform;
     }
     private void LateUpdate()
     {

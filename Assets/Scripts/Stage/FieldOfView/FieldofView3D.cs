@@ -234,9 +234,9 @@ public class FieldofView3D : MonoBehaviour
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
-        if (StageManager.Instance.target != null)
+        if (StageManager.Instance.player != null)
         { 
-            trPlayer = StageManager.Instance.target.transform;
+            trPlayer = StageManager.Instance.player.transform;
             transform.position = trPlayer.position;
         }
         else
