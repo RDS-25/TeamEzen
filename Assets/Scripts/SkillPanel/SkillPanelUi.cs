@@ -53,6 +53,10 @@ public class SkillPanelUi : MonoBehaviour
     void Start()
     {
         charactorUIManager = GameObject.Find("CharManager").GetComponent<SelectCharactorUIManager>();
+        Init();
+    }
+    void Init()
+    {
         curCharStat = charactorUIManager.OwnChar[charactorUIManager.curCharID].GetComponent<Stat>();
 
         fPassiveSkillId = curCharStat.PassiveSkill;
