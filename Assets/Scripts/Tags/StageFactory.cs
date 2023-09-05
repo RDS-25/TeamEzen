@@ -17,6 +17,8 @@ public class StageFactory
     public FactoryManager ownCharFactory = new FactoryManager();
     //현재 클릭된 캐릭터
     public FactoryManager selectedFactory = new FactoryManager();
+    //
+    public FactoryManager CharSlotFactory = new FactoryManager();
     //몬스터
     public FactoryManager monsterFactory = new FactoryManager();
 
