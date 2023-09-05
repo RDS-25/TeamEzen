@@ -35,10 +35,10 @@ public class SkillPanelUi : MonoBehaviour
     public TMP_Text textActiveDescript;
     public TMP_Text textUltimateDescript;
 
-    List<Dictionary<string, string>> dictPassive = new();
-    List<Dictionary<string, string>> dictActive = new();
-    List<Dictionary<string, string>> dictBasic = new();
-    List<Dictionary<string, string>> dictUlt = new();
+    public List<Dictionary<string, string>> dictPassive = new();
+    public List<Dictionary<string, string>> dictActive = new();
+    public List<Dictionary<string, string>> dictBasic = new();
+    public List<Dictionary<string, string>> dictUlt = new();
 
     private const string _STR_ID = "fId";
     private const string _STR_IMAGE_URL = "strFilepath";

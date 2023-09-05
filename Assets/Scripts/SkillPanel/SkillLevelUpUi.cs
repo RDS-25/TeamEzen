@@ -7,6 +7,8 @@ public class SkillLevelUpUi : MonoBehaviour
     int sSkillType;
 
     public List<Button> listButtons = new();
+    public SkillPanelUi skillPanelUi;
+    Dictionary<string, string> dictSkillParams = new();
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,11 @@ public class SkillLevelUpUi : MonoBehaviour
     void OnClickButton(int index)
     {
         sSkillType = index;
+
         Debug.Log(sSkillType);
+    }
+    void SetDictSkillParams(Dictionary<string,string> dictTemp)
+    {
+        dictSkillParams = dictTemp;
     }
 }

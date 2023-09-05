@@ -17,8 +17,10 @@ public class SelectCharactorUIManager : MonoBehaviour
 	GameObject CharDetail;
 	[SerializeField]
 	GameObject CharSelect;
+    [SerializeField]
+    GameObject gStatDetail;
 	[SerializeField]
-	GameObject	gStatDetail;
+	GameObject gSkillPanel;
 	[SerializeField]
 	GameObject gExit;
 
@@ -71,7 +73,10 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 		CharDetail.SetActive(false);
 	}
-
+	public void SkillPanel()
+    {
+		gSkillPanel.SetActive(true);
+    }
 
 
 	//누르면 캐릭터 보여주기 
