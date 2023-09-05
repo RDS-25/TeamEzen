@@ -46,6 +46,7 @@ public class CharactorSelect : MonoBehaviour
         InitChar = GameManager.instance.stageFactory.characterFactory.listPool;
         addChar() ;
         FreshSlot();
+        GameManager.instance.stageFactory.ownCharFactory.listPool = Chacters;
     }
 
  

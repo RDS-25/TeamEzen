@@ -26,6 +26,8 @@ public class FolderPath
 
     public const string PREFABS                 = "Prefabs/";
     public const string PREFABS_CHARACTER       = PREFABS + "Characters/";
+    public const string PREFABS_CHAR_SLOT       = PREFABS + "Slot/";
+
     public const string PREFABS_MONSTER         = PREFABS + "Monsters/";
     public const string PREFABS_SKILL_EFFECT    = PREFABS + "SkillEffects/";
 

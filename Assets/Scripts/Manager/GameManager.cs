@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using Newtonsoft.Json;
+using Params;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,10 @@ public class GameManager : MonoBehaviour
 
     private float _fStageNumber = -1;
 
-    public List<GameObject> listCurCharacter = new();
+    public StageParams.STAGE_TYPE stageType = StageParams.STAGE_TYPE.NONE;
+
+    public List<GameObject> listCurCharacters = new();
+
     public List<int> listCurCharId = new();
 
     public bool bTargetingDistance { get { return _bTargetingDistance; } set { _bTargetingDistance = value; } }
