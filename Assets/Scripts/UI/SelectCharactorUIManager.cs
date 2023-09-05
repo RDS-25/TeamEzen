@@ -51,6 +51,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 		OwnChar = CharSelect.GetComponentInChildren<CharactorSelect>().Chacters;
 
 		GameManager.instance.stageFactory.ownCharFactory.listPool = OwnChar;
+		
 
 		
 
@@ -168,6 +169,9 @@ public class SelectCharactorUIManager : MonoBehaviour
 	public void TestMove() {
 
 		SceneManager.LoadScene("characterMove");
+		for (int i = 0; i < OwnChar.Count; i++) {
+			OwnChar[i].GetComponent<Action>().isEntries = true;
+		}
 	
 	}
 
