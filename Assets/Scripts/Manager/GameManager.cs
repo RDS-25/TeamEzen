@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private float _fStageNumber = -1;
 
-    public StageParams.STAGE_TYPE stageType = StageParams.STAGE_TYPE.NONE;
+    public StageParams.STAGE_TYPE stageType = StageParams.STAGE_TYPE.CHAPTER1;
 
     public List<GameObject> listCurCharacters = new();
 

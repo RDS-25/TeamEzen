@@ -63,7 +63,7 @@ public class Action : MonoBehaviour
 
     IEnumerator onShot()
     {
-        GameObject closestEnemy = FindClosestEnemyWithTag("Enemy", targetingRange);
+        GameObject closestEnemy = FindClosestEnemyWithTag("Enemy", targetingRange,1);
         Vector3 direction;
 
         if (closestEnemy != null)
@@ -83,27 +83,59 @@ public class Action : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
     }
 
-    private GameObject FindClosestEnemyWithTag(string tag, float range)
+    // 1.사거리 내의 LayerMask가  Visible 타겟인  적만 공격
+    // 2.사거리 내의 적들 중 hp가 가장 적은 적을 찾아 공격 
+
+
+    private GameObject FindClosestEnemyWithTag(string tag, float range,float lowhp)
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(tag);
         GameObject closest = null;
         float closestDistance = Mathf.Infinity;
 
-        foreach (GameObject enemy in enemies)
+        if (GameManager.instance.bTargetingDistance)
         {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            Debug.Log(distance);
-            if (distance < closestDistance && distance <= range)
+            foreach (GameObject enemy in enemies)
             {
-                closest = enemy;
-                closestDistance = distance;
-            }
-            else {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+     
+                if (distance < closestDistance && distance <= range)
+                {
+                    closest = enemy;
+                    closestDistance = distance;
+                }
+                else
+                {
 
-                closest = null;
+                    closest = null;
+                }
             }
         }
-        Debug.Log(closest);
+        else {
+            GameObject lowEnemy;
+            float minHp = 1000;
+            foreach(GameObject enemy in enemies)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+
+                if (distance < closestDistance && distance <= range)
+                {
+                    
+
+                    closest = enemy;
+                    closestDistance = distance;
+                }
+                else
+                {
+
+                    closest = null;
+                }
+            }
+
+
+        }
+
+
         return closest;
     }
 }

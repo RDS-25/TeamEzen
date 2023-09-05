@@ -167,8 +167,10 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 
 	public void TestMove() {
+		/*
+		SceneManager.LoadScene("characterMove");*/
+		SceneManager.LoadScene("StageScene");
 
-		SceneManager.LoadScene("characterMove");
 		for (int i = 0; i < OwnChar.Count; i++) {
 			OwnChar[i].GetComponent<Action>().isEntries = true;
 		}

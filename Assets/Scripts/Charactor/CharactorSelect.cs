@@ -96,6 +96,7 @@ public class CharactorSelect : MonoBehaviour
     }
 
 
+
     /*
     public void AddItem(Stat stat)
     {
