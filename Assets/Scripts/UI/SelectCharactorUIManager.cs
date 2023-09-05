@@ -17,12 +17,14 @@ public class SelectCharactorUIManager : MonoBehaviour
 	GameObject CharDetail;
 	[SerializeField]
 	GameObject CharSelect;
+    [SerializeField]
+    GameObject gStatDetail;
 	[SerializeField]
-	GameObject	gStatDetail;
+	GameObject gSkillPanel;
 	[SerializeField]
 	GameObject gExit;
 
-
+	//내가 가지고 있는 캐릭터 
 	 public List<GameObject> OwnChar;
 
 	 public int curCharID;
@@ -41,9 +43,17 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 	private void Start()
 	{
+		
+
 		audio = GetComponent<AudioSource>();
 
+		//내가 가지고 있는 캐릭터 리스트를 끌어올곳 
 		OwnChar = CharSelect.GetComponentInChildren<CharactorSelect>().Chacters;
+
+		GameManager.instance.stageFactory.ownCharFactory.listPool = OwnChar;
+		
+
+		
 
 		transformCharSelect = CharSelect.transform; //charSelectPanel
 
@@ -57,11 +67,17 @@ public class SelectCharactorUIManager : MonoBehaviour
 	//캐릭서 상세 
 	public void ShowDetail()
 	{
-		Debug.Log("캐릭터 선택창에서 상세보기창누르기");
 		CharDetail.SetActive(true);
 		gStatDetail.SetActive(false);
 	}
+	public void ExitDetail() {
 
+		CharDetail.SetActive(false);
+	}
+	public void SkillPanel()
+    {
+		gSkillPanel.SetActive(true);
+    }
 
 
 	//누르면 캐릭터 보여주기 
@@ -139,6 +155,24 @@ public class SelectCharactorUIManager : MonoBehaviour
 		else
 			curCharID--;
 		OwnChar[curCharID].SetActive(true);
+	}
+
+	public void BtnSelectCharExit() {
+		CharSelect.SetActive(false);
+	}
+
+
+
+
+
+
+	public void TestMove() {
+
+		SceneManager.LoadScene("characterMove");
+		for (int i = 0; i < OwnChar.Count; i++) {
+			OwnChar[i].GetComponent<Action>().isEntries = true;
+		}
+	
 	}
 
 	

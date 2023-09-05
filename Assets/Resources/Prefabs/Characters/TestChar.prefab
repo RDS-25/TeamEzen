@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 1348830115}
   - component: {fileID: 1348830114}
   - component: {fileID: 1348830113}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 1614344082}
   - component: {fileID: 1614344081}
   - component: {fileID: 1614344080}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HpUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 2013175359}
   - component: {fileID: 2013175361}
   - component: {fileID: 2013175360}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2335,7 +2335,7 @@ GameObject:
   - component: {fileID: -4233778701461047961}
   m_Layer: 0
   m_Name: TestChar
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2373,7 +2373,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: fab81f477374b394b890e5f9bf486ce5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -2395,7 +2395,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!136 &3955521184578160941
 CapsuleCollider:
@@ -2423,6 +2423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ee3a11d40ad204aa30c3e7c5ead955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bullet: {fileID: 1968102902166113412, guid: 4498608dc92bce447a8f23c695b62199, type: 3}
+  Bulletpos: {fileID: 1167924849}
+  isEntries: 0
 --- !u!114 &-4233778701461047961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2463,10 +2466,10 @@ MonoBehaviour:
   fType: 0
   fUltimateGauge: 0
   bIsOwn: 0
-  skill1: 0
-  skill2: 0
-  skill3: 0
-  skill4: 0
+  PassiveSkill: 0
+  BasicSkill: 0
+  ActiveSkill: 0
+  UltimateSkill: 0
   Equip: 0
   PersonalEquip: 0
   Stone: 0

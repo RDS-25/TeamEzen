@@ -9,7 +9,7 @@ namespace SkillParameter
 
 
   
-    [Serializable]
+    //[Serializable]
     public class SkilParams : MonoBehaviour
     {
         [Serializable]

@@ -35,8 +35,6 @@ public class Slot : MonoBehaviour
     private Sprite LoadAndSetSprite(string imagePath)
     {
         string path = Path.Combine(imagePath);
-
-        Debug.Log("°æ·Î´Â"+path);
         if (File.Exists(path))
         {
             byte[] imageBytes = File.ReadAllBytes(path);
