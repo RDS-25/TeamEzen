@@ -22,7 +22,10 @@ public class SkillLevelUpUi : MonoBehaviour
     void OnClickButton(int index)
     {
         sSkillType = index;
-
+        if(sSkillType == 0)
+        {
+            SetDictSkillParams(skillPanelUi.dictCurPassive);
+        }
         Debug.Log(sSkillType);
     }
     void SetDictSkillParams(Dictionary<string,string> dictTemp)

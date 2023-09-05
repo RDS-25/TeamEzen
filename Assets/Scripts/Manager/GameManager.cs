@@ -14,13 +14,14 @@ public class GameManager : MonoBehaviour
 
     private bool _bTargetingDistance = false;
 
-    private float _fFirstCharacterId = -1;
+    private float _fFirstCharacterId = 0;
     private float _fSecondCharacterId = -1;
     private float _fThirdCharacterId = -1;
 
     private float _fStageNumber = -1;
 
-    
+    public List<GameObject> listCurCharacter = new();
+    public List<int> listCurCharId = new();
 
     public bool bTargetingDistance { get { return _bTargetingDistance; } set { _bTargetingDistance = value; } }
     public float fFirstCharacterId { get { return _fFirstCharacterId; } set { _fFirstCharacterId = value; } }
