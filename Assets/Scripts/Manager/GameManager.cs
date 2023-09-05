@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
     private float _fSecondCharacterId = -1;
     private float _fThirdCharacterId = -1;
 
-    private float _fStageNumber = -1;
-
     public StageParams.STAGE_TYPE stageType = StageParams.STAGE_TYPE.NONE;
 
     public List<GameObject> listCurCharacters = new();
@@ -31,8 +29,6 @@ public class GameManager : MonoBehaviour
     public float fFirstCharacterId { get { return _fFirstCharacterId; } set { _fFirstCharacterId = value; } }
     public float fSecondCharacterId { get { return _fSecondCharacterId; } set { _fSecondCharacterId = value; } }
     public float fThirdCharacterId { get { return _fThirdCharacterId; } set { _fThirdCharacterId = value; } }
-    public float fStageNumber { get { return _fStageNumber; } set { _fStageNumber = value; } }
-
 
 
     public StageFactory stageFactory = new StageFactory();
@@ -51,11 +47,15 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         #endregion
+        FolderInit();
+        Init();
+    }
+    void FolderInit()
+    {
         if (!FolderExists("Assets/Resources/" + FolderPath.PREFABS))
             CreateFoler("Assets/Resources/" + FolderPath.PREFABS);
         if (!FolderExists(FolderPath.PARAMS))
             CreateFoler(FolderPath.PARAMS);
-        Init();
     }
 
     // Initialize
