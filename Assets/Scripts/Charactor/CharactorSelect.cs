@@ -15,11 +15,9 @@ public class CharactorSelect : MonoBehaviour
 {
 
     //내가 가지고 있는 캐릭터 
-    //json들의 정보 대입 (id, sprite)
     public List<GameObject> Chacters;
 
-    //게임에서 전부 가지고 있는 캐릭터
-    public List<GameObject> InitChar;
+
 
     //슬롯을 가지고있는 부모 오브젝트
     [SerializeField]
@@ -43,10 +41,10 @@ public class CharactorSelect : MonoBehaviour
         _sFolderPath= FolderPath.PARAMS_CHARACTER;
         L_ID = RoadChar(_sFolderPath);
         //리스트풀 만들어서 init 리스트에 넣기 
-        InitChar = GameManager.instance.stageFactory.characterFactory.listPool;
+     
         addChar() ;
         FreshSlot();
-        GameManager.instance.stageFactory.ownCharFactory.listPool = Chacters;
+        GameManager.instance.objectFactory.ownCharFactory.listPool = Chacters;
     }
 
  
@@ -69,12 +67,12 @@ public class CharactorSelect : MonoBehaviour
 
     void addChar() {
         //L_ID의 저장된 값과 팩토리의 값이 같으면 캐릭터에 추가 (L_ID 길이만큼)
-        for(int i = 0; i < InitChar.Count; i++)
+        for(int i = 0; i < GameManager.instance.objectFactory.characterFactory.listPool.Count; i++)
 		{
             for(int j = 0; j < L_ID.Count; j++)
 			{
-                if (InitChar[i].GetComponent<Stat>().fId == float.Parse(L_ID[j]))
-                    Chacters.Add(InitChar[i]);
+                if (GameManager.instance.objectFactory.characterFactory.listPool[i].GetComponent<Stat>().fId == float.Parse(L_ID[j]))
+                    Chacters.Add(GameManager.instance.objectFactory.characterFactory.listPool[i]);
 			}
 		}
  
@@ -83,7 +81,7 @@ public class CharactorSelect : MonoBehaviour
     List<string> RoadChar(string sPath) {
         List<string> list = new List<string>();
         List<Dictionary<string, string>> listTemp = GameManager.instance.DataReadAll(sPath);
-        var a = GameManager.instance.stageFactory.characterFactory.listPool;
+        var a = GameManager.instance.objectFactory.characterFactory.listPool;
         foreach (Dictionary<string,string> dictTemp in listTemp)
 		{
             if (dictTemp[CharPath.ISOWN] == "True")

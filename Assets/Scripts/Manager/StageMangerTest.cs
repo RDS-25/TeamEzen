@@ -11,7 +11,7 @@ public class StageMangerTest : MonoBehaviour
 
 	private void Start()
 	{
-        SelectedChar = GameManager.instance.stageFactory.ownCharFactory.listPool;
+        SelectedChar = GameManager.instance.objectFactory.ownCharFactory.listPool;
         curPos = SelectedChar[0].transform;
         curRot = SelectedChar[0].transform;
         curChar = SelectedChar[0].transform;

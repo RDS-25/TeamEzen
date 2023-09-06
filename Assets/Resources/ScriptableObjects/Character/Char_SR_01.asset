@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57905fa716f8a9e4abe13d56a6702a7a, type: 3}
-  m_Name: TestChar 3
+  m_Name: Char_SR_01
   m_EditorClassIdentifier: 
-  fId: 3
+  fId: 2
   sImage: C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Download/RPG_inventory_icons/apple.png
   strName: UnityChan3
-  fLevel: 10
-  fHealth: 225
+  fLevel: 1
+  fHealth: 100
   fAtk: 20
   fDef: 10
   fCriticalPer: 15
-  fCriticalDmg: 250
+  fCriticalDmg: 200
   fMiss: 20
-  fMoveSpeed: 7
-  fAtkSpeed: 2
+  fMoveSpeed: 5
+  fAtkSpeed: 1
   fCoolDownReduction: 20
-  fExp: 1000
+  fExp: 100000
   fDefBreak: 7
   fCriticalResist: 5
   fDamageReduction: 4.5
   fHealthSteel: 1.2
-  fIBD: 3
+  fIBD: 1
   fHRR: 2
   fRecoveryRate: 2
   fSightRange: 5
@@ -40,7 +40,3 @@ MonoBehaviour:
   fType: 1
   fUltimateGauge: 100
   bIsOwn: 0
-  skill1: 10
-  skill2: 10
-  skill3: 10
-  skill4: 10

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57905fa716f8a9e4abe13d56a6702a7a, type: 3}
-  m_Name: TestChar
+  m_Name: Char_AR_01
   m_EditorClassIdentifier: 
   fId: 1
   sImage: C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Download/RPG_inventory_icons/apple.png

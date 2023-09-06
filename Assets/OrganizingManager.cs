@@ -10,12 +10,12 @@ public class OrganizingManager : MonoBehaviour
     public Transform SlotViewportCharacters;
     void Start()
     {
-        GameManager.instance.stageFactory.CharSlotFactory.
+        GameManager.instance.objectFactory.CharSlotFactory.
             CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB, 
-            GameManager.instance.stageFactory.ownCharFactory.listPool.Count);
-        for(int i = 0; i < GameManager.instance.stageFactory.CharSlotFactory.listPool.Count; i++)
+            GameManager.instance.objectFactory.ownCharFactory.listPool.Count);
+        for(int i = 0; i < GameManager.instance.objectFactory.CharSlotFactory.listPool.Count; i++)
         {
-            GameManager.instance.stageFactory.CharSlotFactory.listPool[i].transform.parent
+            GameManager.instance.objectFactory.CharSlotFactory.listPool[i].transform.parent
                 = SlotViewportCharacters;
         }
 

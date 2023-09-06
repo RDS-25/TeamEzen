@@ -19,7 +19,7 @@ public class Detail : MonoBehaviour
 
 	private void Update()
 	{
-        GameObject curChar = gSelectCharM.OwnChar[gSelectCharM.curCharID];
+        GameObject curChar = GameManager.instance.objectFactory.ownCharFactory.listPool[gSelectCharM.curCharID];
    
         //현재 선택된 캐릭터 정보  보여주기 
 
