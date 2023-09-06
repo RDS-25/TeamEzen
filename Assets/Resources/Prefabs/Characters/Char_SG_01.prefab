@@ -1181,7 +1181,7 @@ GameObject:
   - component: {fileID: 3955521184578160943}
   - component: {fileID: -4233778701461047961}
   m_Layer: 0
-  m_Name: TestChar 2
+  m_Name: Char_SG_01
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1271,6 +1271,7 @@ MonoBehaviour:
   Bullet: {fileID: 0}
   Bulletpos: {fileID: 0}
   isEntries: 0
+  targetingRange: 2
 --- !u!114 &-4233778701461047961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,7 +1320,7 @@ MonoBehaviour:
   PersonalEquip: 0
   Stone: 0
   objectId: 0
-  stat: {fileID: 11400000, guid: 093cfd0fd9da4f44cb08507905c59656, type: 2}
+  stat: {fileID: 11400000, guid: f82e963f59891d547914c13c9781639d, type: 2}
 --- !u!1 &2958257409294944158
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,7 +57,7 @@ public class SkillPanelUi : MonoBehaviour
     }
     void Init()
     {
-        curCharStat = charactorUIManager.OwnChar[charactorUIManager.curCharID].GetComponent<Stat>();
+        curCharStat = GameManager.instance.objectFactory.ownCharFactory.listPool[charactorUIManager.curCharID].GetComponent<Stat>();
 
         fPassiveSkillId = curCharStat.PassiveSkill;
         fActiveSkillId = curCharStat.ActiveSkill;

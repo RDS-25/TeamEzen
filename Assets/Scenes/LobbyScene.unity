@@ -3531,6 +3531,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4839763090161091021}
     m_Modifications:
+    - target: {fileID: 3557659283173568133, guid: da2d1f437bb19ab4fa980719ef960ada, type: 3}
+      propertyPath: charactorUIManager
+      value: 
+      objectReference: {fileID: 2863912883071963826}
     - target: {fileID: 4258693511946881230, guid: da2d1f437bb19ab4fa980719ef960ada, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3618,6 +3622,10 @@ PrefabInstance:
     - target: {fileID: 9142638233925297480, guid: da2d1f437bb19ab4fa980719ef960ada, type: 3}
       propertyPath: m_Name
       value: SkillPanel_v1_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142638233925297480, guid: da2d1f437bb19ab4fa980719ef960ada, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2d1f437bb19ab4fa980719ef960ada, type: 3}

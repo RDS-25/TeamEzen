@@ -1181,7 +1181,7 @@ GameObject:
   - component: {fileID: 3955521184578160943}
   - component: {fileID: -4233778701461047961}
   m_Layer: 0
-  m_Name: TestChar 3
+  m_Name: Char_HG_01
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1271,6 +1271,7 @@ MonoBehaviour:
   Bullet: {fileID: 0}
   Bulletpos: {fileID: 0}
   isEntries: 0
+  targetingRange: 2
 --- !u!114 &-4233778701461047961
 MonoBehaviour:
   m_ObjectHideFlags: 0

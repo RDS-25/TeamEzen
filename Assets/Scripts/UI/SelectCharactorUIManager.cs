@@ -24,9 +24,6 @@ public class SelectCharactorUIManager : MonoBehaviour
 	[SerializeField]
 	GameObject gExit;
 
-	//내가 가지고 있는 캐릭터 
-	 public List<GameObject> OwnChar;
-
 	 public int curCharID;
 
 
@@ -48,12 +45,13 @@ public class SelectCharactorUIManager : MonoBehaviour
 		audio = GetComponent<AudioSource>();
 
 		//내가 가지고 있는 캐릭터 리스트를 끌어올곳 
-		OwnChar = CharSelect.GetComponentInChildren<CharactorSelect>().Chacters;
+	
+		/*이전 코드
+		GameManager.instance.objectFactory.ownCharFactory.listPool = OwnChar;*/
 
-		GameManager.instance.objectFactory.ownCharFactory.listPool = OwnChar;
-		
+	
 
-		
+
 
 		transformCharSelect = CharSelect.transform; //charSelectPanel
 
@@ -98,7 +96,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 		string name = EventSystem.current.currentSelectedGameObject.name;
 
 		// 현재 선택된 슬롯 인덱스 값 가져오기
-		for (int i = 0; i < OwnChar.Count; i++)
+		for (int i = 0; i < GameManager.instance.objectFactory.ownCharFactory.listPool.Count; i++)
 		{
 			if (name == i.ToString())
 			{
@@ -107,11 +105,11 @@ public class SelectCharactorUIManager : MonoBehaviour
 			}
 		}
 		//현재 누른것만 true 해주고 나머지 false
-		for(int i = 0; i < OwnChar.Count; i ++)
+		for(int i = 0; i < GameManager.instance.objectFactory.ownCharFactory.listPool.Count; i ++)
 		{
-			OwnChar[i].SetActive(false);
+			GameManager.instance.objectFactory.ownCharFactory.listPool[i].SetActive(false);
 		}
-		OwnChar[curCharID].SetActive(true);
+		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(true);
 
 		//	//오브젝트 풀을 보여주기
 		//GameObject n = GameManager.instance.objectFactory.characterFactory.listPool[(int)curCharID - 1];
@@ -139,22 +137,22 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 
 	public void BtnNextChar() {
-		OwnChar[curCharID].SetActive(false);
-		if (curCharID >= OwnChar.Count - 1)
+		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(false);
+		if (curCharID >= GameManager.instance.objectFactory.ownCharFactory.listPool.Count - 1)
 			curCharID = 0;
 		else
 			curCharID++;
-		OwnChar[curCharID].SetActive(true);
+		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(true);
 		
 	}
 
 	public void BtnPrevChar() {
-		OwnChar[curCharID].SetActive(false);
+		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(false);
 		if (curCharID <= 0)
-			curCharID = OwnChar.Count - 1;
+			curCharID = GameManager.instance.objectFactory.ownCharFactory.listPool.Count - 1;
 		else
 			curCharID--;
-		OwnChar[curCharID].SetActive(true);
+		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(true);
 	}
 
 	public void BtnSelectCharExit() {
@@ -163,14 +161,11 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 
 
-
-
-
 	public void TestMove() {
 
 		SceneManager.LoadScene("characterMove");
-		for (int i = 0; i < OwnChar.Count; i++) {
-			OwnChar[i].GetComponent<Action>().isEntries = true;
+		for (int i = 0; i < GameManager.instance.objectFactory.ownCharFactory.listPool.Count; i++) {
+			GameManager.instance.objectFactory.ownCharFactory.listPool[i].GetComponent<Action>().isEntries = true;
 		}
 	
 	}

@@ -30,7 +30,7 @@ public class ShowStat : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        GameObject curChar = detail.gSelectCharM.OwnChar[detail.gSelectCharM.curCharID];
+        GameObject curChar = GameManager.instance.objectFactory.ownCharFactory.listPool[detail.gSelectCharM.curCharID];
     
 
         for (int i = 0; i < AllChar.Count; i++)
