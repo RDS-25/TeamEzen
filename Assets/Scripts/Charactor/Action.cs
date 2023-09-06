@@ -7,30 +7,23 @@ public class Action : MonoBehaviour
     float fverti;
     float fhori;
 
-	public GameObject Hpbar;
     public VariableJoystick joystick;
-
-
 	Vector3 Vmove;
-
-
     Animator ani;
-
     public GameObject Bullet;
     public Transform Bulletpos;
-  
     Stat stat;
 
     //입장 했는가 ?
     public bool isEntries = false;
+    //사거리
     public float targetingRange;
-
+    //마지막 본 방향
     public Vector3 lastJoystickDirection;
 
     void Start()
     {
         ani = GetComponent<Animator>();
-   
         stat = GetComponent<Stat>();
         targetingRange = stat.fDefaultRange;
     }
@@ -69,6 +62,13 @@ public class Action : MonoBehaviour
         {
             Vector3 targetPosition = transform.position + lastJoystickDirection;
             transform.LookAt(targetPosition);
+            //스킬 실행
+            /*
+                스킬 발사 기능 구현 
+                이펙트 펙토리에서 바로 받아서 사용
+             */
+
+
             lastJoystickDirection = Vector3.zero;
         }
     }
