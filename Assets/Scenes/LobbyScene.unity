@@ -739,11 +739,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643130950}
   m_CullTransparentMesh: 1
---- !u!1 &734146325 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4072618869434990464, guid: f98f168af76538e41b15324a74cce744, type: 3}
-  m_PrefabInstance: {fileID: 4072618868602798992}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &762008674
 GameObject:
   m_ObjectHideFlags: 0
@@ -3528,8 +3523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad93da94985b7c4e9679cfdb1253948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gSlotPanel: {fileID: 734146325}
-  gSlotPrefab: {fileID: 0}
   SlotViewportCharacters: {fileID: 1522347503}
 --- !u!1001 &1955901325
 PrefabInstance:
@@ -4149,11 +4142,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4072618869145712141, guid: f98f168af76538e41b15324a74cce744, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4072618869145712141, guid: f98f168af76538e41b15324a74cce744, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4072618869434990464, guid: f98f168af76538e41b15324a74cce744, type: 3}
       propertyPath: m_IsActive
@@ -4165,7 +4158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4072618870089013820, guid: f98f168af76538e41b15324a74cce744, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4072618870089013823, guid: f98f168af76538e41b15324a74cce744, type: 3}
       propertyPath: m_Pivot.x
@@ -4253,7 +4246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4072618870217903789, guid: f98f168af76538e41b15324a74cce744, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1640
       objectReference: {fileID: 0}
     - target: {fileID: 4072618870217903789, guid: f98f168af76538e41b15324a74cce744, type: 3}
       propertyPath: m_SizeDelta.y
