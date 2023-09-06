@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GemStone7
   m_EditorClassIdentifier: 
   itemType: 1
-  fId: 0
+  fId: 206
   strName: 
   strDiscription: 
-  strImage: 
+  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/boots.png
   fDropRate: 0
   fUpDamage: 0
   fNumber: 0

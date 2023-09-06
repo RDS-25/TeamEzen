@@ -28,8 +28,7 @@ public class ItemDatamanager : MonoBehaviour
     public UiCellView cellView;
     Dictionary<string, string> InItem = new Dictionary<string, string>();
     List<string> ItemId = new List<string>();//존재하는 아이템 아이디 리스트
-    List<string> AllItemId = new List<string>();//모든 아이템 아이디리스트
-    List<UiCellView> TotalItems = new List<UiCellView>();//장비 프리팹 리스트
+    List<string> AllItemId = new List<string>();//모든 아이템 아이디리스트    
     List<List<GameObject>> Items = new List<List<GameObject>>();
     //List<UiCellView> ProI = new List<UiCellView>();
     //List<UiCellView> EquipI = new List<UiCellView>();
@@ -72,8 +71,9 @@ public class ItemDatamanager : MonoBehaviour
         HaveInvenItem = FileName.STR_JSON_INVEN_ITEMS;//제이슨 파일 만들때 컨버터에 딕셔너리확인
         InItem = GameManager.instance.DataRead(_strInvenItemPath + HaveInvenItem);
         InitInven();
-        Debug.Log(GameManager.instance.DataRead(_strInvenItemPath + HaveInvenItem));
+        //Debug.Log(GameManager.instance.DataRead(_strInvenItemPath + HaveInvenItem));
         CreateAll();
+        Debug.Log(FolderPath.PARAMS_ITEM_COUNT);
 
 
     }
@@ -88,7 +88,7 @@ public class ItemDatamanager : MonoBehaviour
         else
             WriteData();//파일 만들기
                         //파일에 모든 장비 갯수0개로 쓰기 함수 따로
-
+        
     }
     public void LoadInvenData()
     {
@@ -98,7 +98,7 @@ public class ItemDatamanager : MonoBehaviour
         {
             if (int.Parse(InItem[key]) != 0)
                 ItemId.Add(key);//>>아이디와 스크립터블의 아이디가 같으면 슬롯에 정보주기
-
+            Debug.Log(ItemId.Count);
         }
     }
     public void CreateAll()
@@ -112,7 +112,7 @@ public class ItemDatamanager : MonoBehaviour
             {
                 AllItemId.Add(key);
             }
-
+        
         int materialIdx = 0;
         int GemStoneIdx = 0;
         int EquipIdx = 0;
@@ -130,6 +130,8 @@ public class ItemDatamanager : MonoBehaviour
                     Item.GetComponent<UiCellView>().SetUp(data);
                     //Item[(int)ITEM_TYPE.PROFESSIONALRMAL].
                     Items[(int)ITEM_TYPE.MATERIAL].Add(Item);
+                    Item.transform.parent = transform;
+                    Item.SetActive(false);
                     Debug.Log(Items[(int)ITEM_TYPE.MATERIAL].Count);
                 }
                 materialIdx++;
@@ -144,7 +146,9 @@ public class ItemDatamanager : MonoBehaviour
                     Item.GetComponent<UiCellView>().SetUp(data);
                     //Item[(int)ITEM_TYPE.PROFESSIONALRMAL].
                     Items[(int)ITEM_TYPE.GEMSTONE].Add(Item);
-                    //Debug.Log(Items[(int)ITEM_TYPE.GEMSTONE].Count);
+                    Item.transform.parent = transform;
+                    Item.SetActive(false);
+                    Debug.Log(Items[(int)ITEM_TYPE.GEMSTONE].Count);
                 }
                 GemStoneIdx++;
             }
@@ -158,6 +162,9 @@ public class ItemDatamanager : MonoBehaviour
                     Item.GetComponent<UiCellView>().SetUp(data);
                     //Item[(int)ITEM_TYPE.PROFESSIONALRMAL].
                     Items[(int)ITEM_TYPE.EQUIPMENT].Add(Item);
+                    Item.transform.parent = transform;
+                    Item.SetActive(false);
+                    //Debug.Log(EquipIdx);
                 }
                 EquipIdx++;
 
@@ -172,6 +179,8 @@ public class ItemDatamanager : MonoBehaviour
                     Item.GetComponent<UiCellView>().SetUp(data);
                     //Item[(int)ITEM_TYPE.PROFESSIONALRMAL].
                     Items[(int)ITEM_TYPE.PROFESSIONALRMAL].Add(Item);
+                    Item.transform.parent = transform;
+                    Item.SetActive(false);
                 }
                 ProfessionalIdx++;
 
@@ -179,6 +188,25 @@ public class ItemDatamanager : MonoBehaviour
         }
 
     }
+    public void Moveitem()
+    {
+        int materialIdx = 0;
+        int GemStoneIdx = 0;
+        int EquipIdx = 0;
+        int ProfessionalIdx = 0;
+        foreach (string key in ItemId)
+        {
+            if (int.Parse(key) >= 300)
+            {
+                if(int.Parse(key)== MaterialDatas[materialIdx].fId)
+                {//전체 아이템리스트에서 따올수 있는지??
+                    
+                }
+            }
+        }
+
+    }
+
     //public void CreateItem()
     //{//처음0번대만 만들어지고 뒷번호들 안만들어짐? 안만들어짐
     //    foreach (string key in ItemId)
@@ -289,14 +317,29 @@ public class ItemDatamanager : MonoBehaviour
         dictTemp.Add("101", "0");
         dictTemp.Add("102", "0");
         dictTemp.Add("103", "0");
+        dictTemp.Add("104", "0");
+        dictTemp.Add("105", "0");
+        dictTemp.Add("106", "0");
+        dictTemp.Add("107", "0");
+        dictTemp.Add("108", "0");
         dictTemp.Add("200", "0");
         dictTemp.Add("201", "0");
         dictTemp.Add("202", "0");
         dictTemp.Add("203", "0");
+        dictTemp.Add("204", "0");
+        dictTemp.Add("205", "0");
+        dictTemp.Add("206", "0");
+        dictTemp.Add("207", "0");
+        dictTemp.Add("208", "0");
+        dictTemp.Add("209", "0");
+        dictTemp.Add("210", "0");
+        dictTemp.Add("211", "0");
         dictTemp.Add("300", "0");
         dictTemp.Add("301", "0");
         dictTemp.Add("302", "0");
-        dictTemp.Add("303", "0");
+        dictTemp.Add("400", "0");
+        dictTemp.Add("401", "0");
+        dictTemp.Add("402", "0");
 
         GameManager.instance.DataWrite(_strInvenItemPath + HaveInvenItem, dictTemp);
     }

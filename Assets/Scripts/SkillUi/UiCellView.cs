@@ -12,8 +12,11 @@ public class UiCellView : MonoBehaviour
     public TMP_Text textCount;
     [SerializeField]
     ProfessionalEquipParams professionalParams = new ProfessionalEquipParams();
+    [SerializeField]
     EquipParams equipParams = new EquipParams();
+    [SerializeField]
     GemstoneParams gemstoneParams = new GemstoneParams();
+    [SerializeField]
     MaterialParams materialParams = new MaterialParams();
     void Start()
     {
@@ -35,7 +38,7 @@ public class UiCellView : MonoBehaviour
         professionalParams.fCriticalDamage      = professionalData.fCriticalDamage;
         //이미지 넣는 함수
         SetImage(professionalData.strImage);
-        Debug.Log(professionalData.strImage);
+        Debug.Log("프로");
         
     }
     public void SetUp(EquipData equipData)
@@ -52,6 +55,8 @@ public class UiCellView : MonoBehaviour
         equipParams.fCrtical        = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;
         SetImage(equipData.strImage);
+        Debug.Log(equipData.strImage);
+
     }
     public void SetUp(GemStoneData gemStoneData)
     {
@@ -64,6 +69,7 @@ public class UiCellView : MonoBehaviour
         gemstoneParams.fUpDamage      = gemStoneData.fUpDamage;
         gemstoneParams.fNumber        = gemStoneData.fNumber;
         SetImage(gemStoneData.strImage);
+        Debug.Log("돌");
     }
     public void SetUp(MaterialData materialData)
     {
@@ -76,6 +82,7 @@ public class UiCellView : MonoBehaviour
         materialParams.fExp             = materialData.fExp;
         materialParams.fNumber          = materialData.fNumber;
         SetImage(materialData.strImage);
+        Debug.Log("마테");
     }
     Sprite SetImage(string imagePath)//보고 따라함
     {
