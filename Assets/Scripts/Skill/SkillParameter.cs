@@ -6,13 +6,15 @@ using System;
 namespace SkillParameter 
 {//식별자, 스킬이름, 기본수치, 쿨타임, 지속시간, 배율, 쿨타임 감소율, 버프 지속시간, 범위
  //타겟수, 공격횟수
-    [Serializable]
-    public enum SkillType { PASSIVE, ACTIVE, ULTIMATE }
+
 
   
-    [Serializable]
-    public class SkilParams
+    //[Serializable]
+    public class SkilParams : MonoBehaviour
     {
+        [Serializable]
+        public enum SkillType { PASSIVE, ACTIVE, ULTIMATE }
+
         public SkillType skillType;
         public float fId;//식별자
         public string strName;//이름        
@@ -30,6 +32,7 @@ namespace SkillParameter
         public float fBuffDuration;//버프스킬 지속시간
         public float fRange;//스킬범위        
         public float fValue;//스킬 기본데미지
+        public float fHidenValue;//해금된 스킬효과 배율
         public float fMagnification;//스킬배율
         public float fTargetCount;//스킬 타겟수
         public float fAttackCount;//스킬타격횟수        
@@ -37,7 +40,13 @@ namespace SkillParameter
         public bool bisUnlockSkill = false;//스킬 해금
         public bool bisCanUse = false;//스킬이 사용가능한지
         public bool bisActtivate = false;//스킬 발동여부
-        public bool bisUnlockHiden = false;//스킬 추가기능 해금                                         
+        public bool bisUnlockHiden = false;//스킬 추가기능 해금
+        public float plusval = 10f;
+        public float pulsmag = 10f;
+        public float plusattackcount = 0;
+        public float plustargetcount = 0;
+
+        public float checkLevel;
     }
     
 

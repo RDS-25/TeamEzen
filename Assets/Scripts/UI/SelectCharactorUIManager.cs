@@ -17,8 +17,10 @@ public class SelectCharactorUIManager : MonoBehaviour
 	GameObject CharDetail;
 	[SerializeField]
 	GameObject CharSelect;
+    [SerializeField]
+    GameObject gStatDetail;
 	[SerializeField]
-	GameObject	gStatDetail;
+	GameObject gSkillPanel;
 	[SerializeField]
 	GameObject gExit;
 
@@ -65,7 +67,6 @@ public class SelectCharactorUIManager : MonoBehaviour
 	//캐릭서 상세 
 	public void ShowDetail()
 	{
-		Debug.Log("캐릭터 선택창에서 상세보기창누르기");
 		CharDetail.SetActive(true);
 		gStatDetail.SetActive(false);
 	}
@@ -73,7 +74,10 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 		CharDetail.SetActive(false);
 	}
-
+	public void SkillPanel()
+    {
+		gSkillPanel.SetActive(true);
+    }
 
 
 	//누르면 캐릭터 보여주기 

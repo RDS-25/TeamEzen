@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PassiveSkill : Skill
 {
-    
-   
+
+    public override void SetType()
+    {
+        skillType = SkillType.PASSIVE;
+    }
     public override void SkillTriger()
     {
         //캐릭터 출전할때

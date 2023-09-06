@@ -29,6 +29,8 @@ public class UiCellView : MonoBehaviour
         professionalParams.fCrtical             = professionalData.fCrtical;
         professionalParams.fCriticalDamage      = professionalData.fCriticalDamage;
         //이미지 넣는 함수
+        SetImage(professionalData.strImage);
+        Debug.Log(professionalData.strImage);
     }
     public void SetUp(EquipData equipData)
     {
@@ -43,6 +45,7 @@ public class UiCellView : MonoBehaviour
         equipParams.fSpeed          = equipData.fSpeed;
         equipParams.fCrtical        = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;
+        SetImage(equipData.strImage);
     }
     public void SetUp(GemStoneData gemStoneData)
     {
@@ -54,6 +57,7 @@ public class UiCellView : MonoBehaviour
         gemstoneParams.fDropRate      = gemStoneData.fDropRate;
         gemstoneParams.fUpDamage      = gemStoneData.fUpDamage;
         gemstoneParams.fNumber        = gemStoneData.fNumber;
+        SetImage(gemStoneData.strImage);
     }
     public void SetUp(MaterialData materialData)
     {
@@ -65,10 +69,52 @@ public class UiCellView : MonoBehaviour
         materialParams.fDropRate        = materialData.fDropRate;
         materialParams.fExp             = materialData.fExp;
         materialParams.fNumber          = materialData.fNumber;
+        SetImage(materialData.strImage);
     }
-    /*Sprite SetImage(string imagePath)
+    Sprite SetImage(string imagePath)//보고 따라함
     {
+        //https://202psj.tistory.com/1296
         string path = Path.Combine(imagePath);
-        return;
-    }*/
+        if (File.Exists(path))
+        {
+            byte[] imageByte = File.ReadAllBytes(path);
+            Texture2D texture = new Texture2D(20, 20);
+            if (texture.LoadImage(imageByte))
+            {
+                return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            }
+            else
+            {
+                Debug.LogError("파일 불러오기실패");
+                return null;
+            }
+        }
+        else
+        {
+            Debug.LogError("이미지파일 없음");
+            return null;
+        }           
+        
+    }
 }
+//string path = Path.Combine(imagePath);
+
+//if (File.Exists(path))
+//{
+//    byte[] imageByte = File.ReadAllBytes(path);
+//    Texture2D texture = new Texture2D(100, 100);
+//    if (texture.LoadImage(imageByte))
+//    {
+//        return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+//    }
+//    else
+//    {
+//        Debug.LogError("파일 불러오기실패");
+//        return null;
+//    }
+//}
+//else
+//{
+//    Debug.LogError("이미지파일 없음");
+//    return null;
+//}

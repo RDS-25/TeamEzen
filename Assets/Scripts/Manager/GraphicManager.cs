@@ -107,7 +107,6 @@ public class GraphicManager : MonoBehaviour
     {
         _nTextureQuality = nTextureNum;
         QualitySettings.masterTextureLimit = _nTextureQuality;
-        //QualitySettings.SetQualityLevel(_nTextureQuality);
         WriteValues();
     }
     // 수직 동기화 0 1
