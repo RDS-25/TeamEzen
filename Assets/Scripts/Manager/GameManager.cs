@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
         #endregion
         FolderInit();
         Init();
+        objectFactory.InitFactory();
+        objectFactory.SelectCharacterInit();
     }
     void FolderInit()
     {
@@ -201,6 +203,30 @@ public class GameManager : MonoBehaviour
             Debug.LogError($"[{sFolderPathFileNameJson}]에 키값 존재하지 않음");
         }
     }
+    public Sprite LoadAndSetSprite(string imagePath)
+    {
+        string path = Path.Combine(imagePath);
+        if (File.Exists(path))
+        {
+            byte[] imageBytes = File.ReadAllBytes(path);
+            Texture2D texture = new Texture2D(2, 2);
+            if (texture.LoadImage(imageBytes))
+            {
+                return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            }
+            else
+            {
+                Debug.LogError("Failed to load image: " + imagePath);
+                return null;
+            }
+        }
+        else
+        {
+            Debug.LogError("Image file not found: " + path);
+            return null;
+        }
+    }
+
     //string NAME
     //{
     //    get 
@@ -239,4 +265,6 @@ public class GameManager : MonoBehaviour
     {
         Directory.CreateDirectory(sFolderPath);
     }
+
+
 }

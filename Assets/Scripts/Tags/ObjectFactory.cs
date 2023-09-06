@@ -29,19 +29,35 @@ public class ObjectFactory
 
 
 
+    public void InitFactory()
+    {
+        characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
+        SelectCharacterInit();
+        CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
+                                    , characterFactory.listPool.Count);
 
+    }
 
     public void SelectCharacterInit()
     {
-
-        characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
-      
-        //roomFactory.CreateFactory()
-
-        //monsterFactory.     CreateFactory("", nSize);
-        //basicSkillFactory.  CreateFactory(FilePath.STR_PREFAB_SKILL_EFFECT_1, nSize);
-        //activeSkillFactory. CreateFactory("", nSize);
-        //basicSkillFactory.CreateObject(basicSkillFactory.gPrefab);
-        //test.CreateCharacterFactory("Prefabs/Character", 5);
+        List<string> list = new();
+        List<Dictionary<string, string>> listTemp = GameManager.instance.DataReadAll(FolderPath.PARAMS_CHARACTER);
+        foreach (Dictionary<string, string> dictTemp in listTemp)
+        {
+            if (dictTemp[CharPath.ISOWN] == "True")
+            {
+                list.Add(dictTemp[CharPath.ID]);
+            }
+        }
+        for (int i = 0; i < characterFactory.listPool.Count; i++)
+        {
+            for (int j = 0; j < list.Count; j++)
+            {
+                if (characterFactory.listPool[i].GetComponent<Stat>().fId == float.Parse(list[j]))
+                    ownCharFactory.listPool.Add(characterFactory.listPool[i]);
+            }
+        }
     }
+
+
 }

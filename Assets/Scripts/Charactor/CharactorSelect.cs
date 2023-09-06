@@ -15,7 +15,7 @@ public class CharactorSelect : MonoBehaviour
 {
 
     //내가 가지고 있는 캐릭터 
-    public List<GameObject> Chacters;
+    //public List<GameObject> Chacters;
 
 
 
@@ -39,12 +39,12 @@ public class CharactorSelect : MonoBehaviour
 	void Start()
     {
         _sFolderPath= FolderPath.PARAMS_CHARACTER;
-        L_ID = RoadChar(_sFolderPath);
+        //L_ID = RoadChar(_sFolderPath);
         //리스트풀 만들어서 init 리스트에 넣기 
      
-        addChar() ;
+        //addChar() ;
         FreshSlot();
-        GameManager.instance.objectFactory.ownCharFactory.listPool = Chacters;
+        //GameManager.instance.objectFactory.ownCharFactory.listPool = Chacters;
     }
 
  
@@ -53,9 +53,9 @@ public class CharactorSelect : MonoBehaviour
     public void FreshSlot()
     {
         int i = 0;
-        for (; i < Chacters.Count && i < s_Slots.Length; i++)
+        for (; i < GameManager.instance.objectFactory.ownCharFactory.listPool.Count && i < s_Slots.Length; i++)
         {
-            s_Slots[i].Stat = Chacters[i].GetComponent<Stat>();
+            s_Slots[i].Stat = GameManager.instance.objectFactory.ownCharFactory.listPool[i].GetComponent<Stat>();
         }
         for (; i < s_Slots.Length; i++)
         {
@@ -64,47 +64,4 @@ public class CharactorSelect : MonoBehaviour
         }
            
     }
-
-    void addChar() {
-        //L_ID의 저장된 값과 팩토리의 값이 같으면 캐릭터에 추가 (L_ID 길이만큼)
-        for(int i = 0; i < GameManager.instance.objectFactory.characterFactory.listPool.Count; i++)
-		{
-            for(int j = 0; j < L_ID.Count; j++)
-			{
-                if (GameManager.instance.objectFactory.characterFactory.listPool[i].GetComponent<Stat>().fId == float.Parse(L_ID[j]))
-                    Chacters.Add(GameManager.instance.objectFactory.characterFactory.listPool[i]);
-			}
-		}
- 
-    }
-    //보유하고있는  캐릭터를 확인해서 리스트에 넣기 
-    List<string> RoadChar(string sPath) {
-        List<string> list = new List<string>();
-        List<Dictionary<string, string>> listTemp = GameManager.instance.DataReadAll(sPath);
-        var a = GameManager.instance.objectFactory.characterFactory.listPool;
-        foreach (Dictionary<string,string> dictTemp in listTemp)
-		{
-            if (dictTemp[CharPath.ISOWN] == "True")
-			{
-                list.Add(dictTemp[CharPath.ID]);
-            }
-
-        }
-        return list;
-    }
-
-
-    /*
-    public void AddItem(Stat stat)
-    {
-        if (Chactors.Count < s_Slots.Length)
-        {
-            Chactors.Add(stat);
-            FreshSlot();
-        }
-        else
-        {
-            print("슬롯이 가득 차 있습니다.");
-        }
-    }*/
 }
