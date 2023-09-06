@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     public float fThirdCharacterId { get { return _fThirdCharacterId; } set { _fThirdCharacterId = value; } }
 
 
-    public StageFactory stageFactory = new StageFactory();
+    public ObjectFactory objectFactory = new ObjectFactory();
 
     void Awake()
     {

@@ -43,10 +43,10 @@ public class CharactorSelect : MonoBehaviour
         _sFolderPath= FolderPath.PARAMS_CHARACTER;
         L_ID = RoadChar(_sFolderPath);
         //리스트풀 만들어서 init 리스트에 넣기 
-        InitChar = GameManager.instance.stageFactory.characterFactory.listPool;
+        InitChar = GameManager.instance.objectFactory.characterFactory.listPool;
         addChar() ;
         FreshSlot();
-        GameManager.instance.stageFactory.ownCharFactory.listPool = Chacters;
+        GameManager.instance.objectFactory.ownCharFactory.listPool = Chacters;
     }
 
  
@@ -83,7 +83,7 @@ public class CharactorSelect : MonoBehaviour
     List<string> RoadChar(string sPath) {
         List<string> list = new List<string>();
         List<Dictionary<string, string>> listTemp = GameManager.instance.DataReadAll(sPath);
-        var a = GameManager.instance.stageFactory.characterFactory.listPool;
+        var a = GameManager.instance.objectFactory.characterFactory.listPool;
         foreach (Dictionary<string,string> dictTemp in listTemp)
 		{
             if (dictTemp[CharPath.ISOWN] == "True")

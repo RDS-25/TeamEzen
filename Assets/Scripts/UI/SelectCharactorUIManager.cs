@@ -50,7 +50,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 		//내가 가지고 있는 캐릭터 리스트를 끌어올곳 
 		OwnChar = CharSelect.GetComponentInChildren<CharactorSelect>().Chacters;
 
-		GameManager.instance.stageFactory.ownCharFactory.listPool = OwnChar;
+		GameManager.instance.objectFactory.ownCharFactory.listPool = OwnChar;
 		
 
 		
@@ -114,7 +114,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 		OwnChar[curCharID].SetActive(true);
 
 		//	//오브젝트 풀을 보여주기
-		//GameObject n = GameManager.instance.stageFactory.characterFactory.listPool[(int)curCharID - 1];
+		//GameObject n = GameManager.instance.objectFactory.characterFactory.listPool[(int)curCharID - 1];
 		//if (curCharID == n.GetComponent<Stat>().fId) {
 		//	n.SetActive(true);
 		//	curChr = n;
