@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageFactory
+public class ObjectFactory
 {
     public FactoryManager basicSkillFactory = new FactoryManager();
     public FactoryManager activeSkillFactory = new FactoryManager();
@@ -10,20 +10,27 @@ public class StageFactory
 
     // 스테이지
     public FactoryManager roomFactory = new FactoryManager();
-
+    
     // 캐릭터
     public FactoryManager characterFactory = new FactoryManager();
     //보유 캐릭터
     public FactoryManager ownCharFactory = new FactoryManager();
-    //현재 클릭된 캐릭터
-    public FactoryManager selectedFactory = new FactoryManager();
-    //
+
+    // 슬롯 만들기 고민
     public FactoryManager CharSlotFactory = new FactoryManager();
-    //몬스터
+    public FactoryManager ItemSlotFactory = new FactoryManager();
+
+    //몬스터 종류별로 만들기
     public FactoryManager monsterFactory = new FactoryManager();
 
+
     // 스킬
-    public FactoryManager skill1EffectFactory = new FactoryManager();
+    public FactoryManager CharAR01BasicEffectFactory = new FactoryManager();
+
+
+
+
+
     public void SelectCharacterInit()
     {
 
