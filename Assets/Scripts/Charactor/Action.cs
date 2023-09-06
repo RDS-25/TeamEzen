@@ -8,16 +8,24 @@ public class Action : MonoBehaviour
     float fhori;
 
     Vector3 Vmove;
+    Shot shot;
 
     Animator ani;
 
+    
+    public GameObject Bullet;
+    public Transform Bulletpos;
+
     //입장 했는가 ?
-    bool isEntries = false;
+    public bool isEntries = true;
 
     void Start()
     {
-        ani = GetComponent<Animator>();   
+        ani = GetComponent<Animator>();
+        shot = GetComponent<Shot>();
+
     }
+
 
     // Update is called once per frame
     void Update()
@@ -33,9 +41,12 @@ public class Action : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isEntries)
         {
             ani.SetBool("isAim", true);
+            StartCoroutine("onShot");
+
         }
         else if (Input.GetMouseButtonUp(0) && isEntries) {
             ani.SetBool("isAim", false);
+        
         }
     }
 
@@ -51,4 +62,16 @@ public class Action : MonoBehaviour
 
         transform.LookAt(transform.position + Vmove);
     }
+
+
+    IEnumerator onShot()
+    {
+        GameObject bullet = Instantiate(Bullet, Bulletpos.position, Bulletpos.rotation);
+        Rigidbody bulletrigid = bullet.GetComponent<Rigidbody>();
+        bulletrigid.velocity = Bulletpos.forward * 50;
+
+        yield return new WaitForSeconds(0.1f);
+    }
+
+    
 }

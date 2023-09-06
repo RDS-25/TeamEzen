@@ -6,7 +6,7 @@ public class FactoryManager
 {
     bool isCreate = false;
     private GameObject _gPrefab;
-    private GameObject[] _gCharacterPrefab;
+    private GameObject[] _gPrefabs;
 
     public List<GameObject> listPool = new List<GameObject>();
 
@@ -33,8 +33,8 @@ public class FactoryManager
             return;
         }
         isCreate = true;
-        _gCharacterPrefab = Resources.LoadAll<GameObject>(sFolderPath);
-        CreateObject(_gCharacterPrefab);
+        _gPrefabs = Resources.LoadAll<GameObject>(sFolderPath);
+        CreateObject(_gPrefabs);
     }
     // 메모리풀 소멸
     // 할당된 리스트 소멸해주는 함수
@@ -86,12 +86,12 @@ public class FactoryManager
     // 자신의 프리팹 배열에서 해당 번호의 프리팹 생성
     public void CreateObject(int nPrefabNum)
     {
-        if (_gCharacterPrefab == null)
+        if (_gPrefabs == null)
         {
             Debug.LogError("프리팹 리스트가 존재하지 않습니다.");
             return;
         }
-        CreateObject(_gCharacterPrefab[nPrefabNum]);
+        CreateObject(_gPrefabs[nPrefabNum]);
     }
     // 오브젝트 리스트 맨뒤에서 하나씩 꺼내오기
     public GameObject GetObject()

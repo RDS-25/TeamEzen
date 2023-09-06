@@ -92,7 +92,6 @@ public class GameManager : MonoBehaviour
     }
     public void SetTargeting(bool bTargeting)
     {
-        Debug.Log($"{bTargeting}");
         bTargetingDistance = bTargeting;
         WriteValues();
     }
