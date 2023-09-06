@@ -22,11 +22,15 @@ public class SelectCharactorUIManager : MonoBehaviour
 	[SerializeField]
 	GameObject gSkillPanel;
 	[SerializeField]
+	GameObject gSlotPanel;
+	[SerializeField]
 	GameObject gExit;
 
-	 public int curCharID;
+	public int curCharID;
 
-
+	public Transform SlotsInViewport;
+	public Button[] SlotButtons;
+	int nButtonNum;
 
 
 	//slot 게임오브젝트 리스트 
@@ -40,17 +44,15 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 	private void Start()
 	{
-		
-
 		audio = GetComponent<AudioSource>();
 
-		//내가 가지고 있는 캐릭터 리스트를 끌어올곳 
-	
-		/*이전 코드
-		GameManager.instance.objectFactory.ownCharFactory.listPool = OwnChar;*/
-
-	
-
+		gSlotPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(800f, 900f);
+		SlotButtons = SlotsInViewport.GetComponentsInChildren<Button>();
+		for (int i = 0; i < SlotButtons.Length; i++)
+		{
+			int buttonIndex = i;
+			SlotButtons[i].onClick.AddListener(() => OnClickButton(buttonIndex));
+		}
 
 
 		transformCharSelect = CharSelect.transform; //charSelectPanel
@@ -91,14 +93,10 @@ public class SelectCharactorUIManager : MonoBehaviour
 			listSlots.Add(transformSlots.GetChild(i).gameObject);
 			listSlots[i].name = i.ToString();
 		}
-
-		//슬롯 이름 
-		string name = EventSystem.current.currentSelectedGameObject.name;
-
 		// 현재 선택된 슬롯 인덱스 값 가져오기
 		for (int i = 0; i < GameManager.instance.objectFactory.ownCharFactory.listPool.Count; i++)
 		{
-			if (name == i.ToString())
+			if (nButtonNum == i)
 			{
 				curCharID = i;
 				break;
@@ -110,15 +108,6 @@ public class SelectCharactorUIManager : MonoBehaviour
 			GameManager.instance.objectFactory.ownCharFactory.listPool[i].SetActive(false);
 		}
 		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(true);
-
-		//	//오브젝트 풀을 보여주기
-		//GameObject n = GameManager.instance.objectFactory.characterFactory.listPool[(int)curCharID - 1];
-		//if (curCharID == n.GetComponent<Stat>().fId) {
-		//	n.SetActive(true);
-		//	curChr = n;
-		//}
-
-		
 	}
 
 	//캐릭터 스텟상세보기
@@ -159,8 +148,6 @@ public class SelectCharactorUIManager : MonoBehaviour
 		CharSelect.SetActive(false);
 	}
 
-
-
 	public void TestMove() {
 
 		SceneManager.LoadScene("characterMove");
@@ -170,13 +157,10 @@ public class SelectCharactorUIManager : MonoBehaviour
 	
 	}
 
-	
-
-
-
-	
-
-
-
-
+	void OnClickButton(int index)
+	{
+		nButtonNum = index;
+		SelectOne();
+		Debug.Log(nButtonNum);
+	}
 }

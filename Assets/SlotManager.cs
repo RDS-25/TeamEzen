@@ -5,12 +5,15 @@ using UnityEngine.UI;
 using System.IO;
 public class SlotManager : MonoBehaviour
 {
-    enum OBJECT_TYPE
+    public enum OBJECT_TYPE
     {
         CHARACTOR,
         ITEM
     }
     public Transform SlotsInViewport;
+    public Button[] SlotButtons;
+    int nButtonNum;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +22,7 @@ public class SlotManager : MonoBehaviour
                 GameManager.instance.objectFactory.characterFactory.listPool,
                 OBJECT_TYPE.CHARACTOR);
     }
-    void InitTest(List<GameObject> slotObjects, List<GameObject> allCharList, OBJECT_TYPE objType)
+    public void InitTest(List<GameObject> slotObjects, List<GameObject> allCharList, OBJECT_TYPE objType)
     {
         for (int i = 0; i < slotObjects.Count; i++)
         {
@@ -39,5 +42,7 @@ public class SlotManager : MonoBehaviour
             }
 
         }
+
     }
+
 }
