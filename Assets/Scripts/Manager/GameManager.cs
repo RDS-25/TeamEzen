@@ -216,7 +216,7 @@ public class GameManager : MonoBehaviour
     {
         if (!FolderExists(sFolderPath))
             CreateFoler(sFolderPath);
-        if (FileExists(sFolderPath + sFileName + ".json"))
+        if (FileExists(sFolderPath + sFileName+".json"))
             return true;
         else
             return false;
@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour
     // 파일 존재 체크
     public bool FileExists(string sFolderPathFileNameJson)
     {
-        return File.Exists(sFolderPathFileNameJson + ".json");
+        return File.Exists(sFolderPathFileNameJson);
     }
     // 폴더 존재 체크
     public bool FolderExists(string sFolderPath)

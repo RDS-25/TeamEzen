@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 1886324}
   - component: {fileID: 1886323}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: addItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1247,12 +1247,12 @@ GameObject:
   - component: {fileID: 564571164}
   - component: {fileID: 564571163}
   m_Layer: 5
-  m_Name: additem
+  m_Name: additemButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &564571162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2061,6 +2061,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e8324f08431c14897b24e1956289d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageType: 6
+  listCurCharacters: []
+  listCurCharId: 
 --- !u!4 &1315842327
 Transform:
   m_ObjectHideFlags: 0
@@ -2708,6 +2711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 7871255568270053370, guid: a49c7381e49466c499547634d23cbe31, type: 3}
+  ItemPre: {fileID: 7871255568270053368, guid: a49c7381e49466c499547634d23cbe31, type: 3}
   ProfessionalDatas:
   - {fileID: 11400000, guid: c0ea2d2fdabf86047b1dd7f320330415, type: 2}
   - {fileID: 11400000, guid: 93c1a7cadb8f6004e85e76ae2e3e0777, type: 2}
@@ -2717,11 +2721,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a71d70eac7e09a746a6b283df55cdf77, type: 2}
   - {fileID: 11400000, guid: b3e02a9cdafae4e4483066c4d577bf18, type: 2}
   - {fileID: 11400000, guid: 3865653c5ea09c841902748c53d30c8d, type: 2}
+  - {fileID: 11400000, guid: d040dc4e0134f504b98fdc050d3fa560, type: 2}
+  - {fileID: 11400000, guid: 74e66e7f9efe8944fb4c68af59ae0a9b, type: 2}
+  - {fileID: 11400000, guid: 122ce45c42e98a244a43a75059cb9c9a, type: 2}
+  - {fileID: 11400000, guid: 01452d31bab5ecd428ecd259276d6d73, type: 2}
+  - {fileID: 11400000, guid: 8939738e74622f04e8a5dcda7aa65014, type: 2}
   GemStoneDatas:
   - {fileID: 11400000, guid: b3e6b1c2c3688614f9efbcd38b4d0d0a, type: 2}
   - {fileID: 11400000, guid: 2e89b3523af5e1b4ba92effcb8c98f60, type: 2}
   - {fileID: 11400000, guid: 684d73f310eb6e74f866e3f9a3b57f77, type: 2}
   - {fileID: 11400000, guid: c4cc0abc0d26d6448b75de9885c6145c, type: 2}
+  - {fileID: 11400000, guid: 438937590f2bc7643ab167b7c419123c, type: 2}
+  - {fileID: 11400000, guid: 5b7a2714a00bd71479bf099dc065e2b4, type: 2}
+  - {fileID: 11400000, guid: 9f8a1efd5faed0c43a2ad4d681dc7a67, type: 2}
+  - {fileID: 11400000, guid: 462cee32b7b50af4f91509c3ef9cad86, type: 2}
+  - {fileID: 11400000, guid: 2a7496669efc5274f95dc4df84c95707, type: 2}
+  - {fileID: 11400000, guid: 1f0cca8f7b1be7c45b20ab7afa3ef546, type: 2}
+  - {fileID: 11400000, guid: b7932bf8a1b76fb4ebf0768d862ed15e, type: 2}
+  - {fileID: 11400000, guid: 3b0e77bf2680bdc4abc7ce4f081d3bae, type: 2}
   MaterialDatas:
   - {fileID: 11400000, guid: 28c2e26de977dab40875b6e02ea953aa, type: 2}
   - {fileID: 11400000, guid: 56b86534a7303a54e96d3b5ce554a987, type: 2}

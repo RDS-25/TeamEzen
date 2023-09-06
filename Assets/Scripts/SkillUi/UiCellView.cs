@@ -10,13 +10,18 @@ public class UiCellView : MonoBehaviour
 {
     public Image imgIcon;
     public TMP_Text textCount;
+    [SerializeField]
+    ProfessionalEquipParams professionalParams = new ProfessionalEquipParams();
+    EquipParams equipParams = new EquipParams();
+    GemstoneParams gemstoneParams = new GemstoneParams();
+    MaterialParams materialParams = new MaterialParams();
     void Start()
     {
         
     }
     public void SetUp(ProfessionalData professionalData)
     {
-        ItemParameter.ProfessionalEquipParams professionalParams = new ProfessionalEquipParams();        
+        
         professionalParams.fId                  = professionalData.fId;
         professionalParams.strName              = professionalData.strName;
         professionalParams.strDiscription       = professionalData.strDiscription;
@@ -31,10 +36,11 @@ public class UiCellView : MonoBehaviour
         //이미지 넣는 함수
         SetImage(professionalData.strImage);
         Debug.Log(professionalData.strImage);
+        
     }
     public void SetUp(EquipData equipData)
     {
-        ItemParameter.EquipParams equipParams = new EquipParams();
+        
         equipParams.fId             = equipData.fId;
         equipParams.strName         = equipData.strName;
         equipParams.strDiscription  = equipData.strDiscription;
@@ -49,7 +55,7 @@ public class UiCellView : MonoBehaviour
     }
     public void SetUp(GemStoneData gemStoneData)
     {
-        ItemParameter.GemstoneParams gemstoneParams = new GemstoneParams();
+        
         gemstoneParams.fId            = gemStoneData.fId;
         gemstoneParams.strName        = gemStoneData.strName;
         gemstoneParams.strDiscription = gemStoneData.strDiscription;
@@ -61,7 +67,7 @@ public class UiCellView : MonoBehaviour
     }
     public void SetUp(MaterialData materialData)
     {
-        ItemParameter.MaterialParams materialParams = new MaterialParams();
+        
         materialParams.fId              = materialData.fId;
         materialParams.strName          = materialData.strName;
         materialParams.strDiscription   = materialData.strDiscription;
