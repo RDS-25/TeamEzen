@@ -14,7 +14,7 @@ using UnityEngine.UI;
 public class CharactorSelect : MonoBehaviour
 {
 
-    //내가 가지고 있는 캐릭터 
+    //내가 가지고 있는 캐릭터  
     public List<GameObject> Chacters;
 
 

@@ -21,7 +21,11 @@ public class ObjectFactory
     public FactoryManager ItemSlotFactory = new FactoryManager();
 
     //몬스터 종류별로 만들기
-    public FactoryManager monsterFactory = new FactoryManager();
+
+    //원거리 몬스터 
+    public FactoryManager MeleeMonsterFactory = new FactoryManager();
+    //근거리 몬스터
+    public FactoryManager RangedMonsterFactory = new FactoryManager();
 
 
     // 스킬

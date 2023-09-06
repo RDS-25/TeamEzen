@@ -42,6 +42,7 @@ public class Stat : StatParams
             //없으면 쓰고  스크립터블 - > JSON
             WriteParams();
 
+
             //다시 읽기   JSON -> Stat 스크립트 
             ReadParams();
         }
