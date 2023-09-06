@@ -7,6 +7,9 @@ public class Action : MonoBehaviour
     float fverti;
     float fhori;
 
+    public GameObject Hpbar;
+
+
     Vector3 Vmove;
     Shot shot;
 
