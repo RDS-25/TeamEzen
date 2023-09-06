@@ -13,6 +13,13 @@ public class StageFactory
 
     // 캐릭터
     public FactoryManager characterFactory = new FactoryManager();
+    //보유 캐릭터
+    public FactoryManager ownCharFactory = new FactoryManager();
+    //현재 클릭된 캐릭터
+    public FactoryManager selectedFactory = new FactoryManager();
+    //
+    public FactoryManager CharSlotFactory = new FactoryManager();
+    //몬스터
     public FactoryManager monsterFactory = new FactoryManager();
 
     // 스킬

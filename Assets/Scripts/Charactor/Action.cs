@@ -17,7 +17,7 @@ public class Action : MonoBehaviour
     public Transform Bulletpos;
 
     //입장 했는가 ?
-    public bool isEntries = true;
+    public bool isEntries = false;
 
     void Start()
     {
@@ -30,13 +30,11 @@ public class Action : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (isEntries) {
             onMove();
         }
-        if (isEntries) {
-            transform.GetChild(4).gameObject.SetActive(true);
-        }
+        
 
         if (Input.GetMouseButtonDown(0) && isEntries)
         {

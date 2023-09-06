@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using Newtonsoft.Json;
+using Params;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,11 +15,17 @@ public class GameManager : MonoBehaviour
 
     private bool _bTargetingDistance = false;
 
-    private float _fFirstCharacterId = -1;
+    private float _fFirstCharacterId = 0;
     private float _fSecondCharacterId = -1;
     private float _fThirdCharacterId = -1;
 
     private float _fStageNumber = -1;
+
+    public StageParams.STAGE_TYPE stageType = StageParams.STAGE_TYPE.NONE;
+
+    public List<GameObject> listCurCharacters = new();
+
+    public List<int> listCurCharId = new();
 
     public bool bTargetingDistance { get { return _bTargetingDistance; } set { _bTargetingDistance = value; } }
     public float fFirstCharacterId { get { return _fFirstCharacterId; } set { _fFirstCharacterId = value; } }
@@ -118,7 +125,7 @@ public class GameManager : MonoBehaviour
         try
         {
             // 임시 변수 선언, 경로의 파일 읽어오기
-            string sData = File.ReadAllText(sFolderPathFileNameJson);
+            string sData = File.ReadAllText(sFolderPathFileNameJson + ".json");
             // 임시 Dictionary 선언 Newtonsoft.json 의 클래스를 사용해 json을 Dictionary로 바꿈
             Dictionary<string, string> dictResult = JsonConvert.DeserializeObject<Dictionary<string, string>>(sData);
             //Dictionary 반환
@@ -161,7 +168,7 @@ public class GameManager : MonoBehaviour
             string sJson = JsonConvert.SerializeObject(dictData);
             
             // 경로에 json 파일 저장
-            File.WriteAllText(sFolderPathFileNameJson, sJson);
+            File.WriteAllText(sFolderPathFileNameJson + ".json", sJson);
         }
         catch (Exception ex)
         {
@@ -170,7 +177,7 @@ public class GameManager : MonoBehaviour
     }
     public string GetValue(string sFolderPathFileNameJson, string sKey)
     {
-        Dictionary<string, string> dictTemp = DataRead(sFolderPathFileNameJson);
+        Dictionary<string, string> dictTemp = DataRead(sFolderPathFileNameJson + ".json");
         if (dictTemp.ContainsKey(sKey))
         {
             return dictTemp[sKey];
@@ -183,11 +190,11 @@ public class GameManager : MonoBehaviour
     }
     public void WriteKeyValue(string sFolderPathFileNameJson, string sKey, string sValue)
     {
-        Dictionary<string, string> dictTemp = DataRead(sFolderPathFileNameJson);
+        Dictionary<string, string> dictTemp = DataRead(sFolderPathFileNameJson + ".json");
         if (dictTemp.ContainsKey(sKey))
         {
             dictTemp[sKey] = sValue;
-            DataWrite(sFolderPathFileNameJson, dictTemp);
+            DataWrite(sFolderPathFileNameJson + ".json", dictTemp);
         }
         else
         {
@@ -209,7 +216,7 @@ public class GameManager : MonoBehaviour
     {
         if (!FolderExists(sFolderPath))
             CreateFoler(sFolderPath);
-        if (FileExists(sFolderPath + sFileName))
+        if (FileExists(sFolderPath + sFileName + ".json"))
             return true;
         else
             return false;
@@ -217,7 +224,7 @@ public class GameManager : MonoBehaviour
     // 파일 존재 체크
     public bool FileExists(string sFolderPathFileNameJson)
     {
-        return File.Exists(sFolderPathFileNameJson);
+        return File.Exists(sFolderPathFileNameJson + ".json");
     }
     // 폴더 존재 체크
     public bool FolderExists(string sFolderPath)

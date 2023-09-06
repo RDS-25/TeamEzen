@@ -40,6 +40,11 @@ public class SkillPanelUi : MonoBehaviour
     List<Dictionary<string, string>> dictBasic = new();
     List<Dictionary<string, string>> dictUlt = new();
 
+    public Dictionary<string, string> dictCurPassive = new();
+    public Dictionary<string, string> dictCurActive = new();
+    public Dictionary<string, string> dictCurBasic = new();
+    public Dictionary<string, string> dictCurUlt = new();
+
     private const string _STR_ID = "fId";
     private const string _STR_IMAGE_URL = "strFilepath";
     private const string _STR_LEVEL = "fSkillLevel";
@@ -48,15 +53,19 @@ public class SkillPanelUi : MonoBehaviour
     void Start()
     {
         charactorUIManager = GameObject.Find("CharManager").GetComponent<SelectCharactorUIManager>();
+        Init();
+    }
+    void Init()
+    {
         curCharStat = charactorUIManager.OwnChar[charactorUIManager.curCharID].GetComponent<Stat>();
 
         fPassiveSkillId = curCharStat.PassiveSkill;
-        dictPassive = GameManager.instance.DataReadAll(FolderPath.PARAMS_PASSIVE_SKILL);
         fActiveSkillId = curCharStat.ActiveSkill;
-        dictActive = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
         fBasicSkillId = curCharStat.BasicSkill;
-        dictBasic = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
         fUltimateSkillId = curCharStat.UltimateSkill;
+        dictPassive = GameManager.instance.DataReadAll(FolderPath.PARAMS_PASSIVE_SKILL);
+        dictActive = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
+        dictBasic = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
         dictUlt = GameManager.instance.DataReadAll(FolderPath.PARAMS_ULTIMATE_SKILL);
 
         ShowSkill(fPassiveSkillId, imagePassive, textPassiveLevel, textPassiveName, textPassiveDescript, dictPassive);
