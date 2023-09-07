@@ -17,3 +17,6 @@ Ex)MyFunction()
 변하지 않는 값
 
 EX)const MAX_HP 
+
+
+조이스틱으로 스킬범위 맞추기
