@@ -17,14 +17,16 @@ public class OrganizingUiManager : MonoBehaviour
     {
         SlotManager.OnButtonClick -= SelectChar;
     }
+    private void Awake()
+    {
+        slotManager.SetSlot(GameManager.instance.objectFactory.OrganizingSlotFactory.listPool,
+                    GameManager.instance.objectFactory.characterFactory.listPool,
+                    gSlots,
+                    SlotManager.OBJECT_TYPE.CHARACTER);
+    }
     void Start()
     {
         gOranaizngPanel.SetActive(false);
-        
-        slotManager.SetSlot(GameManager.instance.objectFactory.OrganizingSlotFactory.listPool,
-                            GameManager.instance.objectFactory.characterFactory.listPool,
-                            gSlots,
-                            SlotManager.OBJECT_TYPE.CHARACTER);
     }
     public void ButtonLoadStage()
     {
