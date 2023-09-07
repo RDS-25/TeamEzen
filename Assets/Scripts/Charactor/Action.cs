@@ -7,6 +7,15 @@ public class Action : MonoBehaviour
     float fverti;
     float fhori;
 
+    public GameObject rangeIndicator; // 범위 표시기 오브젝트를 할당합니다.
+    public GameObject maxRangeIndicator; // 최대 사거리 표시기 오브젝트를 할당합니다.
+    public float skillRange = 5f; // 스킬 사거리를 설정합니다.
+    public float maxSkillRange = 10f; // 스킬의 최대 사거리를 설정합니다.
+
+
+
+
+
     public VariableJoystick joystick;
 	Vector3 Vmove;
     Animator ani;
@@ -26,6 +35,9 @@ public class Action : MonoBehaviour
         ani = GetComponent<Animator>();
         stat = GetComponent<Stat>();
         targetingRange = stat.fDefaultRange;
+
+        // 최대 사거리 표시기 크기 설정
+        maxRangeIndicator.transform.localScale = new Vector3(maxSkillRange, maxRangeIndicator.transform.localScale.y, maxSkillRange);
     }
 
     // Update is called once per frame
@@ -45,23 +57,28 @@ public class Action : MonoBehaviour
         {
             ani.SetBool("isAim", false);
         }
-        /*
-        Vector3 joystickDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical); // 조이스틱 방향 벡터를 구하세요.
-
-        Vector3 targetPosition = transform.position + joystickDirection; // 오브젝트가 바라볼 목표 위치를 계산하세요.
-        transform.LookAt(targetPosition); // 오브젝트를 목표 위치 방향으로 회전시키세요.*/
-
-        Vector3 joystickDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+        
  
+        Vector3 joystickDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+
         if (joystickDirection.magnitude > 0.1f)
         {
             lastJoystickDirection = joystickDirection;
+            //Debug.Log(lastJoystickDirection);
+            // 스킬 범위 표시
+            rangeIndicator.transform.position = transform.position + joystickDirection  * 5;//5는 스킬 범위로 
+            rangeIndicator.SetActive(true);
+            maxRangeIndicator.SetActive(true);
         }
 
         if (joystickDirection.magnitude <= 0.1f && lastJoystickDirection.magnitude > 0.1f)
         {
+            rangeIndicator.SetActive(false);
+            maxRangeIndicator.SetActive(false);
+
             Vector3 targetPosition = transform.position + lastJoystickDirection;
             transform.LookAt(targetPosition);
+            Debug.Log("스킬 실행");
             //스킬 실행
             /*
                 스킬 발사 기능 구현 
