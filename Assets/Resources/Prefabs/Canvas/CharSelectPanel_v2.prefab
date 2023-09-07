@@ -5381,6 +5381,7 @@ MonoBehaviour:
   gExit: {fileID: 4717865985546577839}
   curCharID: 0
   SlotsInViewport: {fileID: 7946717885656027479}
+  slotManager: {fileID: 2733079601684436496}
   SlotButtons: []
 --- !u!114 &2733079601684436496
 MonoBehaviour:
@@ -5395,7 +5396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotsInViewport: {fileID: 7946717885656027479}
-  SlotButtons: []
 --- !u!1 &4717865985546577839
 GameObject:
   m_ObjectHideFlags: 0

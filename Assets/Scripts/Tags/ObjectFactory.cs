@@ -18,6 +18,7 @@ public class ObjectFactory
 
     // 슬롯 만들기 고민
     public FactoryManager CharSlotFactory = new FactoryManager();
+    public FactoryManager OrganizingSlotFactory = new FactoryManager();
     public FactoryManager ItemSlotFactory = new FactoryManager();
 
     //몬스터 종류별로 만들기
@@ -39,6 +40,8 @@ public class ObjectFactory
         SelectCharacterInit();
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                                     , characterFactory.listPool.Count);
+        OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
+                                            , characterFactory.listPool.Count);
 
     }
 

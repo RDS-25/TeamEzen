@@ -7,9 +7,16 @@ public class OrganizingUiManager : MonoBehaviour
 {
     public GameObject gOranaizngPanel;
 
+    public SlotManager slotManager;
+    public Transform gSlots;
     void Start()
     {
         gOranaizngPanel.SetActive(false);
+        
+        slotManager.SetSlot(GameManager.instance.objectFactory.OrganizingSlotFactory.listPool,
+                            GameManager.instance.objectFactory.characterFactory.listPool,
+                            gSlots,
+                            SlotManager.OBJECT_TYPE.CHARACTER);
     }
     public void ButtonLoadStage()
     {

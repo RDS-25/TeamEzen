@@ -7,42 +7,44 @@ public class SlotManager : MonoBehaviour
 {
     public enum OBJECT_TYPE
     {
-        CHARACTOR,
+        CHARACTER,
         ITEM
     }
-    public Transform SlotsInViewport;
     public Button[] SlotButtons;
-    int nButtonNum;
-
-    // Start is called before the first frame update
-    void Start()
+    public Transform SlotsInViewport;
+    public int nButtonIndex;
+    void OnEnable()
     {
-        //Init();
-        InitTest(GameManager.instance.objectFactory.CharSlotFactory.listPool,
-                GameManager.instance.objectFactory.characterFactory.listPool,
-                OBJECT_TYPE.CHARACTOR);
+        SlotButtons = SlotsInViewport.GetComponentsInChildren<Button>();
+        for (int i = 0; i < SlotButtons.Length; i++)
+        {
+            int buttonIndex = i;
+            SlotButtons[i].onClick.AddListener(() => OnClickButton(buttonIndex));
+        }
     }
-    public void InitTest(List<GameObject> slotObjects, List<GameObject> allCharList, OBJECT_TYPE objType)
+    public void SetSlot(List<GameObject> slotObjects, List<GameObject> allObjList, Transform Slots, OBJECT_TYPE objType)
     {
         for (int i = 0; i < slotObjects.Count; i++)
         {
-            slotObjects[i].transform.parent = SlotsInViewport;
-            if (objType == OBJECT_TYPE.CHARACTOR)
+            slotObjects[i].transform.parent = Slots;
+            if (objType == OBJECT_TYPE.CHARACTER)
             {
-                if (allCharList[i].GetComponent<Stat>().bIsOwn)
+                if (allObjList[i].GetComponent<Stat>().bIsOwn)
                 {
                     slotObjects[i].SetActive(true);
-                    SlotsInViewport.GetChild(i).GetComponent<Image>().sprite
-                        = GameManager.instance.LoadAndSetSprite(allCharList[i].GetComponent<Stat>().sImagepath);
+                    Slots.GetChild(i).GetComponent<Image>().sprite
+                        = GameManager.instance.LoadAndSetSprite(allObjList[i].GetComponent<Stat>().sImagepath);
                 }
             }
             else if(objType == OBJECT_TYPE.ITEM)
             {
                 // 재욱씨가 넣기
             }
-
         }
-
     }
-
+    void OnClickButton(int index)
+    {
+        nButtonIndex = index;
+        Debug.Log(nButtonIndex);
+    }
 }

@@ -1792,6 +1792,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &814817126 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7946717885656027479, guid: a1014043cd73f264aa11fedbe281b14b, type: 3}
+  m_PrefabInstance: {fileID: 167601844119340196}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &924395254
 GameObject:
   m_ObjectHideFlags: 0
@@ -3674,26 +3679,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1357186635}
     m_Modifications:
-    - target: {fileID: 124803287289784983, guid: 7f6ff7aa8e164ad43bb368d525d81079, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 124803287289784983, guid: 7f6ff7aa8e164ad43bb368d525d81079, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 124803288044567778, guid: 7f6ff7aa8e164ad43bb368d525d81079, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 924395254}
-    - target: {fileID: 124803288044567778, guid: 7f6ff7aa8e164ad43bb368d525d81079, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 124803288362832439, guid: 7f6ff7aa8e164ad43bb368d525d81079, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1640
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 924395261}
     - target: {fileID: 124803288477173413, guid: 7f6ff7aa8e164ad43bb368d525d81079, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3782,10 +3771,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SelectStagePanel_v1_2
       objectReference: {fileID: 0}
-    - target: {fileID: 124803288477173414, guid: 7f6ff7aa8e164ad43bb368d525d81079, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f6ff7aa8e164ad43bb368d525d81079, type: 3}
 --- !u!1001 &167601844119340196
@@ -3799,6 +3784,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharSelectPanel_v2
       objectReference: {fileID: 0}
+    - target: {fileID: 1948835497204669959, guid: a1014043cd73f264aa11fedbe281b14b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603716285539061772, guid: a1014043cd73f264aa11fedbe281b14b, type: 3}
+      propertyPath: transformSlots
+      value: 
+      objectReference: {fileID: 814817126}
     - target: {fileID: 4574018708335358111, guid: a1014043cd73f264aa11fedbe281b14b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

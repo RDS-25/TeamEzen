@@ -28,17 +28,12 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 	public int curCharID;
 
-	public Transform SlotsInViewport;
-	public Button[] SlotButtons;
-	int nButtonNum;
-
+	public SlotManager slotManager;
+	public Transform transformSlots;
 
 	//slot 게임오브젝트 리스트 
 	List<GameObject> listSlots = new List<GameObject>();
 
-	Transform transformCharSelect;
-
-	Transform transformSlots;
 
 	//씬매니저
 
@@ -47,21 +42,11 @@ public class SelectCharactorUIManager : MonoBehaviour
 		audio = GetComponent<AudioSource>();
 
 		gSlotPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(800f, 900f);
-		SlotButtons = SlotsInViewport.GetComponentsInChildren<Button>();
-		for (int i = 0; i < SlotButtons.Length; i++)
-		{
-			int buttonIndex = i;
-			SlotButtons[i].onClick.AddListener(() => OnClickButton(buttonIndex));
-		}
 
-
-		transformCharSelect = CharSelect.transform; //charSelectPanel
-
-	    transformSlots = transformCharSelect.GetChild(2).GetChild(0);//charSelectPanel/Charactor/CharactorSelect
-		/*
-		string a = Application.persistentDataPath + "/";
-		var data = GameManager.instance.DataRead(a + FileName.STR_JSON_CHARACTER_PARAMS_2);
-		Debug.Log(float.Parse(data["fId"]));*/
+		slotManager.SetSlot(GameManager.instance.objectFactory.CharSlotFactory.listPool,
+							GameManager.instance.objectFactory.characterFactory.listPool,
+							transformSlots,
+							SlotManager.OBJECT_TYPE.CHARACTER);
 	}	
 
 	//캐릭서 상세 
@@ -96,7 +81,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 		// 현재 선택된 슬롯 인덱스 값 가져오기
 		for (int i = 0; i < GameManager.instance.objectFactory.ownCharFactory.listPool.Count; i++)
 		{
-			if (nButtonNum == i)
+			if (slotManager.nButtonIndex == i)
 			{
 				curCharID = i;
 				break;
@@ -155,12 +140,5 @@ public class SelectCharactorUIManager : MonoBehaviour
 			GameManager.instance.objectFactory.ownCharFactory.listPool[i].GetComponent<Action>().isEntries = true;
 		}
 	
-	}
-
-	void OnClickButton(int index)
-	{
-		nButtonNum = index;
-		SelectOne();
-		Debug.Log(nButtonNum);
 	}
 }
