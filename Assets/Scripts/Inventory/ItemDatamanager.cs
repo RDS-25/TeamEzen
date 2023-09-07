@@ -8,13 +8,6 @@ using UnityEngine.UI;
 //using ItemParameter;
 public class ItemDatamanager : MonoBehaviour
 {//제이슨 파일 가져와서 배열로
-    public enum ITEM_TYPE
-    {
-        PROFESSIONALRMAL,
-        EQUIPMENT,
-        GEMSTONE,
-        MATERIAL
-    }
     public GameObject Content;//컴포넌트 배치
     //public Component[] Solt;//컴포넌트 자식의 슬롯들
     public static readonly ItemDatamanager instance = new ItemDatamanager();
@@ -112,7 +105,7 @@ public class ItemDatamanager : MonoBehaviour
     }
     public void CreateAll()
     {
-        for (int j = 0; j < System.Enum.GetValues(typeof(ITEM_TYPE)).Length; j++)
+        for (int j = 0; j < System.Enum.GetValues(typeof(ItemParameter.ItemType)).Length; j++)
         {
             Items.Add(new List<GameObject>());
         }
@@ -133,28 +126,28 @@ public class ItemDatamanager : MonoBehaviour
         foreach (string key in AllItemId)
         {
             int nKey = int.Parse(key);
-            if (nKey / 100 != idx && nKey / 100 < System.Enum.GetValues(typeof(ITEM_TYPE)).Length)//아이템 종류 나눠주기
+            if (nKey / 100 != idx && nKey / 100 < System.Enum.GetValues(typeof(ItemParameter.ItemType)).Length)//아이템 종류 나눠주기
             {
                 idx++;
             }
             //Item.GetComponentsInChildren<Image>()[0].gameObject.SetActive(false);//이미지 게임오브젝트 자체를 끈다
             GameObject Item = (GameObject)Instantiate(ItemPre, Content.transform);
-            if (idx == (int)ITEM_TYPE.PROFESSIONALRMAL)
+            if (idx == (int)ItemParameter.ItemType.PROFESSIONAL)
             {
                 var data = ProfessionalDatas[nKey % 100];
                 Item.GetComponent<UiCellView>().SetUp(data);
             }
-            else if (idx == (int)ITEM_TYPE.EQUIPMENT)
+            else if (idx == (int)ItemParameter.ItemType.EQUIPMENT)
             {
                 var data = EquipDatas[nKey % 100];
                 Item.GetComponent<UiCellView>().SetUp(data);
             }
-            else if (idx == (int)ITEM_TYPE.GEMSTONE)
+            else if (idx == (int)ItemParameter.ItemType.GEMSTONE)
             {
                 var data = GemStoneDatas[nKey % 100];
                 Item.GetComponent<UiCellView>().SetUp(data);
             }
-            else if (idx == (int)ITEM_TYPE.MATERIAL)
+            else if (idx == (int)ItemParameter.ItemType.MATERIAL)
             {
                 var data = MaterialDatas[nKey % 100];
                 Item.GetComponent<UiCellView>().SetUp(data);
@@ -243,7 +236,7 @@ public class ItemDatamanager : MonoBehaviour
         for (int i = 0; i < Content.transform.childCount; i++)
         {
             GameObject objSlot = Content.transform.GetChild(i).gameObject;
-            if (ItemId.Contains(objSlot.GetComponent<UiCellView>().ID.ToString()) == true)
+            if (ItemId.Contains(objSlot.GetComponent<UiCellView>().GetID(objSlot.GetComponent<UiCellView>().ITEM_TYPE).ToString()) == true)
             {
                 objSlot.GetComponentInChildren<Image>().enabled = true;
             }
