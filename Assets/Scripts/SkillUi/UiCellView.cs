@@ -10,13 +10,28 @@ public class UiCellView : MonoBehaviour
 {
     public Image imgIcon;
     public TMP_Text textCount;
+    [SerializeField]
+    ProfessionalEquipParams professionalParams = new ProfessionalEquipParams();
+    [SerializeField]
+    EquipParams equipParams = new EquipParams();
+    [SerializeField]
+    GemstoneParams gemstoneParams = new GemstoneParams();
+    [SerializeField]
+    MaterialParams materialParams = new MaterialParams();
     void Start()
     {
         
     }
+    public float ID
+    {
+        get
+        {
+            return professionalParams.fId;
+        }
+    }
     public void SetUp(ProfessionalData professionalData)
     {
-        ItemParameter.ProfessionalEquipParams professionalParams = new ProfessionalEquipParams();        
+        
         professionalParams.fId                  = professionalData.fId;
         professionalParams.strName              = professionalData.strName;
         professionalParams.strDiscription       = professionalData.strDiscription;
@@ -30,11 +45,12 @@ public class UiCellView : MonoBehaviour
         professionalParams.fCriticalDamage      = professionalData.fCriticalDamage;
         //이미지 넣는 함수
         SetImage(professionalData.strImage);
-        Debug.Log(professionalData.strImage);
+        Debug.Log("프로");
+        
     }
     public void SetUp(EquipData equipData)
     {
-        ItemParameter.EquipParams equipParams = new EquipParams();
+        
         equipParams.fId             = equipData.fId;
         equipParams.strName         = equipData.strName;
         equipParams.strDiscription  = equipData.strDiscription;
@@ -46,10 +62,12 @@ public class UiCellView : MonoBehaviour
         equipParams.fCrtical        = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;
         SetImage(equipData.strImage);
+        Debug.Log(equipData.strImage);
+
     }
     public void SetUp(GemStoneData gemStoneData)
     {
-        ItemParameter.GemstoneParams gemstoneParams = new GemstoneParams();
+        
         gemstoneParams.fId            = gemStoneData.fId;
         gemstoneParams.strName        = gemStoneData.strName;
         gemstoneParams.strDiscription = gemStoneData.strDiscription;
@@ -58,10 +76,11 @@ public class UiCellView : MonoBehaviour
         gemstoneParams.fUpDamage      = gemStoneData.fUpDamage;
         gemstoneParams.fNumber        = gemStoneData.fNumber;
         SetImage(gemStoneData.strImage);
+        Debug.Log("돌");
     }
     public void SetUp(MaterialData materialData)
     {
-        ItemParameter.MaterialParams materialParams = new MaterialParams();
+        
         materialParams.fId              = materialData.fId;
         materialParams.strName          = materialData.strName;
         materialParams.strDiscription   = materialData.strDiscription;
@@ -70,6 +89,7 @@ public class UiCellView : MonoBehaviour
         materialParams.fExp             = materialData.fExp;
         materialParams.fNumber          = materialData.fNumber;
         SetImage(materialData.strImage);
+        Debug.Log("마테");
     }
     Sprite SetImage(string imagePath)//보고 따라함
     {

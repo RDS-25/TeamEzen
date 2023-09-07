@@ -245,7 +245,7 @@ public class GameManager : MonoBehaviour
         //폴더 있나 확인  없으면 생성
         if (!FolderExists(sFolderPath))
             CreateFoler(sFolderPath);
-        if (FileExists(sFolderPath + sFileName + ".json"))
+        if (FileExists(sFolderPath + sFileName+".json"))
             return true;
         else
             return false;

@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6904e43189389664e9fdd689ce86295c, type: 3}
-  m_Name: Material3
+  m_Script: {fileID: 11500000, guid: 0530ce874084dd64780fb94a5151fe03, type: 3}
+  m_Name: GemStone9
   m_EditorClassIdentifier: 
-  itemType: 3
-  fId: 303
+  itemType: 1
+  fId: 208
   strName: 
   strDiscription: 
-  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/scroll.png
+  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/boots.png
   fDropRate: 0
-  fExp: 0
+  fUpDamage: 0
   fNumber: 0
