@@ -470,7 +470,6 @@ MonoBehaviour:
   gOranaizngPanel: {fileID: 124803286612009929}
   slotManager: {fileID: 124803288028366832}
   gSlots: {fileID: 124803288362832439}
-  StageButtons: []
 --- !u!114 &124803288028366832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,7 +482,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad93da94985b7c4e9679cfdb1253948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlotButtons: []
   SlotsInViewport: {fileID: 124803288362832439}
+  nButtonIndex: 0
 --- !u!1 &124803286804989679
 GameObject:
   m_ObjectHideFlags: 0

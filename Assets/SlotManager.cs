@@ -13,6 +13,10 @@ public class SlotManager : MonoBehaviour
     public Button[] SlotButtons;
     public Transform SlotsInViewport;
     public int nButtonIndex;
+
+    public delegate void ButtonClickAction(int index);
+    public static event ButtonClickAction OnButtonClick;
+
     void OnEnable()
     {
         SlotButtons = SlotsInViewport.GetComponentsInChildren<Button>();
@@ -46,5 +50,7 @@ public class SlotManager : MonoBehaviour
     {
         nButtonIndex = index;
         Debug.Log(nButtonIndex);
+        OnButtonClick?.Invoke(nButtonIndex);
+
     }
 }

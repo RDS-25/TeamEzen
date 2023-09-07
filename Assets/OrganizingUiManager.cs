@@ -9,6 +9,14 @@ public class OrganizingUiManager : MonoBehaviour
 
     public SlotManager slotManager;
     public Transform gSlots;
+    private void OnEnable()
+    {
+        SlotManager.OnButtonClick += SelectChar;
+    }
+    private void OnDisable()
+    {
+        SlotManager.OnButtonClick -= SelectChar;
+    }
     void Start()
     {
         gOranaizngPanel.SetActive(false);
@@ -26,8 +34,8 @@ public class OrganizingUiManager : MonoBehaviour
     {
         gOranaizngPanel.SetActive(false);
     }
-    public void SetFirstChar()
+    public void SelectChar(int index)
     {
-        
+        Debug.Log("편성 추가하기");
     }
 }

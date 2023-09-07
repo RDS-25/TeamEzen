@@ -36,7 +36,14 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 
 	//씬매니저
-
+	private void OnEnable()
+	{
+		SlotManager.OnButtonClick += SelectOne;
+	}
+	private void OnDisable()
+	{
+		SlotManager.OnButtonClick -= SelectOne;
+	}
 	private void Start()
 	{
 		audio = GetComponent<AudioSource>();
@@ -66,7 +73,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 
 	//누르면 캐릭터 보여주기 
-	public void SelectOne() {
+	public void SelectOne(int index) {
 		if (curChr != null) {
 			curChr.SetActive(false);
 		}
@@ -81,7 +88,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 		// 현재 선택된 슬롯 인덱스 값 가져오기
 		for (int i = 0; i < GameManager.instance.objectFactory.ownCharFactory.listPool.Count; i++)
 		{
-			if (slotManager.nButtonIndex == i)
+			if (index == i)
 			{
 				curCharID = i;
 				break;

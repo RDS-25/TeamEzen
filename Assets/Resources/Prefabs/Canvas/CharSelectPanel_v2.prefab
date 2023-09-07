@@ -1137,7 +1137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4574018708335358111
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5380,9 +5380,8 @@ MonoBehaviour:
   gSlotPanel: {fileID: 7946717884872974458}
   gExit: {fileID: 4717865985546577839}
   curCharID: 0
-  SlotsInViewport: {fileID: 7946717885656027479}
   slotManager: {fileID: 2733079601684436496}
-  SlotButtons: []
+  transformSlots: {fileID: 7946717885656027479}
 --- !u!114 &2733079601684436496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5395,7 +5394,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad93da94985b7c4e9679cfdb1253948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlotButtons: []
   SlotsInViewport: {fileID: 7946717885656027479}
+  nButtonIndex: 0
 --- !u!1 &4717865985546577839
 GameObject:
   m_ObjectHideFlags: 0
@@ -6081,15 +6082,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7789847662521650795, guid: 29671ada3d1a4324aa2cf059cc2ce3b2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7789847662521650795, guid: 29671ada3d1a4324aa2cf059cc2ce3b2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7789847663597139659, guid: 29671ada3d1a4324aa2cf059cc2ce3b2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1640
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29671ada3d1a4324aa2cf059cc2ce3b2, type: 3}
