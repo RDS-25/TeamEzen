@@ -7184,7 +7184,7 @@ GameObject:
   - component: {fileID: 1450237069680118380}
   - component: {fileID: 9033389227459121151}
   m_Layer: 5
-  m_Name: CharSelectPanel1_3
+  m_Name: CharSelectPanel_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
