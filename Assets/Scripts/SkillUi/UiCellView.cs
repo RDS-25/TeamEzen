@@ -48,9 +48,10 @@ public class UiCellView : MonoBehaviour
             return professionalParams.strImage;
         }
     }
+    
     public void SetUp(ProfessionalData professionalData)
     {
-
+        itemType = ItemType.PROFESSIONAL;
         professionalParams.fId = professionalData.fId;
         professionalParams.strName = professionalData.strName;
         professionalParams.strDiscription = professionalData.strDiscription;
@@ -62,13 +63,10 @@ public class UiCellView : MonoBehaviour
         professionalParams.fSpeed = professionalData.fSpeed;
         professionalParams.fCrtical = professionalData.fCrtical;
         professionalParams.fCriticalDamage = professionalData.fCriticalDamage;
-        //이미지 넣는 함수
-        itemType = ItemType.PROFESSIONAL;
-
     }
     public void SetUp(EquipData equipData)
     {
-
+        itemType = ItemType.EQUIPMENT;
         equipParams.fId = equipData.fId;
         equipParams.strName = equipData.strName;
         equipParams.strDiscription = equipData.strDiscription;
@@ -78,34 +76,31 @@ public class UiCellView : MonoBehaviour
         equipParams.fDefense = equipData.fDefense;
         equipParams.fSpeed = equipData.fSpeed;
         equipParams.fCrtical = equipData.fCrtical;
-        equipParams.fCriticalDamage = equipData.fCriticalDamage;
-        itemType = ItemType.EQUIPMENT;
+        equipParams.fCriticalDamage = equipData.fCriticalDamage;        
     }
     public void SetUp(GemStoneData gemStoneData)
     {
-
+        itemType = ItemType.GEMSTONE;
         gemstoneParams.fId = gemStoneData.fId;
         gemstoneParams.strName = gemStoneData.strName;
         gemstoneParams.strDiscription = gemStoneData.strDiscription;
         gemstoneParams.strImage = gemStoneData.strImage;
         gemstoneParams.fDropRate = gemStoneData.fDropRate;
         gemstoneParams.fUpDamage = gemStoneData.fUpDamage;
-        gemstoneParams.fNumber = gemStoneData.fNumber;
-        itemType = ItemType.GEMSTONE;
+        gemstoneParams.fNumber = gemStoneData.fNumber;        
     }
     public void SetUp(MaterialData materialData)
     {
-
+        itemType = ItemType.MATERIAL;
         materialParams.fId = materialData.fId;
         materialParams.strName = materialData.strName;
         materialParams.strDiscription = materialData.strDiscription;
         materialParams.strImage = materialData.strImage;
         materialParams.fDropRate = materialData.fDropRate;
         materialParams.fExp = materialData.fExp;
-        materialParams.fNumber = materialData.fNumber;
-        itemType = ItemType.MATERIAL;
+        materialParams.fNumber = materialData.fNumber;        
     }
-    Sprite SetImage(string imagePath)//보고 따라함
+    Sprite SetImage(string imagePath)//보고 따라함 안씀
     {
         //https://202psj.tistory.com/1296
         string path = Path.Combine(imagePath);
@@ -129,7 +124,7 @@ public class UiCellView : MonoBehaviour
             return null;
         }
 
-    }
+    } 
 }
 //string path = Path.Combine(imagePath);
 
