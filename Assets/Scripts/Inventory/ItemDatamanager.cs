@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class ItemDatamanager : MonoBehaviour
 {//제이슨 파일 가져와서 배열로
     public GameObject Content;//컴포넌트 배치
-    //public Component[] Solt;//컴포넌트 자식의 슬롯들
     public static readonly ItemDatamanager instance = new ItemDatamanager();
     string _strInvenItemPath;//경로
     string HaveInvenItem;//파일이름   
@@ -18,60 +17,38 @@ public class ItemDatamanager : MonoBehaviour
     public EquipData[] EquipDatas;//100~
     public GemStoneData[] GemStoneDatas;//200~
     public MaterialData[] MaterialDatas;//300~
-
+    public SlotManager slotManager;
 
     //public UiCellView cellView;
     Dictionary<string, string> InItem = new Dictionary<string, string>();
-    List<string> ItemId = new List<string>();//존재하는 아이템 아이디 리스트
+    List<string> ItemId = new List<string>();//현재 존재하는 아이템 아이디 리스트
     List<string> AllItemId = new List<string>();//모든 아이템 아이디리스트    
     List<List<GameObject>> Items = new List<List<GameObject>>();
-    //List<UiCellView> ProI = new List<UiCellView>();
-    //List<UiCellView> EquipI = new List<UiCellView>();
-    //List<UiCellView> Gem = new List<UiCellView>();
-    //List<UiCellView> Mate = new List<UiCellView>();
 
-
-    //public void Setup()
-    //{
-
-    //    for (int i = 0; i < System.Enum.GetValues(typeof(ITEM_TYPE)).Length; i++)
-    //    {
-    //        Items.Add(new List<UiCellView>());
-    //    }
-
-    //    for ()
-    //    {
-    //        if (i > 400)
-    //        {
-    //            Items[(int)ITEM_TYPE.NORMAL].Add();
-    //        }
-    //        else if ()
-    //        {
-    //            Items[(int)ITEM_TYPE.CLOSE].Add();
-
-    //        }
-    //        else
-    //        {
-    //            Items[(int)ITEM_TYPE.JUALY].Add();
-
-    //        }
-    //    }
-    // }
-
-
+    private void OnEnable()
+    {
+        SlotManager.OnButtonClick += ShowItemData;
+    }
+    private void OnDisable()
+    {
+        SlotManager.OnButtonClick -= ShowItemData;
+    }
     private void Start()
     {
-
         _strInvenItemPath = FolderPath.PARAMS_ITEM_COUNT;
         HaveInvenItem = FileName.STR_JSON_INVEN_ITEMS;//제이슨 파일 만들때 컨버터에 딕셔너리확인
         InItem = GameManager.instance.DataRead(_strInvenItemPath + HaveInvenItem);
-        //Solt = GetComponentsInChildren<UiCellView>();
         InitInven();
         CreateAll();
-        //Debug.Log(GameManager.instance.DataRead(_strInvenItemPath + HaveInvenItem));
+        GameManager.instance.objectFactory.ItemSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB,
+                                                                        AllItemId.Count);
+        slotManager.SetSlot(GameManager.instance.objectFactory.ItemSlotFactory.listPool, // 인벤토리에 표시할 슬롯 이미지 (전체 개수만큼)
+                            GameManager.instance.objectFactory.ItemObjectFactory.listPool, // Uicellview 정보 담겨있는 리스트(전체 개수만큼)
+                            slotManager.SlotsInViewport,
+                            SlotManager.OBJECT_TYPE.ITEM);
+        // 슬롯 getchild 해서 텍스트에 개수 표시해주기
 
-
-
+        GetComponent<SlotManager>().SetButtonClickedEvent();
     }
     public void InitInven()
     {
@@ -86,8 +63,9 @@ public class ItemDatamanager : MonoBehaviour
             WriteData();//파일 만들기,파일에 모든 장비 갯수0개로 쓰기 함수 따로
             ReLoadInven();
         }
-    }
 
+
+    }
 
     public void LoadInvenData()
     {
@@ -95,13 +73,11 @@ public class ItemDatamanager : MonoBehaviour
         {
             if (int.Parse(InItem[key]) != 0)
                 ItemId.Add(key);//>>아이디와 스크립터블의 아이디가 같으면 슬롯에 정보주기
-            Debug.Log(ItemId.Count);
         }
     }
     public void ReLoadInven()
     {
         LoadInvenData();
-        Haveitem();
     }
     public void CreateAll()
     {
@@ -117,11 +93,7 @@ public class ItemDatamanager : MonoBehaviour
                 AllItemId.Add(key);
             }
         }
-        //int materialIdx = 0;
-        //int GemStoneIdx = 0;
-        //int EquipIdx = 0;
-        //int ProfessionalIdx = 0;
-
+        int poolIdx = 0;
         int idx = 0;
         foreach (string key in AllItemId)
         {
@@ -131,7 +103,7 @@ public class ItemDatamanager : MonoBehaviour
                 idx++;
             }
             //Item.GetComponentsInChildren<Image>()[0].gameObject.SetActive(false);//이미지 게임오브젝트 자체를 끈다
-            GameObject Item = (GameObject)Instantiate(ItemPre, Content.transform);
+            GameObject Item = GameManager.instance.objectFactory.ItemObjectFactory.CreateObject(ItemPre);
             if (idx == (int)ItemParameter.ItemType.PROFESSIONAL)
             {
                 var data = ProfessionalDatas[nKey % 100];
@@ -154,10 +126,12 @@ public class ItemDatamanager : MonoBehaviour
             }
 
             Items[idx].Add(Item);
-            Item.GetComponentsInChildren<Image>()[0].enabled = false; //컴포넌트를 끈다
-
+            //Item.GetComponentsInChildren<Image>()[0].enabled = false; //컴포넌트를 끈다
+            poolIdx++;
+            if (poolIdx > GameManager.instance.objectFactory.ItemObjectFactory.listPool.Count)
+                break;
         }
-
+        #region foreach (string key in AllItemId)
         //foreach (string key in AllItemId)
         //{
         //    if (int.Parse(key) >= 300)
@@ -228,7 +202,7 @@ public class ItemDatamanager : MonoBehaviour
 
         //    }
         //}
-
+        #endregion
     }
     public void Haveitem()
     {
@@ -236,7 +210,7 @@ public class ItemDatamanager : MonoBehaviour
         for (int i = 0; i < Content.transform.childCount; i++)
         {
             GameObject objSlot = Content.transform.GetChild(i).gameObject;
-            if (ItemId.Contains(objSlot.GetComponent<UiCellView>().GetID(objSlot.GetComponent<UiCellView>().ITEM_TYPE).ToString()) == true)
+            if (ItemId.Contains(objSlot.GetComponent<UiCellView>().ID.ToString()) == true)
             {
                 objSlot.GetComponentInChildren<Image>().enabled = true;
             }
@@ -246,7 +220,7 @@ public class ItemDatamanager : MonoBehaviour
     {
 
     }
-
+    #region CreatItem()
     //public void CreateItem()
     //{//처음0번대만 만들어지고 뒷번호들 안만들어짐? 안만들어짐
     //    foreach (string key in ItemId)
@@ -321,27 +295,11 @@ public class ItemDatamanager : MonoBehaviour
     //    //Debug.Log(MaterialDatas.Length);
     //}
 
-
+    #endregion
     public void WriteData()
     {//초기 인벤토리 모든 장비 0
         Dictionary<string, string> dictTemp = new Dictionary<string, string>();
 
-        //for (int i = 0; i < ProfessionalDatas.Length; i++)
-        //{
-        //    dictTemp.Add(ProfessionalDatas[i].fId, ProfessionalDatas[i].);
-        //}
-        //for (int i = 0; i < EquipDatas.Length; i++)
-        //{
-
-        //}
-        //for (int i = 0; i < GemStoneDatas.Length; i++)
-        //{
-
-        //}
-        //for (int i = 0; i < MaterialDatas.Length; i++)
-        //{
-
-        //}
         dictTemp.Add("0", "0");
         dictTemp.Add("1", "0");
         dictTemp.Add("2", "0");
@@ -369,25 +327,29 @@ public class ItemDatamanager : MonoBehaviour
         dictTemp.Add("300", "0");
         dictTemp.Add("301", "0");
         dictTemp.Add("302", "0");
-        dictTemp.Add("400", "0");
-        dictTemp.Add("401", "0");
-        dictTemp.Add("402", "0");
 
         GameManager.instance.DataWrite(_strInvenItemPath + HaveInvenItem, dictTemp);
 
     }
-    public void LoadEquipData()
+    public void ShowItemData(int index)
     {
-        //Debug.Log(equip.fId);
-        //TextAsset asset= Resources.Load<TextAsset>("InventoryTest/Equip_Data");
-        //string json = asset.text;
-        ////역직렬화
-        //EquipData[] arr= JsonConvert.DeserializeObject<EquipData[]>(json);
-        ////foreach for 돌리며 drc에 추가
+        //if (int.Parse(ItemId[index]) / 100 == 2)
+        //    // gem일때
 
-        ////this.dicEquipData= arr.ToDictionary(x => x.EquipParams.fId);
-        //Debug.Log("load");
-        //Debug.LogFormat("item data count:{0}",this.dicEquipData.Count);
+        //if (int.Parse(ItemId[index]) / 100 == 3)
+            // material일때
+
+
+                //Debug.Log(equip.fId);
+                //TextAsset asset= Resources.Load<TextAsset>("InventoryTest/Equip_Data");
+                //string json = asset.text;
+                ////역직렬화
+                //EquipData[] arr= JsonConvert.DeserializeObject<EquipData[]>(json);
+                ////foreach for 돌리며 drc에 추가
+
+                ////this.dicEquipData= arr.ToDictionary(x => x.EquipParams.fId);
+                //Debug.Log("load");
+                //Debug.LogFormat("item data count:{0}",this.dicEquipData.Count);
     }
     public EquipData GetIEquipData(float fId)
     {
@@ -398,4 +360,5 @@ public class ItemDatamanager : MonoBehaviour
         //Debug.LogFormat("key({0}) not found.", fId);
         return null;
     }
+
 }

@@ -32,6 +32,8 @@ public class ObjectFactory
     // 스킬
     public FactoryManager CharAR01BasicEffectFactory = new FactoryManager();
 
+    // 아이템
+    public FactoryManager ItemObjectFactory = new FactoryManager();
 
 
     public void InitFactory()

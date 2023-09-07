@@ -19,25 +19,34 @@ public class UiCellView : MonoBehaviour
     [SerializeField]
     MaterialParams materialParams = new MaterialParams();
     private ItemParameter.ItemType itemType = ItemType.EQUIPMENT;
-    public int ITEM_TYPE
+
+    public float ID
     {
-        get { return (int)itemType; }
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fId;
+            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+                return gemstoneParams.fId;
+            else if (itemType == ItemParameter.ItemType.MATERIAL)
+                return materialParams.fId;
+
+            return professionalParams.fId;
+        }
     }
-
-    void Start()
+    public string IMAGE_PATH
     {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.strImage;
+            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+                return gemstoneParams.strImage;
+            else if (itemType == ItemParameter.ItemType.MATERIAL)
+                return materialParams.strImage;
 
-    }
-    public float GetID(int type)
-    {
-        if (type == 1)
-            return equipParams.fId;
-        else if (type == 2)
-            return gemstoneParams.fId;
-        else if (type == 3)
-            return materialParams.fId;
-
-        return professionalParams.fId;
+            return professionalParams.strImage;
+        }
     }
     public void SetUp(ProfessionalData professionalData)
     {
@@ -54,9 +63,7 @@ public class UiCellView : MonoBehaviour
         professionalParams.fCrtical = professionalData.fCrtical;
         professionalParams.fCriticalDamage = professionalData.fCriticalDamage;
         //이미지 넣는 함수
-        SetImage(professionalData.strImage);
         itemType = ItemType.PROFESSIONAL;
-        Debug.Log("프로");
 
     }
     public void SetUp(EquipData equipData)
@@ -72,11 +79,7 @@ public class UiCellView : MonoBehaviour
         equipParams.fSpeed = equipData.fSpeed;
         equipParams.fCrtical = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;
-        SetImage(equipData.strImage);
         itemType = ItemType.EQUIPMENT;
-        Debug.Log(equipData.strImage);
-
-
     }
     public void SetUp(GemStoneData gemStoneData)
     {
@@ -88,10 +91,7 @@ public class UiCellView : MonoBehaviour
         gemstoneParams.fDropRate = gemStoneData.fDropRate;
         gemstoneParams.fUpDamage = gemStoneData.fUpDamage;
         gemstoneParams.fNumber = gemStoneData.fNumber;
-        SetImage(gemStoneData.strImage);
         itemType = ItemType.GEMSTONE;
-
-        Debug.Log("돌");
     }
     public void SetUp(MaterialData materialData)
     {
@@ -103,10 +103,7 @@ public class UiCellView : MonoBehaviour
         materialParams.fDropRate = materialData.fDropRate;
         materialParams.fExp = materialData.fExp;
         materialParams.fNumber = materialData.fNumber;
-        SetImage(materialData.strImage);
         itemType = ItemType.MATERIAL;
-
-        Debug.Log("마테");
     }
     Sprite SetImage(string imagePath)//보고 따라함
     {

@@ -44,20 +44,18 @@ public class SelectCharactorUIManager : MonoBehaviour
 	{
 		SlotManager.OnButtonClick -= SelectOne;
 	}
-    private void Awake()
-    {
-		slotManager.SetSlot(GameManager.instance.objectFactory.CharSlotFactory.listPool,
-					GameManager.instance.objectFactory.characterFactory.listPool,
-					transformSlots,
-					SlotManager.OBJECT_TYPE.CHARACTER);
-	}
+
     private void Start()
 	{
 		audio = GetComponent<AudioSource>();
 
 		gSlotPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(800f, 900f);
 
-
+		slotManager.SetSlot(GameManager.instance.objectFactory.CharSlotFactory.listPool,
+			GameManager.instance.objectFactory.characterFactory.listPool,
+			transformSlots,
+			SlotManager.OBJECT_TYPE.CHARACTER);
+		GetComponent<SlotManager>().SetButtonClickedEvent();
 	}	
 
 	//캐릭서 상세 
