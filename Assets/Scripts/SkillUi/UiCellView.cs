@@ -34,6 +34,36 @@ public class UiCellView : MonoBehaviour
             return professionalParams.fId;
         }
     }
+    public string NAME
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.strName;
+            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+                return gemstoneParams.strName;
+            else if (itemType == ItemParameter.ItemType.MATERIAL)
+                return materialParams.strName;
+
+            return professionalParams.strName;
+
+        }
+    }
+    public string DISCRIPTIPN
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.strDiscription;
+            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+                return gemstoneParams.strDiscription;
+            else if (itemType == ItemParameter.ItemType.MATERIAL)
+                return materialParams.strDiscription;
+
+            return professionalParams.strDiscription;
+
+        }
+    }
     public string IMAGE_PATH
     {
         get
@@ -48,7 +78,109 @@ public class UiCellView : MonoBehaviour
             return professionalParams.strImage;
         }
     }
-    
+    public float DROP_RATE
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fDropRate;
+            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+                return gemstoneParams.fDropRate;
+            else if (itemType == ItemParameter.ItemType.MATERIAL)
+                return materialParams.fDropRate;
+
+            return professionalParams.fDropRate;
+        }
+
+    }
+    public float DAMAGE
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fDamage;
+            else
+                return professionalParams.fDamage;
+        }
+
+    }
+    public float DEFENSE
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fDefense;
+            else
+                return professionalParams.fDefense;
+        }
+    }
+    public float SPEED
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fSpeed;
+            else
+                return professionalParams.fSpeed;
+        }
+    }
+    public float CRITICALPER
+    {
+        get
+        {
+            {
+                if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                    return equipParams.fCrticalper;
+                else
+                    return professionalParams.fCrticalper;
+            }
+        }
+    }
+    public float CRITICALDAMAGE
+    {
+        get
+        {
+            {
+                if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                    return equipParams.fCriticalDamage;
+                else
+                    return professionalParams.fCriticalDamage;
+            }
+        }
+    }
+    public float COUNT
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.GEMSTONE)
+                return gemstoneParams.fCount;
+            else
+                return materialParams.fCount;
+        }
+    }
+    public float PASSIVEVALUE
+    {
+        get
+        {
+            return professionalParams.fPassiveSkillValue;
+        }
+    }
+    public float UPDAMAGE
+    {
+        get
+        {
+           return gemstoneParams.fUpDamage;
+        }
+    }
+    public float EXP
+    {
+        get
+        {
+            return materialParams.fExp;
+        }
+    }
+  
+   
     public void SetUp(ProfessionalData professionalData)
     {
         itemType = ItemType.PROFESSIONAL;
@@ -61,7 +193,7 @@ public class UiCellView : MonoBehaviour
         professionalParams.fDamage = professionalData.fDamage;
         professionalParams.fDefense = professionalData.fDefense;
         professionalParams.fSpeed = professionalData.fSpeed;
-        professionalParams.fCrtical = professionalData.fCrtical;
+        professionalParams.fCrticalper = professionalData.fCrtical;
         professionalParams.fCriticalDamage = professionalData.fCriticalDamage;
     }
     public void SetUp(EquipData equipData)
@@ -75,7 +207,7 @@ public class UiCellView : MonoBehaviour
         equipParams.fDamage = equipData.fDamage;
         equipParams.fDefense = equipData.fDefense;
         equipParams.fSpeed = equipData.fSpeed;
-        equipParams.fCrtical = equipData.fCrtical;
+        equipParams.fCrticalper = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;        
     }
     public void SetUp(GemStoneData gemStoneData)
@@ -87,7 +219,7 @@ public class UiCellView : MonoBehaviour
         gemstoneParams.strImage = gemStoneData.strImage;
         gemstoneParams.fDropRate = gemStoneData.fDropRate;
         gemstoneParams.fUpDamage = gemStoneData.fUpDamage;
-        gemstoneParams.fNumber = gemStoneData.fNumber;        
+        gemstoneParams.fCount = gemStoneData.fCount;        
     }
     public void SetUp(MaterialData materialData)
     {
@@ -98,7 +230,7 @@ public class UiCellView : MonoBehaviour
         materialParams.strImage = materialData.strImage;
         materialParams.fDropRate = materialData.fDropRate;
         materialParams.fExp = materialData.fExp;
-        materialParams.fNumber = materialData.fNumber;        
+        materialParams.fCount = materialData.fCount;        
     }
     Sprite SetImage(string imagePath)//보고 따라함 안씀
     {
