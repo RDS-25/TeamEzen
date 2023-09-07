@@ -18,77 +18,94 @@ public class UiCellView : MonoBehaviour
     GemstoneParams gemstoneParams = new GemstoneParams();
     [SerializeField]
     MaterialParams materialParams = new MaterialParams();
+    private ItemParameter.ItemType itemType = ItemType.EQUIPMENT;
+    public int ITEM_TYPE
+    {
+        get { return (int)itemType; }
+    }
+
     void Start()
     {
-        
+
     }
-    public float ID
+    public float GetID(int type)
     {
-        get
-        {
-            return professionalParams.fId;
-        }
+        if (type == 1)
+            return equipParams.fId;
+        else if (type == 2)
+            return gemstoneParams.fId;
+        else if (type == 3)
+            return materialParams.fId;
+
+        return professionalParams.fId;
     }
     public void SetUp(ProfessionalData professionalData)
     {
-        
-        professionalParams.fId                  = professionalData.fId;
-        professionalParams.strName              = professionalData.strName;
-        professionalParams.strDiscription       = professionalData.strDiscription;
-        professionalParams.strImage             = professionalData.strImage;
-        professionalParams.fDropRate            = professionalData.fDropRate;
-        professionalParams.fPassiveSkillValue   = professionalData.fPassiveSkillValue;
-        professionalParams.fDamage              = professionalData.fDamage;
-        professionalParams.fDefense             = professionalData.fDefense;
-        professionalParams.fSpeed               = professionalData.fSpeed;
-        professionalParams.fCrtical             = professionalData.fCrtical;
-        professionalParams.fCriticalDamage      = professionalData.fCriticalDamage;
+
+        professionalParams.fId = professionalData.fId;
+        professionalParams.strName = professionalData.strName;
+        professionalParams.strDiscription = professionalData.strDiscription;
+        professionalParams.strImage = professionalData.strImage;
+        professionalParams.fDropRate = professionalData.fDropRate;
+        professionalParams.fPassiveSkillValue = professionalData.fPassiveSkillValue;
+        professionalParams.fDamage = professionalData.fDamage;
+        professionalParams.fDefense = professionalData.fDefense;
+        professionalParams.fSpeed = professionalData.fSpeed;
+        professionalParams.fCrtical = professionalData.fCrtical;
+        professionalParams.fCriticalDamage = professionalData.fCriticalDamage;
         //이미지 넣는 함수
         SetImage(professionalData.strImage);
+        itemType = ItemType.PROFESSIONAL;
         Debug.Log("프로");
-        
+
     }
     public void SetUp(EquipData equipData)
     {
-        
-        equipParams.fId             = equipData.fId;
-        equipParams.strName         = equipData.strName;
-        equipParams.strDiscription  = equipData.strDiscription;
-        equipParams.strImage        = equipData.strImage;
-        equipParams.fDropRate       = equipData.fDropRate;
-        equipParams.fDamage         = equipData.fDamage;
-        equipParams.fDefense        = equipData.fDefense;
-        equipParams.fSpeed          = equipData.fSpeed;
-        equipParams.fCrtical        = equipData.fCrtical;
+
+        equipParams.fId = equipData.fId;
+        equipParams.strName = equipData.strName;
+        equipParams.strDiscription = equipData.strDiscription;
+        equipParams.strImage = equipData.strImage;
+        equipParams.fDropRate = equipData.fDropRate;
+        equipParams.fDamage = equipData.fDamage;
+        equipParams.fDefense = equipData.fDefense;
+        equipParams.fSpeed = equipData.fSpeed;
+        equipParams.fCrtical = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;
         SetImage(equipData.strImage);
+        itemType = ItemType.EQUIPMENT;
         Debug.Log(equipData.strImage);
+
 
     }
     public void SetUp(GemStoneData gemStoneData)
     {
-        
-        gemstoneParams.fId            = gemStoneData.fId;
-        gemstoneParams.strName        = gemStoneData.strName;
+
+        gemstoneParams.fId = gemStoneData.fId;
+        gemstoneParams.strName = gemStoneData.strName;
         gemstoneParams.strDiscription = gemStoneData.strDiscription;
-        gemstoneParams.strImage       = gemStoneData.strImage;
-        gemstoneParams.fDropRate      = gemStoneData.fDropRate;
-        gemstoneParams.fUpDamage      = gemStoneData.fUpDamage;
-        gemstoneParams.fNumber        = gemStoneData.fNumber;
+        gemstoneParams.strImage = gemStoneData.strImage;
+        gemstoneParams.fDropRate = gemStoneData.fDropRate;
+        gemstoneParams.fUpDamage = gemStoneData.fUpDamage;
+        gemstoneParams.fNumber = gemStoneData.fNumber;
         SetImage(gemStoneData.strImage);
+        itemType = ItemType.GEMSTONE;
+
         Debug.Log("돌");
     }
     public void SetUp(MaterialData materialData)
     {
-        
-        materialParams.fId              = materialData.fId;
-        materialParams.strName          = materialData.strName;
-        materialParams.strDiscription   = materialData.strDiscription;
-        materialParams.strImage         = materialData.strImage;
-        materialParams.fDropRate        = materialData.fDropRate;
-        materialParams.fExp             = materialData.fExp;
-        materialParams.fNumber          = materialData.fNumber;
+
+        materialParams.fId = materialData.fId;
+        materialParams.strName = materialData.strName;
+        materialParams.strDiscription = materialData.strDiscription;
+        materialParams.strImage = materialData.strImage;
+        materialParams.fDropRate = materialData.fDropRate;
+        materialParams.fExp = materialData.fExp;
+        materialParams.fNumber = materialData.fNumber;
         SetImage(materialData.strImage);
+        itemType = ItemType.MATERIAL;
+
         Debug.Log("마테");
     }
     Sprite SetImage(string imagePath)//보고 따라함
@@ -113,8 +130,8 @@ public class UiCellView : MonoBehaviour
         {
             Debug.LogError("이미지파일 없음");
             return null;
-        }           
-        
+        }
+
     }
 }
 //string path = Path.Combine(imagePath);
