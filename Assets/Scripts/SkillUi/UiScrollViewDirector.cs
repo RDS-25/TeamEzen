@@ -8,6 +8,6 @@ public class UiScrollViewDirector : MonoBehaviour
     
     public void Init()
     {
-        scrollview.Init();
+        
     }
 }

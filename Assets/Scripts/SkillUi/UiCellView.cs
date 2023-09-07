@@ -22,6 +22,13 @@ public class UiCellView : MonoBehaviour
     {
         
     }
+    public float ID
+    {
+        get
+        {
+            return professionalParams.fId;
+        }
+    }
     public void SetUp(ProfessionalData professionalData)
     {
         
