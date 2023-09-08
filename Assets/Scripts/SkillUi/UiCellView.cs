@@ -34,6 +34,36 @@ public class UiCellView : MonoBehaviour
             return professionalParams.fId;
         }
     }
+    public string NAME
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.strName;
+            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+                return gemstoneParams.strName;
+            else if (itemType == ItemParameter.ItemType.MATERIAL)
+                return materialParams.strName;
+
+            return professionalParams.strName;
+
+        }
+    }
+    public string DISCRIPTIPN
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.strDiscription;
+            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+                return gemstoneParams.strDiscription;
+            else if (itemType == ItemParameter.ItemType.MATERIAL)
+                return materialParams.strDiscription;
+
+            return professionalParams.strDiscription;
+
+        }
+    }
     public string IMAGE_PATH
     {
         get
@@ -48,9 +78,114 @@ public class UiCellView : MonoBehaviour
             return professionalParams.strImage;
         }
     }
+    public float DROP_RATE
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fDropRate;
+            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+                return gemstoneParams.fDropRate;
+            else if (itemType == ItemParameter.ItemType.MATERIAL)
+                return materialParams.fDropRate;
+
+            return professionalParams.fDropRate;
+        }
+
+    }
+    public float DAMAGE
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fDamage;
+            else
+                return professionalParams.fDamage;
+        }
+
+    }
+    public float DEFENSE
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fDefense;
+            else
+                return professionalParams.fDefense;
+        }
+    }
+    public float SPEED
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fSpeed;
+            else
+                return professionalParams.fSpeed;
+        }
+    }
+    public float CRITICALPER
+    {
+        get
+        {
+            {
+                if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                    return equipParams.fCrticalper;
+                else
+                    return professionalParams.fCrticalper;
+            }
+        }
+    }
+    public float CRITICALDAMAGE
+    {
+        get
+        {
+            {
+                if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                    return equipParams.fCriticalDamage;
+                else
+                    return professionalParams.fCriticalDamage;
+            }
+        }
+    }
+    public float COUNT
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fCount;
+            else if(itemType == ItemParameter.ItemType.GEMSTONE)
+                return gemstoneParams.fCount;
+            else
+                return materialParams.fCount;
+        }
+    }
+    public float PASSIVEVALUE
+    {
+        get
+        {
+            return professionalParams.fPassiveSkillValue;
+        }
+    }
+    public float UPDAMAGE
+    {
+        get
+        {
+           return gemstoneParams.fUpDamage;
+        }
+    }
+    public float EXP
+    {
+        get
+        {
+            return materialParams.fExp;
+        }
+    }
+  
+   
     public void SetUp(ProfessionalData professionalData)
     {
-
+        itemType = ItemType.PROFESSIONAL;
         professionalParams.fId = professionalData.fId;
         professionalParams.strName = professionalData.strName;
         professionalParams.strDiscription = professionalData.strDiscription;
@@ -60,15 +195,12 @@ public class UiCellView : MonoBehaviour
         professionalParams.fDamage = professionalData.fDamage;
         professionalParams.fDefense = professionalData.fDefense;
         professionalParams.fSpeed = professionalData.fSpeed;
-        professionalParams.fCrtical = professionalData.fCrtical;
+        professionalParams.fCrticalper = professionalData.fCrtical;
         professionalParams.fCriticalDamage = professionalData.fCriticalDamage;
-        //이미지 넣는 함수
-        itemType = ItemType.PROFESSIONAL;
-
     }
-    public void SetUp(EquipData equipData)
+    public void SetUp(EquipData equipData, Dictionary<string, string> dictItemCount)
     {
-
+        itemType = ItemType.EQUIPMENT;
         equipParams.fId = equipData.fId;
         equipParams.strName = equipData.strName;
         equipParams.strDiscription = equipData.strDiscription;
@@ -77,35 +209,34 @@ public class UiCellView : MonoBehaviour
         equipParams.fDamage = equipData.fDamage;
         equipParams.fDefense = equipData.fDefense;
         equipParams.fSpeed = equipData.fSpeed;
-        equipParams.fCrtical = equipData.fCrtical;
+        equipParams.fCrticalper = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;
-        itemType = ItemType.EQUIPMENT;
+        equipParams.fCount= int.Parse(dictItemCount[equipParams.fId.ToString()]);
+        Debug.Log(equipParams.fCount);
     }
-    public void SetUp(GemStoneData gemStoneData)
+    public void SetUp(GemStoneData gemStoneData, Dictionary<string,string> dictItemCount)
     {
-
+        itemType = ItemType.GEMSTONE;
         gemstoneParams.fId = gemStoneData.fId;
         gemstoneParams.strName = gemStoneData.strName;
         gemstoneParams.strDiscription = gemStoneData.strDiscription;
         gemstoneParams.strImage = gemStoneData.strImage;
         gemstoneParams.fDropRate = gemStoneData.fDropRate;
         gemstoneParams.fUpDamage = gemStoneData.fUpDamage;
-        gemstoneParams.fNumber = gemStoneData.fNumber;
-        itemType = ItemType.GEMSTONE;
+        gemstoneParams.fCount = int.Parse(dictItemCount[gemstoneParams.fId.ToString()]);
     }
-    public void SetUp(MaterialData materialData)
+    public void SetUp(MaterialData materialData, Dictionary<string, string> dictItemCount)
     {
-
+        itemType = ItemType.MATERIAL;
         materialParams.fId = materialData.fId;
         materialParams.strName = materialData.strName;
         materialParams.strDiscription = materialData.strDiscription;
         materialParams.strImage = materialData.strImage;
         materialParams.fDropRate = materialData.fDropRate;
         materialParams.fExp = materialData.fExp;
-        materialParams.fNumber = materialData.fNumber;
-        itemType = ItemType.MATERIAL;
+        materialParams.fCount = int.Parse(dictItemCount[materialParams.fId.ToString()]);        
     }
-    Sprite SetImage(string imagePath)//보고 따라함
+    Sprite SetImage(string imagePath)//보고 따라함 안씀
     {
         //https://202psj.tistory.com/1296
         string path = Path.Combine(imagePath);
@@ -129,7 +260,7 @@ public class UiCellView : MonoBehaviour
             return null;
         }
 
-    }
+    } 
 }
 //string path = Path.Combine(imagePath);
 

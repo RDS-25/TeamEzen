@@ -5,10 +5,12 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.IO;
 using UnityEngine.UI;
+using TMPro;
 //using ItemParameter;
 public class ItemDatamanager : MonoBehaviour
 {//제이슨 파일 가져와서 배열로
     public GameObject Content;//컴포넌트 배치
+    public SlotManager slotManager;    
     public static readonly ItemDatamanager instance = new ItemDatamanager();
     string _strInvenItemPath;//경로
     string HaveInvenItem;//파일이름   
@@ -17,7 +19,7 @@ public class ItemDatamanager : MonoBehaviour
     public EquipData[] EquipDatas;//100~
     public GemStoneData[] GemStoneDatas;//200~
     public MaterialData[] MaterialDatas;//300~
-    public SlotManager slotManager;
+    
 
     //public UiCellView cellView;
     Dictionary<string, string> InItem = new Dictionary<string, string>();
@@ -40,13 +42,16 @@ public class ItemDatamanager : MonoBehaviour
         InItem = GameManager.instance.DataRead(_strInvenItemPath + HaveInvenItem);
         InitInven();
         CreateAll();
+        
         GameManager.instance.objectFactory.ItemSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB,
                                                                         AllItemId.Count);
-        slotManager.SetSlot(GameManager.instance.objectFactory.ItemSlotFactory.listPool, // 인벤토리에 표시할 슬롯 이미지 (전체 개수만큼)
-                            GameManager.instance.objectFactory.ItemObjectFactory.listPool, // Uicellview 정보 담겨있는 리스트(전체 개수만큼)
+        slotManager.SetSlot(GameManager.instance.objectFactory.ItemSlotFactory.listPool, // 인벤토리에 표시할 슬롯 이미지 (전체 개수만큼)  AllItemId
+                            GameManager.instance.objectFactory.ItemObjectFactory.listPool, // Uicellview 정보 담겨있는 리스트(전체 개수만큼)  
                             slotManager.SlotsInViewport,
                             SlotManager.OBJECT_TYPE.ITEM);
-        // 슬롯 getchild 해서 텍스트에 개수 표시해주기
+
+        // 슬롯 getchild 해서 텍스트에 개수 표시해주기>>슬롯에 표시된 아이템 순번과 정보담긴 프리팹의 순번이 같음
+        CountSetUp();
 
         GetComponent<SlotManager>().SetButtonClickedEvent();
     }
@@ -55,13 +60,13 @@ public class ItemDatamanager : MonoBehaviour
 
         if (GameManager.instance.CheckExist(_strInvenItemPath, HaveInvenItem))
         {//있을때
-            ReLoadInven();
+            LoadInvenData();
         }
         //없을때
         else
         {
             WriteData();//파일 만들기,파일에 모든 장비 갯수0개로 쓰기 함수 따로
-            ReLoadInven();
+            LoadInvenData();
         }
 
 
@@ -75,10 +80,10 @@ public class ItemDatamanager : MonoBehaviour
                 ItemId.Add(key);//>>아이디와 스크립터블의 아이디가 같으면 슬롯에 정보주기
         }
     }
-    public void ReLoadInven()
-    {
-        LoadInvenData();
-    }
+    //public void ReLoadInven()
+    //{
+    //    LoadInvenData();
+    //}
     public void CreateAll()
     {
         for (int j = 0; j < System.Enum.GetValues(typeof(ItemParameter.ItemType)).Length; j++)
@@ -112,17 +117,17 @@ public class ItemDatamanager : MonoBehaviour
             else if (idx == (int)ItemParameter.ItemType.EQUIPMENT)
             {
                 var data = EquipDatas[nKey % 100];
-                Item.GetComponent<UiCellView>().SetUp(data);
+                Item.GetComponent<UiCellView>().SetUp(data,InItem);
             }
             else if (idx == (int)ItemParameter.ItemType.GEMSTONE)
             {
                 var data = GemStoneDatas[nKey % 100];
-                Item.GetComponent<UiCellView>().SetUp(data);
+                Item.GetComponent<UiCellView>().SetUp(data,InItem);
             }
             else if (idx == (int)ItemParameter.ItemType.MATERIAL)
             {
                 var data = MaterialDatas[nKey % 100];
-                Item.GetComponent<UiCellView>().SetUp(data);
+                Item.GetComponent<UiCellView>().SetUp(data,InItem);
             }
 
             Items[idx].Add(Item);
@@ -204,17 +209,22 @@ public class ItemDatamanager : MonoBehaviour
         //}
         #endregion
     }
-    public void Haveitem()
+    public void CountSetUp()
     {
-
-        for (int i = 0; i < Content.transform.childCount; i++)
+        List<GameObject> Slot = GameManager.instance.objectFactory.ItemSlotFactory.listPool;
+        List<GameObject> ItemData = GameManager.instance.objectFactory.ItemObjectFactory.listPool;
+        for (int i = 0; i < Slot.Count; i++)
         {
-            GameObject objSlot = Content.transform.GetChild(i).gameObject;
-            if (ItemId.Contains(objSlot.GetComponent<UiCellView>().ID.ToString()) == true)
+            if (Slot[i].activeSelf && ItemData[i].GetComponent<UiCellView>().COUNT != 0)
             {
-                objSlot.GetComponentInChildren<Image>().enabled = true;
+                Slot[i].GetComponentInChildren<TMP_Text>().text = ItemData[i].GetComponent<UiCellView>().COUNT.ToString();
             }
         }
+    }
+    public void HaveitemList()
+    {
+        
+       
     }
     public void ChangeTab()
     {
@@ -333,6 +343,7 @@ public class ItemDatamanager : MonoBehaviour
     }
     public void ShowItemData(int index)
     {
+        //if()
         //if (int.Parse(ItemId[index]) / 100 == 2)
         //    // gem일때
 
@@ -362,3 +373,14 @@ public class ItemDatamanager : MonoBehaviour
     }
 
 }
+//public void Haveitem()
+//{
+//    for (int i = 0; i < Content.transform.childCount; i++)
+//    {
+//        GameObject objSlot = Content.transform.GetChild(i).gameObject;
+//        if (ItemId.Contains(objSlot.GetComponent<UiCellView>().ID.ToString()) == true)
+//        {
+//            objSlot.GetComponentInChildren<Image>().enabled = true;
+//        }
+//    }
+//}
