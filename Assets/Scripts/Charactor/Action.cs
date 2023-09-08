@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Action : MonoBehaviour
 {
@@ -11,15 +12,14 @@ public class Action : MonoBehaviour
         Action,
         Cancel
     }
-    Motion motion;
-    //기본 상태 
-    public bool bIsIdle = true;
+    public Motion motion;
+   
     //스킬 취소 상태 여부 
     public bool bIsCancel =false;
 
     public GameObject gRangeIndicator; // 범위 표시기 오브젝트를 할당합니다.
     public GameObject gMaxRangeIndicator; // 최대 사거리 표시기 오브젝트를 할당합니다.
-    public GameObject gSkillCancel;
+    public GameObject gSkillCancel; 
     public float fSkillRange = 5f; // 스킬 사거리를 설정합니다.
     public float fMaxSkillRange = 10f; // 스킬의 최대 사거리를 설정합니다.
 
@@ -27,12 +27,12 @@ public class Action : MonoBehaviour
     //일시 정지 할때 멈추기 
     public bool bIsStop =false;
    
-
-
+    
     Vector3 Vmove;
 
-    public VariableJoystick joystick;
-   
+    public VariableJoystick BasicSkill;
+
+
     Animator ani;
     public GameObject gBullet;
     public Transform tBulletpos;
@@ -44,13 +44,17 @@ public class Action : MonoBehaviour
     public float targetingRange;
     //마지막 본 방향
     public Vector3 lastJoystickDirection;
+  
+
 
     void Start()
     {
         ani = GetComponent<Animator>();
         stat = GetComponent<Stat>();
         targetingRange = stat.fDefaultRange;
-      
+
+  
+
         // 최대 사거리 표시기 크기 설정
         gMaxRangeIndicator.transform.localScale = new Vector3(fMaxSkillRange, gMaxRangeIndicator.transform.localScale.y, fMaxSkillRange);
     }
@@ -84,13 +88,13 @@ public class Action : MonoBehaviour
         }
 
 
-        SkillFunction();
-      
-        
+
+
+
     }
 
    
-    void SkillFunction() {
+    void SkillFunction(VariableJoystick joystick) {
 
         //조이스틱 벡터
         Vector3 joystickDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
@@ -99,63 +103,49 @@ public class Action : MonoBehaviour
         if (joystickDirection.magnitude > 0.1f)
         {
             lastJoystickDirection = joystickDirection;
+
             //Debug.Log(lastJoystickDirection);
             // 스킬 범위 표시
             gRangeIndicator.transform.position = transform.position + joystickDirection * 5;//5는 스킬 범위로 
 
             gRangeIndicator.SetActive(true); //스킬범위
             gMaxRangeIndicator.SetActive(true); //스킬 사거리
-            gSkillCancel.SetActive(true);
+            //gSkillCancel.SetActive(true);
+            joystick.transform.GetChild(1).gameObject.SetActive(true);
+
+            
+            if(bIsCancel)
+            {
+                motion = Motion.Cancel;
+            }
+            else {
+                motion = Motion.Action;
+               
+            }
+         
+          
         }
 
         if (joystickDirection.magnitude <= 0.1f) {
             gRangeIndicator.SetActive(false);
             gMaxRangeIndicator.SetActive(false);
-            gSkillCancel.SetActive(false);
-
-        }
-        /*
-        if (bIsCancel)
-        {
-            if (joystickDirection.magnitude <= 0.1f)
+            //gSkillCancel.SetActive(false);
+            joystick.transform.GetChild(1).gameObject.SetActive(false);
+            if (motion == Motion.Cancel)
             {
-                gRangeIndicator.SetActive(false);
-                gMaxRangeIndicator.SetActive(false);
-                gSkillCancel.SetActive(false);
-                lastJoystickDirection = Vector3.zero;
                 Debug.Log("스킬 실행 취소 ");
-                bIsIdle = true;
+                motion = Motion.Idle;
                 bIsCancel = false;
             }
-          
-        } 
-        else if (!bIsCancel&& bIsIdle)
-        { 
-            if (joystickDirection.magnitude <= 0.1f)
-            { 
-                gRangeIndicator.SetActive(false);
-                gMaxRangeIndicator.SetActive(false);
-                gSkillCancel.SetActive(false);
-                
-               
-                Debug.Log("스킬실행");
+            else if (motion == Motion.Action)
+            {
                 Vector3 targetPosition = transform.position + lastJoystickDirection;
-                   
                 transform.LookAt(targetPosition);
-
-                //스킬 실행
-
-                //스킬 발사 기능 구현 
-                // 이펙트 펙토리에서 바로 받아서 사용
-                
-
-
-
-              
-                lastJoystickDirection = Vector3.zero;
-
+                Debug.Log("스킬  실행");
+                motion = Motion.Idle;
             }
-        }*/
+        }
+    
     }
 
 
@@ -250,11 +240,12 @@ public class Action : MonoBehaviour
     //이벤트 트리거에서 사용
     public void onCancelEnter() {
         Debug.Log("onCancelEnter 실행");
-        motion=Motion.Cancel;
+        bIsCancel = true;
+       
     }
     public void onCancelExit() {
         Debug.Log("onCancelExit 실행 ");
-        motion = Motion.Idle;
+        bIsCancel = false;
 
     }
     
