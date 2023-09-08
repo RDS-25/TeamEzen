@@ -22,14 +22,14 @@ public class GameManager : MonoBehaviour
     public StageParams.STAGE_TYPE stageType = StageParams.STAGE_TYPE.NONE;
 
     public List<GameObject> listCurCharacters = new();
-
-    public List<int> listCurCharId = new();
+    public GameObject gFirstChar = null;
+    public GameObject gSecondChar = null;
+    public GameObject gThirdChar = null;
 
     public bool bTargetingDistance { get { return _bTargetingDistance; } set { _bTargetingDistance = value; } }
     public float fFirstCharacterId { get { return _fFirstCharacterId; } set { _fFirstCharacterId = value; } }
     public float fSecondCharacterId { get { return _fSecondCharacterId; } set { _fSecondCharacterId = value; } }
     public float fThirdCharacterId { get { return _fThirdCharacterId; } set { _fThirdCharacterId = value; } }
-
 
     public ObjectFactory objectFactory = new ObjectFactory();
 
@@ -40,63 +40,83 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-        else if(instance != this)
+        else if (instance != this)
         {
             Destroy(gameObject);
             return;
         }
         DontDestroyOnLoad(gameObject);
         #endregion
-        FolderInit();
+
         Init();
         objectFactory.InitFactory();
         objectFactory.SelectCharacterInit();
     }
-    void FolderInit()
+    private void FolderInit()
     {
-        if (!FolderExists("Assets/Resources/" + FolderPath.PREFABS))
-            CreateFoler("Assets/Resources/" + FolderPath.PREFABS);
+        if (!FolderExists(FolderPath.MAIN_ROOT))
+            CreateFoler(FolderPath.MAIN_ROOT);
         if (!FolderExists(FolderPath.PARAMS))
             CreateFoler(FolderPath.PARAMS);
-    }
 
-    // Initialize
+        if (!FolderExists(FolderPath.PARAMS_GAMEMANAGER))
+            CreateFoler(FolderPath.PARAMS_GAMEMANAGER);
+        if (!FolderExists(FolderPath.PARAMS_GRAPHIC))
+            CreateFoler(FolderPath.PARAMS_GRAPHIC);
+        if (!FolderExists(FolderPath.PARAMS_SOUND))
+            CreateFoler(FolderPath.PARAMS_SOUND);
+
+        if (!FolderExists(FolderPath.PARAMS_SKILL))
+            CreateFoler(FolderPath.PARAMS_SKILL);
+        if (!FolderExists(FolderPath.PARAMS_ACTIVE_SKILL))
+            CreateFoler(FolderPath.PARAMS_ACTIVE_SKILL);
+        if (!FolderExists(FolderPath.PARAMS_PASSIVE_SKILL))
+            CreateFoler(FolderPath.PARAMS_PASSIVE_SKILL);
+        if (!FolderExists(FolderPath.PARAMS_ULTIMATE_SKILL))
+            CreateFoler(FolderPath.PARAMS_ULTIMATE_SKILL);
+
+        if (!FolderExists(FolderPath.PARAMS_CHARACTER))
+            CreateFoler(FolderPath.PARAMS_CHARACTER);
+        if (!FolderExists(FolderPath.PARAMS_MONSTER))
+            CreateFoler(FolderPath.PARAMS_MONSTER);
+
+        if (!FolderExists(FolderPath.PARAMS_ITEM))
+            CreateFoler(FolderPath.PARAMS_ITEM);
+        if (!FolderExists(FolderPath.PARAMS_ITEM_COUNT))
+            CreateFoler(FolderPath.PARAMS_ITEM_COUNT);
+    }
     private void Init()
     {
-        // 폴더경로
+        FolderInit();
         _strGameManagerFolderPath = FolderPath.PARAMS_GAMEMANAGER;
-        // 파일경로
         _strGameManagerFileName = FileName.STR_GAME_MANAGER;
-        // 파일이 이미있다면 그파일 데이터 읽기, 아니면 초기값 설정
         if (GameManager.instance.CheckExist(_strGameManagerFolderPath, _strGameManagerFileName))
             ReadValues();
         else
+        {
             WriteValues();
-        SetFirstChar(fFirstCharacterId);
-        SetSecondChar(fSecondCharacterId);
-        SetThirdChar(fThirdCharacterId);
-        SetTargeting(bTargetingDistance);
-        // 여러 데이터를 긁어와야대는데?
-        // 게임매니저 파람스 필요
-
-        // 아직 잘 모르겠음
+            ReadValues();
+        }
+        SetCharObj(gFirstChar, _fFirstCharacterId);
+        SetCharObj(gSecondChar, _fSecondCharacterId);
+        SetCharObj(gThirdChar, _fThirdCharacterId);
     }
 
     private void ReadValues()
     {
         Dictionary<string, string> dictTemp = DataRead(FolderPath.PARAMS_GAMEMANAGER + FileName.STR_GAME_MANAGER);
-        bTargetingDistance  = Convert.ToBoolean(dictTemp["TargetingDistance"]);
-        fFirstCharacterId   =  float.Parse(dictTemp["FirstCharacterId"]);
-        fSecondCharacterId  = float.Parse(dictTemp["SecondCharacterId"]);
-        fThirdCharacterId   = float.Parse(dictTemp["ThirdCharacterId"]);
+        bTargetingDistance = Convert.ToBoolean(dictTemp["TargetingDistance"]);
+        fFirstCharacterId = float.Parse(dictTemp["FirstCharacterId"]);
+        fSecondCharacterId = float.Parse(dictTemp["SecondCharacterId"]);
+        fThirdCharacterId = float.Parse(dictTemp["ThirdCharacterId"]);
     }
     private void WriteValues()
     {
         Dictionary<string, string> dictTemp = new Dictionary<string, string>();
-        dictTemp.Add("TargetingDistance",   bTargetingDistance.ToString());
-        dictTemp.Add("FirstCharacterId",    fFirstCharacterId.ToString());
-        dictTemp.Add("SecondCharacterId",   fSecondCharacterId.ToString());
-        dictTemp.Add("ThirdCharacterId",    fThirdCharacterId.ToString());
+        dictTemp.Add("TargetingDistance", bTargetingDistance.ToString());
+        dictTemp.Add("FirstCharacterId", fFirstCharacterId.ToString());
+        dictTemp.Add("SecondCharacterId", fSecondCharacterId.ToString());
+        dictTemp.Add("ThirdCharacterId", fThirdCharacterId.ToString());
         DataWrite(FolderPath.PARAMS_GAMEMANAGER + FileName.STR_GAME_MANAGER, dictTemp);
     }
     public void SetTargeting(bool bTargeting)
@@ -104,22 +124,34 @@ public class GameManager : MonoBehaviour
         bTargetingDistance = bTargeting;
         WriteValues();
     }
-    public void SetFirstChar(float fId)
+    public void SetFirstCharId(float fId)
     {
         fFirstCharacterId = fId;
         WriteValues();
     }
-    public void SetSecondChar(float fId)
+    public void SetSecondCharId(float fId)
     {
         fSecondCharacterId = fId;
         WriteValues();
     }
-    public void SetThirdChar(float fId)
+    public void SetThirdCharId(float fId)
     {
         fThirdCharacterId = fId;
         WriteValues();
     }
-
+    private void SetCharObj(GameObject gCharacter, float nCharid)
+    {
+        if(nCharid != -1)
+        {
+            foreach(GameObject obj in objectFactory.ownCharFactory.listPool)
+            {
+                if(obj.GetComponent<Stat>().fId == nCharid)
+                {
+                    gCharacter = obj;
+                }
+            }
+        }
+    }
     // DataRead
     // 데이터 주소 받아와서 그 주소의 json 파일을 Dictionary 형태로 데이터 반환
     public Dictionary<string, string> DataRead(string sFolderPathFileNameJson)
