@@ -40,7 +40,8 @@ public class StageManager : MonoBehaviour
     {
         print(GameManager.instance.stageType.ToString());
         //게임메니저에서 데이터 받아오기
-        player = GameManager.instance.stageFactory.characterFactory.listPool[0];
+        Charactors = GameManager.instance.objectFactory.characterFactory.listPool;
+        player = GameManager.instance.objectFactory.characterFactory.listPool[0];
         InitializeStage(GameManager.instance.stageType, player);
     }
 

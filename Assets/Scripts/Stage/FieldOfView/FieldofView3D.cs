@@ -137,7 +137,7 @@ public class FieldofView3D : MonoBehaviour
                 {
                     visibleTargets.Add(target);
                     target.gameObject.layer = LayerMask.NameToLayer("VisibleTarget");
-                    
+
                 }
             }
         }
@@ -165,7 +165,7 @@ public class FieldofView3D : MonoBehaviour
         }
         else
         {
-            return new ViewCastInfo(false, transform.position+dir*viewRadius, viewRadius,globalAngle);
+            return new ViewCastInfo(false, transform.position + dir * viewRadius, viewRadius, globalAngle);
         }
     }
 
