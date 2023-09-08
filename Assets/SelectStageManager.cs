@@ -6,11 +6,12 @@ using Params;
 public class SelectStageManager : MonoBehaviour
 {
     int nStageNum;
+    public Transform gSlots;
     public GameObject gOrganizingPanel;
     public Button[] StageButtons;
     private void Start()
     {
-        StageButtons = GameObject.Find("StageNumPanel").GetComponentsInChildren<Button>();
+        StageButtons = gSlots.GetComponentsInChildren<Button>();
         for (int i = 0; i < StageButtons.Length; i++)
         {
             int buttonIndex = i;

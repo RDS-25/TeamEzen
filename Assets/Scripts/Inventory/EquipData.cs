@@ -8,7 +8,7 @@ public class EquipData : ScriptableObject
 {
     [SerializeField]
     ItemParameter.ItemType itemType = ItemParameter.ItemType.EQUIPMENT;
-    public float fId = 1;
+    public float fId;
     public string strName;//장비 이름
     public string strDiscription;//장비 설명
     public string strImage;//아이템 이미지 주소
@@ -18,4 +18,5 @@ public class EquipData : ScriptableObject
     public float fSpeed;
     public float fCrtical;
     public float fCriticalDamage;
+    public float fCount;
 }

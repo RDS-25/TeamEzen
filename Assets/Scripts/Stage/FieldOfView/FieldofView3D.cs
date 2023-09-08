@@ -159,7 +159,7 @@ public class FieldofView3D : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, dir, out hit, viewRadius, obstacleMask))
         {
-            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("VisibleObstacle")) ;
+            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("VisibleObstacle"));
             //hit.collider.gameObject.layer = LayerMask.NameToLayer("VisibleObstacle");
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
         }

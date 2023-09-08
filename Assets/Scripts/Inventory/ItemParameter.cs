@@ -6,7 +6,7 @@ using System;
 namespace ItemParameter
 {//   - 식별자(ID),상승량(스킬 계수),장비들의 기본 수치(캐릭터 파라미터 상승)
     [Serializable]
-    public enum ItemType { EQUIPMENT,GEMSTONE,PROFESSIONAL,MATERIAL}
+    public enum ItemType { PROFESSIONAL,EQUIPMENT, GEMSTONE,MATERIAL}
    [Serializable]
     public class ProfessionalEquipParams
     {//전용 장비가 올려줄수 있는 캐릭터의 파라미터값
@@ -20,7 +20,7 @@ namespace ItemParameter
         public float fDamage;
         public float fDefense;
         public float fSpeed;
-        public float fCrtical;
+        public float fCrticalper;
         public float fCriticalDamage;
     }
     [Serializable]
@@ -35,9 +35,9 @@ namespace ItemParameter
         public float fDamage;
         public float fDefense;
         public float fSpeed;
-        public float fCrtical;
+        public float fCrticalper;
         public float fCriticalDamage;
-
+        public float fCount;//갯수
     }
     [Serializable]
     public class GemstoneParams
@@ -49,7 +49,7 @@ namespace ItemParameter
         public string strImage;//아이템 이미지 주소
         public float fDropRate;//보석 드랍율
         public float fUpDamage;//보석이 올려주는 스킬 대미지비율
-        public float fNumber;//갯수
+        public float fCount;//갯수
         
     }
     
@@ -63,7 +63,7 @@ namespace ItemParameter
         public string strImage;//아이템 이미지 주소
         public float fDropRate;
         public float fExp;
-        public float fNumber;//갯수
+        public float fCount;//갯수
         
     }
 }

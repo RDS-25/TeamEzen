@@ -57,7 +57,7 @@ public class SkillPanelUi : MonoBehaviour
     }
     void Init()
     {
-        curCharStat = charactorUIManager.OwnChar[charactorUIManager.curCharID].GetComponent<Stat>();
+        curCharStat = GameManager.instance.objectFactory.ownCharFactory.listPool[charactorUIManager.curCharID].GetComponent<Stat>();
 
         fPassiveSkillId = curCharStat.PassiveSkill;
         fActiveSkillId = curCharStat.ActiveSkill;
@@ -80,39 +80,12 @@ public class SkillPanelUi : MonoBehaviour
         {
             if (mySkill[_STR_ID] == skillId.ToString())
             {
-                imageIcon.sprite = LoadAndSetSprite(mySkill[_STR_IMAGE_URL]);
+                imageIcon.sprite = GameManager.instance.LoadAndSetSprite(mySkill[_STR_IMAGE_URL]);
                 textLevel.text = mySkill[_STR_LEVEL];
                 textName.text = "Lv. " + mySkill[_STR_NAME];
                 textDescription.text = mySkill[_STR_DESCRIPT];
                 break;
             }
-        }
-    }
-
-
-    private Sprite LoadAndSetSprite(string imagePath)
-    {
-        string path = Path.Combine(imagePath);
-
-        Debug.Log("°æ·Î´Â" + path);
-        if (File.Exists(path))
-        {
-            byte[] imageBytes = File.ReadAllBytes(path);
-            Texture2D texture = new Texture2D(2, 2);
-            if (texture.LoadImage(imageBytes))
-            {
-                return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            }
-            else
-            {
-                Debug.LogError("Failed to load image: " + imagePath);
-                return null;
-            }
-        }
-        else
-        {
-            Debug.LogError("Image file not found: " + path);
-            return null;
         }
     }
 }

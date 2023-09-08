@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: be20b1f104efa4b4da93203be6a645da
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gOranaizngPanel: {instanceID: 0}
+  - gSlotPrefab: {fileID: -927199367670048503, guid: e7f9062685a4c3c44a1bbecc3992d83c, type: 3}
+  - SlotViewportCharacters: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

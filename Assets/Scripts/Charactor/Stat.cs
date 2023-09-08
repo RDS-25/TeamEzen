@@ -5,14 +5,11 @@ using UnityEngine.UI;
 using Params;
 
 public class Stat : StatParams
-{
-    public float objectId;
+{ 
     public CharacterData stat;
 
     //장비 오브젝트 정보 넣기 스크립터블 오브젝트로
-    
    
-
 	// 기능들구현  공격 
 	private string _sFolderPath;
     private string _sFileName;
@@ -20,36 +17,34 @@ public class Stat : StatParams
 
 	private void OnDisable()
 	{
-        objectId = stat.fId;
         if (fId != 0) {
             Debug.Log("이미 정보 들어감");
             return;
         }
         _sFolderPath = FolderPath.PARAMS_CHARACTER;
-        _sFileName = LoadParams(objectId);
+        _sFileName = gameObject.name;
         Init();
         // SpriteRenderer 컴포넌트 가져오기
         
     }
-    //오브젝트아이디
-    private string LoadParams(float id)
-    {
-        // 파일 이름이나 경로를 ID를 기반으로 생성하고 데이터를 불러오는 로직을 구현합니다.
-        // 예를 들어, 파일 이름을 "CharParams_" + id + ".json"으로 설정할 수 있습니다.
-        string fileName = "TESTChar" + id + ".json";
-        // 필요한 데이터를 불러오는 코드를 여기에 구현합니다.
-        return fileName;
-    }
+
 
     void Init()
 	{
         if(GameManager.instance.CheckExist(_sFolderPath, _sFileName))
         {
+            //있으면 그냥 읽기
+            //JSON->Stat 스크립트
             ReadParams();
 		}
 		else
 		{
+            //없으면 쓰고  스크립터블 - > JSON
             WriteParams();
+
+
+            //다시 읽기   JSON -> Stat 스크립트 
+            ReadParams();
         }
 	}
 
@@ -97,23 +92,6 @@ public class Stat : StatParams
         fUltimateGauge = float.Parse(dictTemp[CharPath.UITIMATEGAUGE]);
         bIsOwn = bool.Parse(dictTemp[CharPath.ISOWN]);
     }
-    /*private Image LoadAndSetSprite(string imagePath)
-    {
-        // Resources 폴더 내에 이미지 파일이 있어야 합니다.
-        Image loadedSprite = Resources.Load<Image>(imagePath);
-
-        if (loadedSprite != null)
-        {
-            // SpriteRenderer에 Sprite 설정
-          
-            return loadedSprite;
-        }
-        else
-        {
-            Debug.LogError("Sprite를 찾을 수 없습니다: " + imagePath);
-            return null;
-        }
-    }*/
 
     void WriteParams() {
         Dictionary<string, string> dicTemp = new();

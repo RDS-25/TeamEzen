@@ -29,8 +29,9 @@ public class FolderPath
     public const string PREFABS_CHARACTER       = PREFABS + "Characters/";
     public const string PREFABS_CHAR_SLOT       = PREFABS + "Slot/";
 
-    public const string PREFABS_MONSTER         = PREFABS + "Monsters/";
+    public const string PREFABS_ENEMY           = PREFABS + "Enemy/";
     public const string PREFABS_SKILL_EFFECT    = PREFABS + "SkillEffects/";
+    public const string PREFABS_BULLET          = PREFABS + "Bullets/";
 
     public const string PREFABS_STAGE_ROOM      = PREFABS + "StagePrefabs/";
 
@@ -45,6 +46,7 @@ public class FolderPath
     public const string SCRIPTABLE              = "ScriptableObjects/";
     public const string SCRIPTABLE_ROOM_POSITION= SCRIPTABLE + "RoomPosition/Episode";
     public const string SCRIPTABLE_STAGE_DATA   = SCRIPTABLE + "StageDefaultData/";
+    public const string SCRIPTABLE_CHAR_DATA    = SCRIPTABLE + "CharacterData/";
 
 
     public const string SPRITE                  = "Sprite/";
