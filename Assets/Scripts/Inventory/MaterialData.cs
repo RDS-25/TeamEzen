@@ -13,5 +13,5 @@ public class MaterialData : ScriptableObject
     public string strImage;//아이템 이미지 주소
     public float fDropRate;
     public float fExp;
-    public float fNumber;//갯수
+    public float fCount;//갯수
 }

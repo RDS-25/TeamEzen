@@ -20,7 +20,7 @@ namespace ItemParameter
         public float fDamage;
         public float fDefense;
         public float fSpeed;
-        public float fCrtical;
+        public float fCrticalper;
         public float fCriticalDamage;
     }
     [Serializable]
@@ -35,9 +35,9 @@ namespace ItemParameter
         public float fDamage;
         public float fDefense;
         public float fSpeed;
-        public float fCrtical;
+        public float fCrticalper;
         public float fCriticalDamage;
-
+        public float fCount;//갯수
     }
     [Serializable]
     public class GemstoneParams
@@ -49,7 +49,7 @@ namespace ItemParameter
         public string strImage;//아이템 이미지 주소
         public float fDropRate;//보석 드랍율
         public float fUpDamage;//보석이 올려주는 스킬 대미지비율
-        public float fNumber;//갯수
+        public float fCount;//갯수
         
     }
     
@@ -63,7 +63,7 @@ namespace ItemParameter
         public string strImage;//아이템 이미지 주소
         public float fDropRate;
         public float fExp;
-        public float fNumber;//갯수
+        public float fCount;//갯수
         
     }
 }
