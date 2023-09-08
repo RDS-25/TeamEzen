@@ -242,9 +242,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: MouseDown, Assembly-CSharp
-          m_MethodName: onPointup
+        - m_Target: {fileID: 3955521184578160943}
+          m_TargetAssemblyTypeName: Action, Assembly-CSharp
+          m_MethodName: onCancelEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -257,7 +257,19 @@ MonoBehaviour:
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 3955521184578160943}
+          m_TargetAssemblyTypeName: Action, Assembly-CSharp
+          m_MethodName: onCancelExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1167924848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,15 +1938,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ee3a11d40ad204aa30c3e7c5ead955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCancel: 0
-  rangeIndicator: {fileID: 7326198064895138609}
-  maxRangeIndicator: {fileID: 7326198063222516143}
-  skillRange: 5
-  maxSkillRange: 10
-  isStop: 0
+  bIsCancel: 0
+  gRangeIndicator: {fileID: 7326198064895138609}
+  gMaxRangeIndicator: {fileID: 7326198063222516143}
+  gSkillCancel: {fileID: 794936627}
+  fSkillRange: 5
+  fMaxSkillRange: 10
+  bIsStop: 0
   joystick: {fileID: 1966336479919005684}
-  Bullet: {fileID: 1968102902166113412, guid: 4498608dc92bce447a8f23c695b62199, type: 3}
-  Bulletpos: {fileID: 1167924849}
+  gBullet: {fileID: 1968102902166113412, guid: 4498608dc92bce447a8f23c695b62199, type: 3}
+  tBulletpos: {fileID: 1167924849}
   isEntries: 1
   targetingRange: 2
   lastJoystickDirection: {x: 0, y: 0, z: 0}
@@ -5216,24 +5229,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
   m_PrefabInstance: {fileID: 3356782985566517571}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1966336480407347596 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3881087804030458063, guid: ec536a7718376554185e4a856d5ae230, type: 3}
-  m_PrefabInstance: {fileID: 3356782985566517571}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1219100009
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1966336480407347596}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3356782986806188505
 PrefabInstance:
   m_ObjectHideFlags: 0

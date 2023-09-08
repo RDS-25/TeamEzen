@@ -1470,10 +1470,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 794936636, guid: 3877677c534d65e47941cfcfebeb4453, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1272251565283588417, guid: 3877677c534d65e47941cfcfebeb4453, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -1518,9 +1514,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1966336479919005684, guid: 3877677c534d65e47941cfcfebeb4453, type: 3}
+      propertyPath: deadZone
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966336479919005684, guid: 3877677c534d65e47941cfcfebeb4453, type: 3}
+      propertyPath: joystickType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2881366798198852434, guid: 3877677c534d65e47941cfcfebeb4453, type: 3}
       propertyPath: m_Name
       value: Char_AR_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955521184578160943, guid: 3877677c534d65e47941cfcfebeb4453, type: 3}
+      propertyPath: bIsCancel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6522700166547342407, guid: 3877677c534d65e47941cfcfebeb4453, type: 3}
       propertyPath: m_AnchorMax.x
