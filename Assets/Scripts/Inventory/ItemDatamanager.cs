@@ -10,6 +10,7 @@ using TMPro;
 public class ItemDatamanager : MonoBehaviour
 {//제이슨 파일 가져와서 배열로
     public GameObject Content;//컴포넌트 배치
+    public GameObject ShowData;
     public SlotManager slotManager;    
     public static readonly ItemDatamanager instance = new ItemDatamanager();
     string _strInvenItemPath;//경로
@@ -19,21 +20,20 @@ public class ItemDatamanager : MonoBehaviour
     public EquipData[] EquipDatas;//100~
     public GemStoneData[] GemStoneDatas;//200~
     public MaterialData[] MaterialDatas;//300~
-    
 
-    //public UiCellView cellView;
     Dictionary<string, string> InItem = new Dictionary<string, string>();
     List<string> ItemId = new List<string>();//현재 존재하는 아이템 아이디 리스트
     List<string> AllItemId = new List<string>();//모든 아이템 아이디리스트    
     List<List<GameObject>> Items = new List<List<GameObject>>();
 
+
     private void OnEnable()
     {
-        SlotManager.OnButtonClick += ShowItemData;
+        SlotManager.OnButtonClick += OpenDataPan;
     }
     private void OnDisable()
     {
-        SlotManager.OnButtonClick -= ShowItemData;
+        SlotManager.OnButtonClick -= OpenDataPan;
     }
     private void Start()
     {
@@ -51,8 +51,7 @@ public class ItemDatamanager : MonoBehaviour
                             SlotManager.OBJECT_TYPE.ITEM);
 
         // 슬롯 getchild 해서 텍스트에 개수 표시해주기>>슬롯에 표시된 아이템 순번과 정보담긴 프리팹의 순번이 같음
-        CountSetUp();
-
+        CountSetUp();        
         GetComponent<SlotManager>().SetButtonClickedEvent();
     }
     public void InitInven()
@@ -221,15 +220,40 @@ public class ItemDatamanager : MonoBehaviour
             }
         }
     }
-    public void HaveitemList()
-    {
-        
-       
+   
+    public void ChangeEquipTab()
+    {//생성을 새로 한다
+        slotManager.SetSlot(GameManager.instance.objectFactory.ItemSlotFactory.listPool, // 인벤토리에 표시할 슬롯 이미지 (전체 개수만큼)  AllItemId
+                            GameManager.instance.objectFactory.ItemObjectFactory.listPool, // Uicellview 정보 담겨있는 리스트(전체 개수만큼)  
+                            slotManager.SlotsInViewport,
+                            SlotManager.OBJECT_TYPE.ITEM);
+        List<GameObject> Slot = GameManager.instance.objectFactory.ItemSlotFactory.listPool;
+        List<GameObject> ItemData = GameManager.instance.objectFactory.ItemObjectFactory.listPool;
+        for (int i = 0; i < Slot.Count; i++)
+        {
+            if (ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.EQUIPMENT || ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.PROFESSIONAL)
+            {
+                Slot[i].gameObject.SetActive(true);
+            }                
+            else
+                Slot[i].gameObject.SetActive(false);
+           
+            
+        }
     }
-    public void ChangeTab()
+    public void ChangeGemStoneTab()
     {
 
     }
+    public void ChangeMaterialTab()
+    {
+
+    }
+    public void ChangeTotalTab()
+    {
+
+    }
+
     #region CreatItem()
     //public void CreateItem()
     //{//처음0번대만 만들어지고 뒷번호들 안만들어짐? 안만들어짐
@@ -341,27 +365,13 @@ public class ItemDatamanager : MonoBehaviour
         GameManager.instance.DataWrite(_strInvenItemPath + HaveInvenItem, dictTemp);
 
     }
-    public void ShowItemData(int index)
+   
+    public void OpenDataPan(int index)
     {
-        //if()
-        //if (int.Parse(ItemId[index]) / 100 == 2)
-        //    // gem일때
-
-        //if (int.Parse(ItemId[index]) / 100 == 3)
-            // material일때
-
-
-                //Debug.Log(equip.fId);
-                //TextAsset asset= Resources.Load<TextAsset>("InventoryTest/Equip_Data");
-                //string json = asset.text;
-                ////역직렬화
-                //EquipData[] arr= JsonConvert.DeserializeObject<EquipData[]>(json);
-                ////foreach for 돌리며 drc에 추가
-
-                ////this.dicEquipData= arr.ToDictionary(x => x.EquipParams.fId);
-                //Debug.Log("load");
-                //Debug.LogFormat("item data count:{0}",this.dicEquipData.Count);
+        ShowData.SetActive(true);
     }
+      
+    
     public EquipData GetIEquipData(float fId)
     {
         //if (this.dicEquipData.ContainsKey(fId))

@@ -20,6 +20,21 @@ public class UiCellView : MonoBehaviour
     MaterialParams materialParams = new MaterialParams();
     private ItemParameter.ItemType itemType = ItemType.EQUIPMENT;
 
+
+    public ItemType TYPE
+    {
+        get
+        {
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return ItemType.EQUIPMENT;
+            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+                return ItemType.GEMSTONE;
+            else if (itemType == ItemParameter.ItemType.MATERIAL)
+                return ItemType.MATERIAL;
+
+            return ItemType.PROFESSIONAL;
+        }
+    }
     public float ID
     {
         get
@@ -212,7 +227,7 @@ public class UiCellView : MonoBehaviour
         equipParams.fCrticalper = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;
         equipParams.fCount= int.Parse(dictItemCount[equipParams.fId.ToString()]);
-        Debug.Log(equipParams.fCount);
+        
     }
     public void SetUp(GemStoneData gemStoneData, Dictionary<string,string> dictItemCount)
     {
