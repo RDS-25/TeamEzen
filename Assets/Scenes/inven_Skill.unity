@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1346,7 +1346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &210172059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1962,7 +1962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &310162666
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3406,7 +3406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &758787290
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5797,6 +5797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Content: {fileID: 7789847661628647351}
+  slotManager: {fileID: 2131947869}
   ItemPre: {fileID: 7871255568270053368, guid: a49c7381e49466c499547634d23cbe31, type: 3}
   ProfessionalDatas:
   - {fileID: 11400000, guid: c0ea2d2fdabf86047b1dd7f320330415, type: 2}
@@ -5829,7 +5830,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 28c2e26de977dab40875b6e02ea953aa, type: 2}
   - {fileID: 11400000, guid: 56b86534a7303a54e96d3b5ce554a987, type: 2}
   - {fileID: 11400000, guid: 4ace81867d3003f4eae549a0915bb1ac, type: 2}
-  slotManager: {fileID: 2131947869}
 --- !u!4 &2131947868
 Transform:
   m_ObjectHideFlags: 0

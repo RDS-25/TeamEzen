@@ -152,7 +152,9 @@ public class UiCellView : MonoBehaviour
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.GEMSTONE)
+            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                return equipParams.fCount;
+            else if(itemType == ItemParameter.ItemType.GEMSTONE)
                 return gemstoneParams.fCount;
             else
                 return materialParams.fCount;
@@ -196,7 +198,7 @@ public class UiCellView : MonoBehaviour
         professionalParams.fCrticalper = professionalData.fCrtical;
         professionalParams.fCriticalDamage = professionalData.fCriticalDamage;
     }
-    public void SetUp(EquipData equipData)
+    public void SetUp(EquipData equipData, Dictionary<string, string> dictItemCount)
     {
         itemType = ItemType.EQUIPMENT;
         equipParams.fId = equipData.fId;
@@ -208,9 +210,11 @@ public class UiCellView : MonoBehaviour
         equipParams.fDefense = equipData.fDefense;
         equipParams.fSpeed = equipData.fSpeed;
         equipParams.fCrticalper = equipData.fCrtical;
-        equipParams.fCriticalDamage = equipData.fCriticalDamage;        
+        equipParams.fCriticalDamage = equipData.fCriticalDamage;
+        equipParams.fCount= int.Parse(dictItemCount[equipParams.fId.ToString()]);
+        Debug.Log(equipParams.fCount);
     }
-    public void SetUp(GemStoneData gemStoneData)
+    public void SetUp(GemStoneData gemStoneData, Dictionary<string,string> dictItemCount)
     {
         itemType = ItemType.GEMSTONE;
         gemstoneParams.fId = gemStoneData.fId;
@@ -219,9 +223,9 @@ public class UiCellView : MonoBehaviour
         gemstoneParams.strImage = gemStoneData.strImage;
         gemstoneParams.fDropRate = gemStoneData.fDropRate;
         gemstoneParams.fUpDamage = gemStoneData.fUpDamage;
-        gemstoneParams.fCount = gemStoneData.fCount;        
+        gemstoneParams.fCount = int.Parse(dictItemCount[gemstoneParams.fId.ToString()]);
     }
-    public void SetUp(MaterialData materialData)
+    public void SetUp(MaterialData materialData, Dictionary<string, string> dictItemCount)
     {
         itemType = ItemType.MATERIAL;
         materialParams.fId = materialData.fId;
@@ -230,7 +234,7 @@ public class UiCellView : MonoBehaviour
         materialParams.strImage = materialData.strImage;
         materialParams.fDropRate = materialData.fDropRate;
         materialParams.fExp = materialData.fExp;
-        materialParams.fCount = materialData.fCount;        
+        materialParams.fCount = int.Parse(dictItemCount[materialParams.fId.ToString()]);        
     }
     Sprite SetImage(string imagePath)//보고 따라함 안씀
     {

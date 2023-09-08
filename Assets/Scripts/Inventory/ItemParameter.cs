@@ -37,7 +37,7 @@ namespace ItemParameter
         public float fSpeed;
         public float fCrticalper;
         public float fCriticalDamage;
-
+        public float fCount;//°¹¼ö
     }
     [Serializable]
     public class GemstoneParams
