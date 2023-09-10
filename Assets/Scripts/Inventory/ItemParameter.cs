@@ -22,6 +22,7 @@ namespace ItemParameter
         public float fSpeed;
         public float fCrticalper;
         public float fCriticalDamage;
+        public float fCount;
     }
     [Serializable]
     public class EquipParams

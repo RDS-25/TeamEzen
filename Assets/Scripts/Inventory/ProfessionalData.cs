@@ -18,4 +18,5 @@ public class ProfessionalData : ScriptableObject
     public float fSpeed;
     public float fCrtical;
     public float fCriticalDamage;
+    public float fCount;
 }

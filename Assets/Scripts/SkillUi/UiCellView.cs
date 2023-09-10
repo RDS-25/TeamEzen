@@ -64,7 +64,7 @@ public class UiCellView : MonoBehaviour
 
         }
     }
-    public string DISCRIPTIPN
+    public string DISCRIPTION
     {
         get
         {
