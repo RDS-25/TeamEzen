@@ -43,6 +43,8 @@ public class StageManager : MonoBehaviour
         Charactors = GameManager.instance.arrCurCharacters;
         player = Charactors[0];
         player.SetActive(true);
+        //Audio 변경해야함
+        AudioManager.instance.PlayBackgroundSound(GetComponent<AudioSource>(),AudioName.STR_MAIN_BACKGROUND);
         InitializeStage(GameManager.instance.stageType, player);
     }
 
