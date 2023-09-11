@@ -30,6 +30,14 @@ public class OrganizingUiManager : MonoBehaviour
     void Start()
     {
         gOranaizngPanel.SetActive(false);
+        for(int i = 0; i < buttons.Length; i++)
+        {
+            if(GameManager.instance.fCharid[i] != -1)
+            {
+                buttons[i].GetComponent<Image>().sprite
+                    = GameManager.instance.LoadAndSetSprite(GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
+            }
+        }
     }
     public void ButtonLoadStage()
     {
@@ -55,7 +63,7 @@ public class OrganizingUiManager : MonoBehaviour
                 GameManager.instance.arrCurCharacters[i] = null;
                 GameManager.instance.fCharid[i] = -1;
                 buttons[i].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/ SkillImagetest.png");
+                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
                 return;
             }
         }

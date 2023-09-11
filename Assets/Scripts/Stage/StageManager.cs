@@ -12,7 +12,7 @@ public class StageManager : MonoBehaviour
     private StageParams.STAGE_TYPE _stCurrentStageType = StageParams.STAGE_TYPE.NONE;
     public delegate bool EpisodeBtnClickedDelegate(StageParams.STAGE_TYPE staygeType, GameObject target = null);
     public static event EpisodeBtnClickedDelegate EpisodeBtnClicked;
-    public List<GameObject> Charactors;
+    public GameObject[] Charactors;
     //임시로 넣어 놓은 플레이어
     public GameObject player;
 
@@ -40,8 +40,9 @@ public class StageManager : MonoBehaviour
     {
         print(GameManager.instance.stageType.ToString());
         //게임메니저에서 데이터 받아오기
-        Charactors = GameManager.instance.objectFactory.characterFactory.listPool;
-        player = GameManager.instance.objectFactory.characterFactory.listPool[0];
+        Charactors = GameManager.instance.arrCurCharacters;
+        player = Charactors[0];
+        player.SetActive(true);
         InitializeStage(GameManager.instance.stageType, player);
     }
 
