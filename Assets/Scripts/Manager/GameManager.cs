@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
             WriteValues();
             ReadValues();
         }
+        SetTargeting(_bTargetingDistance);
         SetCharObj(gFirstChar, _fFirstCharacterId);
         SetCharObj(gSecondChar, _fSecondCharacterId);
         SetCharObj(gThirdChar, _fThirdCharacterId);
