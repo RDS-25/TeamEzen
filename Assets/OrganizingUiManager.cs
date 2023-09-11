@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class OrganizingUiManager : MonoBehaviour
 {
     public GameObject gOranaizngPanel;
+    public GameObject gSlotPanel;
 
     public SlotManager slotManager;
     public Transform gSlots;
+    public Button[] buttons;
     static int i = 0;
     private void OnEnable()
     {
@@ -38,6 +40,14 @@ public class OrganizingUiManager : MonoBehaviour
     {
         gOranaizngPanel.SetActive(false);
     }
+    public void ButtonSlotPanel()
+    {
+        gSlotPanel.SetActive(true);
+    }
+    public void ButtonBackToSelectChar()
+    {
+        gSlotPanel.SetActive(false);
+    }
     public void SelectChar(int index)
     {
         Organizing(index);
@@ -46,12 +56,6 @@ public class OrganizingUiManager : MonoBehaviour
         {
             i = 0;
         }
-        Debug.Log(GameManager.instance.fFirstCharacterId);
-        Debug.Log(GameManager.instance.gFirstChar);
-        Debug.Log(GameManager.instance.fSecondCharacterId);
-        Debug.Log(GameManager.instance.gSecondChar);
-        Debug.Log(GameManager.instance.fThirdCharacterId);
-        Debug.Log(GameManager.instance.gThirdChar);
     }
     private void SetCurCharList()
     {
