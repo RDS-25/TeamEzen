@@ -30,10 +30,17 @@ public class OrganizingUiManager : MonoBehaviour
     void Start()
     {
         gOranaizngPanel.SetActive(false);
+        for(int i = 0; i < buttons.Length; i++)
+        {
+            if(GameManager.instance.fCharid[i] != -1)
+            {
+                buttons[i].GetComponent<Image>().sprite
+                    = GameManager.instance.LoadAndSetSprite(GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
+            }
+        }
     }
     public void ButtonLoadStage()
     {
-
         LoadingSceneManager.LoadScene("StageScene");
     }
     public void ButtonBack()
@@ -55,10 +62,12 @@ public class OrganizingUiManager : MonoBehaviour
                 GameManager.instance.arrCurCharacters[i] = null;
                 GameManager.instance.fCharid[i] = -1;
                 buttons[i].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/ SkillImagetest.png");
+                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
+                
                 return;
             }
         }
+
         for (int i = 0; i < GameManager.instance.arrCurCharacters.Length; i++)
         {
             if(GameManager.instance.arrCurCharacters[i] == null)
@@ -69,8 +78,33 @@ public class OrganizingUiManager : MonoBehaviour
                     GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().fId);
                 buttons[i].GetComponent<Image>().sprite 
                     = GameManager.instance.LoadAndSetSprite(GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
-                return;
+                break;
             }
+        }
+
+        int emptyIndex = -1;
+
+        for (int i = 0; i < GameManager.instance.arrCurCharacters.Length - 1; i++)
+        {
+            if (GameManager.instance.arrCurCharacters[i] == null)
+            {
+                emptyIndex = i;
+                break;
+            }
+        }
+
+        if (emptyIndex != -1)
+        {
+            for (int i = emptyIndex; i < GameManager.instance.arrCurCharacters.Length - 1; i++)
+            {
+                GameManager.instance.arrCurCharacters[i] = GameManager.instance.arrCurCharacters[i + 1];
+                buttons[i].GetComponent<Image>().sprite
+                    = GameManager.instance.LoadAndSetSprite(GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
+                buttons[i + 1].GetComponent<Image>().sprite
+                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
+
+            }
+            GameManager.instance.arrCurCharacters[GameManager.instance.arrCurCharacters.Length - 1] = null;
         }
     }
 }
