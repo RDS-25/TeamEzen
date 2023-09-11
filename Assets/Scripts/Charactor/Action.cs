@@ -12,25 +12,17 @@ public class Action : MonoBehaviour
         Action,
         Cancel
     }
+
     public Motion motion;
    
     //스킬 취소 상태 여부 
-    public bool bIsCancel =false;
-
-    public GameObject gRangeIndicator; // 범위 표시기 오브젝트를 할당합니다.
-    public GameObject gMaxRangeIndicator; // 최대 사거리 표시기 오브젝트를 할당합니다.
-    public GameObject gSkillCancel; 
-    public float fSkillRange = 5f; // 스킬 사거리를 설정합니다.
-    public float fMaxSkillRange = 10f; // 스킬의 최대 사거리를 설정합니다.
+    public bool bIsCancel;
 
 
     //일시 정지 할때 멈추기 
     public bool bIsStop =false;
-   
-    
-    Vector3 Vmove;
 
-    public VariableJoystick BasicSkill;
+    Vector3 Vmove;
 
 
     Animator ani;
@@ -55,8 +47,7 @@ public class Action : MonoBehaviour
 
   
 
-        // 최대 사거리 표시기 크기 설정
-        gMaxRangeIndicator.transform.localScale = new Vector3(fMaxSkillRange, gMaxRangeIndicator.transform.localScale.y, fMaxSkillRange);
+       
     }
 
 	// Update is called once per frame
@@ -87,67 +78,7 @@ public class Action : MonoBehaviour
             ani.SetBool("isAim", false);
         }
 
-
-
-
-
     }
-
-   
-    void SkillFunction(VariableJoystick joystick) {
-
-        //조이스틱 벡터
-        Vector3 joystickDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
-        
-
-        if (joystickDirection.magnitude > 0.1f)
-        {
-            lastJoystickDirection = joystickDirection;
-
-            //Debug.Log(lastJoystickDirection);
-            // 스킬 범위 표시
-            gRangeIndicator.transform.position = transform.position + joystickDirection * 5;//5는 스킬 범위로 
-
-            gRangeIndicator.SetActive(true); //스킬범위
-            gMaxRangeIndicator.SetActive(true); //스킬 사거리
-            //gSkillCancel.SetActive(true);
-            joystick.transform.GetChild(1).gameObject.SetActive(true);
-
-            
-            if(bIsCancel)
-            {
-                motion = Motion.Cancel;
-            }
-            else {
-                motion = Motion.Action;
-               
-            }
-         
-          
-        }
-
-        if (joystickDirection.magnitude <= 0.1f) {
-            gRangeIndicator.SetActive(false);
-            gMaxRangeIndicator.SetActive(false);
-            //gSkillCancel.SetActive(false);
-            joystick.transform.GetChild(1).gameObject.SetActive(false);
-            if (motion == Motion.Cancel)
-            {
-                Debug.Log("스킬 실행 취소 ");
-                motion = Motion.Idle;
-                bIsCancel = false;
-            }
-            else if (motion == Motion.Action)
-            {
-                Vector3 targetPosition = transform.position + lastJoystickDirection;
-                transform.LookAt(targetPosition);
-                Debug.Log("스킬  실행");
-                motion = Motion.Idle;
-            }
-        }
-    
-    }
-
 
 
     void onMove()
@@ -241,12 +172,16 @@ public class Action : MonoBehaviour
     public void onCancelEnter() {
         Debug.Log("onCancelEnter 실행");
         bIsCancel = true;
+  
        
     }
     public void onCancelExit() {
         Debug.Log("onCancelExit 실행 ");
         bIsCancel = false;
+       
 
     }
-    
+
+   
+
 }
