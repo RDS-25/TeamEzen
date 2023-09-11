@@ -49,24 +49,48 @@ public class OrganizingUiManager : MonoBehaviour
     }
     public void SelectChar(int index)
     {
+        if (GameManager.instance.fCharid[0] == -1)
+        {
+            Debug.Log("캐릭터선택해야함");
+            return;
+        }
         Organizing(index);
     }
 
     public void Organizing(int index)
     {
-        for (int i = 0; i < GameManager.instance.arrCurCharacters.Length; i++)
+        bool eraseObject = false;
+        int eraseObjectIdx = 0;
+        for (int i = 0; i < GameManager.instance.fCharid.Length; i++)
         {
-            if (GameManager.instance.arrCurCharacters[i]
-                == GameManager.instance.objectFactory.ownCharFactory.listPool[index])
+            if (GameManager.instance.fCharid[i]
+                == GameManager.instance.objectFactory.ownCharFactory.listPool[index].GetComponent<Stat>().fId)
             {
                 GameManager.instance.arrCurCharacters[i] = null;
                 GameManager.instance.fCharid[i] = -1;
                 buttons[i].GetComponent<Image>().sprite
                     = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
-                
-                return;
+                eraseObject = true;
+                eraseObjectIdx = i;
+                //return;
+            }
+
+            if (i > eraseObjectIdx && eraseObject)
+            {
+                GameManager.instance.arrCurCharacters[i - 1] = GameManager.instance.arrCurCharacters[i];
+                GameManager.instance.fCharid[i - 1] = GameManager.instance.fCharid[i];
+                buttons[i - 1].GetComponent<Image>().sprite
+                    = buttons[i].GetComponent<Image>().sprite;
+
+                GameManager.instance.arrCurCharacters[i] = null;
+                GameManager.instance.fCharid[i] = -1;
+                buttons[i].GetComponent<Image>().sprite
+                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
             }
         }
+
+        if (eraseObject)
+            return;
 
         for (int i = 0; i < GameManager.instance.arrCurCharacters.Length; i++)
         {
@@ -82,29 +106,6 @@ public class OrganizingUiManager : MonoBehaviour
             }
         }
 
-        int emptyIndex = -1;
 
-        for (int i = 0; i < GameManager.instance.arrCurCharacters.Length - 1; i++)
-        {
-            if (GameManager.instance.arrCurCharacters[i] == null)
-            {
-                emptyIndex = i;
-                break;
-            }
-        }
-
-        if (emptyIndex != -1)
-        {
-            for (int i = emptyIndex; i < GameManager.instance.arrCurCharacters.Length - 1; i++)
-            {
-                GameManager.instance.arrCurCharacters[i] = GameManager.instance.arrCurCharacters[i + 1];
-                buttons[i].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite(GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
-                buttons[i + 1].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
-
-            }
-            GameManager.instance.arrCurCharacters[GameManager.instance.arrCurCharacters.Length - 1] = null;
-        }
     }
 }

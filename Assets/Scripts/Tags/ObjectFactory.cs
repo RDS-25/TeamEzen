@@ -58,6 +58,8 @@ public class ObjectFactory
                 list.Add(dictTemp[CharPath.ID]);
             }
         }
+
+
         for (int i = 0; i < characterFactory.listPool.Count; i++)
         {
             for (int j = 0; j < list.Count; j++)
