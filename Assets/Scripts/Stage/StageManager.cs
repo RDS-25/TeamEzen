@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
+    private const int MAX_ROOM_POS_COUNT = 15;
+
     public static StageManager Instance;
     public GameObject objLoadingPanel;
     public Image imgLoadSliderImage;
@@ -36,6 +38,25 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    public void CreateStageFactory()
+    {
+        string path = FolderPath.PREFABS_STAGE_ROOM + PrefabName.STR_ROOM_PREFAB;
+        if (GameManager.instance != null)
+        {
+            if (GameManager.instance.objectFactory.roomFactory.listPool.Count <= 0)
+            {
+                GameManager.instance.objectFactory.roomFactory.CreateFactory(path, MAX_ROOM_POS_COUNT);
+            }
+            else if (GameManager.instance.objectFactory.roomFactory.listPool.Count > 0
+                && GameManager.instance.objectFactory.roomFactory.listPool.Count < MAX_ROOM_POS_COUNT)
+            {
+                int nFactoryCount = GameManager.instance.objectFactory.roomFactory.listPool.Count;
+                GameObject roomPrefab = Resources.Load<GameObject>(path);
+                GameManager.instance.objectFactory.roomFactory.CreateObject(roomPrefab, MAX_ROOM_POS_COUNT - nFactoryCount);
+            }
+        }
+    }
+
     private void Start()
     {
         print(GameManager.instance.stageType.ToString());
@@ -44,7 +65,8 @@ public class StageManager : MonoBehaviour
         player = Charactors[0];
         player.SetActive(true);
         //Audio 변경해야함
-        AudioManager.instance.PlayBackgroundSound(GetComponent<AudioSource>(),AudioName.STR_MAIN_BACKGROUND);
+        AudioManager.instance.PlayBackgroundSound(GetComponent<AudioSource>(), AudioName.STR_MAIN_BACKGROUND);
+        CreateStageFactory();
         InitializeStage(GameManager.instance.stageType, player);
     }
 

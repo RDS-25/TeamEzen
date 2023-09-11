@@ -140,7 +140,8 @@ public class StageScript : MonoBehaviour
 
             //룸 펙토리 생성 후 스크립터블 데이터를 통해 포지션 설정
             _bCreateRoom = true;
-            Object[] roomPosData = Resources.LoadAll("ScriptableObjects\\RoomPosition\\Episode" + ((int)stStageType).ToString());
+            string roomPosDataPath = FolderPath.SCRIPTABLE_ROOM_POSITION + ((int)stStageType).ToString();
+            Object[] roomPosData = Resources.LoadAll(roomPosDataPath);
             RoomPosInit(roomPosData);
 
             objRoomPositions = new GameObject[_nSetRoomCount];
