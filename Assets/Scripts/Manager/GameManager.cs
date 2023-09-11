@@ -13,23 +13,14 @@ public class GameManager : MonoBehaviour
     private string _strGameManagerFolderPath;
     private string _strGameManagerFileName;
 
-    private bool _bTargetingDistance = false;
 
-    private float _fFirstCharacterId = 0;
-    private float _fSecondCharacterId = -1;
-    private float _fThirdCharacterId = -1;
+    public GameObject[] arrCurCharacters = new GameObject[3];
+    public float[] fCharid = new float[3];
+    private bool _bTargetingDistance = false;
 
     public StageParams.STAGE_TYPE stageType = StageParams.STAGE_TYPE.NONE;
 
-    public List<GameObject> listCurCharacters = new();
-    public GameObject gFirstChar = null;
-    public GameObject gSecondChar = null;
-    public GameObject gThirdChar = null;
-
     public bool bTargetingDistance { get { return _bTargetingDistance; } set { _bTargetingDistance = value; } }
-    public float fFirstCharacterId { get { return _fFirstCharacterId; } set { _fFirstCharacterId = value; } }
-    public float fSecondCharacterId { get { return _fSecondCharacterId; } set { _fSecondCharacterId = value; } }
-    public float fThirdCharacterId { get { return _fThirdCharacterId; } set { _fThirdCharacterId = value; } }
 
     public ObjectFactory objectFactory = new ObjectFactory();
 
@@ -50,7 +41,8 @@ public class GameManager : MonoBehaviour
 
         Init();
         objectFactory.InitFactory();
-        objectFactory.SelectCharacterInit();
+        SetTargeting(_bTargetingDistance);
+        SetCharObj();
     }
     private void FolderInit()
     {
@@ -97,27 +89,24 @@ public class GameManager : MonoBehaviour
             WriteValues();
             ReadValues();
         }
-        SetTargeting(_bTargetingDistance);
-        SetCharObj(gFirstChar, _fFirstCharacterId);
-        SetCharObj(gSecondChar, _fSecondCharacterId);
-        SetCharObj(gThirdChar, _fThirdCharacterId);
+
     }
 
     private void ReadValues()
     {
         Dictionary<string, string> dictTemp = DataRead(FolderPath.PARAMS_GAMEMANAGER + FileName.STR_GAME_MANAGER);
         bTargetingDistance = Convert.ToBoolean(dictTemp["TargetingDistance"]);
-        fFirstCharacterId = float.Parse(dictTemp["FirstCharacterId"]);
-        fSecondCharacterId = float.Parse(dictTemp["SecondCharacterId"]);
-        fThirdCharacterId = float.Parse(dictTemp["ThirdCharacterId"]);
+        fCharid[0] = float.Parse(dictTemp["FirstCharacterId"]);
+        fCharid[1] = float.Parse(dictTemp["SecondCharacterId"]);
+        fCharid[2] = float.Parse(dictTemp["ThirdCharacterId"]);
     }
     private void WriteValues()
     {
         Dictionary<string, string> dictTemp = new Dictionary<string, string>();
         dictTemp.Add("TargetingDistance", bTargetingDistance.ToString());
-        dictTemp.Add("FirstCharacterId", fFirstCharacterId.ToString());
-        dictTemp.Add("SecondCharacterId", fSecondCharacterId.ToString());
-        dictTemp.Add("ThirdCharacterId", fThirdCharacterId.ToString());
+        dictTemp.Add("FirstCharacterId", fCharid[0].ToString());
+        dictTemp.Add("SecondCharacterId", fCharid[1].ToString());
+        dictTemp.Add("ThirdCharacterId", fCharid[2].ToString());
         DataWrite(FolderPath.PARAMS_GAMEMANAGER + FileName.STR_GAME_MANAGER, dictTemp);
     }
     public void SetTargeting(bool bTargeting)
@@ -125,30 +114,23 @@ public class GameManager : MonoBehaviour
         bTargetingDistance = bTargeting;
         WriteValues();
     }
-    public void SetFirstCharId(float fId)
+    public void SetCharId(int index, float fId)
     {
-        fFirstCharacterId = fId;
+        fCharid[index] = fId;
         WriteValues();
     }
-    public void SetSecondCharId(float fId)
+    private void SetCharObj()
     {
-        fSecondCharacterId = fId;
-        WriteValues();
-    }
-    public void SetThirdCharId(float fId)
-    {
-        fThirdCharacterId = fId;
-        WriteValues();
-    }
-    private void SetCharObj(GameObject gCharacter, float nCharid)
-    {
-        if(nCharid != -1)
+        for(int i = 0; i < arrCurCharacters.Length; i++)
         {
-            foreach(GameObject obj in objectFactory.ownCharFactory.listPool)
+            if(fCharid[i] != -1)
             {
-                if(obj.GetComponent<Stat>().fId == nCharid)
+                foreach(GameObject obj in objectFactory.characterFactory.listPool)
                 {
-                    gCharacter = obj;
+                    if(fCharid[i] == obj.GetComponent<Stat>().fId)
+                    {
+                        arrCurCharacters[i] = obj;
+                    }
                 }
             }
         }
