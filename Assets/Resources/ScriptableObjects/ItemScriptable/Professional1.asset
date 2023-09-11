@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 2
   fId: 0
-  strName: 
-  strDiscription: 
+  strName: y
+  strDiscription: yy
   strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/sword.png
   fDropRate: 0
   fPassiveSkillValue: 0
@@ -24,3 +24,4 @@ MonoBehaviour:
   fSpeed: 0
   fCrtical: 0
   fCriticalDamage: 0
+  fCount: 0

@@ -13,8 +13,7 @@ public class ItemDatamanager : MonoBehaviour
     public GameObject ShowData;
     public SlotManager slotManager;    
     public static readonly ItemDatamanager instance = new ItemDatamanager();
-    string _strInvenItemPath;//폴더경로
-    string PlusInvenItemPath;//파일이름>스테이지 습득아이템데이터
+    string _strInvenItemPath;//폴더경로    
     string SaveItemPath;//저장된 데이터파일 경로
     public GameObject ItemPre;
     public ProfessionalData[] ProfessionalDatas;//0~
@@ -28,20 +27,11 @@ public class ItemDatamanager : MonoBehaviour
     List<string> AllItemId = new List<string>();//모든 아이템 아이디리스트    
     List<List<GameObject>> Items = new List<List<GameObject>>();
 
-
-    private void OnEnable()
-    {
-        SlotManager.OnButtonClick += OpenDataPan;
-    }
-    private void OnDisable()
-    {
-        SlotManager.OnButtonClick -= OpenDataPan;
-    }
     private void Start()
     {
         _strInvenItemPath = FolderPath.PARAMS_ITEM_COUNT;
         SaveItemPath = FileName.STR_JSON_INVEN_SAVE;
-        PlusInvenItemPath = FileName.STR_JSON_INVEN_ITEMS;//제이슨 파일 만들때 컨버터에 딕셔너리확인
+        //제이슨 파일 만들때 컨버터에 딕셔너리확인
                 
         InitInven();
         CreateAll();
@@ -52,7 +42,11 @@ public class ItemDatamanager : MonoBehaviour
                             GameManager.instance.objectFactory.ItemObjectFactory.listPool, // Uicellview 정보 담겨있는 리스트(전체 개수만큼)  
                             slotManager.SlotsInViewport,
                             SlotManager.OBJECT_TYPE.ITEM);
-
+        for(int i = 0; i < GameManager.instance.objectFactory.ItemObjectFactory.listPool.Count; i++)
+        {
+            if (GameManager.instance.objectFactory.ItemSlotFactory.listPool[i].activeSelf)
+                GameManager.instance.objectFactory.SetItemFactory.listPool.Add(GameManager.instance.objectFactory.ItemObjectFactory.listPool[i]);
+        }
         // 슬롯 getchild 해서 텍스트에 개수 표시해주기>>슬롯에 표시된 아이템 순번과 정보담긴 프리팹의 순번이 같음
         CountSetUp();        
         GetComponent<SlotManager>().SetButtonClickedEvent();
@@ -62,29 +56,21 @@ public class ItemDatamanager : MonoBehaviour
     {
         
         if (GameManager.instance.CheckExist(_strInvenItemPath, SaveItemPath))
-        {//있을때           
-            WriteData();//파일 만들기,파일에 모든 장비 갯수0개로 쓰기 함수 따로>>저장된 아이템과 추가되는 아이템 합쳐서 쓰기            
+        {//있을때              
             LoadInvenData();
         }
         //없을때
         else
-        {//저장되는 파일과 정보 받을 파일 달라야함
-            ItemDataRead();
+        {
+
             WriteData();
             LoadInvenData();
         }
-    }
-    public void ItemDataRead()
-    {
-        SavedData = GameManager.instance.DataRead(_strInvenItemPath + SaveItemPath);
-        if (GameManager.instance.FileExists(_strInvenItemPath + PlusInvenItemPath))
-        {
-            PlusItem = GameManager.instance.DataRead(_strInvenItemPath + PlusInvenItemPath);
-        }
-    }
+    }    
 
     public void LoadInvenData()
     {
+        SavedData = GameManager.instance.DataRead(_strInvenItemPath + SaveItemPath);
         foreach (string key in SavedData.Keys)//배열의 첫 값이 키
         {
             if (int.Parse(SavedData[key]) != 0)
@@ -224,11 +210,14 @@ public class ItemDatamanager : MonoBehaviour
     {
         List<GameObject> Slot = GameManager.instance.objectFactory.ItemSlotFactory.listPool;
         List<GameObject> ItemData = GameManager.instance.objectFactory.ItemObjectFactory.listPool;
+        Debug.Log(Slot.Count);
         for (int i = 0; i < Slot.Count; i++)
         {
             if (Slot[i].activeSelf && ItemData[i].GetComponent<UiCellView>().COUNT != 0)
             {
                 Slot[i].GetComponentInChildren<TMP_Text>().text = ItemData[i].GetComponent<UiCellView>().COUNT.ToString();
+                Debug.Log(ItemData[i].GetComponent<UiCellView>().COUNT.ToString());
+                Debug.Log("asdasd");
             }
         }
     }
@@ -261,12 +250,14 @@ public class ItemDatamanager : MonoBehaviour
         List<GameObject> ItemData = GameManager.instance.objectFactory.ItemObjectFactory.listPool;
         for (int i = 0; i < Slot.Count; i++)
         {
-            if (ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.GEMSTONE)
+            Slot[i].gameObject.SetActive(false);
+            Debug.Log(ItemData[i].GetComponent<UiCellView>().COUNT);
+            if (ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.GEMSTONE && ItemData[i].GetComponent<UiCellView>().COUNT>0)
             {
+                
                 Slot[i].gameObject.SetActive(true);
             }
-            else
-                Slot[i].gameObject.SetActive(false);
+           
         }
     }
     public void ChangeMaterialTab()
@@ -371,49 +362,81 @@ public class ItemDatamanager : MonoBehaviour
     //}
 
     #endregion
+    public void AddItem(Dictionary<string ,int> additems)   //string key,int count)
+    {//키가 같으면 밸류를 더해줌
+        foreach (KeyValuePair<string,int> addItemData in additems)
+        {
+            if (SavedData.Keys.Contains<string>(addItemData.Key))
+                SavedData[addItemData.Key] += addItemData.Value;
+        }
+        GameManager.instance.DataWrite(_strInvenItemPath + SaveItemPath, SavedData);
+        LoadInvenData();
+        //foreach (string key in additems.Keys)
+        //{
+        //    SavedData[key] += additems[key];
+        //}
+
+        //for(int i = 0; i < SavedData.Count; i++)
+        //{
+        //    SavedData[(int)i] += additems[i];
+        //}
+        //SavedData[] += additems;
+        //GameManager.instance.DataWrite(_strInvenItemPath + SaveItemPath, SavedData);
+    }
+    //public void AddItem(string key, int count)   //string key,int count)
+    //{//키가 같으면 밸류를 더해줌
+    //    if(SavedData.Keys.Contains<string>(key))
+    //        SavedData[key] += count;
+    //    WriteData();
+    //    //foreach (string key in additems.Keys)
+    //    //{
+    //    //    SavedData[key] += additems[key];
+    //    //}
+
+    //    //for(int i = 0; i < SavedData.Count; i++)
+    //    //{
+    //    //    SavedData[(int)i] += additems[i];
+    //    //}
+    //    //SavedData[] += additems;
+    //    //GameManager.instance.DataWrite(_strInvenItemPath + SaveItemPath, SavedData);
+    //}
+
     public void WriteData()
     {//초기 인벤토리 모든 장비 0
         Dictionary<string, string> dictTemp = new Dictionary<string, string>();
-        if (GameManager.instance.FileExists(_strInvenItemPath + SaveItemPath))//저장된 파일이 있을경우
-        {
-            SavedData = GameManager.instance.DataRead(_strInvenItemPath + SaveItemPath);
-            //int AllCount = ProfessionalDatas.Length + EquipDatas.Length + GemStoneDatas.Length + MaterialDatas.Length;
-            if (GameManager.instance.FileExists(_strInvenItemPath + PlusInvenItemPath))//+추가된 아이템이 있는경우
-            {
-                PlusItem = GameManager.instance.DataRead(_strInvenItemPath + PlusInvenItemPath);
-                foreach (string key in SavedData.Keys)
-                {
-                    SavedData[key] += PlusItem[key];
-                    dictTemp = SavedData;
-                }
-            }
-            else//추가된 아이템이 없는 경우
-                dictTemp = SavedData;
-        }
-        if(!GameManager.instance.FileExists(_strInvenItemPath + SaveItemPath))//저장된 파일이 없는경우
-        {
-            if(GameManager.instance.FileExists(_strInvenItemPath + PlusInvenItemPath))//추가된 아이템이 있는경우
-            {
-                PlusItem = GameManager.instance.DataRead(_strInvenItemPath + PlusInvenItemPath);
-                dictTemp = PlusItem;
-            }
-            else//저장된파일 추가된아이템 둘다 없는경우
-            {//수작업??
-
-            }
-        }
-       
-
-
-
+        
+                dictTemp.Add("0", "0");
+                dictTemp.Add("1", "0");
+                dictTemp.Add("2", "0");
+                dictTemp.Add("100", "0");
+                dictTemp.Add("101", "0");
+                dictTemp.Add("102", "0");
+                dictTemp.Add("103", "0");
+                dictTemp.Add("104", "0");
+                dictTemp.Add("105", "0");
+                dictTemp.Add("106", "0");
+                dictTemp.Add("107", "0");
+                dictTemp.Add("108", "0");
+                dictTemp.Add("200", "0");
+                dictTemp.Add("201", "0");
+                dictTemp.Add("202", "0");
+                dictTemp.Add("203", "0");
+                dictTemp.Add("204", "0");
+                dictTemp.Add("205", "0");
+                dictTemp.Add("206", "0");
+                dictTemp.Add("207", "0");
+                dictTemp.Add("208", "0");
+                dictTemp.Add("209", "0");
+                dictTemp.Add("210", "0");
+                dictTemp.Add("211", "0");
+                dictTemp.Add("300", "0");
+                dictTemp.Add("301", "0");
+                dictTemp.Add("302", "0");
         GameManager.instance.DataWrite(_strInvenItemPath + SaveItemPath, dictTemp);
 
     }
    
-    public void OpenDataPan(int index)
-    {
-        ShowData.SetActive(true);
-    }
+    
       
     
     public EquipData GetIEquipData(float fId)

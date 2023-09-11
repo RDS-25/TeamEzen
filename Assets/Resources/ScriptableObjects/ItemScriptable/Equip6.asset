@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   fId: 105
-  strName: 
-  strDiscription: 
+  strName: f
+  strDiscription: ff
   strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/boots.png
   fDropRate: 0
   fDamage: 0
@@ -23,3 +23,4 @@ MonoBehaviour:
   fSpeed: 0
   fCrtical: 0
   fCriticalDamage: 0
+  fCount: 0

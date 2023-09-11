@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 3
   fId: 300
-  strName: 
-  strDiscription: 
+  strName: v
+  strDiscription: vv
   strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/scroll.png
   fDropRate: 0
   fExp: 0
-  fNumber: 0
+  fCount: 0

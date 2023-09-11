@@ -34,7 +34,7 @@ public class ObjectFactory
 
     // æ∆¿Ã≈€
     public FactoryManager ItemObjectFactory = new FactoryManager();
-
+    public FactoryManager SetItemFactory = new FactoryManager();
 
     public void InitFactory()
     {

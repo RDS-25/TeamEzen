@@ -18,18 +18,18 @@ public class UiCellView : MonoBehaviour
     GemstoneParams gemstoneParams = new GemstoneParams();
     [SerializeField]
     MaterialParams materialParams = new MaterialParams();
-    private ItemParameter.ItemType itemType = ItemType.EQUIPMENT;
+    private ItemType itemType = ItemType.EQUIPMENT;
 
 
     public ItemType TYPE
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+            if (itemType == ItemType.EQUIPMENT)
                 return ItemType.EQUIPMENT;
-            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+            else if (itemType == ItemType.GEMSTONE)
                 return ItemType.GEMSTONE;
-            else if (itemType == ItemParameter.ItemType.MATERIAL)
+            else if (itemType == ItemType.MATERIAL)
                 return ItemType.MATERIAL;
 
             return ItemType.PROFESSIONAL;
@@ -39,11 +39,11 @@ public class UiCellView : MonoBehaviour
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+            if (itemType == ItemType.EQUIPMENT)
                 return equipParams.fId;
-            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+            else if (itemType == ItemType.GEMSTONE)
                 return gemstoneParams.fId;
-            else if (itemType == ItemParameter.ItemType.MATERIAL)
+            else if (itemType == ItemType.MATERIAL)
                 return materialParams.fId;
 
             return professionalParams.fId;
@@ -53,11 +53,11 @@ public class UiCellView : MonoBehaviour
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+            if (itemType == ItemType.EQUIPMENT)
                 return equipParams.strName;
-            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+            else if (itemType == ItemType.GEMSTONE)
                 return gemstoneParams.strName;
-            else if (itemType == ItemParameter.ItemType.MATERIAL)
+            else if (itemType == ItemType.MATERIAL)
                 return materialParams.strName;
 
             return professionalParams.strName;
@@ -68,11 +68,11 @@ public class UiCellView : MonoBehaviour
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+            if (itemType == ItemType.EQUIPMENT)
                 return equipParams.strDiscription;
-            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+            else if (itemType == ItemType.GEMSTONE)
                 return gemstoneParams.strDiscription;
-            else if (itemType == ItemParameter.ItemType.MATERIAL)
+            else if (itemType == ItemType.MATERIAL)
                 return materialParams.strDiscription;
 
             return professionalParams.strDiscription;
@@ -83,11 +83,11 @@ public class UiCellView : MonoBehaviour
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+            if (itemType == ItemType.EQUIPMENT)
                 return equipParams.strImage;
-            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+            else if (itemType == ItemType.GEMSTONE)
                 return gemstoneParams.strImage;
-            else if (itemType == ItemParameter.ItemType.MATERIAL)
+            else if (itemType == ItemType.MATERIAL)
                 return materialParams.strImage;
 
             return professionalParams.strImage;
@@ -97,11 +97,11 @@ public class UiCellView : MonoBehaviour
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+            if (itemType == ItemType.EQUIPMENT)
                 return equipParams.fDropRate;
-            else if (itemType == ItemParameter.ItemType.GEMSTONE)
+            else if (itemType == ItemType.GEMSTONE)
                 return gemstoneParams.fDropRate;
-            else if (itemType == ItemParameter.ItemType.MATERIAL)
+            else if (itemType == ItemType.MATERIAL)
                 return materialParams.fDropRate;
 
             return professionalParams.fDropRate;
@@ -112,7 +112,7 @@ public class UiCellView : MonoBehaviour
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+            if (itemType == ItemType.EQUIPMENT)
                 return equipParams.fDamage;
             else
                 return professionalParams.fDamage;
@@ -123,7 +123,7 @@ public class UiCellView : MonoBehaviour
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+            if (itemType == ItemType.EQUIPMENT)
                 return equipParams.fDefense;
             else
                 return professionalParams.fDefense;
@@ -133,7 +133,7 @@ public class UiCellView : MonoBehaviour
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+            if (itemType == ItemType.EQUIPMENT)
                 return equipParams.fSpeed;
             else
                 return professionalParams.fSpeed;
@@ -144,7 +144,7 @@ public class UiCellView : MonoBehaviour
         get
         {
             {
-                if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                if (itemType == ItemType.EQUIPMENT)
                     return equipParams.fCrticalper;
                 else
                     return professionalParams.fCrticalper;
@@ -156,7 +156,7 @@ public class UiCellView : MonoBehaviour
         get
         {
             {
-                if (itemType == ItemParameter.ItemType.EQUIPMENT)
+                if (itemType == ItemType.EQUIPMENT)
                     return equipParams.fCriticalDamage;
                 else
                     return professionalParams.fCriticalDamage;
@@ -167,9 +167,12 @@ public class UiCellView : MonoBehaviour
     {
         get
         {
-            if (itemType == ItemParameter.ItemType.EQUIPMENT)
+
+            if (itemType == ItemType.PROFESSIONAL)
+                return professionalParams.fCount;
+            else if (itemType == ItemType.EQUIPMENT)
                 return equipParams.fCount;
-            else if(itemType == ItemParameter.ItemType.GEMSTONE)
+            else if(itemType == ItemType.GEMSTONE)
                 return gemstoneParams.fCount;
             else
                 return materialParams.fCount;
@@ -212,6 +215,7 @@ public class UiCellView : MonoBehaviour
         professionalParams.fSpeed = professionalData.fSpeed;
         professionalParams.fCrticalper = professionalData.fCrtical;
         professionalParams.fCriticalDamage = professionalData.fCriticalDamage;
+        professionalParams.fCount = professionalData.fCount;
     }
     public void SetUp(EquipData equipData, Dictionary<string, string> dictItemCount)
     {
@@ -226,7 +230,7 @@ public class UiCellView : MonoBehaviour
         equipParams.fSpeed = equipData.fSpeed;
         equipParams.fCrticalper = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;
-        equipParams.fCount= int.Parse(dictItemCount[equipParams.fId.ToString()]);
+        equipParams.fCount = equipData.fCount;
         
     }
     public void SetUp(GemStoneData gemStoneData, Dictionary<string,string> dictItemCount)
@@ -238,7 +242,8 @@ public class UiCellView : MonoBehaviour
         gemstoneParams.strImage = gemStoneData.strImage;
         gemstoneParams.fDropRate = gemStoneData.fDropRate;
         gemstoneParams.fUpDamage = gemStoneData.fUpDamage;
-        gemstoneParams.fCount = int.Parse(dictItemCount[gemstoneParams.fId.ToString()]);
+        gemstoneParams.fCount = gemStoneData.fCount;
+        Debug.Log(gemstoneParams.fCount);
     }
     public void SetUp(MaterialData materialData, Dictionary<string, string> dictItemCount)
     {
@@ -249,7 +254,7 @@ public class UiCellView : MonoBehaviour
         materialParams.strImage = materialData.strImage;
         materialParams.fDropRate = materialData.fDropRate;
         materialParams.fExp = materialData.fExp;
-        materialParams.fCount = int.Parse(dictItemCount[materialParams.fId.ToString()]);        
+        materialParams.fCount = materialData.fCount;       
     }
     Sprite SetImage(string imagePath)//보고 따라함 안씀
     {

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   fId: 200
-  strName: 
-  strDiscription: 
+  strName: j
+  strDiscription: jj
   strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/book.png
   fDropRate: 0
   fUpDamage: 0
-  fNumber: 0
+  fCount: 0

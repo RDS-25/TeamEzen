@@ -40,7 +40,7 @@ public class SlotManager : MonoBehaviour
         Dictionary<string, string> dictTemp = new();
         if (objType == OBJECT_TYPE.CHARACTER)
         {
-            for(int i = 0; i  <slotObjects.Count; i++)
+            for (int i = 0; i < slotObjects.Count; i++)
             {
                 slotObjects[i].transform.parent = Slots;
                 if (allObjList[i].GetComponent<Stat>().bIsOwn)
@@ -51,11 +51,11 @@ public class SlotManager : MonoBehaviour
                 }
             }
         }
-        else if(objType == OBJECT_TYPE.ITEM)
+        else if (objType == OBJECT_TYPE.ITEM)
         {
-            dictTemp = GameManager.instance.DataRead(FolderPath.PARAMS_ITEM_COUNT + FileName.STR_JSON_INVEN_ITEMS);
+            dictTemp = GameManager.instance.DataRead(FolderPath.PARAMS_ITEM_COUNT + FileName.STR_JSON_INVEN_SAVE);
             int i = 0;
-            foreach(string key in dictTemp.Keys)
+            foreach (string key in dictTemp.Keys)
             {
                 slotObjects[i].transform.parent = Slots;
                 if (dictTemp[key] != "0")
@@ -70,9 +70,11 @@ public class SlotManager : MonoBehaviour
     }
     void OnClickButton(int index)
     {
+
         nButtonIndex = index;
-        Debug.Log(nButtonIndex);
+        Debug.Log(nButtonIndex.ToString());
         OnButtonClick?.Invoke(nButtonIndex);
+
 
     }
 }
