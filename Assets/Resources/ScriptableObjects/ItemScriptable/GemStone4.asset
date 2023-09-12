@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 203
   strName: m
   strDiscription: mm
-  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/book.png
+  strImage: book.png
   fDropRate: 0
   fUpDamage: 0
   fCount: 0

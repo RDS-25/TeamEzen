@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 101
   strName: b
   strDiscription: bb
-  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/axe.png
+  strImage: axe.png
   fDropRate: 0
   fDamage: 0
   fDefense: 0

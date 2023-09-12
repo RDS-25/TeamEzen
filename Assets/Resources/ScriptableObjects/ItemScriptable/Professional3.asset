@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 2
   strName: as
   strDiscription: asas
-  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/sword.png
+  strImage: sword.png
   fDropRate: 0
   fPassiveSkillValue: 0
   fDamage: 0

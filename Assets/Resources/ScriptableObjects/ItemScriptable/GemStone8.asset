@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 207
   strName: q
   strDiscription: qq
-  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/boots.png
+  strImage: boots.png
   fDropRate: 0
   fUpDamage: 0
   fCount: 0

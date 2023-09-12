@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 301
   strName: w
   strDiscription: ww
-  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/scroll.png
+  strImage: scroll.png
   fDropRate: 0
   fExp: 0
   fCount: 0
