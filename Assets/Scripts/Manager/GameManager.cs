@@ -205,18 +205,17 @@ public class GameManager : MonoBehaviour
             return null;
         }
     }
-    public void WriteKeyValue(string sFolderPathFileNameJson, string sKey, string sValue)
+    public void WriteNew(string sFolderPathFileNameJson, Dictionary<string, string> dictNew)
     {
         Dictionary<string, string> dictTemp = DataRead(sFolderPathFileNameJson + ".json");
-        if (dictTemp.ContainsKey(sKey))
+        foreach(KeyValuePair<string,string> keyValuePair in dictNew)
         {
-            dictTemp[sKey] = sValue;
-            DataWrite(sFolderPathFileNameJson + ".json", dictTemp);
+            if (!dictTemp.ContainsKey(keyValuePair.Key))
+            {
+                dictTemp.Add(keyValuePair.Key, keyValuePair.Value);
+            }
         }
-        else
-        {
-            Debug.LogError($"[{sFolderPathFileNameJson}]에 키값 존재하지 않음");
-        }
+        DataWrite(sFolderPathFileNameJson + ".json", dictTemp);
     }
     public Sprite LoadAndSetSprite(string imagePath)
     {

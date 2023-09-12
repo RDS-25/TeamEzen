@@ -29,6 +29,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 	public int curCharID;
 
 	public SlotManager slotManager;
+	public SkillPanelUi skillPanelUi;
 	public Transform transformSlots;
 
 	//slot 게임오브젝트 리스트 
@@ -126,7 +127,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 		else
 			curCharID++;
 		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(true);
-		
+		skillPanelUi.ShowSkill();
 	}
 
 	public void BtnPrevChar() {
@@ -136,6 +137,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 		else
 			curCharID--;
 		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(true);
+		skillPanelUi.ShowSkill();
 	}
 
 	public void BtnSelectCharExit() {
