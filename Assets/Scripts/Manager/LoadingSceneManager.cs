@@ -31,7 +31,7 @@ public class LoadingSceneManager : MonoBehaviour
             yield return null;
             timer += Time.deltaTime;
             // 
-            progressText.text = (progressBar.value * 100).ToString("F0") + " %";
+            progressText.text = (progressBar.value * 100).ToString("F2") + " %";
             if (op.progress < 0.9f)
             {
                 progressBar.value = Mathf.Lerp(progressBar.value, op.progress, timer);

@@ -4,10 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class TiltleStart : MonoBehaviour
 {
-    void Start()
-    {
-        GameManager.instance.objectFactory.SelectCharacterInit();
-    }
 
     // Update is called once per frame
     void Update()

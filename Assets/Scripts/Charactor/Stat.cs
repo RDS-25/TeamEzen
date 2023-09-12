@@ -102,23 +102,6 @@ public class Stat : StatParams
         fPersonalEquip = float.Parse(dictTemp[CharPath.PERSONALEQUIP]);
         fStone = float.Parse(dictTemp[CharPath.STONE]);
     }
-    /*private Image LoadAndSetSprite(string imagePath)
-    {
-        // Resources 폴더 내에 이미지 파일이 있어야 합니다.
-        Image loadedSprite = Resources.Load<Image>(imagePath);
-
-        if (loadedSprite != null)
-        {
-            // SpriteRenderer에 Sprite 설정
-          
-            return loadedSprite;
-        }
-        else
-        {
-            Debug.LogError("Sprite를 찾을 수 없습니다: " + imagePath);
-            return null;
-        }
-    }*/
 
     void WriteParams() {
         Dictionary<string, string> dicTemp = new();

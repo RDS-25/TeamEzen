@@ -57,6 +57,16 @@ public class SkillPanelUi : MonoBehaviour
     }
     void Init()
     {
+
+        dictPassive = GameManager.instance.DataReadAll(FolderPath.PARAMS_PASSIVE_SKILL);
+        dictActive = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
+        dictBasic = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
+        dictUlt = GameManager.instance.DataReadAll(FolderPath.PARAMS_ULTIMATE_SKILL);
+        ShowSkill();
+
+    }
+    public void ShowSkill()
+    {
         curCharStat = GameManager.instance.objectFactory.ownCharFactory.listPool[charactorUIManager.curCharID].GetComponent<Stat>();
 
         fPassiveSkillId = curCharStat.fPassiveSkill;
@@ -68,51 +78,25 @@ public class SkillPanelUi : MonoBehaviour
         dictBasic = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
         dictUlt = GameManager.instance.DataReadAll(FolderPath.PARAMS_ULTIMATE_SKILL);
 
+
         ShowSkill(fPassiveSkillId, imagePassive, textPassiveLevel, textPassiveName, textPassiveDescript, dictPassive);
         ShowSkill(fActiveSkillId, imageActive, textActiveLevel, textActiveName, textActiveDescript, dictActive);
         ShowSkill(fBasicSkillId, imageBasic, textBasicLevel, textBasicName, textBasicDescript, dictBasic);
         ShowSkill(fUltimateSkillId, imageUltimate, textUltimateLevel, textUltimateName, textUltimateDescript, dictUlt);
     }
     void ShowSkill(float skillId, Image imageIcon, TMP_Text textLevel, TMP_Text textName,
-        TMP_Text textDescription, List<Dictionary<string,string>> dictTemp)
+        TMP_Text textDescription, List<Dictionary<string, string>> dictTemp)
     {
         foreach (Dictionary<string, string> mySkill in dictTemp)
         {
             if (mySkill[_STR_ID] == skillId.ToString())
             {
-                imageIcon.sprite = LoadAndSetSprite(mySkill[_STR_IMAGE_URL]);
+                imageIcon.sprite = GameManager.instance.LoadAndSetSprite(mySkill[_STR_IMAGE_URL]);
                 textLevel.text = mySkill[_STR_LEVEL];
                 textName.text = "Lv. " + mySkill[_STR_NAME];
                 textDescription.text = mySkill[_STR_DESCRIPT];
                 break;
             }
-        }
-    }
-
-
-    private Sprite LoadAndSetSprite(string imagePath)
-    {
-        string path = Path.Combine(imagePath);
-
-        Debug.Log("°æ·Î´Â" + path);
-        if (File.Exists(path))
-        {
-            byte[] imageBytes = File.ReadAllBytes(path);
-            Texture2D texture = new Texture2D(2, 2);
-            if (texture.LoadImage(imageBytes))
-            {
-                return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            }
-            else
-            {
-                Debug.LogError("Failed to load image: " + imagePath);
-                return null;
-            }
-        }
-        else
-        {
-            Debug.LogError("Image file not found: " + path);
-            return null;
         }
     }
 }

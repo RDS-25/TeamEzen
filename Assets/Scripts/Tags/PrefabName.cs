@@ -6,6 +6,8 @@ public class PrefabName
 {
     public const string STR_ROOM_PREFAB = "RoomPrefab";
     public const string STR_SLOT_PREFAB = "Slot";
+    public const string STR_ITEM_PREFAB = "Uicellview";
+
     public const string STR_STAGE_DATA = "StageScriptableData";
     public const string STR_ROOM_POS_DATA = "RoomPositionData";
 

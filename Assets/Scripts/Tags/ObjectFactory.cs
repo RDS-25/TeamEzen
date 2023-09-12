@@ -18,6 +18,7 @@ public class ObjectFactory
 
     // 슬롯 만들기 고민
     public FactoryManager CharSlotFactory = new FactoryManager();
+    public FactoryManager OrganizingSlotFactory = new FactoryManager();
     public FactoryManager ItemSlotFactory = new FactoryManager();
 
     //몬스터 종류별로 만들기
@@ -31,21 +32,43 @@ public class ObjectFactory
     // 스킬
     public FactoryManager CharAR01BasicEffectFactory = new FactoryManager();
 
+    // 아이템
+    public FactoryManager ItemObjectFactory = new FactoryManager();
 
 
+    public void InitFactory()
+    {
+        characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
+        SelectCharacterInit();
+        CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
+                                    , characterFactory.listPool.Count);
+        OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
+                                            , characterFactory.listPool.Count);
 
+    }
 
     public void SelectCharacterInit()
     {
+        List<string> list = new();
+        List<Dictionary<string, string>> listTemp = GameManager.instance.DataReadAll(FolderPath.PARAMS_CHARACTER);
+        foreach (Dictionary<string, string> dictTemp in listTemp)
+        {
+            if (dictTemp[CharPath.ISOWN] == "True")
+            {
+                list.Add(dictTemp[CharPath.ID]);
+            }
+        }
 
-        characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
-      
-        //roomFactory.CreateFactory()
 
-        //monsterFactory.     CreateFactory("", nSize);
-        //basicSkillFactory.  CreateFactory(FilePath.STR_PREFAB_SKILL_EFFECT_1, nSize);
-        //activeSkillFactory. CreateFactory("", nSize);
-        //basicSkillFactory.CreateObject(basicSkillFactory.gPrefab);
-        //test.CreateCharacterFactory("Prefabs/Character", 5);
+        for (int i = 0; i < characterFactory.listPool.Count; i++)
+        {
+            for (int j = 0; j < list.Count; j++)
+            {
+                if (characterFactory.listPool[i].GetComponent<Stat>().fId == float.Parse(list[j]))
+                    ownCharFactory.listPool.Add(characterFactory.listPool[i]);
+            }
+        }
     }
+
+
 }

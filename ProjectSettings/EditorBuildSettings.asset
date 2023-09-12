@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage/StageScene.unity
     guid: 43d36cc0db4b07a47961a565dfb36f9c
+  - enabled: 1
+    path: Assets/Scenes/Charactor/characterMove.unity
+    guid: 6eb4b72d19f1e944aba8d0b7bbb46860
   m_configObjects: {}

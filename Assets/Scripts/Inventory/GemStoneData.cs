@@ -14,5 +14,5 @@ public class GemStoneData : ScriptableObject
     public string strImage;//아이템 이미지 주소
     public float fDropRate;//보석 드랍율
     public float fUpDamage;//보석이 올려주는 스킬 대미지비율
-    public float fNumber;//갯수
+    public float fCount;//갯수
 }

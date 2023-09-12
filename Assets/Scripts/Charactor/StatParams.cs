@@ -58,7 +58,7 @@ namespace Params
         public float fProperty;
         //설명
         public string strDescription;
-        //타입 (어떤 종류의 캐릭인지)
+        //무기 타입 (어떤 종류의 캐릭인지) 
         public float fType;
         //궁극기 게이지
         public float fUltimateGauge;

@@ -137,7 +137,7 @@ public class FieldofView3D : MonoBehaviour
                 {
                     visibleTargets.Add(target);
                     target.gameObject.layer = LayerMask.NameToLayer("VisibleTarget");
-                    
+
                 }
             }
         }
@@ -159,13 +159,13 @@ public class FieldofView3D : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, dir, out hit, viewRadius, obstacleMask))
         {
-            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("VisibleObstacle")) ;
+            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("VisibleObstacle"));
             //hit.collider.gameObject.layer = LayerMask.NameToLayer("VisibleObstacle");
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
         }
         else
         {
-            return new ViewCastInfo(false, transform.position+dir*viewRadius, viewRadius,globalAngle);
+            return new ViewCastInfo(false, transform.position + dir * viewRadius, viewRadius, globalAngle);
         }
     }
 
