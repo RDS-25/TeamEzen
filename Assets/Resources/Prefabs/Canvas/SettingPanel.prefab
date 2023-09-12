@@ -314,7 +314,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetAntiAliasingx2
         m_Mode: 1
@@ -412,7 +412,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetTextureHigh
         m_Mode: 1
@@ -589,7 +589,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetShadowVeryHigh
         m_Mode: 1
@@ -1248,7 +1248,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetShadowLow
         m_Mode: 1
@@ -3179,7 +3179,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetShadowHigh
         m_Mode: 1
@@ -3559,7 +3559,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetShadowMedium
         m_Mode: 1
@@ -3834,7 +3834,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetAntiAliasingx4
         m_Mode: 1
@@ -6213,7 +6213,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetAntiAliasingx0
         m_Mode: 1
@@ -6783,7 +6783,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetAntiAliasingx8
         m_Mode: 1
@@ -8043,7 +8043,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetVSyncOff
         m_Mode: 1
@@ -8526,7 +8526,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetFrame30
         m_Mode: 1
@@ -8624,7 +8624,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetTextureLow
         m_Mode: 1
@@ -9503,7 +9503,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetVSyncOn
         m_Mode: 1
@@ -9999,7 +9999,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetFrame60
         m_Mode: 1
@@ -10228,7 +10228,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3587685622805686358}
         m_TargetAssemblyTypeName: GraphicSetting, Assembly-CSharp
         m_MethodName: SetTextureMedium
         m_Mode: 1

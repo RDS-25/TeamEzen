@@ -47,12 +47,11 @@ public class GraphicManager : MonoBehaviour
         if (GameManager.instance.CheckExist(_strGraphicFolderPath, _strGraphicFileName))
             ReadValues();
         else
+        {
             WriteValues();
-        SetAntiAliasing(_nAntiAliasing);
-        SetFrameRate(_nFrameRate);
-        SetShadowResolution(_sShadowResolution);
-        SetTextureQuality(_nTextureQuality);
-        SetvSyncCount(_nVSyncCount);
+            ReadValues();
+        }
+
     }
     // 데이터 읽어오기
     private void ReadValues()

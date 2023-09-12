@@ -57,12 +57,23 @@ public class SkillPanelUi : MonoBehaviour
     }
     void Init()
     {
+
+        dictPassive = GameManager.instance.DataReadAll(FolderPath.PARAMS_PASSIVE_SKILL);
+        dictActive = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
+        dictBasic = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
+        dictUlt = GameManager.instance.DataReadAll(FolderPath.PARAMS_ULTIMATE_SKILL);
+        ShowSkill();
+
+    }
+    public void ShowSkill()
+    {
         curCharStat = GameManager.instance.objectFactory.ownCharFactory.listPool[charactorUIManager.curCharID].GetComponent<Stat>();
 
-        fPassiveSkillId = curCharStat.PassiveSkill;
-        fActiveSkillId = curCharStat.ActiveSkill;
-        fBasicSkillId = curCharStat.BasicSkill;
-        fUltimateSkillId = curCharStat.UltimateSkill;
+
+        fPassiveSkillId = curCharStat.fPassiveSkill;
+        fActiveSkillId = curCharStat.fActiveSkill;
+        fBasicSkillId = curCharStat.fBasicSkill;
+        fUltimateSkillId = curCharStat.fUltimateSkill;
         dictPassive = GameManager.instance.DataReadAll(FolderPath.PARAMS_PASSIVE_SKILL);
         dictActive = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
         dictBasic = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);

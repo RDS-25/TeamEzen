@@ -16,7 +16,6 @@ public class SlotManager : MonoBehaviour
     public TMP_Text textPrefab;
     public int nButtonIndex;
 
-
     public delegate void ButtonClickAction(int index);
     public static event ButtonClickAction OnButtonClick;
 
