@@ -220,7 +220,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -335,7 +335,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 40, y: -0.0003158901}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1640, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1357343244767184813
 MonoBehaviour:
@@ -1211,7 +1211,7 @@ MonoBehaviour:
   gExit: {fileID: 4460555615457800535}
   curCharID: 0
   slotManager: {fileID: 6445760232527151336}
-  skillPanelUi: {fileID: 0}
+  skillPanelUi: {fileID: 5733646463453320020}
   transformSlots: {fileID: 1357343244767184815}
 --- !u!114 &6445760232527151336
 MonoBehaviour:
@@ -5371,7 +5371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4892039952370198119
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6659,6 +6659,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5664632724661602036}
+    - target: {fileID: 4061859503574721451, guid: 3c3ed28158c302a45a27341f52547d58, type: 3}
+      propertyPath: skillPanelUi
+      value: 
+      objectReference: {fileID: 5733646463453320020}
     - target: {fileID: 4707409387587606550, guid: 3c3ed28158c302a45a27341f52547d58, type: 3}
       propertyPath: m_Name
       value: SkillPanel_v2
@@ -6675,3 +6679,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 336879103873447312, guid: 3c3ed28158c302a45a27341f52547d58, type: 3}
   m_PrefabInstance: {fileID: 4717634672339386511}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5733646463453320020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1074784340758778843, guid: 3c3ed28158c302a45a27341f52547d58, type: 3}
+  m_PrefabInstance: {fileID: 4717634672339386511}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a70a50f0bb2ad4183a5ea182df7430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
