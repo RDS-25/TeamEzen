@@ -8,6 +8,7 @@ public class Monster : MonoBehaviour
     public float dodge = 5f;
     public float criticalresist = 10f;
     public float defense = 10f;
+    public float property = 1;
     void Start()
     {
         

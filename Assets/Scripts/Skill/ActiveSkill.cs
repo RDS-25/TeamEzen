@@ -28,6 +28,7 @@ public class ActiveSkill : Skill
         yield return new WaitForSeconds(0);
     }
     
+
     //쿨타임동안 사용불가 쿨타임 종료시 사용가능
         //skilParams.fTimer += Time.deltaTime;
         //if (skilParams.fTimer >= skilParams.fCoolTime)

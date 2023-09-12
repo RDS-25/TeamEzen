@@ -7,51 +7,70 @@ public class SkillEffrct : MonoBehaviour
     //해당캐릭 
 {//적과의 충돌감지,대미지관련값 받아오고 마저 계산(o)
     //몬스터와 캐릭터에게 대미지값 전달
-    public Charater1 Charater1;
-    public float fRancri;
-    public float fRanmondod;
-    public float fMonDadge;
-    public float fMonDefense;
-    public float fMonCriresi;
-    public float fTotalDamage;
-    public float fRange;
+    
+    protected float fRancri;
+    protected float fRanmondod;
+    protected float fMonDadge;
+    protected float fMonDefense;
+    protected float fMonCriresi;
+    protected float fTotalDamage;
+    public  float fRange;
+    protected float fMonProperty;
+    protected Stat ChaStat;
 
-    public virtual void OnTriggerEnter(Collider other)
+    public  float CalculDamage(float chadam, float chacriper, float chacridam, float chadefenpier, float Attacker,
+        float mondadge, float moncrire, float mondefen, float Defender)//받은 스텟으로 다시쓰기
     {
-        
-    }
-    public virtual float CalculDamage()
-    {//계산된 대미지,크리티컬확률,크리티컬대미지,방어구관통,캐릭터속성,
-     //몬스터회피,몬스터방어,몬스터크리저항몬스터속성
-     //대미지 계산
-     
-        
-        if (fRanmondod < fMonDadge)//몬스터의 회피성공시
+        if (fRanmondod < mondadge)
         {
-            float calculdamage = 0;
-            fTotalDamage = calculdamage;
-            //빗나감 텍스트
+            fTotalDamage = 0;
             return fTotalDamage;
         }
-        else//몬스터의 회피실패시
+        else
         {
-            if (fRancri <= Charater1.critical - fMonCriresi)//크리티컬일 경우
-            {                
-                float calculdamage =
-                    (Charater1.damage * Charater1.criticaldamage *
-                    (fMonDefense - Charater1.defensepierce) / (fMonDefense + 100));
-                fTotalDamage = calculdamage;
-                return fTotalDamage;
-            }
-            else//크리티컬이 아닐경우
+            if (fRancri <= chacriper - moncrire)
             {
-                float calculdamage = Charater1.damage * (fMonDefense - Charater1.defensepierce) / (fMonDefense + 100);
-                fTotalDamage = calculdamage;
-                return fTotalDamage;
-            }//속성???
-        }        
+                fTotalDamage = (chadam * chacridam * (mondefen - chadefenpier / mondefen + 100)) * CheckPro(Attacker, Defender);
+            }
+            else
+            {
+                fTotalDamage = chadam * (mondefen - chadefenpier / mondefen + 100) * CheckPro(Attacker, Defender);
+            }
+            return fTotalDamage;
+        }
     }
-    public virtual float CheckPro(int Attacker, int Defender)
+    //public virtual float CalculDamage()
+    //{//계산된 대미지,크리티컬확률,크리티컬대미지,방어구관통,캐릭터속성,
+    // //몬스터회피,몬스터방어,몬스터크리저항몬스터속성
+    // //대미지 계산
+     
+        
+    //    if (fRanmondod < fMonDadge)//몬스터의 회피성공시
+    //    {
+    //        float calculdamage = 0;
+    //        fTotalDamage = calculdamage;
+    //        //빗나감 텍스트
+    //        return fTotalDamage;
+    //    }
+    //    else//몬스터의 회피실패시
+    //    {
+    //        if (fRancri <= Charater1.critical - fMonCriresi)//크리티컬일 경우
+    //        {                
+    //            float calculdamage =
+    //                (Charater1.damage * Charater1.criticaldamage *
+    //                (fMonDefense - Charater1.defensepierce) / (fMonDefense + 100));
+    //            fTotalDamage = calculdamage;
+    //            return fTotalDamage;
+    //        }
+    //        else//크리티컬이 아닐경우
+    //        {
+    //            float calculdamage = Charater1.damage * (fMonDefense - Charater1.defensepierce) / (fMonDefense + 100);
+    //            fTotalDamage = calculdamage;
+    //            return fTotalDamage;
+    //        }//속성???
+    //    }        
+    //}
+    public virtual float CheckPro(float Attacker, float Defender)
     {
         if (Attacker - Defender == -1 || Attacker - Defender == 2)
         {//AttackerWin;
@@ -63,6 +82,21 @@ public class SkillEffrct : MonoBehaviour
         }
         else
             return 1f;
+    }
+    public virtual void CheckDistance(Vector3 firepoint,float range)
+    {
+
+        float distance = Vector3.Distance(firepoint, this.transform.position);
+        Debug.Log("ran" + range);
+        Debug.Log("dis" + distance);
+        // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
+        if (distance > range)//Ex_Active1Params의 Range를 가져오는 방법??
+        {
+
+            Destroy(this.gameObject);//안대 초기화
+        }
+        else
+            return;
     }
 }
 

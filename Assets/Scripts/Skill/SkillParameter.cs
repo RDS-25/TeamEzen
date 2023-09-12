@@ -13,14 +13,16 @@ namespace SkillParameter
     public class SkilParams : MonoBehaviour
     {
         [Serializable]
-        public enum SkillType { PASSIVE, ACTIVE, ULTIMATE }
-
+        public enum SkillType { PASSIVE, ACTIVE, ULTIMATE, BASIC }
+        public enum SkillDetailType { ATTACK, HEAL, BUFF}
         public SkillType skillType;
+        public SkillDetailType skillDetail; 
         public float fId;//식별자
         public string strName;//이름        
         public float fSkillLevel = 1f;//스킬레벨
         public string strDiscription;//스킬 설명
-        public string strFilepath;//스킬아이콘 경로
+        public string strIconpath;//스킬아이콘 경로
+        public string strEffectPath;
         public float fSkillRequireExp;//스킬 레벨업 필요경험치
         public float fSkillExp;//스킬경험치
         public float fUnlockLevel;//스킬해금 필요캐릭터레벨
@@ -30,7 +32,8 @@ namespace SkillParameter
         public float fDuration;//스킬 지속시간        
         public float fSkillCoolReduce;//스킬 쿨타임감소
         public float fBuffDuration;//버프스킬 지속시간
-        public float fRange;//스킬범위        
+        public float fRange;//스킬사거리
+        public float fMaxRange;//스킬범위                       
         public float fValue;//스킬 기본데미지
         public float fHidenValue;//해금된 스킬효과 배율
         public float fMagnification;//스킬배율
@@ -41,10 +44,10 @@ namespace SkillParameter
         public bool bisCanUse = false;//스킬이 사용가능한지
         public bool bisActtivate = false;//스킬 발동여부
         public bool bisUnlockHiden = false;//스킬 추가기능 해금
-        public float plusval = 10f;
-        public float pulsmag = 10f;
-        public float plusattackcount = 0;
-        public float plustargetcount = 0;
+        public float plusval = 10f;//레벨업시 증가밸류
+        public float pulsmag = 10f;//레벨업시 증가배율
+        public float plusattackcount = 0;//레벨업시 증가공격횟수
+        public float plustargetcount = 0;//레벨업시 증가타겟수
 
         public float checkLevel;
     }

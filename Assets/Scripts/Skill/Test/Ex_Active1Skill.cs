@@ -5,33 +5,36 @@ using System;
 using System.IO;
 public class Ex_Active1Skill : ActiveSkill
 {
-    private string _strExActive1SkillPath;//파일경로
-    string ActiveParams;
-    public Skilldatas scriptabledata;//스크립터블오브젝트 인스펙터창
-    public Charater1 Charater1;    
-    Dictionary<string, string> dictActive1SkillStat;//딕셔너리 사용
+    
+    
+    
+       
+   
     //public Action skillTirger;
     public Transform FirePoint;
     public GameObject EffectPrefab;
     //스킬레벨업 변수들 스킬마다 써주기
+
+    
     const float PLUS_VAL = 10f;
     const float PLUS_MAG = 10f;
     const float PLUS_TARGET_COUNT = 0f;
     const float PLUS_ATTACK_COUNT = 0f;
 
 
-
     void Start()
     {
         _strExActive1SkillPath = Application.persistentDataPath + "/ActiveSkill/";//폴더명
-        ActiveParams = FileName.STR_JSON_ACTIVESKILL1_PARAS;//파일명 추가
+        SkillParams = FileName.STR_JSON_ACTIVESKILL1_PARAS;//파일명 추가
         LevelUpValue();
         InitParams();
+       
     }
+   
     public override void InitParams()
     {//데이터파일 있으면 LoadParams() 없으면 SetParams()
 
-        if (GameManager.instance.CheckExist(_strExActive1SkillPath, ActiveParams))
+        if (GameManager.instance.CheckExist(_strExActive1SkillPath, SkillParams))
         {
             LoadParams();
         }
@@ -48,41 +51,44 @@ public class Ex_Active1Skill : ActiveSkill
         plustargetcount = PLUS_TARGET_COUNT;
         plusattackcount = PLUS_ATTACK_COUNT;
     }
+        
     public void SetDefault()
     {//스크립터블 지우고 새로 설정하기
-        SkillParameter.SkilParams scriptable = scriptabledata.Skills[0];
-        fSkillLevel = scriptable.fSkillLevel;
-        fId = scriptable.fId;
-        strName = scriptable.strName;//스크립터블 오브젝트에서 꺼내올때
-        strDiscription = scriptable.strDiscription;
-        fSkillExp = scriptable.fSkillExp;
-        fSkillRequireExp = scriptable.fSkillRequireExp;
-        fUnlockLevel = scriptable.fUnlockLevel;
-        fUnlockHidenLevel = scriptable.fUnlockHidenLevel;
-        fTimer = scriptable.fTimer;
-        fCoolTime = scriptable.fCoolTime;
-        fDuration = scriptable.fDuration;
-        fSkillCoolReduce = scriptable.fSkillCoolReduce;
-        fRange = scriptable.fRange;
-        fValue = scriptable.fValue;
-        fHidenValue = scriptable.fHidenValue;
-        fMagnification = scriptable.fMagnification;
-        fTargetCount = scriptable.fTargetCount;
-        fAttackCount = scriptable.fAttackCount;
-        fBulletCount = scriptable.fBulletCount;
-        bisUnlockSkill = scriptable.bisUnlockSkill;
-        bisUnlockHiden = scriptable.bisUnlockHiden;
-        bisCanUse = scriptable.bisCanUse;
-        bisActtivate = scriptable.bisActtivate;
+        
+        fSkillLevel = 1;
+        fId = 10;
+        strName = "Act1";
+        strDiscription = "ok";
+        fSkillExp = 0;
+        fSkillRequireExp = 100;
+        fUnlockLevel = 1;
+        fUnlockHidenLevel = 20;
+        fTimer = 0;
+        fCoolTime = 1;
+        fDuration = 1;
+        fSkillCoolReduce = 0;
+        fRange = 50;
+        fValue = 10;
+        fHidenValue = 10;
+        fMagnification =10;
+        fTargetCount = 1;
+        fAttackCount = 1;
+        fBulletCount = 1;
+        bisUnlockSkill = false;
+        bisUnlockHiden = false;
+        bisCanUse = false;
+        bisActtivate = false;
     }
     public override void SetParams()
-    {      
+    {      //스킬타입 넣기
             Dictionary<string, string> dictTemp = new Dictionary<string, string>();
             dictTemp.Add("fSkillLevel", fSkillLevel.ToString());
             dictTemp.Add("fId", fId.ToString());
             dictTemp.Add("strName", strName);
             dictTemp.Add("strDiscription", strDiscription);
-            dictTemp.Add("fSkillExp", strDiscription);
+            dictTemp.Add("strIconpath", strIconpath);
+            dictTemp.Add("strEffectPath", strEffectPath);
+            dictTemp.Add("fSkillExp", fSkillExp.ToString());
             dictTemp.Add("fSkillRequireExp", fSkillRequireExp.ToString());
             dictTemp.Add("fUnlockLevel", fUnlockLevel.ToString());
             dictTemp.Add("fUnlockHidenLevel", fUnlockHidenLevel.ToString());
@@ -91,6 +97,7 @@ public class Ex_Active1Skill : ActiveSkill
             dictTemp.Add("fDuration", fDuration.ToString());
             dictTemp.Add("fSkillCoolReduce", fSkillCoolReduce.ToString());
             dictTemp.Add("fRange", fRange.ToString());
+            dictTemp.Add("fMaxRange", fMaxRange.ToString());
             dictTemp.Add("fValue", fValue.ToString());
             dictTemp.Add("fHidenValue", fHidenValue.ToString());
             dictTemp.Add("fMagnification", fMagnification.ToString());
@@ -178,10 +185,10 @@ public class Ex_Active1Skill : ActiveSkill
     }
     public override void SkillUnlock()
     {
-        if (Charater1.Level > fUnlockLevel)
+        if (ChaStat.fLevel > fUnlockLevel)
         {
             bisUnlockSkill = true;
-            dictActive1SkillStat.Add("bisUnlockSkill", true.ToString());
+            SkillStat.Add("bisUnlockSkill", true.ToString());
             
         }
         SetParams();
@@ -190,10 +197,10 @@ public class Ex_Active1Skill : ActiveSkill
     }
     public override void SkillHidenUnlock()
     {
-        if (Charater1.Level > fUnlockHidenLevel)
+        if (ChaStat.fLevel > fUnlockHidenLevel)
         {
             bisUnlockHiden = true;
-            dictActive1SkillStat.Add("bisUnlockHiden", true.ToString());
+            SkillStat.Add("bisUnlockHiden", true.ToString());
         }
         SetParams();
         //추가기능
@@ -224,8 +231,7 @@ public class Ex_Active1Skill : ActiveSkill
     }
     
     public void EffectStart()
-    {
-        EffectPrefab.GetComponent<Ex_Active1Effect>().fRange = this.fRange;//이펙트의 사거리
+    {        
         Instantiate(EffectPrefab, FirePoint.position, FirePoint.rotation);//팩토리로 바꾸기
     }
    

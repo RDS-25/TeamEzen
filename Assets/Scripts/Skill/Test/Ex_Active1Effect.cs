@@ -6,21 +6,33 @@ using System;
 
 public class Ex_Active1Effect : SkillEffrct
 {
+    
     //public Charater1 Charater1;
     public Ex_Active1Skill ex_Active1Skill;
     float fSpeed = 100f;
     public Action SkillHit;//스킬 이펙트가 몬스터에게 충돌했을때    
     public Vector3 Firepiont;
 
+    private void OnDisable()
+    {
+        ChaStat = null;
+    }
+
+    public void SkillActivationInit(ref Stat activeObjectStat)
+    {
+        ChaStat = activeObjectStat;
+    }
+
 
     void Start()
     {
+
         MoveEffect();
         fRancri = UnityEngine.Random.Range(0f, 100f);
         fRanmondod = UnityEngine.Random.Range(0f, 100f);
         Firepiont = gameObject.GetComponent<Transform>().position;
     }
-    public override void OnTriggerEnter(Collider other)
+    public  void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Monster")
         {
@@ -28,8 +40,9 @@ public class Ex_Active1Effect : SkillEffrct
             fMonDadge = component.dodge;
             fMonCriresi = component.criticalresist;
             fMonDefense = component.defense;
-            //CheckPro( ,other.GetComponent<Stat>().fProperty);
-            CalculDamage();
+            fMonProperty = component.property;
+            CalculDamage(ChaStat.fAtk,ChaStat.fCriticalPer,ChaStat.fCriticalDmg,ChaStat.fDefBreak,ChaStat.fProperty
+                ,fMonDadge,fMonCriresi, fMonDefense,fMonProperty);
             // 오류 있음
             SkillHit?.Invoke("1",1);//X?  X가 만족하면 뒤에거 실행  나중 실제 이펙트쪽으로 옮기기
             //몬스터 피해입는곳
@@ -40,29 +53,14 @@ public class Ex_Active1Effect : SkillEffrct
 
         }
     }
-    public override float CheckPro(int Attacker, int Defender)
-    {
-        return base.CheckPro(Attacker, Defender);
-    }
-    //public override float CalculDamage(float chadam, float chacriper, float chacridam, float chadefenpier, int Attacker, float mondadge, float moncrire, float mondefen, int Defender)
+    //public override float CheckPro(float Attacker, float Defender)
     //{
-    //    if (fRanmondod < mondadge)
-    //    {
-    //        fTotalDamage = 0;
-    //        return fTotalDamage;
-    //    }
-    //    else
-    //    {
-    //        if (fRancri <= chacriper - moncrire)
-    //        {
-    //            float calculdamage = (chadam * chacridam * (mondefen - chadefenpier / mondefen + 100));
-    //            fTotalDamage = calculdamage * CheckPro(Attacker, Defender);
-    //            return 0;
-    //        }
-    //        return 0;
-    //    }
-    //    return 0;
-
+    //    return base.CheckPro(Attacker, Defender);
+    //}
+    //public float CalculDamage(float chadam, float chacriper, float chacridam, float chadefenpier, float Attacker,
+    //    float mondadge, float moncrire, float mondefen, float Defender)
+    //{
+    //    return base.CalculDamage(chadam, chacriper, chacridam, chadefenpier, Attacker, mondadge, moncrire, mondefen, Defender);
     //}
     //public override float CalculDamage()
     //{
@@ -96,14 +94,14 @@ public class Ex_Active1Effect : SkillEffrct
     //    }
 
     //}
-    public void CheckDistance()
+    public override void CheckDistance(Vector3 firepoint, float range)
     {
         
         float distance = Vector3.Distance(Firepiont, this.transform.position);
-        Debug.Log("ran" + fRange);
+        Debug.Log("ran" + range);
         Debug.Log("dis"+ distance);
        // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
-        if (distance > fRange)//Ex_Active1Params의 Range를 가져오는 방법??
+        if (distance > range)//Ex_Active1Params의 Range를 가져오는 방법??
         {
 
             Destroy(this.gameObject);
@@ -117,6 +115,6 @@ public class Ex_Active1Effect : SkillEffrct
     }
     void Update()
     {
-        CheckDistance();
+        CheckDistance(Firepiont, ex_Active1Skill.fRange);
     }
 }

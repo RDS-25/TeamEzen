@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 100
   strName: a
   strDiscription: aa
-  strImage: C:\Users\EZEN\teampro\TeamEzen\Assets\Download\RPG_inventory_icons/armor.png
+  strImage: armor.png
   fDropRate: 0
   fDamage: 0
   fDefense: 0
