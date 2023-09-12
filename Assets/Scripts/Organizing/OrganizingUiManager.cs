@@ -41,6 +41,11 @@ public class OrganizingUiManager : MonoBehaviour
     }
     public void ButtonLoadStage()
     {
+        if (GameManager.instance.fCharid[0] == -1)
+        {
+            Debug.Log("캐릭터선택해야함");
+            return;
+        }
         LoadingSceneManager.LoadScene("StageScene");
     }
     public void ButtonBack()
@@ -49,11 +54,6 @@ public class OrganizingUiManager : MonoBehaviour
     }
     public void SelectChar(int index)
     {
-        if (GameManager.instance.fCharid[0] == -1)
-        {
-            Debug.Log("캐릭터선택해야함");
-            return;
-        }
         Organizing(index);
     }
 
