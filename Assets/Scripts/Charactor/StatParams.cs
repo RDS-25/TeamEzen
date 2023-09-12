@@ -67,21 +67,21 @@ namespace Params
 
         // 스킬 ID
         //스킬 1 
-        public float PassiveSkill;
+        public float fPassiveSkill;
         //스킬 2 
-        public float BasicSkill;
+        public float fBasicSkill;
         //스킬 3
-        public float ActiveSkill;
+        public float fActiveSkill;
         //스킬 4
-        public float UltimateSkill;
+        public float fUltimateSkill;
 
 
         // 기본 장비
-        public float Equip;
+        public float fEquip;
         // 전용 장비
-        public float PersonalEquip;
+        public float fPersonalEquip;
         // 스킬 증가 돌 
-        public float Stone;
+        public float fStone;
 
 
     }

@@ -29,12 +29,28 @@ public class CharPath : MonoBehaviour
     public const string HRR = "HRR";
     //회복률(회복이 될 상태일때 회복 수치를 증가)
     public const string RECOVERYRATE = "RECOVERYRATE";
+    //시야
     public const string SIGHTRANGE = "SIGHTRANGE";
+    //기본 공격사거리
     public const string DEFAULTRANGE = "DEFAULTRANGE";
+    //속성
     public const string PROPERTY = "PROPERTY";
     public const string DESCRIPTION = "DESCRIPTION";
     public const string TYPE = "TYPE";
     public const string UITIMATEGAUGE="UITIMATEGAUGE";
     public const string ISOWN = "ISOWN";
+
+    //스킬 ID
+    public const string PASSIVESKILL = "PASSIVESKILL";
+    public const string BASICSKILL = "BASICSKILL";
+    public const string ACTIVESKILL = "ACTIVESKILL";
+    public const string UITIMATESKILL = "UITIMATESKILL";
+
+    //장비 
+    public const string EQUIP = "EQUIP";
+    public const string PERSONALEQUIP = "PERSONALEQUIP";
+    public const string STONE = "STONE";
+
+
 
 }
