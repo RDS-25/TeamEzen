@@ -32,10 +32,11 @@ public class OrganizingUiManager : MonoBehaviour
         gOranaizngPanel.SetActive(false);
         for(int i = 0; i < buttons.Length; i++)
         {
-            if(GameManager.instance.fCharid[i] != -1)
+            if(GameManager.instance.arrCurCharacters[i] !=null)
             {
                 buttons[i].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite(GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
+                    = GameManager.instance.LoadAndSetSprite(
+                        FolderPath.SPRITE_CHAR_ICON + GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
             }
         }
     }
@@ -69,7 +70,7 @@ public class OrganizingUiManager : MonoBehaviour
                 GameManager.instance.arrCurCharacters[i] = null;
                 GameManager.instance.fCharid[i] = -1;
                 buttons[i].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
+                    = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE + "SkillImagetest.png");
                 eraseObject = true;
                 eraseObjectIdx = i;
                 //return;
@@ -85,7 +86,7 @@ public class OrganizingUiManager : MonoBehaviour
                 GameManager.instance.arrCurCharacters[i] = null;
                 GameManager.instance.fCharid[i] = -1;
                 buttons[i].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
+                    = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE + "SkillImagetest.png");
             }
         }
 
@@ -101,7 +102,8 @@ public class OrganizingUiManager : MonoBehaviour
                 GameManager.instance.SetCharId(i, 
                     GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().fId);
                 buttons[i].GetComponent<Image>().sprite 
-                    = GameManager.instance.LoadAndSetSprite(GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
+                    = GameManager.instance.LoadAndSetSprite
+                    (FolderPath.SPRITE_CHAR_ICON + GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
                 break;
             }
         }

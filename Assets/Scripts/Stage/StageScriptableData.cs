@@ -43,5 +43,6 @@ public class StageScriptableData : ScriptableObject
         sparam.nBossCount = nBossCount;
         sparam.strStageName = strStageName;
         sparam.nStoreCount = nStoreCount;
+        sparam.typeChapter = typeChapter;
     }
 }

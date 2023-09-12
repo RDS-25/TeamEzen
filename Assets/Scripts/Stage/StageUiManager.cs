@@ -17,6 +17,7 @@ public class StageUiManager : MonoBehaviour
 
     public void OnRetireBtnClicked()
     {
+        GameManager.instance.objectFactory.SlotInit();
         LoadingSceneManager.LoadScene("LobbyScene");
     }
 

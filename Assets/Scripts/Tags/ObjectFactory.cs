@@ -41,12 +41,19 @@ public class ObjectFactory
         characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
         SelectCharacterInit();
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
-                                    , characterFactory.listPool.Count);
+                            , characterFactory.listPool.Count);
         OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                                             , characterFactory.listPool.Count);
-
     }
-
+    public void SlotInit()
+    {
+        CharSlotFactory.DeCreatePool();
+        OrganizingSlotFactory.DeCreatePool();
+        CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
+                            , characterFactory.listPool.Count);
+        OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
+                                            , characterFactory.listPool.Count);
+    }
     public void SelectCharacterInit()
     {
         List<string> list = new();
