@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
             return null;
         }
     }
-    public void WriteNew(string sFolderPathFileNameJson, Dictionary<string, string> dictNew)
+    public void ReWrite(string sFolderPathFileNameJson, Dictionary<string, string> dictNew)
     {
         Dictionary<string, string> dictTemp = DataRead(sFolderPathFileNameJson + ".json");
         foreach(KeyValuePair<string,string> keyValuePair in dictNew)
