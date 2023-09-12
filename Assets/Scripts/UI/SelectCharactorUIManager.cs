@@ -10,7 +10,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 	AudioSource audio;
 
 
-	public GameObject curChr = null;
+	 GameObject curChr = null;
 
 
 	[SerializeField]

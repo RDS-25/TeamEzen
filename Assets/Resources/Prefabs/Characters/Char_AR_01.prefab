@@ -1941,7 +1941,7 @@ MonoBehaviour:
   bIsStop: 0
   gBullet: {fileID: 1968102902166113412, guid: 4498608dc92bce447a8f23c695b62199, type: 3}
   tBulletpos: {fileID: 1167924849}
-  isEntries: 1
+  isEntries: 0
   targetingRange: 2
   lastJoystickDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &-4233778701461047961
@@ -1984,13 +1984,13 @@ MonoBehaviour:
   fType: 0
   fUltimateGauge: 0
   bIsOwn: 0
-  PassiveSkill: 0
-  BasicSkill: 0
-  ActiveSkill: 0
-  UltimateSkill: 0
-  Equip: 0
-  PersonalEquip: 0
-  Stone: 0
+  fPassiveSkill: 0
+  fBasicSkill: 0
+  fActiveSkill: 0
+  fUltimateSkill: 0
+  fEquip: 0
+  fPersonalEquip: 0
+  fStone: 0
   stat: {fileID: 11400000, guid: b7557b7945216304eb6f12b6d757de07, type: 2}
 --- !u!1 &2958257409294944158
 GameObject:

@@ -135,8 +135,11 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
             gMaxRangeIndicator.SetActive(true); //스킬 사거리
             gSkillCancel.SetActive(true);
 
+
+            gMaxRangeIndicator.transform.localScale = new Vector3(10,0.01f,10);  
+            gMaxRangeIndicator.transform.position = transform.root.position;
             // 스킬 범위 표시
-            gRangeIndicator.transform.position = transform.root.position + joystickDirection * 5;//5는 스킬 범위로 
+            gRangeIndicator.transform.position = transform.root.position+new Vector3(0,0.01f,0) + joystickDirection * 5;//5는 최대스킬범위 /2 로 
             Debug.Log(transform.name + "실행");
 
             if (action.bIsCancel)
