@@ -40,3 +40,10 @@ MonoBehaviour:
   fType: 1
   fUltimateGauge: 100
   bIsOwn: 0
+  PassiveSkill: 10
+  BasicSkill: 8
+  ActiveSkill: 2
+  UltimateSkill: 3
+  Equip: 111
+  PersonalEquip: 223
+  Stone: 335

@@ -91,6 +91,16 @@ public class Stat : StatParams
         fType = float.Parse(dictTemp[CharPath.TYPE]);
         fUltimateGauge = float.Parse(dictTemp[CharPath.UITIMATEGAUGE]);
         bIsOwn = bool.Parse(dictTemp[CharPath.ISOWN]);
+
+
+        fPassiveSkill = float.Parse(dictTemp[CharPath.PASSIVESKILL]);
+        fBasicSkill  = float.Parse(dictTemp[CharPath.BASICSKILL]);
+        fActiveSkill = float.Parse(dictTemp[CharPath.ACTIVESKILL]);
+        fUltimateSkill = float.Parse(dictTemp[CharPath.UITIMATESKILL]);
+
+        fEquip = float.Parse(dictTemp[CharPath.EQUIP]);
+        fPersonalEquip = float.Parse(dictTemp[CharPath.PERSONALEQUIP]);
+        fStone = float.Parse(dictTemp[CharPath.STONE]);
     }
 
     void WriteParams() {
@@ -125,11 +135,16 @@ public class Stat : StatParams
         dicTemp.Add(CharPath.ISOWN, stat.bIsOwn.ToString());
 
         //스킬 JSON 1,2,3,4 넣기
+        dicTemp.Add(CharPath.PASSIVESKILL,stat.PassiveSkill.ToString());
+        dicTemp.Add(CharPath.BASICSKILL, stat.BasicSkill.ToString());
+        dicTemp.Add(CharPath.ACTIVESKILL, stat.ActiveSkill.ToString());
+        dicTemp.Add(CharPath.UITIMATESKILL, stat.UltimateSkill.ToString());
 
+        //장비
 
-
-    
-
+        dicTemp.Add(CharPath.EQUIP, stat.Equip.ToString());
+        dicTemp.Add(CharPath.PERSONALEQUIP, stat.PersonalEquip.ToString());
+        dicTemp.Add(CharPath.STONE, stat.Stone.ToString());
 
         GameManager.instance.DataWrite(_sFolderPath + _sFileName, dicTemp);
     }
