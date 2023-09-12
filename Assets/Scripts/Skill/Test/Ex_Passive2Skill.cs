@@ -27,8 +27,6 @@ public class Ex_Passive2Skill : PassiveSkill
         _strExPassive2SkillPath = FolderPath.PARAMS_SKILL + "/PassiveSkill/";
         Passive1Params = FileName.STR_JSON_PASSIVESKILL2_PARAS;
         InitParams();
-
-
     }
     public override void InitParams()
     {

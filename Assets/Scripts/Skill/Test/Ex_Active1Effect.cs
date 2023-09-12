@@ -15,7 +15,6 @@ public class Ex_Active1Effect : SkillEffrct
 
     void Start()
     {
-        
         MoveEffect();
         fRancri = UnityEngine.Random.Range(0f, 100f);
         fRanmondod = UnityEngine.Random.Range(0f, 100f);
@@ -28,47 +27,75 @@ public class Ex_Active1Effect : SkillEffrct
             var component = other.GetComponent<Monster>();
             fMonDadge = component.dodge;
             fMonCriresi = component.criticalresist;
-            fMonDefense = component.defense;            
+            fMonDefense = component.defense;
+            //CheckPro( ,other.GetComponent<Stat>().fProperty);
             CalculDamage();
             // 오류 있음
             SkillHit?.Invoke("1",1);//X?  X가 만족하면 뒤에거 실행  나중 실제 이펙트쪽으로 옮기기
             //몬스터 피해입는곳
             Debug.Log(other.tag);
         }
+        if(other.tag == "Player")
+        {
+
+        }
     }
-    public override float CalculDamage()
+    public override float CheckPro(int Attacker, int Defender)
     {
-        if (fRanmondod < fMonDadge)//몬스터의 회피성공시
-        {
-
-            Debug.Log("회피+"+(fRanmondod - fMonDadge));
-            float calculdamage = 0;
-            fTotalDamage = calculdamage;
-            //빗나감 텍스트
-            Debug.Log("데미지"+fTotalDamage);
-            return fTotalDamage;
-        }
-        else//몬스터의 회피실패시
-        {
-            if (fRancri <= Charater1.critical - fMonCriresi)//크리티컬일 경우
-            {
-                float calculdamage =
-                    (Charater1.damage *(100+ Charater1.criticaldamage)/100 *
-                    (fMonDefense - Charater1.defensepierce) / (fMonDefense + 100));
-                fTotalDamage = calculdamage;
-                Debug.Log(fTotalDamage);
-                return fTotalDamage;
-            }
-            else//크리티컬이 아닐경우
-            {
-                float calculdamage = Charater1.damage * (fMonDefense - Charater1.defensepierce) / (fMonDefense + 100);
-                fTotalDamage = calculdamage;
-                Debug.Log(fTotalDamage);
-                return fTotalDamage;
-            }//속성???
-        }
-
+        return base.CheckPro(Attacker, Defender);
     }
+    //public override float CalculDamage(float chadam, float chacriper, float chacridam, float chadefenpier, int Attacker, float mondadge, float moncrire, float mondefen, int Defender)
+    //{
+    //    if (fRanmondod < mondadge)
+    //    {
+    //        fTotalDamage = 0;
+    //        return fTotalDamage;
+    //    }
+    //    else
+    //    {
+    //        if (fRancri <= chacriper - moncrire)
+    //        {
+    //            float calculdamage = (chadam * chacridam * (mondefen - chadefenpier / mondefen + 100));
+    //            fTotalDamage = calculdamage * CheckPro(Attacker, Defender);
+    //            return 0;
+    //        }
+    //        return 0;
+    //    }
+    //    return 0;
+
+    //}
+    //public override float CalculDamage()
+    //{
+    //    if (fRanmondod < fMonDadge)//몬스터의 회피성공시
+    //    {
+    //        Debug.Log("회피+"+(fRanmondod - fMonDadge));
+    //        float calculdamage = 0;
+    //        fTotalDamage = calculdamage;
+    //        //빗나감 텍스트
+    //        Debug.Log("데미지"+fTotalDamage);
+    //        return fTotalDamage;
+    //    }
+    //    else//몬스터의 회피실패시
+    //    {
+    //        if (fRancri <= Charater1.critical - fMonCriresi)//크리티컬일 경우
+    //        {
+    //            float calculdamage =
+    //                (Charater1.damage *(100+ Charater1.criticaldamage)/100 *
+    //                (fMonDefense - Charater1.defensepierce) / (fMonDefense + 100));
+    //            fTotalDamage = calculdamage;
+    //            Debug.Log(fTotalDamage);
+    //            return fTotalDamage;
+    //        }
+    //        else//크리티컬이 아닐경우
+    //        {
+    //            float calculdamage = Charater1.damage * (fMonDefense - Charater1.defensepierce) / (fMonDefense + 100);
+    //            fTotalDamage = calculdamage;
+    //            Debug.Log(fTotalDamage);
+    //            return fTotalDamage;
+    //        }//속성???
+    //    }
+
+    //}
     public void CheckDistance()
     {
         

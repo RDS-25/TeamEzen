@@ -62,7 +62,6 @@ public class ItemDatamanager : MonoBehaviour
         //¾øÀ»¶§
         else
         {
-
             WriteData();
             LoadInvenData();
         }
@@ -215,9 +214,12 @@ public class ItemDatamanager : MonoBehaviour
         {
             if (Slot[i].activeSelf && ItemData[i].GetComponent<UiCellView>().COUNT != 0)
             {
-                Slot[i].GetComponentInChildren<TMP_Text>().text = ItemData[i].GetComponent<UiCellView>().COUNT.ToString();
-                Debug.Log(ItemData[i].GetComponent<UiCellView>().COUNT.ToString());
-                Debug.Log("asdasd");
+                if (ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.PROFESSIONAL)
+                {
+                    Slot[i].GetComponentInChildren<TMP_Text>().enabled = false;
+                }
+                else
+                    Slot[i].GetComponentInChildren<TMP_Text>().text = ItemData[i].GetComponent<UiCellView>().COUNT.ToString();                
             }
         }
     }
@@ -232,12 +234,15 @@ public class ItemDatamanager : MonoBehaviour
         List<GameObject> ItemData = GameManager.instance.objectFactory.ItemObjectFactory.listPool;
         for (int i = 0; i < Slot.Count; i++)
         {
-            if (ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.EQUIPMENT || ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.PROFESSIONAL)
+            Slot[i].gameObject.SetActive(false);
+            if (ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.EQUIPMENT&& ItemData[i].GetComponent<UiCellView>().COUNT > 0)
             {
                 Slot[i].gameObject.SetActive(true);
-            }                
-            else
-                Slot[i].gameObject.SetActive(false);                       
+            }
+            else if(ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.PROFESSIONAL & ItemData[i].GetComponent<UiCellView>().COUNT > 0)
+            {
+                Slot[i].gameObject.SetActive(true);
+            }
         }
     }
     public void ChangeGemStoneTab()
@@ -250,11 +255,9 @@ public class ItemDatamanager : MonoBehaviour
         List<GameObject> ItemData = GameManager.instance.objectFactory.ItemObjectFactory.listPool;
         for (int i = 0; i < Slot.Count; i++)
         {
-            Slot[i].gameObject.SetActive(false);
-            Debug.Log(ItemData[i].GetComponent<UiCellView>().COUNT);
+            Slot[i].gameObject.SetActive(false);            
             if (ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.GEMSTONE && ItemData[i].GetComponent<UiCellView>().COUNT>0)
-            {
-                
+            {                
                 Slot[i].gameObject.SetActive(true);
             }
            
@@ -270,12 +273,11 @@ public class ItemDatamanager : MonoBehaviour
         List<GameObject> ItemData = GameManager.instance.objectFactory.ItemObjectFactory.listPool;
         for (int i = 0; i < Slot.Count; i++)
         {
-            if (ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.MATERIAL)
+            Slot[i].gameObject.SetActive(false);
+            if (ItemData[i].GetComponent<UiCellView>().TYPE == ItemParameter.ItemType.MATERIAL && ItemData[i].GetComponent<UiCellView>().COUNT > 0)
             {
                 Slot[i].gameObject.SetActive(true);
-            }
-            else
-                Slot[i].gameObject.SetActive(false);
+            }       
         }
     }
     public void ChangeTotalTab()

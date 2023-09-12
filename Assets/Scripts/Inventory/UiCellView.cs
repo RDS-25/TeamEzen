@@ -8,6 +8,7 @@ using ItemParameter;
 
 public class UiCellView : MonoBehaviour
 {
+    //public ItemDatamanager itemDatamanager;
     public Image imgIcon;
     public TMP_Text textCount;
     [SerializeField]
@@ -19,7 +20,8 @@ public class UiCellView : MonoBehaviour
     [SerializeField]
     MaterialParams materialParams = new MaterialParams();
     private ItemType itemType = ItemType.EQUIPMENT;
-
+    string _strInvenItemPath = FolderPath.PARAMS_ITEM_COUNT;
+    string SaveItemPath = FileName.STR_JSON_INVEN_SAVE;
 
     public ItemType TYPE
     {
@@ -215,7 +217,7 @@ public class UiCellView : MonoBehaviour
         professionalParams.fSpeed = professionalData.fSpeed;
         professionalParams.fCrticalper = professionalData.fCrtical;
         professionalParams.fCriticalDamage = professionalData.fCriticalDamage;
-        professionalParams.fCount = professionalData.fCount;
+        professionalParams.fCount =float.Parse(GameManager.instance.DataRead(_strInvenItemPath + SaveItemPath)[professionalParams.fId.ToString()]);
     }
     public void SetUp(EquipData equipData, Dictionary<string, string> dictItemCount)
     {
@@ -230,8 +232,8 @@ public class UiCellView : MonoBehaviour
         equipParams.fSpeed = equipData.fSpeed;
         equipParams.fCrticalper = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;
-        equipParams.fCount = equipData.fCount;
-        
+        equipParams.fCount = float.Parse(GameManager.instance.DataRead(_strInvenItemPath + SaveItemPath)[equipParams.fId.ToString()]);
+
     }
     public void SetUp(GemStoneData gemStoneData, Dictionary<string,string> dictItemCount)
     {
@@ -242,8 +244,8 @@ public class UiCellView : MonoBehaviour
         gemstoneParams.strImage = gemStoneData.strImage;
         gemstoneParams.fDropRate = gemStoneData.fDropRate;
         gemstoneParams.fUpDamage = gemStoneData.fUpDamage;
-        gemstoneParams.fCount = gemStoneData.fCount;
-        Debug.Log(gemstoneParams.fCount);
+        gemstoneParams.fCount = float.Parse(GameManager.instance.DataRead(_strInvenItemPath + SaveItemPath)[gemstoneParams.fId.ToString()]);
+
     }
     public void SetUp(MaterialData materialData, Dictionary<string, string> dictItemCount)
     {
@@ -254,7 +256,7 @@ public class UiCellView : MonoBehaviour
         materialParams.strImage = materialData.strImage;
         materialParams.fDropRate = materialData.fDropRate;
         materialParams.fExp = materialData.fExp;
-        materialParams.fCount = materialData.fCount;       
+        materialParams.fCount = float.Parse(GameManager.instance.DataRead(_strInvenItemPath + SaveItemPath)[materialParams.fId.ToString()]);
     }
     Sprite SetImage(string imagePath)//보고 따라함 안씀
     {

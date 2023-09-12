@@ -76,11 +76,7 @@ public class Ex_Active1Skill : ActiveSkill
         bisActtivate = scriptable.bisActtivate;
     }
     public override void SetParams()
-    {
-       
-
-        
-         //scriptable.strName = "이름";//스크립터블 오브젝트에 정보 넣을때
+    {      
             Dictionary<string, string> dictTemp = new Dictionary<string, string>();
             dictTemp.Add("fSkillLevel", fSkillLevel.ToString());
             dictTemp.Add("fId", fId.ToString());
@@ -188,6 +184,7 @@ public class Ex_Active1Skill : ActiveSkill
             dictActive1SkillStat.Add("bisUnlockSkill", true.ToString());
             
         }
+        SetParams();
         //추가기능
 
     }
@@ -198,6 +195,7 @@ public class Ex_Active1Skill : ActiveSkill
             bisUnlockHiden = true;
             dictActive1SkillStat.Add("bisUnlockHiden", true.ToString());
         }
+        SetParams();
         //추가기능
 
     }

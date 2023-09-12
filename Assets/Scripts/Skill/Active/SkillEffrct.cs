@@ -49,12 +49,23 @@ public class SkillEffrct : MonoBehaviour
                 fTotalDamage = calculdamage;
                 return fTotalDamage;
             }//속성???
-        }
-        
+        }        
     }
-    
-    
+    public virtual float CheckPro(int Attacker, int Defender)
+    {
+        if (Attacker - Defender == -1 || Attacker - Defender == 2)
+        {//AttackerWin;
+            return 1.3f;
+        }
+        if (Attacker - Defender == 1 || Attacker - Defender == -2)
+        {//AttackerLose;
+            return 0.7f;
+        }
+        else
+            return 1f;
+    }
 }
+
 /*public virtual float CalculDamage(float damage, float critical, float criticaldamage,
         float defensepierce, int chaprotype, float mondodge, float mondsfense, float moncriresi, int monprotype)
 {//계산된 대미지,크리티컬확률,크리티컬대미지,방어구관통,캐릭터속성,

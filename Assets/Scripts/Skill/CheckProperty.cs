@@ -11,19 +11,20 @@ public class CheckProperty : MonoBehaviour
     {
 
     }
-    public void CheckPro(int Attacker, int Defender)
+    public float CheckPro(int Attacker, int Defender)
     {
         if (Attacker - Defender == -1 || Attacker - Defender == 2)
-        {
-            //return AttackerWin;
+        {//AttackerWin;
+            return 1.3f;
         }
         if (Attacker - Defender == 1 || Attacker - Defender == -2)
-        {
-            //return AttackerLose;
-            
+        {//AttackerLose;
+            return 0.7f;
         }
+        else
+            return 1f;
     }
-//    화 수   목
+//    화  수   목
 
 //       0        1       2 
 //기준 기준
