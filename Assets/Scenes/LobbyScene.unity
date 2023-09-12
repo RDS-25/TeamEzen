@@ -2644,15 +2644,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1357343243691392783, guid: 3f895660bee0565489884cd6a7f77152, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1357343243691392783, guid: 3f895660bee0565489884cd6a7f77152, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1357343244767184815, guid: 3f895660bee0565489884cd6a7f77152, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1640
       objectReference: {fileID: 0}
     - target: {fileID: 4892039952370198119, guid: 3f895660bee0565489884cd6a7f77152, type: 3}
       propertyPath: m_Pivot.x
@@ -2741,6 +2741,10 @@ PrefabInstance:
     - target: {fileID: 7464028234767976703, guid: 3f895660bee0565489884cd6a7f77152, type: 3}
       propertyPath: m_Name
       value: CharSelectPanel_v2_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464028234767976703, guid: 3f895660bee0565489884cd6a7f77152, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f895660bee0565489884cd6a7f77152, type: 3}

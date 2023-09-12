@@ -8,6 +8,7 @@ public class SelectStageManager : MonoBehaviour
     int nStageNum;
     public Transform gSlots;
     public GameObject gOrganizingPanel;
+    public GameObject SelectStagePanel;
     public Button[] StageButtons;
     private void Start()
     {
@@ -17,6 +18,10 @@ public class SelectStageManager : MonoBehaviour
             int buttonIndex = i;
             StageButtons[i].onClick.AddListener(() => OnClickButton(buttonIndex));
         }
+    }
+    public void ButtonExit()
+    {
+        SelectStagePanel.SetActive(false);
     }
     void OnClickButton(int index)
     {
