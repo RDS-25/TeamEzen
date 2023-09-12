@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Char_AR_01
   m_EditorClassIdentifier: 
   fId: 1
-  sImage: C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Download/RPG_inventory_icons/apple.png
+  sImage: Char_AR_01.png
   strName: UnityChan3
   fLevel: 1
   fHealth: 100
@@ -39,7 +39,7 @@ MonoBehaviour:
   strDescription: "\uC124\uBA85"
   fType: 1
   fUltimateGauge: 100
-  bIsOwn: 0
+  bIsOwn: 1
   PassiveSkill: 1
   BasicSkill: 3
   ActiveSkill: 5

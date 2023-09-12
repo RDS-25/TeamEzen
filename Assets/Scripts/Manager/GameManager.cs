@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour
     }
     public Sprite LoadAndSetSprite(string imagePath)
     {
-        string path = Path.Combine(imagePath);
+        string path = Application.dataPath + Path.Combine(imagePath);
         if (File.Exists(path))
         {
             byte[] imageBytes = File.ReadAllBytes(path);

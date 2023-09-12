@@ -68,6 +68,7 @@ public class StageManager : MonoBehaviour
         AudioManager.instance.PlayBackgroundSound(GetComponent<AudioSource>(), AudioName.STR_MAIN_BACKGROUND);
         CreateStageFactory();
         InitializeStage(GameManager.instance.stageType, player);
+        Debug.Log(GameManager.instance.stageType);
     }
 
 

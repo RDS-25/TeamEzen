@@ -26,19 +26,19 @@ public class OrganizeChar : MonoBehaviour
                 GameManager.instance.arrCurCharacters[0] = null;
                 GameManager.instance.SetCharId(0, -1);
                 buttons[0].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
+                    = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE + "SkillImagetest.png");
                 break;
             case 1:
                 GameManager.instance.arrCurCharacters[1] = null;
                 GameManager.instance.SetCharId(1, -1);
                 buttons[1].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
+                    = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE + "SkillImagetest.png");
                 break;
             case 2:
                 GameManager.instance.arrCurCharacters[2] = null;
                 GameManager.instance.SetCharId(2, -1);
                 buttons[2].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite("C:/Users/EZEN/Documents/GitHub/TeamEzen/Assets/Resources/Sprites/SkillImagetest.png");
+                    = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE + "SkillImagetest.png");
                 break;
             default:
                 break;

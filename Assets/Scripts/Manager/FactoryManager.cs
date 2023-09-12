@@ -41,8 +41,11 @@ public class FactoryManager
     public void DeCreatePool()
     {
         isCreate = false;
+        foreach(GameObject obj in listPool)
+        {
+            MonoBehaviour.Destroy(obj);
+        }
         listPool.Clear();
-        listPool = null;
     }
     // 오브젝트 하나만 생성
     public GameObject CreateObject(GameObject gPrefab)

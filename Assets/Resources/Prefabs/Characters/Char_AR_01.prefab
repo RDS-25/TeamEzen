@@ -1984,13 +1984,13 @@ MonoBehaviour:
   fType: 0
   fUltimateGauge: 0
   bIsOwn: 0
-  PassiveSkill: 0
-  BasicSkill: 0
-  ActiveSkill: 0
-  UltimateSkill: 0
-  Equip: 0
-  PersonalEquip: 0
-  Stone: 0
+  fPassiveSkill: 0
+  fBasicSkill: 0
+  fActiveSkill: 0
+  fUltimateSkill: 0
+  fEquip: 0
+  fPersonalEquip: 0
+  fStone: 0
   stat: {fileID: 11400000, guid: b7557b7945216304eb6f12b6d757de07, type: 2}
 --- !u!1 &2958257409294944158
 GameObject:
@@ -4923,6 +4923,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3c662acd1fcae84d96d3643437eebf3, type: 3}
+--- !u!1 &6455137492016727586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5421861185254507240, guid: c3c662acd1fcae84d96d3643437eebf3, type: 3}
+  m_PrefabInstance: {fileID: 1345190202567836874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2312900442980554678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5175,8 +5180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastJoystickDirection: {x: 0, y: 0, z: 0}
-  gRangeIndicator: {fileID: 0}
-  gMaxRangeIndicator: {fileID: 0}
+  gRangeIndicator: {fileID: 3463807754925842447}
+  gMaxRangeIndicator: {fileID: 6455137492016727586}
   gSkillCancel: {fileID: 1962703881}
 --- !u!1001 &3356782985688429906
 PrefabInstance:
@@ -6107,6 +6112,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6197ed47c94001943a0ec286b0305ad1, type: 3}
+--- !u!1 &3463807754925842447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5421861185254507240, guid: 6197ed47c94001943a0ec286b0305ad1, type: 3}
+  m_PrefabInstance: {fileID: 8876516561885324007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9044502969826598777
 PrefabInstance:
   m_ObjectHideFlags: 0
