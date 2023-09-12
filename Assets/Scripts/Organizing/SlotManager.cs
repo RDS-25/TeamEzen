@@ -62,7 +62,8 @@ public class SlotManager : MonoBehaviour
                 {
                     slotObjects[i].SetActive(true);
                     Slots.GetChild(i).GetComponent<Image>().sprite
-                         = GameManager.instance.LoadAndSetSprite(allObjList[i].GetComponent<UiCellView>().IMAGE_PATH);
+                         = GameManager.instance.LoadAndSetSprite
+                         (FolderPath.SPRITE_ITEM_ICON + allObjList[i].GetComponent<UiCellView>().IMAGE_PATH);
                 }
                 i++;
             }
