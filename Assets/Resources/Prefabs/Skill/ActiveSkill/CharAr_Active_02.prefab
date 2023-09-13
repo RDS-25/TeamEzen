@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3520127701760635081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6701587630250505021}
+  - component: {fileID: 1444139484652258629}
+  m_Layer: 0
+  m_Name: CharAr_Active_02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6701587630250505021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520127701760635081}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1444139484652258629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520127701760635081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf689abd886cea47b066629c64c0830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 0
+  skillDetail: 0
+  fId: 0
+  strName: 
+  fSkillLevel: 1
+  strDiscription: 
+  strIconpath: 
+  strEffectPath: 
+  fSkillRequireExp: 0
+  fSkillExp: 0
+  fUnlockLevel: 0
+  fUnlockHidenLevel: 0
+  fTimer: 0
+  fCoolTime: 0
+  fDuration: 0
+  fSkillCoolReduce: 0
+  fBuffDuration: 0
+  fRange: 0
+  fMaxRange: 0
+  fValue: 0
+  fHidenValue: 0
+  fMagnification: 0
+  fTargetCount: 0
+  fAttackCount: 0
+  fBulletCount: 0
+  bisUnlockSkill: 0
+  bisCanUse: 0
+  bisActtivate: 0
+  bisUnlockHiden: 0
+  plusval: 10
+  pulsmag: 10
+  plusattackcount: 0
+  plustargetcount: 0
+  checkLevel: 0
+  FirePoint: {fileID: 0}
+  EffectPrefab: {fileID: 0}

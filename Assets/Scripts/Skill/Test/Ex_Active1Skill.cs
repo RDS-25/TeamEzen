@@ -24,8 +24,8 @@ public class Ex_Active1Skill : ActiveSkill
 
     void Start()
     {
-        _strExActive1SkillPath = Application.persistentDataPath + "/ActiveSkill/";//폴더명
-        SkillParams = FileName.STR_JSON_ACTIVESKILL1_PARAS;//파일명 추가
+        SkillPath = Application.persistentDataPath + "/ActiveSkill/";//폴더명
+        SkillParamsPath = FileName.STR_CHAR_AR;//파일명 추가
         LevelUpValue();
         InitParams();
        
@@ -34,7 +34,7 @@ public class Ex_Active1Skill : ActiveSkill
     public override void InitParams()
     {//데이터파일 있으면 LoadParams() 없으면 SetParams()
 
-        if (GameManager.instance.CheckExist(_strExActive1SkillPath, SkillParams))
+        if (GameManager.instance.CheckExist(SkillPath, SkillParamsPath))
         {
             LoadParams();
         }
@@ -110,14 +110,14 @@ public class Ex_Active1Skill : ActiveSkill
             dictTemp.Add("bisActtivate", bisActtivate.ToString());
             // 이펙트이름
 
-            GameManager.instance.DataWrite(_strExActive1SkillPath, dictTemp);
+            GameManager.instance.DataWrite(SkillPath, dictTemp);
 
         
         
     }
     public override void LoadParams()
     {
-        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(_strExActive1SkillPath);
+        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(SkillPath);
         fSkillLevel        = float.Parse(dictTemp["fSkillLevel"]);
         fId                = float.Parse(dictTemp["fId"]);
         strName            = dictTemp["strName"];

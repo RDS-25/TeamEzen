@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using Params;
 
 public class Ex_Passive2Skill : PassiveSkill
 {
     private string _strExPassive2SkillPath;//파일경로
-    string Passive1Params;//파일명
-    public Skilldatas scriptabledata;
+    string Passive1Params;//파일명    
     public Charater1 Charater1;
     Dictionary<string, string> dic_Passive2SkillStat;
-    public SkillParameter.SkilParams ExPassive2SkillParams = new SkillParameter.SkilParams();
+    public Params.SkilParams ExPassive2SkillParams = new Params.SkilParams();
     public float UpStatVale;//올라간 스텟
     public float UpStatHiden;//해금된 효과로 올라간 스텟
     float HidenValue;
@@ -25,7 +25,7 @@ public class Ex_Passive2Skill : PassiveSkill
     {
         //EquipDatas.Add()
         _strExPassive2SkillPath = FolderPath.PARAMS_SKILL + "/PassiveSkill/";
-        Passive1Params = FileName.STR_JSON_PASSIVESKILL2_PARAS;
+        //Passive1Params = FileName.STR_JSON_PASSIVESKILL2_PARAS;
         InitParams();
     }
     public override void InitParams()
@@ -43,41 +43,41 @@ public class Ex_Passive2Skill : PassiveSkill
     }
     public override void SetParams()
     {
-        if (scriptabledata.Skills[1].fId == 1)
-        {
-            dic_Passive2SkillStat = new Dictionary<string, string>();
-            ExPassive2SkillParams.fSkillLevel = scriptabledata.Skills[1].fSkillLevel;
-            dic_Passive2SkillStat.Add("fSkillLevel", ExPassive2SkillParams.fSkillLevel.ToString());
-            ExPassive2SkillParams.fId = scriptabledata.Skills[1].fId;
-            dic_Passive2SkillStat.Add("fId", ExPassive2SkillParams.fId.ToString());
-            ExPassive2SkillParams.strName = scriptabledata.Skills[1].strName;//스크립터블 오브젝트에서 꺼내올때
-            dic_Passive2SkillStat.Add("strName", ExPassive2SkillParams.strName);
-            ExPassive2SkillParams.strDiscription = scriptabledata.Skills[1].strDiscription;
-            dic_Passive2SkillStat.Add("strDiscription", ExPassive2SkillParams.strDiscription);
-            ExPassive2SkillParams.fSkillExp = scriptabledata.Skills[1].fSkillExp;
-            dic_Passive2SkillStat.Add("fSkillExp", ExPassive2SkillParams.strDiscription);
-            ExPassive2SkillParams.fSkillRequireExp = scriptabledata.Skills[1].fSkillRequireExp;
-            dic_Passive2SkillStat.Add("fSkillRequireExp", ExPassive2SkillParams.fSkillRequireExp.ToString());
-            ExPassive2SkillParams.fUnlockLevel = scriptabledata.Skills[1].fUnlockLevel;
-            dic_Passive2SkillStat.Add("fUnlockLevel", ExPassive2SkillParams.fUnlockLevel.ToString());
-            ExPassive2SkillParams.fUnlockHidenLevel = scriptabledata.Skills[1].fUnlockHidenLevel;
-            dic_Passive2SkillStat.Add("fUnlockHidenLevel", ExPassive2SkillParams.fUnlockHidenLevel.ToString());
-            //Ex_Active1Params.fBuffDuration = scriptabledata.Skills[0].fBuffDuration;
-            //dictActive1SkillStat.Add("fBuffDuration", Ex_Active1Params.fBuffDuration.ToString());//버프액티브에 사용
-            ExPassive2SkillParams.fValue = scriptabledata.Skills[1].fValue;
-            dic_Passive2SkillStat.Add("fValue", ExPassive2SkillParams.fValue.ToString());
-            ExPassive2SkillParams.fHidenValue = scriptabledata.Skills[1].fHidenValue;
-            dic_Passive2SkillStat.Add("fHidenValue", ExPassive2SkillParams.fHidenValue.ToString());
-            ExPassive2SkillParams.fMagnification = scriptabledata.Skills[1].fMagnification;
-            dic_Passive2SkillStat.Add("fMagnification", ExPassive2SkillParams.fMagnification.ToString());
-            ExPassive2SkillParams.bisUnlockSkill = scriptabledata.Skills[1].bisUnlockSkill;
-            dic_Passive2SkillStat.Add("bisUnlockSkill", ExPassive2SkillParams.bisUnlockSkill.ToString());
-            ExPassive2SkillParams.bisUnlockHiden = scriptabledata.Skills[1].bisUnlockHiden;
-            dic_Passive2SkillStat.Add("bisUnlockHiden", ExPassive2SkillParams.bisUnlockHiden.ToString());
-            ExPassive2SkillParams.bisActtivate = scriptabledata.Skills[1].bisActtivate;
-            dic_Passive2SkillStat.Add("bisActtivate", ExPassive2SkillParams.bisActtivate.ToString());
-            GameManager.instance.DataWrite(_strExPassive2SkillPath, dic_Passive2SkillStat);
-        }
+        //if (scriptabledata.Skills[1].fId == 1)
+        //{
+        //    dic_Passive2SkillStat = new Dictionary<string, string>();
+        //    ExPassive2SkillParams.fSkillLevel = scriptabledata.Skills[1].fSkillLevel;
+        //    dic_Passive2SkillStat.Add("fSkillLevel", ExPassive2SkillParams.fSkillLevel.ToString());
+        //    ExPassive2SkillParams.fId = scriptabledata.Skills[1].fId;
+        //    dic_Passive2SkillStat.Add("fId", ExPassive2SkillParams.fId.ToString());
+        //    ExPassive2SkillParams.strName = scriptabledata.Skills[1].strName;//스크립터블 오브젝트에서 꺼내올때
+        //    dic_Passive2SkillStat.Add("strName", ExPassive2SkillParams.strName);
+        //    ExPassive2SkillParams.strDiscription = scriptabledata.Skills[1].strDiscription;
+        //    dic_Passive2SkillStat.Add("strDiscription", ExPassive2SkillParams.strDiscription);
+        //    ExPassive2SkillParams.fSkillExp = scriptabledata.Skills[1].fSkillExp;
+        //    dic_Passive2SkillStat.Add("fSkillExp", ExPassive2SkillParams.strDiscription);
+        //    ExPassive2SkillParams.fSkillRequireExp = scriptabledata.Skills[1].fSkillRequireExp;
+        //    dic_Passive2SkillStat.Add("fSkillRequireExp", ExPassive2SkillParams.fSkillRequireExp.ToString());
+        //    ExPassive2SkillParams.fUnlockLevel = scriptabledata.Skills[1].fUnlockLevel;
+        //    dic_Passive2SkillStat.Add("fUnlockLevel", ExPassive2SkillParams.fUnlockLevel.ToString());
+        //    ExPassive2SkillParams.fUnlockHidenLevel = scriptabledata.Skills[1].fUnlockHidenLevel;
+        //    dic_Passive2SkillStat.Add("fUnlockHidenLevel", ExPassive2SkillParams.fUnlockHidenLevel.ToString());
+        //    //Ex_Active1Params.fBuffDuration = scriptabledata.Skills[0].fBuffDuration;
+        //    //dictActive1SkillStat.Add("fBuffDuration", Ex_Active1Params.fBuffDuration.ToString());//버프액티브에 사용
+        //    ExPassive2SkillParams.fValue = scriptabledata.Skills[1].fValue;
+        //    dic_Passive2SkillStat.Add("fValue", ExPassive2SkillParams.fValue.ToString());
+        //    ExPassive2SkillParams.fHidenValue = scriptabledata.Skills[1].fHidenValue;
+        //    dic_Passive2SkillStat.Add("fHidenValue", ExPassive2SkillParams.fHidenValue.ToString());
+        //    ExPassive2SkillParams.fMagnification = scriptabledata.Skills[1].fMagnification;
+        //    dic_Passive2SkillStat.Add("fMagnification", ExPassive2SkillParams.fMagnification.ToString());
+        //    ExPassive2SkillParams.bisUnlockSkill = scriptabledata.Skills[1].bisUnlockSkill;
+        //    dic_Passive2SkillStat.Add("bisUnlockSkill", ExPassive2SkillParams.bisUnlockSkill.ToString());
+        //    ExPassive2SkillParams.bisUnlockHiden = scriptabledata.Skills[1].bisUnlockHiden;
+        //    dic_Passive2SkillStat.Add("bisUnlockHiden", ExPassive2SkillParams.bisUnlockHiden.ToString());
+        //    ExPassive2SkillParams.bisActtivate = scriptabledata.Skills[1].bisActtivate;
+        //    dic_Passive2SkillStat.Add("bisActtivate", ExPassive2SkillParams.bisActtivate.ToString());
+        //    GameManager.instance.DataWrite(_strExPassive2SkillPath, dic_Passive2SkillStat);
+        //}
     }
     public override void LoadParams()
     {

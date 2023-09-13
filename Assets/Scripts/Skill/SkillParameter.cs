@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace SkillParameter 
+namespace Params 
 {//식별자, 스킬이름, 기본수치, 쿨타임, 지속시간, 배율, 쿨타임 감소율, 버프 지속시간, 범위
  //타겟수, 공격횟수
 
@@ -13,7 +13,7 @@ namespace SkillParameter
     public class SkilParams : MonoBehaviour
     {
         [Serializable]
-        public enum SkillType { PASSIVE, ACTIVE, ULTIMATE, BASIC }
+        public enum SkillType { BASIC, PASSIVE, ACTIVE, ULTIMATE }
         public enum SkillDetailType { ATTACK, HEAL, BUFF}
         public SkillType skillType;
         public SkillDetailType skillDetail; 
@@ -26,7 +26,7 @@ namespace SkillParameter
         public float fSkillRequireExp;//스킬 레벨업 필요경험치
         public float fSkillExp;//스킬경험치
         public float fUnlockLevel;//스킬해금 필요캐릭터레벨
-        public float fUnlockHidenLevel;//스킬 추가특성해제 레벨
+        public float fUnlockHidenLevel;//스킬 추가특성해제 스킬레벨
         public float fTimer;//스킬타이머
         public float fCoolTime;//스킬 쿨타임
         public float fDuration;//스킬 지속시간        

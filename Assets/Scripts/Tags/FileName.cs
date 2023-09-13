@@ -20,7 +20,41 @@ public class FileName
     
     public const string STR_JSON_INVEN_SAVE     = "SaveItmemData";
 
-    public const string STR_JSON_ACTIVESKILL1_PARAS = "Active1Params";
-    public const string STR_JSON_PASSIVESKILL1_PARAS = "Passive1Params";
-    public const string STR_JSON_PASSIVESKILL2_PARAS = "Passive2Params";
+    public const string STR_JSON_CHARAR_ACTIVE_01_PARAMS = "CharAr_Active_01Params";
+    public const string STR_JSON_CHARAR_ACTIVE_02_PARAMS = "CharAr_Active_02Params";
+    public const string STR_JSON_CHARAR_ACTIVE_03_PARAMS = "CharAr_Active_03Params";
+    
+    public const string STR_JSON_CHARHG_ACTIVE_01_PARAMS = "CharHg_Active_01Params";
+    public const string STR_JSON_CHARHG_ACTIVE_02_PARAMS = "CharHg_Active_02Params";
+    public const string STR_JSON_CHARHG_ACTIVE_03_PARAMS = "CharHg_Active_03Params";
+    
+    public const string STR_JSON_CHARSG_ACTIVE_01_PARAMS = "CharSg_Active_01Params";
+    public const string STR_JSON_CHARSG_ACTIVE_02_PARAMS = "CharSg_Active_02Params";
+    public const string STR_JSON_CHARSG_ACTIVE_03_PARAMS = "CharSg_Active_03Params";
+    
+    public const string STR_JSON_CHARSR_ACTIVE_01_PARAMS = "CharSr_Active_01Params";
+    public const string STR_JSON_CHARSR_ACTIVE_02_PARAMS = "CharSr_Active_02Params";
+    public const string STR_JSON_CHARSR_ACTIVE_03_PARAMS = "CharSr_Active_03Params";
+    
+    public const string STR_JSON_CHARAR_PASSIVE_PARAMS = "CharAr_Passive_Params";
+    public const string STR_JSON_CHARHG_PASSIVE_PARAMS = "CharHr_Passive_Params";
+    public const string STR_JSON_CHARSG_PASSIVE_PARAMS = "CharSg_Passive_Params";
+    public const string STR_JSON_CHARSR_PASSIVE_PARAMS = "CharSr_Passive_Params";
+
+    public const string STR_JSON_CHARAR_BASIC_PARAMS = "CharAr_Basic_Params";
+    public const string STR_JSON_CHARHG_BASIC_PARAMS = "CharHr_Basic_Params";
+    public const string STR_JSON_CHARSG_BASIC_PARAMS = "CharSg_Basic_Params";
+    public const string STR_JSON_CHARSR_BASIC_PARAMS = "CharSr_Basic_Params";
+
+    public const string STR_JSON_CHARAR_ULTIMATE_PARAMS = "CharAr_Ultimate_Params";
+    public const string STR_JSON_CHARHG_ULTIMATE_PARAMS = "CharHr_Ultimate_Params";
+    public const string STR_JSON_CHARSG_ULTIMATE_PARAMS = "CharSg_Ultimate_Params";
+    public const string STR_JSON_CHARSR_ULTIMATE_PARAMS = "CharSr_Ultimate_Params";
+
+    public const string STR_JSON_COMMON1_PARAMS = "CharAr_Common1_Params";
+    public const string STR_JSON_COMMON2_PARAMS = "CharHr_Common2_Params";
+    public const string STR_JSON_COMMON3_PARAMS = "CharSg_Common3_Params";
+    public const string STR_JSON_COMMON4_PARAMS = "CharSr_Common4_Params";
+
+
 }

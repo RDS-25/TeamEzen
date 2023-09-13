@@ -1,35 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SkillParameter;
+using Params;
 using System;
 
 
 public class Skill: SkilParams
 {//1.스킬 해금 2.스킬 발동 3.강화 4.효과거리 5.지속시간
     //스킬 레벨/거리/시간
-    protected string _strExActive1SkillPath;//폴더경로
-    protected string SkillParams;//파일경로
+    protected string SkillPath;//폴더경로
+    protected string SkillParamsPath;//파일경로
     protected Dictionary<string, string> SkillStat;//딕셔너리 사용
 
     //스킬마다 지정된값 써주기
-    protected const float PLUS_VAL = 10f;
-    protected const float PLUS_MAG = 10f;
-    protected const float PLUS_TARGET_COUNT = 0f;
-    protected const float PLUS_ATTACK_COUNT = 0f;
+    protected float PLUS_VAL = 10f;
+    protected float PLUS_MAG = 10f;
+    protected float PLUS_TARGET_COUNT = 0f;
+    protected float PLUS_ATTACK_COUNT = 0f;
     protected Stat ChaStat;
 
-    private void Start()
-    {
-        InitParams();
-        SetType();
-        LevelUpValue();        
-    }
+
     public void SkillActivationInit(ref Stat activeObjectStat)//스킬 장착할때 불러달라고 말하기
     {
         ChaStat = activeObjectStat;
     }
-    void LevelUpValue()
+    protected void LevelUpValue()
     {
         plusval = PLUS_VAL;
         pulsmag = PLUS_MAG;
@@ -44,12 +39,16 @@ public class Skill: SkilParams
     {
 
     }
+    public virtual void SetDefault()//첫 스킬파라미터 입력
+    {
 
+    }
 
     public virtual void SetParams()//스킬 파라미터 적용
     {
 
     }
+    
       public virtual void LoadParams()
     {
 
@@ -73,6 +72,7 @@ public class Skill: SkilParams
         
                        
     }
+    
     public virtual void SkillExpUp(float exp)
     {
 
