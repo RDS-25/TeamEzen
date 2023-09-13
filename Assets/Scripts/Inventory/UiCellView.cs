@@ -233,7 +233,7 @@ public class UiCellView : MonoBehaviour
         equipParams.fCrticalper = equipData.fCrtical;
         equipParams.fCriticalDamage = equipData.fCriticalDamage;
         equipParams.fCount = float.Parse(GameManager.instance.DataRead(_strInvenItemPath + SaveItemPath)[equipParams.fId.ToString()]);
-
+        Debug.Log(equipParams.fCount);
     }
     public void SetUp(GemStoneData gemStoneData, Dictionary<string,string> dictItemCount)
     {
