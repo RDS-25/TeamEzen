@@ -23,9 +23,9 @@ public class ObjectFactory
 
     //몬스터 종류별로 만들기
 
-    //원거리 몬스터 
-    public FactoryManager MeleeMonsterFactory = new FactoryManager();
     //근거리 몬스터
+    public FactoryManager MeleeMonsterFactory = new FactoryManager();
+    //원거리
     public FactoryManager RangedMonsterFactory = new FactoryManager();
 
 
@@ -37,8 +37,10 @@ public class ObjectFactory
 
 
     public void InitFactory()
-    {
-        characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
+	{
+		characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
+        MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY);
+
         SelectCharacterInit();
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                                     , characterFactory.listPool.Count);

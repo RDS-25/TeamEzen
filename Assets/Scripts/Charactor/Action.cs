@@ -150,8 +150,17 @@ public class Action : MonoBehaviour
     }
 
 
-    //Bool 변수 false로 바꾸는 변수 
-    public void Pause() {
+	private void OnTriggerEnter(Collider other)
+	{
+        if (other.tag == "EnemyBullet") {
+            //데미지 연산식
+            stat.fHealth -= 10; 
+        }
+	}
+
+
+	//Bool 변수 false로 바꾸는 변수 
+	public void Pause() {
         bIsStop = true;
         ani.enabled = false;
         isEntries = false;
