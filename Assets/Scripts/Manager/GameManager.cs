@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
             return null;
         }
     }
-    public void WriteNew(string sFolderPathFileNameJson, Dictionary<string, string> dictNew)
+    public void ReWrite(string sFolderPathFileNameJson, Dictionary<string, string> dictNew)
     {
         Dictionary<string, string> dictTemp = DataRead(sFolderPathFileNameJson + ".json");
         foreach(KeyValuePair<string,string> keyValuePair in dictNew)
@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour
     }
     public Sprite LoadAndSetSprite(string imagePath)
     {
-        string path = Path.Combine(imagePath);
+        string path = Application.dataPath + Path.Combine(imagePath);
         if (File.Exists(path))
         {
             byte[] imageBytes = File.ReadAllBytes(path);

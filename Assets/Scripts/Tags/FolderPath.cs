@@ -5,7 +5,7 @@ using UnityEngine;
 public class FolderPath
 {
     // Json
-    public const string MAIN_ROOT               = "C:/Users/EZEN/AppData/LocalLow/DefaultCompany/TeamProject";
+    public const string MAIN_ROOT               = "D:/MyProject";
 
     public const string PARAMS                  = MAIN_ROOT + "/Params/";
     public const string PARAMS_CHARACTER        = PARAMS + "CharacterParams/";
@@ -49,9 +49,7 @@ public class FolderPath
     public const string SCRIPTABLE_CHAR_DATA    = SCRIPTABLE + "CharacterData/";
 
 
-    public const string SPRITE                  = "Sprite/";
+    public const string SPRITE                  = "/Resources/Sprites/";
     public const string SPRITE_CHAR_ICON        = SPRITE + "CharacterIcon/";
     public const string SPRITE_ITEM_ICON        = SPRITE + "ItemIcon/";
-
-
 }
