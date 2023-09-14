@@ -91,8 +91,21 @@ public class SkillPanelUi : MonoBehaviour
         {
             if (mySkill[_STR_ID] == skillId.ToString())
             {
-                //switch(mySkill[""])
-                dictCurActive = mySkill;
+                switch (mySkill["skillType"])
+                {
+                    case "BASIC":
+                        dictCurBasic = mySkill;
+                        break;
+                    case "PASSIVE":
+                        dictCurPassive = mySkill;
+                        break;
+                    case "ACTIVE":
+                        dictCurActive = mySkill;
+                        break;
+                    case "ULTIMATE":
+                        dictCurUlt = mySkill;
+                        break;
+                }
                 imageIcon.sprite = GameManager.instance.LoadAndSetSprite(mySkill[_STR_IMAGE_URL]);
                 textLevel.text = mySkill[_STR_LEVEL];
                 textName.text = "Lv. " + mySkill[_STR_NAME];
