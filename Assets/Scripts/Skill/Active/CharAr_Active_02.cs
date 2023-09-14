@@ -12,6 +12,7 @@ public class CharAr_Active_02 : AttackType
 
     void Start()
     {
+        SkillPath = FolderPath.PARAMS_ACTIVE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARAR_ACTIVE_02_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;

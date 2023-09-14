@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89632873a27df314193ac1ff18b49202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gMySkillGameObject: {fileID: 0}
+  enumSkillType: 0
+  enumSkillDetail: 0
   skillType: 0
   skillDetail: 0
   fId: 0

@@ -7,11 +7,12 @@ using Params;
 
 public class CharAr_Active_01 : AttackType
 {
-    //스킬레벨업 변수들 스킬마다 써주기  
+	//스킬레벨업 변수들 스킬마다 써주기  
 
 
-    void Start()
-    {
+	private void OnDisable()
+	{
+        SkillPath = FolderPath.PARAMS_ACTIVE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARAR_ACTIVE_01_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
@@ -20,7 +21,10 @@ public class CharAr_Active_01 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-    }
+		
+	}
+    
+   
     public override void SetType()
     {
         base.SetType();

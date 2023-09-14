@@ -33,14 +33,16 @@ public class Skill: SkillParams
     }
     public virtual void InitParams()
     {//데이터파일 있으면 LoadParams() 없으면 SetParams()
-        if (GameManager.instance.CheckExist(SkillParamsPath, SkillParamsPath))
+        if (GameManager.instance.CheckExist(SkillPath, SkillParamsPath))
         {
             LoadParams();
+ 
         }
         else
         {
             SetDefault();
             SaveParams();
+           
         }
     }
     public virtual void SetType()
