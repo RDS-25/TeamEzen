@@ -6,6 +6,17 @@ public class OrganizeChar : MonoBehaviour
 {
     public Button[] buttons = new Button[3];
 
+    private void Start()
+    {
+        for(int i = 0; i < buttons.Length; i++)
+        {
+            if(GameManager.instance.arrCurCharacters[i] == null)
+            {
+                buttons[i].GetComponent<Image>().sprite
+                    = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE + "SkillImagetest.png");
+            }
+        }
+    }
     public void UnFirstChar()
     {
         DeOrganizing(0);

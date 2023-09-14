@@ -4,11 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SkillLevelUpUi : MonoBehaviour
 {
-    int sSkillType;
-
     public List<Button> listButtons = new();
     public SkillPanelUi skillPanelUi;
-    Dictionary<string, string> dictSkillParams = new();
+    Dictionary<string, string> dictSelectedSkillParams = new();
     // Start is called before the first frame update
     void Start()
     {
@@ -21,15 +19,24 @@ public class SkillLevelUpUi : MonoBehaviour
 
     void OnClickButton(int index)
     {
-        sSkillType = index;
-        if(sSkillType == 0)
+        switch (index)
         {
-            SetDictSkillParams(skillPanelUi.dictCurPassive);
+            case 0:
+                
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
         }
-        Debug.Log(sSkillType);
+
     }
     void SetDictSkillParams(Dictionary<string,string> dictTemp)
     {
-        dictSkillParams = dictTemp;
+        dictSelectedSkillParams = dictTemp;
     }
 }

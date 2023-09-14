@@ -46,6 +46,10 @@ public class OrganizingUiManager : MonoBehaviour
             Debug.Log("캐릭터선택해야함");
             return;
         }
+        for(int i = 0; i < GameManager.instance.arrCurCharacters.Length; i++)
+        {
+            GameManager.instance.arrCurCharacters[i].GetComponent<Action>().isEntries = true;
+        }
         LoadingSceneManager.LoadScene("StageScene");
     }
     public void ButtonBack()
