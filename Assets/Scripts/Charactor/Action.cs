@@ -7,6 +7,8 @@ public class Action : MonoBehaviour
 {
     float fverti;
     float fhori;
+
+    public FixedJoystick MoveJoystick;
     public enum Motion { 
         Idle,
         Action,
@@ -83,8 +85,12 @@ public class Action : MonoBehaviour
 
     void onMove()
     {
+        /*
         fhori = Input.GetAxisRaw("Horizontal");
         fverti = Input.GetAxisRaw("Vertical");
+        */
+        fhori = MoveJoystick.Horizontal;
+        fverti = MoveJoystick.Vertical;
 
         Vmove = new Vector3(fhori, 0, fverti).normalized;
 
@@ -179,16 +185,12 @@ public class Action : MonoBehaviour
 
     //이벤트 트리거에서 사용
     public void onCancelEnter() {
-        Debug.Log("onCancelEnter 실행");
+      /*취소 실행  */
         bIsCancel = true;
-  
-       
     }
     public void onCancelExit() {
         Debug.Log("onCancelExit 실행 ");
         bIsCancel = false;
-       
-
     }
 
    

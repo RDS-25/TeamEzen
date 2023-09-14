@@ -39,8 +39,9 @@ public class ObjectFactory
     public void InitFactory()
 	{
 		characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
-        MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY);
 
+        MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY);
+       
         SelectCharacterInit();
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                                     , characterFactory.listPool.Count);

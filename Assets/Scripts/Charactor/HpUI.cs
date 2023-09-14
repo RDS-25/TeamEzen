@@ -8,6 +8,8 @@ public class HpUI : MonoBehaviour
     GameObject obj;
 
     Camera m_cam = null;
+
+    public float HpBarPos;
  
 
     void Start()
@@ -19,7 +21,7 @@ public class HpUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = m_cam.WorldToScreenPoint(obj.transform.position + new Vector3(0, 1.15f, 0));
+        transform.position = m_cam.WorldToScreenPoint(obj.transform.position + new Vector3(0, HpBarPos, 0));
 
         //피깍이는걸 시각화
         transform.GetComponent<Slider>().value = transform.root.GetComponent<Stat>().fHealth / 100;

@@ -38,6 +38,13 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (state == State.CHASE)
+        {
+
+            target = GameObject.FindWithTag("Player");
+            nav.SetDestination(target.transform.position);
+            ani.SetBool("doWalk", true);
+        }
 
         if (target == null)
         {
@@ -46,13 +53,7 @@ public class Enemy : MonoBehaviour
         }
 
 
-        if(state ==State.CHASE)
-        {
-           
-            target = GameObject.FindWithTag("Player");
-            nav.SetDestination(target.transform.position);
-            ani.SetBool("doWalk", true);
-        }
+      
          
         
        
@@ -87,8 +88,8 @@ public class Enemy : MonoBehaviour
     }
     void Targeting()
 	{
-        float targetRadius = 0.5f;
-        float tartgeRange = 0.5f;
+        float targetRadius = 2f;
+        float tartgeRange = 2f;
         
 
         RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, tartgeRange, LayerMask.GetMask("Player"));
@@ -120,6 +121,8 @@ public class Enemy : MonoBehaviour
     IEnumerator Attack() {
         do_attack_coroutine = true;
         ani.SetBool("doWalk", false);
+        nav.SetDestination(transform.position);
+        transform.LookAt(target.transform.position);
         ani.SetBool("doAttack", true);
         state = State.ATTACK;
         while (true)
