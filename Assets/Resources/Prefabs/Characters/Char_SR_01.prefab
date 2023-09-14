@@ -1196,7 +1196,7 @@ Transform:
   m_GameObject: {fileID: 2881366798198852434}
   m_LocalRotation: {x: 0, y: 0.000001498028, z: -0, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8985198267291028509}
@@ -1268,10 +1268,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ee3a11d40ad204aa30c3e7c5ead955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 0}
-  Bulletpos: {fileID: 0}
+  motion: 0
+  bIsCancel: 0
+  bIsStop: 0
+  gBullet: {fileID: 0}
+  tBulletpos: {fileID: 0}
   isEntries: 0
   targetingRange: 2
+  lastJoystickDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &-4233778701461047961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1312,14 +1316,13 @@ MonoBehaviour:
   fType: 0
   fUltimateGauge: 0
   bIsOwn: 0
-  PassiveSkill: 0
-  BasicSkill: 0
-  ActiveSkill: 0
-  UltimateSkill: 0
-  Equip: 0
-  PersonalEquip: 0
-  Stone: 0
-  objectId: 0
+  fPassiveSkill: 0
+  fBasicSkill: 0
+  fActiveSkill: 0
+  fUltimateSkill: 0
+  fEquip: 0
+  fPersonalEquip: 0
+  fStone: 0
   stat: {fileID: 11400000, guid: 093cfd0fd9da4f44cb08507905c59656, type: 2}
 --- !u!1 &2958257409294944158
 GameObject:
