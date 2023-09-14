@@ -59,8 +59,11 @@ public class Skill: SkillParams
         Dictionary<string, string> dictTemp = new Dictionary<string, string>();
         dictTemp.Add("fSkillLevel", fSkillLevel.ToString());
         dictTemp.Add("fId", fId.ToString());
-        dictTemp.Add("skillDetail", skillDetail);
         dictTemp.Add("strName", strName);
+
+        dictTemp.Add("skillType", skillType);
+        dictTemp.Add("skillDetail", skillDetail);
+      
         dictTemp.Add("strDiscription", strDiscription);
         dictTemp.Add("strIconpath", strIconpath);
         dictTemp.Add("strEffectPath", strEffectPath);
@@ -94,6 +97,10 @@ public class Skill: SkillParams
         fSkillLevel = float.Parse(dictTemp["fSkillLevel"]);
         fId = float.Parse(dictTemp["fId"]);
         strName = dictTemp["strName"];
+
+        skillDetail = dictTemp["skillDetail"];
+        skillType = dictTemp["skillType"];
+        enumSkillType = (SkillType)Enum.Parse(typeof(SkillType), dictTemp["skillType"]);
         enumSkillDetail = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dictTemp["skillDetail"]);
 
         fSkillExp = float.Parse(dictTemp["fSkillExp"]);

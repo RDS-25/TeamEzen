@@ -32,7 +32,7 @@ public class CharAr_Active_01 : AttackType
         fSkillLevel = 1;
         fId = 200;
         strName = "Act1";
-        strDiscription = "ok";
+        strDiscription = "ok";        
         //strIconpath=
         //strEffectPath=
         fSkillExp = 0;

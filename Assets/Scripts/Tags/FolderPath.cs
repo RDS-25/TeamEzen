@@ -32,6 +32,8 @@ public class FolderPath
 
     public const string PREFABS_ENEMY           = PREFABS + "Enemy/";
     public const string PREFABS_SKILL_EFFECT    = PREFABS + "SkillEffects/";
+    public const string PREFABS_ACTIVE_EFFECT   = PREFABS_SKILL_EFFECT + "ActiveEffects/";
+
     public const string PREFABS_BULLET          = PREFABS + "Bullets/";
 
     public const string PREFABS_STAGE_ROOM      = PREFABS + "StagePrefabs/";
