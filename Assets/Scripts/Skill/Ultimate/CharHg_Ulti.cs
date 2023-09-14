@@ -5,7 +5,8 @@ using System.IO;
 using System;
 using Params;
 
-public class CharHg_Ulti : ActiveSkill
+public class CharHg_Ulti : AttackType
+
 {
     //스킬레벨업 변수들 스킬마다 써주기  
 
@@ -23,8 +24,9 @@ public class CharHg_Ulti : ActiveSkill
     }
     public override void SetType()
     {
-        skillType = SkillType.ULTIMATE;
-        skillDetail = SkillDetailType.ATTACK;
+        base.SetType();
+        skillType = "ULTIMATE";
+        enumSkillType = SkillType.ULTIMATE;
     }
     public override void SetDefault()
     {//액티브스킬에 다시 복붙
@@ -56,50 +58,5 @@ public class CharHg_Ulti : ActiveSkill
         bisCanUse = false;
         bisActtivate = false;
     }
-    public override void SetParams()
-    {      //스킬타입 넣기
-        Dictionary<string, string> dictTemp = new Dictionary<string, string>();
-        dictTemp.Add("fSkillLevel", fSkillLevel.ToString());
-        dictTemp.Add("fId", fId.ToString());
-        dictTemp.Add("strName", strName);
-        dictTemp.Add("strDiscription", strDiscription);
-        dictTemp.Add("strIconpath", strIconpath);
-        dictTemp.Add("strEffectPath", strEffectPath);
-        dictTemp.Add("fSkillExp", fSkillExp.ToString());
-        dictTemp.Add("fSkillRequireExp", fSkillRequireExp.ToString());
-        dictTemp.Add("fUnlockLevel", fUnlockLevel.ToString());
-        dictTemp.Add("fUnlockHidenLevel", fUnlockHidenLevel.ToString());
-        dictTemp.Add("fTimer", fTimer.ToString());
-        dictTemp.Add("fCoolTime", fCoolTime.ToString());
-        dictTemp.Add("fDuration", fDuration.ToString());
-        dictTemp.Add("fSkillCoolReduce", fSkillCoolReduce.ToString());
-        dictTemp.Add("fRange", fRange.ToString());
-        dictTemp.Add("fMaxRange", fMaxRange.ToString());
-        dictTemp.Add("fValue", fValue.ToString());
-        dictTemp.Add("fHidenValue", fHidenValue.ToString());
-        dictTemp.Add("fMagnification", fMagnification.ToString());
-        dictTemp.Add("fTargetCount", fTargetCount.ToString());
-        dictTemp.Add("fAttackCount", fAttackCount.ToString());
-        dictTemp.Add("fBulletCount", fBulletCount.ToString());
-        dictTemp.Add("bisUnlockSkill", bisUnlockSkill.ToString());
-        dictTemp.Add("bisUnlockHiden", bisUnlockHiden.ToString());
-        dictTemp.Add("bisCanUse", bisCanUse.ToString());
-        dictTemp.Add("bisActtivate", bisActtivate.ToString());
-        // 이펙트이름
-
-        GameManager.instance.DataWrite(SkillPath + SkillParamsPath, dictTemp);
-    }
-
-
-
-    public override void SkillHidenUnlock()
-    {
-        if (ChaStat.fLevel > fUnlockHidenLevel)
-        {
-            bisUnlockHiden = true;
-            SkillStat.Add("bisUnlockHiden", true.ToString());
-        }
-        SetParams();
-        //추가기능
-    }
+   
 }

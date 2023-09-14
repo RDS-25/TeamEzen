@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dadf9bf388a9e1b4f97b032a078d8f01, type: 3}
   m_Name: Professional1
   m_EditorClassIdentifier: 
-  ItemType: 2
+  ItemType: 0
   fId: 0
   strName: y
   strDiscription: yy

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0530ce874084dd64780fb94a5151fe03, type: 3}
   m_Name: GemStone4
   m_EditorClassIdentifier: 
-  itemType: 1
+  itemType: 2
   fId: 203
   strName: m
   strDiscription: mm

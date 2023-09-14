@@ -10,13 +10,17 @@ namespace Params
 
   
     //[Serializable]
-    public class SkilParams : MonoBehaviour
+    public class SkillParams : MonoBehaviour
     {
         [Serializable]
         public enum SkillType { BASIC, PASSIVE, ACTIVE, ULTIMATE }
         public enum SkillDetailType { ATTACK, HEAL, BUFF}
-        public SkillType skillType;
-        public SkillDetailType skillDetail; 
+
+        public SkillType enumSkillType;
+        public SkillDetailType enumSkillDetail;
+        public GameObject gMySkillGameObject;
+        public string skillType;//저장용
+        public string skillDetail;//저장용
         public float fId;//식별자
         public string strName;//이름        
         public float fSkillLevel = 1f;//스킬레벨

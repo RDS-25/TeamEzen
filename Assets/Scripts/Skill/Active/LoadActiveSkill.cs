@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadActiveSkill : ActiveSkill
+public class LoadActiveSkill : AttackType
 {
     string ActiveSkillPath;
     string ActiveParams;
     //public character character;Ä³¸¯ÅÍ
     Dictionary<string, string> DicActiveSkillparam;
-    public Transform FirePoint;
-    const float PLUS_VAL = 10f;
-    const float PLUS_MAG = 10f;
-    const float PLUS_TARGET_COUNT = 0f;
-    const float PLUS_ATTACK_COUNT = 0f;
+
     void Start()
     {
         

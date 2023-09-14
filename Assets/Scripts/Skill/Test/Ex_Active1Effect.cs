@@ -8,7 +8,7 @@ public class Ex_Active1Effect : SkillEffrct
 {
     
     //public Charater1 Charater1;
-    public Ex_Active1Skill ex_Active1Skill;
+    //public Ex_Active1Skill ex_Active1Skill;
     float fSpeed = 100f;
     public Action SkillHit;//스킬 이펙트가 몬스터에게 충돌했을때    
     public Vector3 Firepiont;
@@ -36,11 +36,12 @@ public class Ex_Active1Effect : SkillEffrct
     {
         if (other.tag == "Monster")
         {
-            var component = other.GetComponent<Monster>();
-            fMonDadge = component.dodge;
-            fMonCriresi = component.criticalresist;
-            fMonDefense = component.defense;
-            fMonProperty = component.property;
+            var monsterStat= other.GetComponent<Stat>();
+            fMonDadge = monsterStat.fMiss;
+            fMonCriresi = monsterStat.fCriticalResist;
+            fMonDefense = monsterStat.fDef;
+            fMonProperty = monsterStat.fProperty;
+            monsterStat.fHealth -=
             CalculDamage(ChaStat.fAtk,ChaStat.fCriticalPer,ChaStat.fCriticalDmg,ChaStat.fDefBreak,ChaStat.fProperty
                 ,fMonDadge,fMonCriresi, fMonDefense,fMonProperty);
             // 오류 있음
@@ -115,6 +116,6 @@ public class Ex_Active1Effect : SkillEffrct
     }
     void Update()
     {
-        CheckDistance(Firepiont, ex_Active1Skill.fRange);
+        //CheckDistance(Firepiont, ex_Active1Skill.fRange);
     }
 }

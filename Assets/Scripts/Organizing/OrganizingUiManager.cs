@@ -10,7 +10,6 @@ public class OrganizingUiManager : MonoBehaviour
     public SlotManager slotManager;
     public Transform gSlots;
     public Button[] buttons = new Button[3];
-    static int i = 0;
     private void OnEnable()
     {
         SlotManager.OnButtonClick += SelectChar;

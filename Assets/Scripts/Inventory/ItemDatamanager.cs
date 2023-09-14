@@ -219,7 +219,7 @@ public class ItemDatamanager : MonoBehaviour
                     Slot[i].GetComponentInChildren<TMP_Text>().enabled = false;
                 }
                 else
-                    Slot[i].GetComponentInChildren<TMP_Text>().text = ItemData[i].GetComponent<UiCellView>().COUNT.ToString();                
+                    Slot[i].GetComponentInChildren<TMP_Text>().text = "x"+ItemData[i].GetComponent<UiCellView>().COUNT.ToString();                
             }
         }
     }
