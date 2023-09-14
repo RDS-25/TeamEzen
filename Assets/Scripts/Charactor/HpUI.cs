@@ -14,7 +14,7 @@ public class HpUI : MonoBehaviour
 
     void Start()
     {
-        obj = transform.root.gameObject;
+        obj = GameObject.Find("Char_AR_01");
         m_cam = Camera.main;
     }
 
@@ -24,6 +24,6 @@ public class HpUI : MonoBehaviour
         transform.position = m_cam.WorldToScreenPoint(obj.transform.position + new Vector3(0, HpBarPos, 0));
 
         //피깍이는걸 시각화
-        transform.GetComponent<Slider>().value = transform.root.GetComponent<Stat>().fHealth / 100;
+        transform.GetComponent<Slider>().value = obj.GetComponent<Stat>().fHealth / 100;
     }
 }
