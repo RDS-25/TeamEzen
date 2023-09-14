@@ -7,11 +7,6 @@ using Params;
 
 public class CharSr_Active_03 : AttackType
 {
-    
-
-    //스킬레벨업 변수들 스킬마다 써주기  
-
-
     void Start()
     {
         SkillParamsPath = FileName.STR_JSON_CHARSR_ACTIVE_03_PARAMS;
@@ -22,8 +17,13 @@ public class CharSr_Active_03 : AttackType
         SetType();
         LevelUpValue();      
         InitParams();
+    }  
+    public override void SetType()
+    {
+        base.SetType();
+        skillType = "ACTIVE";
+        enumSkillType = SkillType.ACTIVE;
     }
-   
     public override void SetDefault()
     {//액티브스킬에 다시 복붙
 
@@ -31,8 +31,9 @@ public class CharSr_Active_03 : AttackType
         fId = 211;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=
+        //strIconName=
         //strEffectPath=
+        //FolderPath.PREFABS_SKILL_EFFECT_ACTIVE + PrefabName.CHARA_R_ACTIVE_01;        
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;

@@ -6,10 +6,7 @@ using System;
 using Params;
 
 public class CharHg_Active_01 : AttackType
-{
-    //스킬레벨업 변수들 스킬마다 써주기  
-
-
+{ 
     void Start()
     {
         SkillParamsPath = FileName.STR_JSON_CHARHG_ACTIVE_01_PARAMS;
@@ -20,7 +17,13 @@ public class CharHg_Active_01 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-    }  
+    }
+    public override void SetType()
+    {
+        base.SetType();
+        skillType = "ACTIVE";
+        enumSkillType = SkillType.ACTIVE;
+    }
     public override void SetDefault()
     {//액티브스킬에 다시 복붙
 
