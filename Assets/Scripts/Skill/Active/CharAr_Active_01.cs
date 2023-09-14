@@ -8,7 +8,8 @@ using Params;
 public class CharAr_Active_01 : AttackType
 {
     //스킬레벨업 변수들 스킬마다 써주기  
-
+    //이펙트를 경로타고 넣기
+    //디저블로 스타트를
 
     void Start()
     {

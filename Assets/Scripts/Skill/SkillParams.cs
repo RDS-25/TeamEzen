@@ -27,8 +27,8 @@ namespace Params
         public string strName;//이름        
         public float fSkillLevel = 1f;//스킬레벨
         public string strDiscription;//스킬 설명
-        public string strIconpath;//스킬아이콘 경로
-        public string strEffectPath;
+        public string strIconName;//스킬아이콘 경로
+        public string strEffectPath;        
         public float fSkillRequireExp;//스킬 레벨업 필요경험치
         public float fSkillExp;//스킬경험치
         public float fUnlockLevel;//스킬해금 필요캐릭터레벨

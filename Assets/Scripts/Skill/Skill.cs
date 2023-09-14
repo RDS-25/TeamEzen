@@ -65,7 +65,7 @@ public class Skill: SkillParams
         dictTemp.Add("skillDetail", skillDetail);
       
         dictTemp.Add("strDiscription", strDiscription);
-        dictTemp.Add("strIconpath", strIconpath);
+        dictTemp.Add("strIconpath", strIconName);
         dictTemp.Add("strEffectPath", strEffectPath);
         dictTemp.Add("fSkillExp", fSkillExp.ToString());
         dictTemp.Add("fSkillRequireExp", fSkillRequireExp.ToString());

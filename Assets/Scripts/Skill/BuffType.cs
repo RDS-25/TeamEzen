@@ -40,7 +40,7 @@ public class BuffType : Skill
         enumSkillDetail = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dicTemp["skillDetail"]);//이넘으로 넣어주기, 타입도 해주기
         strName = dicTemp["strName"];
         strDiscription = dicTemp["fSkillLevel"];
-        strIconpath = dicTemp["strIconpath"];
+        strIconName = dicTemp["strIconpath"];
         strEffectPath = dicTemp["strEffectPath"];
         fSkillLevel = float.Parse(dicTemp["fSkillLevel"]);
         fSkillExp = float.Parse(dicTemp["fSkillExp"]);
