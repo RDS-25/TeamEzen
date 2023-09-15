@@ -11,7 +11,9 @@ public class SkillID
     public const string NAME                = "strName";
     public const string LEVEL               = "fSkillLevel";
     public const string DESCRIPT            = "strDiscription";
+
     public const string ICON_PATH           = "strIconpath";
+
     public const string EFFECT_PATH         = "strEffectPath";
     public const string REQUIRE_EXP         = "fSkillRequireExp";
     public const string CURRENT_EXP         = "fSkillExp";

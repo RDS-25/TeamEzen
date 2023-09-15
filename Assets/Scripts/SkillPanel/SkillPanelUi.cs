@@ -106,7 +106,7 @@ public class SkillPanelUi : MonoBehaviour
                         dictCurUlt = mySkill;
                         break;
                 }
-                imageIcon.sprite = GameManager.instance.LoadAndSetSprite(mySkill[_STR_IMAGE_URL]);
+                //imageIcon.sprite = GameManager.instance.LoadAndSetSprite(mySkill[_STR_IMAGE_URL]);
                 textLevel.text = mySkill[_STR_LEVEL];
                 textName.text = "Lv. " + mySkill[_STR_NAME];
                 textDescription.text = mySkill[_STR_DESCRIPT];
