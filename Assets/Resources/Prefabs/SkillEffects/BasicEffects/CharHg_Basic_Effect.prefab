@@ -33986,7 +33986,7 @@ GameObject:
   - component: {fileID: 1028868385046620403}
   - component: {fileID: 1027045837029520481}
   m_Layer: 0
-  m_Name: CharAr_Active_02Params
+  m_Name: CharHg_Basic_Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
