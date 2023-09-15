@@ -39,37 +39,10 @@ public class SkillEffrct : MonoBehaviour
             return fTotalDamage;
         }
     }
-    //public virtual float CalculDamage()
-    //{//계산된 대미지,크리티컬확률,크리티컬대미지,방어구관통,캐릭터속성,
-    // //몬스터회피,몬스터방어,몬스터크리저항몬스터속성
-    // //대미지 계산
-     
-        
-    //    if (fRanmondod < fMonDadge)//몬스터의 회피성공시
-    //    {
-    //        float calculdamage = 0;
-    //        fTotalDamage = calculdamage;
-    //        //빗나감 텍스트
-    //        return fTotalDamage;
-    //    }
-    //    else//몬스터의 회피실패시
-    //    {
-    //        if (fRancri <= Charater1.critical - fMonCriresi)//크리티컬일 경우
-    //        {                
-    //            float calculdamage =
-    //                (Charater1.damage * Charater1.criticaldamage *
-    //                (fMonDefense - Charater1.defensepierce) / (fMonDefense + 100));
-    //            fTotalDamage = calculdamage;
-    //            return fTotalDamage;
-    //        }
-    //        else//크리티컬이 아닐경우
-    //        {
-    //            float calculdamage = Charater1.damage * (fMonDefense - Charater1.defensepierce) / (fMonDefense + 100);
-    //            fTotalDamage = calculdamage;
-    //            return fTotalDamage;
-    //        }//속성???
-    //    }        
-    //}
+    public void SkillActivationInit(ref Stat activeObjectStat)
+    {
+        ChaStat = activeObjectStat;
+    }
     public virtual float CheckPro(float Attacker, float Defender)
     {
         if (Attacker - Defender == -1 || Attacker - Defender == 2)

@@ -34,13 +34,13 @@ public class BuffType : Skill
    
     public override void LoadParams()
     {
-        Dictionary<string, string> dicTemp = GameManager.instance.DataRead(SkillParamsPath);
+        Dictionary<string, string> dicTemp = GameManager.instance.DataRead(SkillFolderPath+ SkillParamsPath);
         
         fId = float.Parse(dicTemp["fId"]);
         enumSkillDetail = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dicTemp["skillDetail"]);//이넘으로 넣어주기, 타입도 해주기
         strName = dicTemp["strName"];
         strDiscription = dicTemp["fSkillLevel"];
-        strIconpath = dicTemp["strIconpath"];
+        strIconName = dicTemp["strIconpath"];
         strEffectPath = dicTemp["strEffectPath"];
         fSkillLevel = float.Parse(dicTemp["fSkillLevel"]);
         fSkillExp = float.Parse(dicTemp["fSkillExp"]);

@@ -31,8 +31,19 @@ public class FolderPath
     public const string PREFABS_CHAR_SLOT       = PREFABS + "Slot/";
 
     public const string PREFABS_ENEMY           = PREFABS + "Enemy/";
+
+    public const string PREFABS_SKILL           = PREFABS + "Skill/";
+    public const string PREFABS_ACTIVE_SKILL    = PREFABS_SKILL + "ActiveSkill/";
+    public const string PREFABS_BASIC_SKILL     = PREFABS_SKILL + "BasicSkil/";
+    public const string PREFABS_BUFF_SKILL      = PREFABS_SKILL + "BuffSkill/";
+    public const string PREFABS_COMMON_SKILL    = PREFABS_SKILL + "CommonSkill/";
+    public const string PREFABS_PASSIVE_SKILL   = PREFABS_SKILL + "PassiveSkill/";
+    public const string PREFABS_ULTIMATE_SKILL  = PREFABS_SKILL + "UltimateSkill/";
+
     public const string PREFABS_SKILL_EFFECT    = PREFABS + "SkillEffects/";
     public const string PREFABS_ACTIVE_EFFECT   = PREFABS_SKILL_EFFECT + "ActiveEffects/";
+    public const string PREFABS_BASIC_EFFECT    = PREFABS_SKILL_EFFECT + "BasicEffects/";
+    public const string PREFABS_ULTIMATE_EFFECT = PREFABS_SKILL_EFFECT + "UltiEffects/";
 
     public const string PREFABS_BULLET          = PREFABS + "Bullets/";
 

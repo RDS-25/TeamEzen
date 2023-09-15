@@ -10,8 +10,9 @@ public class CharSg_Ulti : AttackType
     //스킬레벨업 변수들 스킬마다 써주기  
 
 
-    void Start()
+    private void OnDisable()
     {
+        SkillFolderPath = FolderPath.PARAMS_ULTIMATE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARSG_ULTIMATE_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
@@ -20,6 +21,7 @@ public class CharSg_Ulti : AttackType
         SetType();
         LevelUpValue();
         InitParams();
+        LoadEffect();
     }
     public override void SetType()
     {
@@ -35,7 +37,8 @@ public class CharSg_Ulti : AttackType
         strName = "Act1";
         strDiscription = "ok";
         //strIconpath=
-        //strEffectPath=
+        strEffectPath = FolderPath.PREFABS_ULTIMATE_EFFECT;
+        strEffectName = FileName.STR_CHA_SG_ULTIMATE_EFFECT;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;

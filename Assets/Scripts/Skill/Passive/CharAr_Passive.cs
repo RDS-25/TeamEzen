@@ -7,17 +7,20 @@ using System.IO;
 
 public class CharAr_Passive : BuffType
 {
-     void Start()
-    {      
-        SkillPath = FolderPath.PARAMS_PASSIVE_SKILL;
+   
+    private void OnDisable()
+    {
+        SkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARAR_PASSIVE_PARAMS;
+        
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
         PLUS_TARGET_COUNT = 0f;
         PLUS_ATTACK_COUNT = 0f;
         SetType();
         LevelUpValue();
-        InitParams();        
+        InitParams();
+        Debug.Log(SkillFolderPath + SkillParamsPath);
     }
     public override void SetType()
     {

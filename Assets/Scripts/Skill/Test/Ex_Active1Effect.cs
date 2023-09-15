@@ -36,23 +36,18 @@ public class Ex_Active1Effect : SkillEffrct
     {
         if (other.tag == "Monster")
         {
+            Debug.Log(other.tag);
             var monsterStat= other.GetComponent<Stat>();
             fMonDadge = monsterStat.fMiss;
             fMonCriresi = monsterStat.fCriticalResist;
             fMonDefense = monsterStat.fDef;
             fMonProperty = monsterStat.fProperty;
-            monsterStat.fHealth -=
+            
             CalculDamage(ChaStat.fAtk,ChaStat.fCriticalPer,ChaStat.fCriticalDmg,ChaStat.fDefBreak,ChaStat.fProperty
                 ,fMonDadge,fMonCriresi, fMonDefense,fMonProperty);
             // 오류 있음
-            SkillHit?.Invoke("1",1);//X?  X가 만족하면 뒤에거 실행  나중 실제 이펙트쪽으로 옮기기
-            //몬스터 피해입는곳
-            Debug.Log(other.tag);
-        }
-        if(other.tag == "Player")
-        {
-
-        }
+            monsterStat.fHealth -= fTotalDamage;                        
+        }        
     }
     //public override float CheckPro(float Attacker, float Defender)
     //{

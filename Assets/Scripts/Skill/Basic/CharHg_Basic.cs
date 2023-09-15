@@ -6,8 +6,9 @@ using System;
 using Params;
 public class CharHg_Basic : AttackType
 {
-    void Start()
+    private void OnDisable()
     {
+        SkillFolderPath = FolderPath.PARAMS_ULTIMATE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARHG_BASIC_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
@@ -16,6 +17,7 @@ public class CharHg_Basic : AttackType
         SetType();
         LevelUpValue();
         InitParams();
+        LoadEffect();
     }
     public override void SetType()
     {
@@ -31,7 +33,8 @@ public class CharHg_Basic : AttackType
         strName = "Act1";
         strDiscription = "ok";
         //strIconpath=
-        //strEffectPath=
+        strEffectPath = FolderPath.PREFABS_BASIC_EFFECT;
+        strEffectName = FileName.STR_CHA_HG_BASIC_EFFECT;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;

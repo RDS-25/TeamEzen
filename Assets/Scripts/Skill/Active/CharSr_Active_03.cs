@@ -7,17 +7,19 @@ using Params;
 
 public class CharSr_Active_03 : AttackType
 {
-    void Start()
+    private void OnDisable()
     {
+        SkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARSR_ACTIVE_03_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
         PLUS_TARGET_COUNT = 0f;
         PLUS_ATTACK_COUNT = 0f;
         SetType();
-        LevelUpValue();      
+        LevelUpValue();
         InitParams();
-    }  
+        LoadEffect();
+    }
     public override void SetType()
     {
         base.SetType();
@@ -32,8 +34,8 @@ public class CharSr_Active_03 : AttackType
         strName = "Act1";
         strDiscription = "ok";
         //strIconName=
-        //strEffectPath=
-        //FolderPath.PREFABS_SKILL_EFFECT_ACTIVE + PrefabName.CHARA_R_ACTIVE_01;        
+        strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
+        strEffectName = FileName.STR_CHA_SR_ACTIVE_03_EFFECT;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;
