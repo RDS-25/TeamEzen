@@ -8,8 +8,8 @@ public class CharHg_Passive : BuffType
 
     private void OnDisable()
     {
-        SkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
-        SkillParamsPath = FileName.STR_JSON_CHARHG_PASSIVE_PARAMS;
+        strSkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
+        strSkillParamsName = FileName.STR_JSON_CHARHG_PASSIVE_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
         PLUS_TARGET_COUNT = 0f;
@@ -30,8 +30,8 @@ public class CharHg_Passive : BuffType
         fId = 101;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=
-        //strEffectPath=
+        strIconName = "CharHgPassive.png";
+        //strEffectPath=        
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;

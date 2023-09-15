@@ -8,8 +8,8 @@ using System;
 public class Skill: SkillParams
 {//1.스킬 해금 2.스킬 발동 3.강화 4.효과거리 5.지속시간
     //스킬 레벨/거리/시간
-    protected string SkillFolderPath;//폴더경로
-    protected string SkillParamsPath;//파일경로
+    //protected string SkillFolderPath;//폴더경로
+    //protected string SkillParamsPath;//파일경로
     protected Dictionary<string, string> SkillStat;//딕셔너리 사용
 
     //스킬마다 지정된값 써주기
@@ -18,7 +18,6 @@ public class Skill: SkillParams
     protected float PLUS_TARGET_COUNT = 0f;
     protected float PLUS_ATTACK_COUNT = 0f;
     protected Stat ChaStat;
-
 
     public void SkillActivationInit(ref Stat activeObjectStat)//스킬 장착할때 불러달라고 말하기
     {
@@ -33,16 +32,14 @@ public class Skill: SkillParams
     }
     public virtual void InitParams()
     {//데이터파일 있으면 LoadParams() 없으면 SetParams()
-        if (GameManager.instance.CheckExist(SkillFolderPath, SkillParamsPath))
+        if (GameManager.instance.CheckExist(strSkillFolderPath, strSkillParamsName))
         {
             LoadParams();
- 
         }
         else
         {
             SetDefault();
             SaveParams();
-           
         }
     }
     public virtual void SetType()
@@ -67,8 +64,11 @@ public class Skill: SkillParams
         dictTemp.Add("skillDetail", skillDetail);
       
         dictTemp.Add("strDiscription", strDiscription);
-        dictTemp.Add("strIconpath", strIconName);
+        dictTemp.Add("strIconName", strIconName);
+        dictTemp.Add("strSkillFolderPath", strSkillFolderPath);
+        dictTemp.Add("strSkillParamsName", strSkillParamsName);
         dictTemp.Add("strEffectPath", strEffectPath);
+        dictTemp.Add("strEffectName", strEffectName);
         dictTemp.Add("fSkillExp", fSkillExp.ToString());
         dictTemp.Add("fSkillRequireExp", fSkillRequireExp.ToString());
         dictTemp.Add("fUnlockLevel", fUnlockLevel.ToString());
@@ -90,12 +90,12 @@ public class Skill: SkillParams
         dictTemp.Add("bisCanUse", bisCanUse.ToString());
         dictTemp.Add("bisActtivate", bisActtivate.ToString());
         // 이펙트이름
-        GameManager.instance.DataWrite(SkillFolderPath + SkillParamsPath, dictTemp);
+        GameManager.instance.DataWrite(strSkillFolderPath + strSkillParamsName, dictTemp);
     }
 
     public virtual void LoadParams()
     {
-        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(SkillFolderPath);
+        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(strSkillFolderPath + strSkillParamsName);
         fSkillLevel = float.Parse(dictTemp["fSkillLevel"]);
         fId = float.Parse(dictTemp["fId"]);
         strName = dictTemp["strName"];
@@ -104,6 +104,9 @@ public class Skill: SkillParams
         skillType = dictTemp["skillType"];
         enumSkillType = (SkillType)Enum.Parse(typeof(SkillType), dictTemp["skillType"]);
         enumSkillDetail = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dictTemp["skillDetail"]);
+        strIconName = dictTemp["strIconName"];
+        strSkillFolderPath = dictTemp["strSkillFolderPath"];
+        strSkillParamsName = dictTemp["strSkillParamsName"];
 
         fSkillExp = float.Parse(dictTemp["fSkillExp"]);
         fSkillRequireExp = float.Parse(dictTemp["fSkillRequireExp"]);

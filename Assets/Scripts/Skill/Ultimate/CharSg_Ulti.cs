@@ -12,8 +12,8 @@ public class CharSg_Ulti : AttackType
 
     private void OnDisable()
     {
-        SkillFolderPath = FolderPath.PARAMS_ULTIMATE_SKILL;
-        SkillParamsPath = FileName.STR_JSON_CHARSG_ULTIMATE_PARAMS;
+        strSkillFolderPath = FolderPath.PARAMS_ULTIMATE_SKILL;
+        strSkillParamsName = FileName.STR_JSON_CHARSG_ULTIMATE_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
         PLUS_TARGET_COUNT = 0f;
@@ -36,7 +36,7 @@ public class CharSg_Ulti : AttackType
         fId = 302;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=
+        strIconName = "CharSgUlti.png";
         strEffectPath = FolderPath.PREFABS_ULTIMATE_EFFECT;
         strEffectName = FileName.STR_CHA_SG_ULTIMATE_EFFECT;
         fSkillExp = 0;

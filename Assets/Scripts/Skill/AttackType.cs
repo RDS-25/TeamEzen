@@ -8,7 +8,6 @@ public class AttackType : Skill
 {
     public Transform FirePoint;
     public GameObject EffectPrefab;
-    string Path = "/Prefabs/Skill/Effect";
 
     //스킬레벨업 변수들 스킬마다 써주기
 
@@ -27,7 +26,8 @@ public class AttackType : Skill
         strDiscription = "ok";
         skillDetail = "ATTACK";
         //strIconpath=
-        //strEffectPath=
+        strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
+        strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;
@@ -48,16 +48,17 @@ public class AttackType : Skill
         bisUnlockHiden = false;
         bisCanUse = false;
         bisActtivate = false;
-        EffectPrefab = Resources.Load(Path) as GameObject;
     }
 
     public override void LoadParams()
     {
-        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(SkillFolderPath + SkillParamsPath);
+        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(strSkillFolderPath + strSkillParamsName);
         fSkillLevel         = float.Parse(dictTemp["fSkillLevel"]);
         fId                 = float.Parse(dictTemp["fId"]);
         strName             = dictTemp["strName"];
         enumSkillDetail     = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dictTemp["skillDetail"]);
+        strSkillFolderPath = dictTemp["strSkillFolderPath"];
+        strSkillParamsName = dictTemp["strSkillParamsName"];
 
         fSkillExp           = float.Parse(dictTemp["fSkillExp"]);
         fSkillRequireExp    = float.Parse(dictTemp["fSkillRequireExp"]);
