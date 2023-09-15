@@ -6,7 +6,7 @@ using System.IO;
 
 public class CharSg_Passive : BuffType
 {
-    void Start()
+    private void OnDisable()
     {
         SkillPath = FolderPath.PARAMS_PASSIVE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARSG_PASSIVE_PARAMS;

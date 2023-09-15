@@ -9,8 +9,7 @@ public class CharAr_Active_02 : AttackType
 {
     //스킬레벨업 변수들 스킬마다 써주기  
 
-
-    void Start()
+    private void OnDisable()
     {
         SkillParamsPath = FileName.STR_JSON_CHARAR_ACTIVE_02_PARAMS;
         PLUS_VAL = 10f;
@@ -20,7 +19,9 @@ public class CharAr_Active_02 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
+        LoadEffect();
     }
+    
     public override void SetType()
     {
         base.SetType();
@@ -35,7 +36,8 @@ public class CharAr_Active_02 : AttackType
         strName = "Act1";
         strDiscription = "ok";
         //strIconpath=
-        //strEffectPath=
+        strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
+        strEffectName = FileName.STR_CHA_AR_ACTIVE_02_EFFECT;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;
