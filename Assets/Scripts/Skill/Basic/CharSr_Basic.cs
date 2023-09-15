@@ -33,7 +33,7 @@ public class CharSr_Basic : AttackType
         fId = 3;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=        
+        strIconName = "CharSrBasic.png";
         strEffectPath = FolderPath.PREFABS_BASIC_EFFECT;
         strEffectName = FileName.STR_CHA_SR_BASIC_EFFECT;
         fSkillExp = 0;

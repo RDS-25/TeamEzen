@@ -32,7 +32,7 @@ public class CharHg_Basic : AttackType
         fId = 1;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=        
+        strIconName = "CharHgBasic.png";
         strEffectPath = FolderPath.PREFABS_BASIC_EFFECT;
         strEffectName = FileName.STR_CHA_HG_BASIC_EFFECT;
         fSkillExp = 0;

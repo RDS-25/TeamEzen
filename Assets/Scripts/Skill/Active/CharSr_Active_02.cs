@@ -33,7 +33,7 @@ public class CharSr_Active_02 : AttackType
         fId = 210;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=        
+        strIconName = "CharSrActive02.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
         strEffectName = FileName.STR_CHA_SR_ACTIVE_02_EFFECT;
         fSkillExp = 0;

@@ -28,11 +28,10 @@ public class CharAr_Passive : BuffType
     public override void SetDefault()
     {
         fSkillLevel = 1;
-        fId = 10;
+        fId = 100;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=
-
+        strIconName = "CharArPassive.png";
         //strEffectPath=
         fSkillExp = 0;
         fSkillRequireExp = 100;

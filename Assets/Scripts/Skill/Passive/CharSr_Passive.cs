@@ -30,7 +30,7 @@ public class CharSr_Passive : BuffType
         fId = 103;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=       
+        strIconName = "CharSrPassive.png";      
         //strEffectPath=
         fSkillExp = 0;
         fSkillRequireExp = 100;

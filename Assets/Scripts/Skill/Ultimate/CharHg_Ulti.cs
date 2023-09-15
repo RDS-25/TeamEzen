@@ -34,7 +34,7 @@ public class CharHg_Ulti : AttackType
         fId = 301;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=        
+        strIconName = "CharHgUlti.png";
         strEffectPath = FolderPath.PREFABS_ULTIMATE_EFFECT;
         strEffectName = FileName.STR_CHA_HG_ULTIMATE_EFFECT;
         fSkillExp = 0;

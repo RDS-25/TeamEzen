@@ -33,7 +33,7 @@ public class CharSr_Ulti : AttackType
         fId = 303;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=        
+        strIconName = "CharSrUlti.png";
         strEffectPath = FolderPath.PREFABS_ULTIMATE_EFFECT;
         strEffectName = FileName.STR_CHA_SR_ULTIMATE_EFFECT;
         fSkillExp = 0;

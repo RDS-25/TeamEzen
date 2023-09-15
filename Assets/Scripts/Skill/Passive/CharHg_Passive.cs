@@ -30,7 +30,7 @@ public class CharHg_Passive : BuffType
         fId = 101;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=
+        strIconName = "CharHgPassive.png";
         //strEffectPath=        
         fSkillExp = 0;
         fSkillRequireExp = 100;

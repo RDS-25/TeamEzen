@@ -33,7 +33,7 @@ public class CharHg_Active_02 : AttackType
         fId = 204;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=        
+        strIconName = "CharHgActive02.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
         strEffectName = FileName.STR_CHA_HG_ACTIVE_02_EFFECT;
         fSkillExp = 0;

@@ -36,7 +36,7 @@ public class CharSg_Ulti : AttackType
         fId = 302;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=        
+        strIconName = "CharSgUlti.png";
         strEffectPath = FolderPath.PREFABS_ULTIMATE_EFFECT;
         strEffectName = FileName.STR_CHA_SG_ULTIMATE_EFFECT;
         fSkillExp = 0;
