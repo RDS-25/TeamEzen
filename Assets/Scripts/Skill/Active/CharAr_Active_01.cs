@@ -12,6 +12,7 @@ public class CharAr_Active_01 : AttackType
     //디저블로 스타트를
     private void OnDisable()
     {
+        SkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARAR_ACTIVE_01_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;

@@ -8,7 +8,7 @@ using System;
 public class Skill: SkillParams
 {//1.스킬 해금 2.스킬 발동 3.강화 4.효과거리 5.지속시간
     //스킬 레벨/거리/시간
-    protected string SkillPath;//폴더경로
+    protected string SkillFolderPath;//폴더경로
     protected string SkillParamsPath;//파일경로
     protected Dictionary<string, string> SkillStat;//딕셔너리 사용
 
@@ -33,7 +33,7 @@ public class Skill: SkillParams
     }
     public virtual void InitParams()
     {//데이터파일 있으면 LoadParams() 없으면 SetParams()
-        if (GameManager.instance.CheckExist(SkillPath, SkillParamsPath))
+        if (GameManager.instance.CheckExist(SkillFolderPath, SkillParamsPath))
         {
             LoadParams();
  
@@ -90,12 +90,12 @@ public class Skill: SkillParams
         dictTemp.Add("bisCanUse", bisCanUse.ToString());
         dictTemp.Add("bisActtivate", bisActtivate.ToString());
         // 이펙트이름
-        GameManager.instance.DataWrite(SkillPath + SkillParamsPath, dictTemp);
+        GameManager.instance.DataWrite(SkillFolderPath + SkillParamsPath, dictTemp);
     }
 
     public virtual void LoadParams()
     {
-        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(SkillPath);
+        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(SkillFolderPath);
         fSkillLevel = float.Parse(dictTemp["fSkillLevel"]);
         fId = float.Parse(dictTemp["fId"]);
         strName = dictTemp["strName"];

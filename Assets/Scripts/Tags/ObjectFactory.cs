@@ -44,12 +44,15 @@ public class ObjectFactory
         MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY);
        
         SelectCharacterInit();
+
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                             , characterFactory.listPool.Count);
         OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                                             , characterFactory.listPool.Count);
+
         AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
-            //AllSkill.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
+
+        //AllSkill.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
     }
     public void SlotInit()
     {

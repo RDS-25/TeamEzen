@@ -9,7 +9,7 @@ public class CharSg_Active_02 : AttackType
 {
     private void OnDisable()
     {
-        SkillPath = FolderPath.PARAMS_ACTIVE_SKILL;
+        SkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARSG_ACTIVE_02_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;

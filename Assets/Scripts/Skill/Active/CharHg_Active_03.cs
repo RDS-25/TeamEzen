@@ -9,6 +9,7 @@ public class CharHg_Active_03 : AttackType
 {
     private void OnDisable()
     {
+        SkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARHG_ACTIVE_03_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;

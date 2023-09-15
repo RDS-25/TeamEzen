@@ -53,7 +53,7 @@ public class AttackType : Skill
 
     public override void LoadParams()
     {
-        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(SkillPath + SkillParamsPath);
+        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(SkillFolderPath + SkillParamsPath);
         fSkillLevel         = float.Parse(dictTemp["fSkillLevel"]);
         fId                 = float.Parse(dictTemp["fId"]);
         strName             = dictTemp["strName"];

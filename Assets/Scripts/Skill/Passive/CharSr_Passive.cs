@@ -8,7 +8,7 @@ public class CharSr_Passive : BuffType
 
     private void OnDisable()
     {
-        SkillPath = FolderPath.PARAMS_PASSIVE_SKILL;
+        SkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
         SkillParamsPath = FileName.STR_JSON_CHARSR_PASSIVE_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
