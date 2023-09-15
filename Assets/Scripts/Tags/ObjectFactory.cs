@@ -31,9 +31,7 @@ public class ObjectFactory
 
     // 스킬
     public FactoryManager AllSkill = new FactoryManager();
-
     public FactoryManager CharAR01BasicEffectFactory = new FactoryManager();
-    
 
     // 아이템
     public FactoryManager ItemObjectFactory = new FactoryManager();
@@ -50,8 +48,8 @@ public class ObjectFactory
                             , characterFactory.listPool.Count);
         OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                                             , characterFactory.listPool.Count);
-
-        AllSkill.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
+        AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
+            //AllSkill.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
     }
     public void SlotInit()
     {

@@ -7,7 +7,7 @@ using Params;
 
 public class CharSg_Active_03 : AttackType
 {
-    void Start()
+    private void OnDisable()
     {
         SkillParamsPath = FileName.STR_JSON_CHARSG_ACTIVE_03_PARAMS;
         PLUS_VAL = 10f;
@@ -17,6 +17,7 @@ public class CharSg_Active_03 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
+        LoadEffect();
     }
     public override void SetType()
     {
@@ -32,7 +33,8 @@ public class CharSg_Active_03 : AttackType
         strName = "Act1";
         strDiscription = "ok";
         //strIconpath=
-        //strEffectPath=
+        strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
+        strEffectName = FileName.STR_CHA_SG_ACTIVE_03_EFFECT;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;

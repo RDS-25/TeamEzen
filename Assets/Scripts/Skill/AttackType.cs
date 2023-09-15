@@ -105,7 +105,10 @@ public class AttackType : Skill
         //skillTirger?.Invoke();
     }
 
-    
+    public void LoadEffect()
+    {
+        EffectPrefab = Resources.Load<GameObject>(strEffectPath + strEffectName);
+    }
 
     public void EffectStart()
     {
