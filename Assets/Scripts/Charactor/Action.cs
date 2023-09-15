@@ -70,6 +70,7 @@ public class Action : MonoBehaviour
 			}
         }
      
+        /*
         if (Input.GetMouseButtonDown(0) && isEntries)
         {
             ani.SetBool("isAim", true);
@@ -78,7 +79,18 @@ public class Action : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && isEntries)
         {
             ani.SetBool("isAim", false);
-        }
+        }*/
+
+    }
+
+    public void ShootStart()
+    {
+        ani.SetBool("isAim", true);
+        StartCoroutine("onShot");
+    }
+    public void ShootEnd()
+    {
+        ani.SetBool("isAim", false);
 
     }
 

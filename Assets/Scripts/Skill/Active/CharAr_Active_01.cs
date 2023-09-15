@@ -64,4 +64,6 @@ public class CharAr_Active_01 : AttackType
     {
         base.SkillHidenUnlock();
     }
+
+
 }
