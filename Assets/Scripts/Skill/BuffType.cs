@@ -39,8 +39,13 @@ public class BuffType : Skill
         fId = float.Parse(dicTemp["fId"]);
         enumSkillDetail = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dicTemp["skillDetail"]);//이넘으로 넣어주기, 타입도 해주기
         strName = dicTemp["strName"];
+<<<<<<< Updated upstream
         strDiscription = dicTemp["fSkillLevel"];
         strIconName = dicTemp["strIconName"];
+=======
+        strDiscription = dicTemp["strDiscription"];
+        strIconName = dicTemp["strIconpath"];
+>>>>>>> Stashed changes
         strSkillFolderPath = dicTemp["strSkillFolderPath"];
         strSkillParamsName = dicTemp["strSkillParamsName"];
         strEffectPath = dicTemp["strEffectPath"];
