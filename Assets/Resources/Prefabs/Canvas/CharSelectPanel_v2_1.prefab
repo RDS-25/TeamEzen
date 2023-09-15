@@ -1202,7 +1202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c5489638be8d54fb9f1f0cfb3e4c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curChr: {fileID: 0}
   CharDetail: {fileID: 4460555616564073365}
   CharSelect: {fileID: 7464028234767976703}
   gStatDetail: {fileID: 6865347244090197631}
@@ -6655,6 +6654,10 @@ PrefabInstance:
       propertyPath: charactorUIManager
       value: 
       objectReference: {fileID: 5664632724661602036}
+    - target: {fileID: 1663094566140699629, guid: 3c3ed28158c302a45a27341f52547d58, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2872370108820951776, guid: 3c3ed28158c302a45a27341f52547d58, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
