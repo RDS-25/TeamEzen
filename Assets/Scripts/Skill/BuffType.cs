@@ -31,16 +31,18 @@ public class BuffType : Skill
         bisUnlockHiden = false;
         bisActtivate = false;
     }
-   
+
     public override void LoadParams()
     {
-        Dictionary<string, string> dicTemp = GameManager.instance.DataRead(SkillParamsPath);
-        
+        Dictionary<string, string> dicTemp = GameManager.instance.DataRead(strSkillFolderPath + strSkillParamsName);
+
         fId = float.Parse(dicTemp["fId"]);
         enumSkillDetail = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dicTemp["skillDetail"]);//이넘으로 넣어주기, 타입도 해주기
         strName = dicTemp["strName"];
         strDiscription = dicTemp["fSkillLevel"];
         strIconName = dicTemp["strIconpath"];
+        strSkillFolderPath = dicTemp["strSkillFolderPath"];
+        strSkillParamsName = dicTemp["strSkillParamsName"];
         strEffectPath = dicTemp["strEffectPath"];
         fSkillLevel = float.Parse(dicTemp["fSkillLevel"]);
         fSkillExp = float.Parse(dicTemp["fSkillExp"]);
@@ -53,7 +55,7 @@ public class BuffType : Skill
         bisUnlockSkill = Convert.ToBoolean(dicTemp["bisUnlockSkill"]);
         bisUnlockHiden = Convert.ToBoolean(dicTemp["bisUnlockHiden"]);
         bisActtivate = Convert.ToBoolean(dicTemp["bisActtivate"]);
-    }   
+    }
 
     public override void SkillUnlock()
     {//버프 공통이면 여기서 따로면 더 내려가서 아니면 지우기

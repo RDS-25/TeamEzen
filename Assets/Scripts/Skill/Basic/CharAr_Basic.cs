@@ -9,7 +9,8 @@ public class CharAr_Basic : AttackType
 {
     private void OnDisable()
     {
-        SkillParamsPath = FileName.STR_JSON_CHARAR_BASIC_PARAMS;
+        strSkillFolderPath = FolderPath.PARAMS_BASIC_SKILL;
+        strSkillParamsName = FileName.STR_JSON_CHARAR_BASIC_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
         PLUS_TARGET_COUNT = 0f;
@@ -32,7 +33,7 @@ public class CharAr_Basic : AttackType
         fId = 0;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=
+        //strIconpath=        
         strEffectPath = FolderPath.PREFABS_BASIC_EFFECT;
         strEffectName = FileName.STR_CHA_AR_BASIC_EFFECT;
         fSkillExp = 0;

@@ -26,7 +26,8 @@ public class AttackType : Skill
         strDiscription = "ok";
         skillDetail = "ATTACK";
         //strIconpath=
-        //strEffectPath=
+        strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
+        strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;
@@ -51,11 +52,13 @@ public class AttackType : Skill
 
     public override void LoadParams()
     {
-        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(SkillPath);
+        Dictionary<string, string> dictTemp = GameManager.instance.DataRead(strSkillFolderPath + strSkillParamsName);
         fSkillLevel         = float.Parse(dictTemp["fSkillLevel"]);
         fId                 = float.Parse(dictTemp["fId"]);
         strName             = dictTemp["strName"];
         enumSkillDetail     = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dictTemp["skillDetail"]);
+        strSkillFolderPath = dictTemp["strSkillFolderPath"];
+        strSkillParamsName = dictTemp["strSkillParamsName"];
 
         fSkillExp           = float.Parse(dictTemp["fSkillExp"]);
         fSkillRequireExp    = float.Parse(dictTemp["fSkillRequireExp"]);

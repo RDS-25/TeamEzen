@@ -10,7 +10,8 @@ public class CharHg_Ulti : AttackType
 {    
     private void OnDisable()
     {
-        SkillParamsPath = FileName.STR_JSON_CHARHG_ULTIMATE_PARAMS;
+        strSkillFolderPath = FolderPath.PARAMS_ULTIMATE_SKILL;
+        strSkillParamsName = FileName.STR_JSON_CHARHG_ULTIMATE_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
         PLUS_TARGET_COUNT = 0f;
@@ -33,7 +34,7 @@ public class CharHg_Ulti : AttackType
         fId = 301;
         strName = "Act1";
         strDiscription = "ok";
-        //strIconpath=
+        //strIconpath=        
         strEffectPath = FolderPath.PREFABS_ULTIMATE_EFFECT;
         strEffectName = FileName.STR_CHA_HG_ULTIMATE_EFFECT;
         fSkillExp = 0;

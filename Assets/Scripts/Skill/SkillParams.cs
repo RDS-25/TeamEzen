@@ -28,6 +28,8 @@ namespace Params
         public float fSkillLevel = 1f;//스킬레벨
         public string strDiscription;//스킬 설명
         public string strIconName;//스킬아이콘 경로
+        public string strSkillFolderPath;//폴더경로
+        public string strSkillParamsName;//파일경로
         public string strEffectPath;//이펙트경로
         public string strEffectName;//이펙트 이름                                    
         public float fSkillRequireExp;//스킬 레벨업 필요경험치
