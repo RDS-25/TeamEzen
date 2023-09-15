@@ -1137,7 +1137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3784107149484828918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6182,7 +6182,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6424,7 +6424,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 80, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -160, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7327811177224571196
 MonoBehaviour:
@@ -6566,6 +6566,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4177946818808006757}
+    - target: {fileID: 3190568535767517499, guid: 7f5c3ff9f0a265540a786149642bcabc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1027142881875520949}
+    - target: {fileID: 3190568535767517499, guid: 7f5c3ff9f0a265540a786149642bcabc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LevelUpSkill
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190568535767517499, guid: 7f5c3ff9f0a265540a786149642bcabc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SkillLevelUpUi, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190568535767517499, guid: 7f5c3ff9f0a265540a786149642bcabc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3871182762398569260, guid: 7f5c3ff9f0a265540a786149642bcabc, type: 3}
       propertyPath: textBasicLevel
       value: 
@@ -6668,6 +6684,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f5c3ff9f0a265540a786149642bcabc, type: 3}
+--- !u!114 &1027142881875520949 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 220057550948148060, guid: 7f5c3ff9f0a265540a786149642bcabc, type: 3}
+  m_PrefabInstance: {fileID: 958396111258308329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670c29a82de44924b8c0f22ef996364e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2031812423563982331 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1260614876786293522, guid: 7f5c3ff9f0a265540a786149642bcabc, type: 3}

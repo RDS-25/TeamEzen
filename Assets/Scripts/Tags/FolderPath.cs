@@ -20,7 +20,7 @@ public class FolderPath
     public const string PARAMS_ACTIVE_SKILL     = PARAMS_SKILL + "ActiveSkill/";
     public const string PARAMS_ULTIMATE_SKILL   = PARAMS_SKILL + "UltimateSkill/";
     public const string PARAMS_BASIC_SKILL      = PARAMS_SKILL + "BasicSkill/";
-    public const string PARRANS_COMMON_SKILL    = PARAMS_SKILL + "CommonSkill/";
+    public const string PARAMS_COMMON_SKILL    = PARAMS_SKILL + "CommonSkill/";
 
     public const string PARAMS_ITEM             = PARAMS + "Item/";
     public const string PARAMS_ITEM_COUNT       = PARAMS_ITEM + "ItemCount/"; 

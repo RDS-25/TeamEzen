@@ -7,7 +7,7 @@ using TMPro;
 public class SkillPanelUi : MonoBehaviour
 {
     public SelectCharactorUIManager charactorUIManager;
-    Stat curCharStat;
+    public Stat curCharStat;
     public Image imageCharacter;
 
     public Image imagePassive;
@@ -76,7 +76,7 @@ public class SkillPanelUi : MonoBehaviour
         fUltimateSkillId = curCharStat.fUltimateSkill;
         dictPassive = GameManager.instance.DataReadAll(FolderPath.PARAMS_PASSIVE_SKILL);
         dictActive = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
-        dictBasic = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
+        dictBasic = GameManager.instance.DataReadAll(FolderPath.PARAMS_BASIC_SKILL);
         dictUlt = GameManager.instance.DataReadAll(FolderPath.PARAMS_ULTIMATE_SKILL);
 
         ShowSkill(fPassiveSkillId, imagePassive, textPassiveLevel, textPassiveName, textPassiveDescript, dictPassive);

@@ -66,4 +66,22 @@ public class SkillLevelUpUi : MonoBehaviour
         skillDescription.text = dictSelectedSkillParams[SkillID.DESCRIPT];
 
     }
+    public void LevelUpSkill()
+    {
+        foreach(GameObject skills in GameManager.instance.objectFactory.AllSkill.listPool)
+        {
+            if(skills.GetComponent<Skill>().fId.ToString() == dictSelectedSkillParams[SkillID.ID])
+            {
+                var skillScript = skills.GetComponent<Skill>();
+                if(skillScript.fSkillLevel <= 10)
+                {
+                    skillScript.SkillActivationInit(ref skillPanelUi.curCharStat);
+                    skillScript.SkillLevelUp();
+                    dictSelectedSkillParams = GameManager.instance.DataRead(skillScript.strSkillFolderPath + skillScript.strSkillParamsName);
+                    ShowSkillData();
+                }
+            }
+        }
+        //currentLevel.text = "Lv. " + dictSelectedSkillParams[SkillID.LEVEL] + 1;
+    }
 }
