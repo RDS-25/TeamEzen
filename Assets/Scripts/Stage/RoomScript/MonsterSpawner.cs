@@ -29,7 +29,6 @@ public class MonsterSpawner : MonoBehaviour
         if (nCount < monsterCount) 
         {
             nCount++;
-            Debug.Log("생성");
             Vector3 randomPosition = new Vector3(Random.Range(-transform.lossyScale.x / 2, transform.lossyScale.x / 2), 0, Random.Range(-transform.lossyScale.z / 2, transform.lossyScale.z / 2));
 
             if (randomPosition.x > Player.transform.position.x + playerRange || randomPosition.x < Player.transform.position.x - playerRange || randomPosition.z > Player.transform.position.z + playerRange || randomPosition.z < Player.transform.position.z - playerRange)
@@ -43,7 +42,6 @@ public class MonsterSpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("삭제");
             CancelInvoke("MonsterSpawn");
         }
     }

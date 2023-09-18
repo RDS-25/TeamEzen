@@ -51,22 +51,27 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
     public void SetObjectPosition()
     {
-        print("SetObjectPosition ½ÇÇàµÊ");
         //if (roomParam.nMaxEventCount > 1)
         //{
-        GameObject gimmick = new GameObject();//Fectory.GetObjct()¿¡¼­ ±â¹Í »Ì¾Æ¿À±â
-        Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
-        string GimmickType = roomParam.roomType.ToString().Split("_")[0]; //puzzle, trap, store, monster, boss
-        gimmick.transform.position = GimmickPos.position;
-        gimmick.transform.rotation = GimmickPos.rotation;
-        string scPath = "Prefabs/Room/";
-        Object Board = Resources.Load<StatusInfo>(scPath + GimmickType + "_BOARD");
-        print(gimmick.transform.position);
-        print(GimmickType);
 
-        Instantiate(Board, gimmick.transform.position, gimmick.transform.rotation);
-        
-        
+        if (GameManager.instance.objectFactory.GimmickRoomFactory.listPool[0].GetComponent<GimmickScript>().GIMMICK_TYPE
+            == GimmickRoomParams.ROOM_TYPE.STORE_ROOM)
+        { 
+        }
+        //GameManager.instance.objectFactory.GimmickRoomFactory.listPool
+        ////GameObject gimmick = new GameObject();//Fectory.GetObjct()¿¡¼­ ±â¹Í »Ì¾Æ¿À±â
+        //Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
+        //string GimmickType = roomParam.roomType.ToString().Split("_")[0]; //puzzle, trap, store, monster, boss
+        //gimmick.transform.position = GimmickPos.position;
+        //gimmick.transform.rotation = GimmickPos.rotation;
+        ////string scPath = "Prefabs/Room/";
+        ////GameObject Board = Resources.Load<GameObject>(scPath + GimmickType + "_BOARD");
+        //print(gimmick.transform.position);
+        //print(GimmickType);
+
+        //Instantiate(Board, GimmickPos.position, GimmickPos.rotation);
+
+
 
 
         //}
