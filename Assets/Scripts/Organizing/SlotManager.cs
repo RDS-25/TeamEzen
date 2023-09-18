@@ -9,20 +9,20 @@ public class SlotManager : MonoBehaviour
     public enum OBJECT_TYPE
     {
         CHARACTER,
-        ITEM
+        ITEM,
+        SKILL
     }
     public Button[] SlotButtons;
     public Transform SlotsInViewport;
     public TMP_Text textPrefab;
     public int nButtonIndex;
+    public int nSkillIndex;
 
     public delegate void ButtonClickAction(int index);
     public static event ButtonClickAction OnButtonClick;
 
-    void OnEnable()
-    {
-        SetButtonClickedEvent();
-    }
+    public delegate void SkillChangeClickAction(int index);
+    public static event SkillChangeClickAction OnSkillChange;
 
     public void SetButtonClickedEvent()
     {
@@ -33,7 +33,15 @@ public class SlotManager : MonoBehaviour
             SlotButtons[i].onClick.AddListener(() => OnClickButton(buttonIndex));
         }
     }
-
+    public void SetSkillChangeEvent()
+    {
+        SlotButtons = SlotsInViewport.GetComponentsInChildren<Button>();
+        for (int i = 0; i < SlotButtons.Length; i++)
+        {
+            int buttonIndex = i;
+            SlotButtons[i].onClick.AddListener(() => OnSkillChange(buttonIndex));
+        }
+    }
     public void SetSlot(List<GameObject> slotObjects, List<GameObject> allObjList, Transform Slots, OBJECT_TYPE objType)
     {
         Dictionary<string, string> dictTemp = new();
@@ -68,14 +76,23 @@ public class SlotManager : MonoBehaviour
                 i++;
             }
         }
+        else if (objType == OBJECT_TYPE.SKILL)
+        {
+            for (int i = 0; i < slotObjects.Count; i++)
+            {
+                slotObjects[i].transform.parent = Slots;
+                slotObjects[i].SetActive(true);
+            }
+        }
     }
     void OnClickButton(int index)
     {
-
         nButtonIndex = index;
-        Debug.Log(nButtonIndex.ToString());
         OnButtonClick?.Invoke(nButtonIndex);
-
-
+    }
+    void OnSkillChangeButton(int index)
+    {
+        nSkillIndex = index;
+        OnSkillChange?.Invoke(nSkillIndex);
     }
 }

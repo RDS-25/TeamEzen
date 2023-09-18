@@ -20,6 +20,7 @@ public class ObjectFactory
     public FactoryManager CharSlotFactory = new FactoryManager();
     public FactoryManager OrganizingSlotFactory = new FactoryManager();
     public FactoryManager ItemSlotFactory = new FactoryManager();
+    public FactoryManager SelectingSkillSlotFactory = new FactoryManager();
 
     //몬스터 종류별로 만들기
 
@@ -32,6 +33,7 @@ public class ObjectFactory
     // 스킬
     public FactoryManager AllSkill = new FactoryManager();
     public FactoryManager CharAR01BasicEffectFactory = new FactoryManager();
+    public FactoryManager SelectingSkillObjectFactory = new FactoryManager();
 
     // 아이템
     public FactoryManager ItemObjectFactory = new FactoryManager();
@@ -42,13 +44,15 @@ public class ObjectFactory
 		characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
 
         MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY);
-       
+        SelectingSkillObjectFactory.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
+        SelectingSkillObjectFactory.CreateObject(Resources.LoadAll<GameObject>(FolderPath.PREFABS_COMMON_SKILL));
         SelectCharacterInit();
 
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                             , characterFactory.listPool.Count);
         OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                                             , characterFactory.listPool.Count);
+        SelectingSkillSlotFactory.CreateFactory(FolderPath.PREFABS_SKILL_SLOT + PrefabName.STR_SKILL_SLOT);
 
         AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
 
@@ -58,10 +62,13 @@ public class ObjectFactory
     {
         CharSlotFactory.DeCreatePool();
         OrganizingSlotFactory.DeCreatePool();
+        SelectingSkillSlotFactory.DeCreatePool();
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                             , characterFactory.listPool.Count);
         OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                                             , characterFactory.listPool.Count);
+        SelectingSkillSlotFactory.CreateFactory(FolderPath.PREFABS_SKILL_SLOT + PrefabName.STR_SKILL_SLOT
+                            , SelectingSkillObjectFactory.listPool.Count);
     }
     public void SelectCharacterInit()
     {

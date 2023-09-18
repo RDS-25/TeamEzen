@@ -79,6 +79,7 @@ public class SkillLevelUpUi : MonoBehaviour
                     skillScript.SkillLevelUp();
                     dictSelectedSkillParams = GameManager.instance.DataRead(skillScript.strSkillFolderPath + skillScript.strSkillParamsName);
                     ShowSkillData();
+                    skillPanelUi.ShowSkill();
                 }
             }
         }

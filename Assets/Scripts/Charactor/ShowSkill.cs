@@ -5,6 +5,12 @@ using UnityEngine.EventSystems;
 
 public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,IDragHandler
 {
+    public enum SKILLTYPE
+	{
+        ACTIVE,
+        ULTI
+	}
+    public SKILLTYPE skillType = SKILLTYPE.ACTIVE;
     public Vector3 lastJoystickDirection;
 
     FixedJoystick joystick;
@@ -12,24 +18,61 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
     public GameObject gMaxRangeIndicator; // 최대 사거리 표시기 오브젝트를 할당합니다.
     public GameObject gSkillCancel;
 
+    public GameObject obj;
+
+    public GameObject ACTIVESKILL;
+    public GameObject UITIMATESKILL;
+
 
     Vector3 joystickDirection;
     Action action;
+    Stat stat;
+
 	private void Start()
 	{
         action = GetComponentInParent<Action>();
         joystick = GetComponent<FixedJoystick>();
-     
-	}
+       
+
+        obj = GameObject.FindWithTag("Player");
+        OwnSkills();
+       
+    }
+    
 
 	// Update is called once per frame
 	void Update()
     {
         //SkillFunction();
-        gRangeIndicator.transform.position = transform.root.position + new Vector3(0, 0.02f, 0) + joystickDirection * 5;//5는 최대스킬범위 
-        gMaxRangeIndicator.transform.position = transform.root.position + new Vector3(0, 0.01f, 0);
-    }   
+        gRangeIndicator.transform.position = obj.transform.position + new Vector3(0, 0.02f, 0) + joystickDirection * 5; // (skillType== SKILLTYPE.ACTIVE?/*액티브 스킬 사거리*/:/*궁극기 스킬 사거리 )//5는 최대스킬범위 
+        gMaxRangeIndicator.transform.position = obj.transform.position + new Vector3(0, 0.01f, 0);
+        //GameManager.instance.objectFactory.AllSkill.listPool;
+     
+    }
+	private void OnEnable()
+	{
+       
+      
+    }
 
+    void OwnSkills()
+    {
+        
+        for (int i = 0; i < GameManager.instance.objectFactory.AllSkill.listPool.Count; i++)
+        {
+            if (obj.GetComponent<Stat>().fActiveSkill == GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fId)
+            {
+               Debug.Log(obj.GetComponent<Stat>().fActiveSkill);
+            }
+            else if (obj.GetComponent<Stat>().fUltimateSkill == GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fId)
+            {
+             
+            }
+           
+            
+           
+        }
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -57,8 +100,8 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
         }
         else if (action.motion == Action.Motion.Action)
         {
-            Vector3 targetPosition = transform.root.position + joystickDirection;
-            transform.root.LookAt(targetPosition);
+            Vector3 targetPosition = obj.transform.position + joystickDirection;
+            obj.transform.LookAt(targetPosition);
             /*이 위치에 스킬 발생*/
             action.motion = Action.Motion.Idle;
 
@@ -82,7 +125,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
 
             gMaxRangeIndicator.transform.localScale = new Vector3(10,0.01f,10);  
-            gMaxRangeIndicator.transform.position = transform.root.position;
+            gMaxRangeIndicator.transform.position = obj.transform.position;
 
            
 
