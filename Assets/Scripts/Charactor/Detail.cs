@@ -20,7 +20,6 @@ public class Detail : MonoBehaviour
 	private void Update()
 	{
         GameObject curChar = GameManager.instance.objectFactory.ownCharFactory.listPool[gSelectCharM.curCharID];
-        Debug.Log(GameManager.instance.objectFactory.ownCharFactory.listPool.Count);
         //현재 선택된 캐릭터 정보  보여주기 
 
         TLevel.text ="레벨 :" + curChar.GetComponent<Stat>().fLevel; 
