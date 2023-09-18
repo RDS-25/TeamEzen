@@ -57,7 +57,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 			GameManager.instance.objectFactory.characterFactory.listPool,
 			transformSlots,
 			SlotManager.OBJECT_TYPE.CHARACTER);
-		GetComponent<SlotManager>().SetButtonClickedEvent();
+		slotManager.SetButtonClickedEvent();
 	}	
 
 	//캐릭서 상세 

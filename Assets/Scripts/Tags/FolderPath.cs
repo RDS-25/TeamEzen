@@ -33,6 +33,7 @@ public class FolderPath
 
     public const string PREFABS_ENEMY           = PREFABS + "Enemy/";
 
+    public const string PREFABS_SKILL_SLOT      = PREFABS + "Slot/";
     public const string PREFABS_SKILL           = PREFABS + "Skill/";
     public const string PREFABS_ACTIVE_SKILL    = PREFABS_SKILL + "ActiveSkill/";
     public const string PREFABS_BASIC_SKILL     = PREFABS_SKILL + "BasicSkil/";
