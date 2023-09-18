@@ -20,7 +20,7 @@ public class FileName
 
     public const string STR_JSON_INVEN_SAVE = "SaveItmemData";
 
-
+    //스킬
     public const string STR_JSON_CHARAR_ACTIVE_01_PARAMS = "CharAr_Active_01Params";
     public const string STR_JSON_CHARAR_ACTIVE_02_PARAMS = "CharAr_Active_02Params";
     public const string STR_JSON_CHARAR_ACTIVE_03_PARAMS = "CharAr_Active_03Params";
@@ -57,6 +57,7 @@ public class FileName
     public const string STR_JSON_COMMON3_PARAMS = "CharSg_Common3_Params";
     public const string STR_JSON_COMMON4_PARAMS = "CharSr_Common4_Params";
 
+    //스킬 이펙트
     public const string STR_CHA_AR_BASIC_EFFECT = "CharAr_Basic_Effect";
     public const string STR_CHA_HG_BASIC_EFFECT = "CharHg_Basic_Effect";
     public const string STR_CHA_SG_BASIC_EFFECT = "CharSg_Basic_Effect";

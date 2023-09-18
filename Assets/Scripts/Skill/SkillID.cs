@@ -11,10 +11,11 @@ public class SkillID
     public const string NAME                = "strName";
     public const string LEVEL               = "fSkillLevel";
     public const string DESCRIPT            = "strDiscription";
-
-    public const string ICON_PATH           = "strIconpath";
-
+    public const string ICON_NAME           = "strIconName";
+    public const string SKILL_FOLDER_PATH   = "strSkillFolderPath";
+    public const string SKILL_PARAMS_NAME   = "strSkillParamsName";
     public const string EFFECT_PATH         = "strEffectPath";
+    public const string EFFECT_NAME         = "strEffectName";
     public const string REQUIRE_EXP         = "fSkillRequireExp";
     public const string CURRENT_EXP         = "fSkillExp";
     public const string UNLOCK_LEVEL        = "fUnlockLevel";

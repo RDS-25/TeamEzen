@@ -48,7 +48,33 @@ public class Skill: SkillParams
     }
     public virtual void SetDefault()//첫 스킬파라미터 입력
     {
-
+        fSkillLevel = 1;
+        fId = -1;
+        strName = "Act1";
+        strDiscription = "ok";
+        strIconName = "1";
+        strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
+        strSkillParamsName = FileName.STR_JSON_CHARAR_ACTIVE_01_PARAMS;
+        strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
+        strEffectName= FileName.STR_CHA_AR_ACTIVE_01_EFFECT;
+        fSkillExp = 0;
+        fSkillRequireExp = 0;
+        fUnlockLevel = 0;
+        fUnlockHidenLevel = 0;
+        fTimer = 0;
+        fCoolTime = 0;
+        fDuration = 0;
+        fSkillCoolReduce = 0;
+        fBuffDuration = 0;
+        fRange = 0;
+        fMaxRange = 0;
+        fValue = 0;
+        fHidenValue = 0;
+        fMagnification = 0;
+        fTargetCount = 1;
+        fAttackCount = 1;
+        fBulletCount = 1;
+        checkLevel = 1000;
     }
 
     protected void SaveParams()//스킬 파라미터 적용
@@ -56,27 +82,26 @@ public class Skill: SkillParams
     {
         //스킬타입 넣기, 안들어간 값 다쓰기
         Dictionary<string, string> dictTemp = new Dictionary<string, string>();
-        dictTemp.Add("fSkillLevel", fSkillLevel.ToString());
-        dictTemp.Add("fId", fId.ToString());
-        dictTemp.Add("strName", strName);
-
         dictTemp.Add("skillType", skillType);
         dictTemp.Add("skillDetail", skillDetail);
-      
+        dictTemp.Add("fId", fId.ToString());
+        dictTemp.Add("strName", strName);
+        dictTemp.Add("fSkillLevel", fSkillLevel.ToString());
         dictTemp.Add("strDiscription", strDiscription);
         dictTemp.Add("strIconName", strIconName);
         dictTemp.Add("strSkillFolderPath", strSkillFolderPath);
         dictTemp.Add("strSkillParamsName", strSkillParamsName);
         dictTemp.Add("strEffectPath", strEffectPath);
         dictTemp.Add("strEffectName", strEffectName);
-        dictTemp.Add("fSkillExp", fSkillExp.ToString());
         dictTemp.Add("fSkillRequireExp", fSkillRequireExp.ToString());
+        dictTemp.Add("fSkillExp", fSkillExp.ToString());
         dictTemp.Add("fUnlockLevel", fUnlockLevel.ToString());
         dictTemp.Add("fUnlockHidenLevel", fUnlockHidenLevel.ToString());
         dictTemp.Add("fTimer", fTimer.ToString());
         dictTemp.Add("fCoolTime", fCoolTime.ToString());
         dictTemp.Add("fDuration", fDuration.ToString());
         dictTemp.Add("fSkillCoolReduce", fSkillCoolReduce.ToString());
+        dictTemp.Add("fBuffDuration", fBuffDuration.ToString());
         dictTemp.Add("fRange", fRange.ToString());
         dictTemp.Add("fMaxRange", fMaxRange.ToString());
         dictTemp.Add("fValue", fValue.ToString());
@@ -86,9 +111,9 @@ public class Skill: SkillParams
         dictTemp.Add("fAttackCount", fAttackCount.ToString());
         dictTemp.Add("fBulletCount", fBulletCount.ToString());
         dictTemp.Add("bisUnlockSkill", bisUnlockSkill.ToString());
-        dictTemp.Add("bisUnlockHiden", bisUnlockHiden.ToString());
         dictTemp.Add("bisCanUse", bisCanUse.ToString());
         dictTemp.Add("bisActtivate", bisActtivate.ToString());
+        dictTemp.Add("bisUnlockHiden", bisUnlockHiden.ToString());
         // 이펙트이름
         GameManager.instance.DataWrite(strSkillFolderPath + strSkillParamsName, dictTemp);
     }
@@ -96,21 +121,22 @@ public class Skill: SkillParams
     public virtual void LoadParams()
     {
         Dictionary<string, string> dictTemp = GameManager.instance.DataRead(strSkillFolderPath + strSkillParamsName);
-        fSkillLevel = float.Parse(dictTemp["fSkillLevel"]);
-        fId = float.Parse(dictTemp["fId"]);
-        strName = dictTemp["strName"];
 
-        skillDetail = dictTemp["skillDetail"];
-        skillType = dictTemp["skillType"];
         enumSkillType = (SkillType)Enum.Parse(typeof(SkillType), dictTemp["skillType"]);
         enumSkillDetail = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dictTemp["skillDetail"]);
+        skillType = dictTemp["skillType"];
+        skillDetail = dictTemp["skillDetail"];
+        fId = float.Parse(dictTemp["fId"]);
+        strName = dictTemp["strName"];
+        fSkillLevel = float.Parse(dictTemp["fSkillLevel"]);
+        strDiscription = dictTemp["strDiscription"];
         strIconName = dictTemp["strIconName"];
         strSkillFolderPath = dictTemp["strSkillFolderPath"];
         strSkillParamsName = dictTemp["strSkillParamsName"];
-
-        fSkillExp = float.Parse(dictTemp["fSkillExp"]);
+        strEffectPath = dictTemp["strEffectPath"];
+        strEffectName = dictTemp["strEffectName"];
         fSkillRequireExp = float.Parse(dictTemp["fSkillRequireExp"]);
-        strDiscription = dictTemp["strDiscription"];
+        fSkillExp = float.Parse(dictTemp["fSkillExp"]);
         fUnlockLevel = float.Parse(dictTemp["fUnlockLevel"]);
         fUnlockHidenLevel = float.Parse(dictTemp["fUnlockHidenLevel"]);
         fTimer = float.Parse(dictTemp["fTimer"]);
@@ -118,6 +144,7 @@ public class Skill: SkillParams
         fDuration = float.Parse(dictTemp["fDuration"]);
         fSkillCoolReduce = float.Parse(dictTemp["fSkillCoolReduce"]);
         fRange = float.Parse(dictTemp["fRange"]);
+        fMaxRange = float.Parse(dictTemp["fMaxRange"]);
         fValue = float.Parse(dictTemp["fValue"]);
         fHidenValue = float.Parse(dictTemp["fHidenValue"]);
         fMagnification = float.Parse(dictTemp["fMagnification"]);
@@ -125,11 +152,11 @@ public class Skill: SkillParams
         fAttackCount = float.Parse(dictTemp["fAttackCount"]);
         fBuffDuration = float.Parse(dictTemp["fBulletCount"]);
         bisUnlockSkill = Convert.ToBoolean(dictTemp["bisUnlockSkill"]);
-        bisUnlockHiden = Convert.ToBoolean(dictTemp["bisUnlockHiden"]);
         bisCanUse = Convert.ToBoolean(dictTemp["bisCanUse"]);
         bisActtivate = Convert.ToBoolean(dictTemp["bisActtivate"]);
+        bisUnlockHiden = Convert.ToBoolean(dictTemp["bisUnlockHiden"]);
     }
-    
+
 
     public virtual void SkillUnlock()//스킬 해금
     {
