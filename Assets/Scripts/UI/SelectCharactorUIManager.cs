@@ -67,7 +67,6 @@ public class SelectCharactorUIManager : MonoBehaviour
 		gStatDetail.SetActive(false);
 	}
 	public void ExitDetail() {
-
 		CharDetail.SetActive(false);
 	}
 	public void SkillPanel()
@@ -143,6 +142,8 @@ public class SelectCharactorUIManager : MonoBehaviour
 
 	public void BtnSelectCharExit() {
 		CharSelect.SetActive(false);
+		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(false);
+		curCharID = -1;
 	}
 
 	public void TestMove() {

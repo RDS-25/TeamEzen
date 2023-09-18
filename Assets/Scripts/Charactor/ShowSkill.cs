@@ -43,9 +43,11 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 	// Update is called once per frame
 	void Update()
     {
+        gRangeIndicator.transform.position = obj.transform.position + new Vector3(0, 0.02f, 0) + joystickDirection * (skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange)/2;//5는 최대스킬범위 
         //SkillFunction();
-        gRangeIndicator.transform.position = obj.transform.position + new Vector3(0, 0.02f, 0) + joystickDirection * 5; // (skillType== SKILLTYPE.ACTIVE?/*액티브 스킬 사거리*/:/*궁극기 스킬 사거리 )//5는 최대스킬범위 
+        gMaxRangeIndicator.transform.localScale = new Vector3((skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange),0,(skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange));
         gMaxRangeIndicator.transform.position = obj.transform.position + new Vector3(0, 0.01f, 0);
+        Debug.Log(ACTIVESKILL);
         //GameManager.instance.objectFactory.AllSkill.listPool;
      
     }

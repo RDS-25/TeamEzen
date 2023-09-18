@@ -30,8 +30,8 @@ public class CharAr_Passive : BuffType
         base.SetDefault();
         fSkillLevel = 1;
         fId = 100;
-        strName = "Act1";
-        strDiscription = "ok";
+        strName = "PASSVIE010101";
+        strDiscription = "Pasve Descriptond";
         strIconName = "CharArPassive.png";
         //strEffectPath=
         fSkillExp = 0;

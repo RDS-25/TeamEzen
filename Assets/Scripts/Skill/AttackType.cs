@@ -36,6 +36,7 @@ public class AttackType : Skill
             fTimer = 0f;
 
             EffectStart();//이펙트 있는 스킬인 경우
+
             StartCoroutine(SkillCoolDown());
         }
         //skillTirger?.Invoke();

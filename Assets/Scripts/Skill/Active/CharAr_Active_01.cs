@@ -34,8 +34,8 @@ public class CharAr_Active_01 : AttackType
     {
         fSkillLevel = 1;
         fId = 200;
-        strName = "Act1";
-        strDiscription = "ok";
+        strName = "ACTIVE01010101";
+        strDiscription = "ACTIVE010150";
         strIconName = "CharArActive01.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
         strEffectName = FileName.STR_CHA_AR_ACTIVE_01_EFFECT;
