@@ -20,7 +20,6 @@ public class RoomManager : MonoBehaviour, DefaultRoom
         roomParam.trGroundPositions = positionObjects.GetComponentsInChildren<Transform>();
         roomParam.roomType = (GimmickRoomParams.ROOM_TYPE)roomType;
         this.bUseBoss = bUseBoss;
-        print("Room Type : " + roomParam.roomType.ToString());
         this.player = player;
         SetObjectPosition();
         return false;
@@ -52,27 +51,34 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
     public void SetObjectPosition()
     {
-        if (roomParam.nMaxEventCount > 1)
-        {
-            List<int> idx = RandomL.RandomList.Inistance.NotDuplicatedRandomList(0, roomParam.trGroundPositions.Length, roomParam.nMaxEventCount);
-            foreach (int id in idx)
-            {
-                GameObject gimmick = new GameObject();//Fectory.GetObjct()¿¡¼­ ±â¹Í »Ì¾Æ¿À±â
-                Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
-                gimmick.transform.position = GimmickPos.position;
-                gimmick.transform.rotation = GimmickPos.rotation;
-            }
-        }
-        else if (roomParam.nMaxEventCount > 0)
-        {
-            GameObject gimmick = new GameObject();//Fectory.GetObjct()¿¡¼­ ±â¹Í »Ì¾Æ¿À±â
-            Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
-            gimmick.transform.position = GimmickPos.position;
-            gimmick.transform.rotation = GimmickPos.rotation;
-            //gimmick.SetActive(false);
-        }
+        print("SetObjectPosition ½ÇÇàµÊ");
+        //if (roomParam.nMaxEventCount > 1)
+        //{
+        GameObject gimmick = new GameObject();//Fectory.GetObjct()¿¡¼­ ±â¹Í »Ì¾Æ¿À±â
+        Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
+        string GimmickType = roomParam.roomType.ToString().Split("_")[0]; //puzzle, trap, store, monster, boss
+        gimmick.transform.position = GimmickPos.position;
+        gimmick.transform.rotation = GimmickPos.rotation;
+        string scPath = "Prefabs/Room/";
+        Object Board = Resources.Load<StatusInfo>(scPath + GimmickType + "_BOARD");
+        print(gimmick.transform.position);
+        print(GimmickType);
+
+        Instantiate(Board, gimmick.transform.position, gimmick.transform.rotation);
+        
         
 
+
+        //}
+        //else if (roomParam.nMaxEventCount > 0)
+        //{
+        //    GameObject gimmick = new GameObject();//Fectory.GetObjct()¿¡¼­ ±â¹Í »Ì¾Æ¿À±â
+        //    Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
+        //    Params.GimmickRoomParams.ROOM_TYPE GimmickType = roomParam.roomType;
+        //    gimmick.transform.position = GimmickPos.position;
+        //    gimmick.transform.rotation = GimmickPos.rotation;
+        //    //gimmick.SetActive(false);
+        //}
     }
 
 }

@@ -39,24 +39,35 @@ public class ObjectFactory
     public FactoryManager ItemObjectFactory = new FactoryManager();
     public FactoryManager SetItemFactory = new FactoryManager();
 
+    // ±â¹Í·ë
+    public FactoryManager MonsterRoomFactory = new FactoryManager();
+    public FactoryManager GimmickRoomFactory = new FactoryManager();
+
     public void InitFactory()
 	{
+        // Ä³¸¯ÅÍ
 		characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
-
         MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY);
-        SelectingSkillObjectFactory.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
-        SelectingSkillObjectFactory.CreateObject(Resources.LoadAll<GameObject>(FolderPath.PREFABS_COMMON_SKILL));
+        
         SelectCharacterInit();
 
+        // ½ºÅ³
+        SelectingSkillObjectFactory.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
+        SelectingSkillObjectFactory.CreateObject(Resources.LoadAll<GameObject>(FolderPath.PREFABS_COMMON_SKILL));
+        AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
+
+        // ½½·Ô
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                             , characterFactory.listPool.Count);
         OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                                             , characterFactory.listPool.Count);
         SelectingSkillSlotFactory.CreateFactory(FolderPath.PREFABS_SKILL_SLOT + PrefabName.STR_SKILL_SLOT);
 
-        AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
-
-        //AllSkill.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
+        // ±â¹Í·ë
+        MonsterRoomFactory.CreateFactory(FolderPath.PREFABS_ROOM + PrefabName.STR_MONSTER_ROOM, 15);
+        GimmickRoomFactory.CreateFactory(FolderPath.PREFABS_ROOM + PrefabName.STR_PUZZLE_ROOM, 5);
+        GimmickRoomFactory.CreateObject(FolderPath.PREFABS_ROOM + PrefabName.STR_TRAP_ROOM, 5);
+        GimmickRoomFactory.CreateObject(FolderPath.PREFABS_ROOM + PrefabName.STR_STORE_ROOM, 1);
     }
     public void SlotInit()
     {

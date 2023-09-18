@@ -10,8 +10,6 @@ public class FactoryManager
 
     public List<GameObject> listPool = new List<GameObject>();
 
-    public GameObject gPrefab { get { return _gPrefab; } }
-
     // 메모리풀 생성 Resources/ 이 다음 경로 + 파일명 넣어주기
     public void CreateFactory(string sPrefabPathPrefabName, int nSize)
     {
@@ -55,6 +53,7 @@ public class FactoryManager
             Debug.LogError("게임오브젝트가 없습니다.");
             return null;
         }
+        _gPrefab = gPrefab;
         GameObject gNewObj = GameObject.Instantiate(gPrefab, GameManager.instance.gameObject.transform.GetChild(0));
         gNewObj.name = gNewObj.name.Replace("(Clone)", "").Trim();
         listPool.Add(gNewObj);
@@ -64,6 +63,19 @@ public class FactoryManager
     // 오브젝트 사이즈 받아서 여러개 생성
     public void CreateObject(GameObject gPrefab, int nSize)
     {
+        if (gPrefab == null)
+        {
+            Debug.LogError("게임오브젝트가 없습니다.");
+        }
+        for (int i = 0; i < nSize; i++)
+        {
+            CreateObject(gPrefab);
+        }
+    }
+    // 경로 받아서 오브젝트 추가하기
+    public void CreateObject(string sPrefabPathPrefabName, int nSize)
+    {
+        GameObject gPrefab = Resources.Load<GameObject>(sPrefabPathPrefabName);
         if (gPrefab == null)
         {
             Debug.LogError("게임오브젝트가 없습니다.");

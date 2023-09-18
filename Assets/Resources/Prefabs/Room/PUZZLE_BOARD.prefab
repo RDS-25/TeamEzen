@@ -255,7 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449776915249275917}
   m_Layer: 0
-  m_Name: TrapBoard
+  m_Name: PUZZLE_BOARD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

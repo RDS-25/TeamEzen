@@ -11,7 +11,11 @@ public class PrefabName
 
     public const string STR_STAGE_DATA = "StageScriptableData";
     public const string STR_ROOM_POS_DATA = "RoomPositionData";
-
+    public const string STR_MONSTER_ROOM = "MONSTER_BOARD";
+    public const string STR_PUZZLE_ROOM = "PUZZLE_BOARD";
+    public const string STR_STORE_ROOM = "STORE_BOARD";
+    public const string STR_TRAP_ROOM = "TRAP_BOARD";
+        
     public const string STR_CHAR_AR = "Char_AR_";
     public const string STR_CHAR_SR = "Char_SR_";
     public const string STR_CHAR_HG = "Char_HG_";

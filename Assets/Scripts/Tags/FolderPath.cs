@@ -51,6 +51,7 @@ public class FolderPath
     public const string PREFABS_BULLET          = PREFABS + "Bullets/";
 
     public const string PREFABS_STAGE_ROOM      = PREFABS + "StagePrefabs/";
+    public const string PREFABS_ROOM            = PREFABS + "Room/";
 
     public const string PREFABS_STAGE_OBJECT    = PREFABS + "StageObjects/";
 
