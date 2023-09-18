@@ -6,13 +6,22 @@ using Params;
 // 1회만 실행 시킬 예정
 public class RoomManager : MonoBehaviour, DefaultRoom
 {
-    public static RoomManager Instance { get; private set; }
+    [SerializeField]
+    private bool bUseBoss = false;
+    [SerializeField]
+    private GameObject player;
+    //public static RoomManager Instance { get; private set; }
     //GimmickRoomParams roomParams = new GimmickRoomParams();
-    GimmickRoomParams roomParam = new GimmickRoomParams();
+    [SerializeField]
+    private GimmickRoomParams roomParam = new GimmickRoomParams();
     //GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
-    public bool Initialize(GameObject positionObjects, Object roomType, GameObject player, bool bUseBoss)
+    public bool Initialize(GameObject positionObjects, object roomType, GameObject player, bool bUseBoss)
     {
         roomParam.trGroundPositions = positionObjects.GetComponentsInChildren<Transform>();
+        roomParam.roomType = (GimmickRoomParams.ROOM_TYPE)roomType;
+        this.bUseBoss = bUseBoss;
+        print("Room Type : " + roomParam.roomType.ToString());
+        this.player = player;
         SetObjectPosition();
         return false;
     }

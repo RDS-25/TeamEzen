@@ -1,32 +1,35 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.UI;
-//using TMPro;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-//public class StoreBuy : MonoBehaviour
-//{
-//    public TextMeshProUGUI resourceText;
-    
-//    public void OnClickEventBuy()
-//    {
-//        Debug.Log(resourceText);
-//        int nPrice = int.Parse(resourceText.text);
-//        //int nMoney = PlayerManager.nMoney;
+public class StoreBuy : MonoBehaviour
+{
+    public TextMeshProUGUI resourceText;
 
-//        if(nMoney >= nPrice)
-//        {
-//            nMoney -= nPrice;
-            
+    public void OnClickEventBuy()
+    {
+        int nPrice = int.Parse(resourceText.text);
+        int nMoney = RoomPlayerManager.nMoney;
 
-//        }else
-//        {
-//            Debug.Log("돈 부족");
-//        }
-//    }
+        if (nMoney >= nPrice)
+        {
+            nMoney -= nPrice;
 
-//    public void OnClickEventClose()
-//    {
-//        gameObject.transform.parent.gameObject.SetActive(false);
-//    }
-//}
+            // 값 던져주기
+            // 이름 : 
+            // 값 : 
+            // 돈 : 
+        }
+        else
+        {
+            Debug.Log("돈 부족");
+        }
+    }
+
+    public void OnClickEventClose()
+    {
+        gameObject.transform.parent.gameObject.SetActive(false);
+    }
+}

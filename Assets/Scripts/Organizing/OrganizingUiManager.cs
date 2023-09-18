@@ -48,6 +48,8 @@ public class OrganizingUiManager : MonoBehaviour
         }
         for(int i = 0; i < GameManager.instance.arrCurCharacters.Length; i++)
         {
+            if (GameManager.instance.arrCurCharacters[i] == null)
+                break;
             GameManager.instance.arrCurCharacters[i].GetComponent<Action>().isEntries = true;
         }
         LoadingSceneManager.LoadScene("StageScene");

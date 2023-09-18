@@ -105,28 +105,28 @@ public class StageScript : MonoBehaviour
 
     public void SetRoomType()
     {
-        List<int> listUseRoom = RandomList.Inistance.NotDuplicatedRandomList(0, objRoomPositions.Length, objRoomPositions.Length);
-        int nBossRoomIdx = listUseRoom[Random.Range(0, listUseRoom.Count)];
-
+        List<int> listUseRoomIdx = RandomList.Inistance.NotDuplicatedRandomList(0, objRoomPositions.Length, objRoomPositions.Length);
+        int nBossRoomIdx = listUseRoomIdx[Random.Range(0, listUseRoomIdx.Count)];
+        print("Boss Idx : " + nBossRoomIdx);
         //상점 배치
         if (Random.Range(0, 2) == 1 ? true : false)
         {
-            //objRoomPositions[listUseRoom[0]].GetComponent<Room>().SetRoomType(GimmickRoomParams.ROOM_TYPE.STORE_ROOM);
-            listUseRoom.RemoveAt(0);
+            int idx = listUseRoomIdx[0];
+            listUseRoomIdx.RemoveAt(0);
+            
+            if (idx == nBossRoomIdx)
+                objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx],GimmickRoomParams.ROOM_TYPE.STORE_ROOM,StageManager.Instance.player,true);
+            else
+                objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx], GimmickRoomParams.ROOM_TYPE.STORE_ROOM, StageManager.Instance.player, false);
         }
+
         //기믹 배치
-        foreach (int idx in listUseRoom)
+        foreach (int idx in listUseRoomIdx)
         {
             if (idx == nBossRoomIdx)
-            {
-                //objRoomPositions[listUseRoom[0]].GetComponent<Room>().SetRoomType(RoomType(Random.Range(0, 100)));
-
-            }
+                objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx],RoomType(Random.Range(1,101)) , StageManager.Instance.player, true);
             else
-            {
-                //objRoomPositions[listUseRoom[0]].GetComponent<Room>().SetRoomType(RoomType(Random.Range(0, 100)));
-
-            }
+                objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx], RoomType(Random.Range(1,101)), StageManager.Instance.player, false);
         }
     }
 

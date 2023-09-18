@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Field5 : MonoBehaviour
+public class StoreBoard : MonoBehaviour
 {
     public GameObject gStore;
     public GameObject gStoreUi;

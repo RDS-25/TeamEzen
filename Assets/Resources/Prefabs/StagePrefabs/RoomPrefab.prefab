@@ -134,9 +134,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6913026464206492491}
   - component: {fileID: 8410948585450086530}
-  - component: {fileID: 1278838417379538576}
+  - component: {fileID: 2698495894868039334}
   m_Layer: 2
-  m_Name: RoomPreFab
+  m_Name: RoomPrefab
   m_TagString: GIMMICKROOM
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1278838417379538576
+--- !u!114 &2698495894868039334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8023707853613405566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc006571a01ae7045877747d64faa25e, type: 3}
+  m_Script: {fileID: 11500000, guid: 788178eafd04537449e945b3c5b543b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8081405525197461425
