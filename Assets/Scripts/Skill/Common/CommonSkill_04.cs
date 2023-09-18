@@ -17,8 +17,13 @@ public class CommonSkill_04 : AttackType
         InitParams();
         LoadEffect();
     }
+	private void OnEnable()
+	{
+        EffectStart();
 
-    public override void SetType()
+    }
+
+	public override void SetType()
     {
         base.SetType();
         skillType = "ACTIVE";
