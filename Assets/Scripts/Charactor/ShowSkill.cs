@@ -21,7 +21,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
     public GameObject obj;
 
     public GameObject ACTIVESKILL;
-    public GameObject UITIMATESKILL;
+    public GameObject ULTIMATESKILL;
 
 
     Vector3 joystickDirection;
@@ -62,11 +62,11 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
         {
             if (obj.GetComponent<Stat>().fActiveSkill == GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fId)
             {
-               Debug.Log(obj.GetComponent<Stat>().fActiveSkill);
+                ACTIVESKILL = GameManager.instance.objectFactory.AllSkill.listPool[i];
             }
             else if (obj.GetComponent<Stat>().fUltimateSkill == GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fId)
             {
-             
+                ULTIMATESKILL = GameManager.instance.objectFactory.AllSkill.listPool[i];
             }
            
             
@@ -103,6 +103,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
             Vector3 targetPosition = obj.transform.position + joystickDirection;
             obj.transform.LookAt(targetPosition);
             /*이 위치에 스킬 발생*/
+            ACTIVESKILL.SetActive(true);
             action.motion = Action.Motion.Idle;
 
         }
