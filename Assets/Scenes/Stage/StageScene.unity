@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1163,10 +1163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d0cb08d9511cd4ca91c214d53cadae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objLoadingPanel: {fileID: 0}
-  imgLoadSliderImage: {fileID: 0}
   Charactors: []
   player: {fileID: 0}
+  trItemGridView: {fileID: 1862205805}
 --- !u!4 &550504360
 Transform:
   m_ObjectHideFlags: 0
@@ -1327,8 +1326,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.900024, y: -17.900024}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -57.9, y: -64.5}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &561700577
 MonoBehaviour:
@@ -3778,6 +3777,11 @@ PrefabInstance:
 --- !u!224 &1862205804 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7789847662232111079, guid: 29671ada3d1a4324aa2cf059cc2ce3b2, type: 3}
+  m_PrefabInstance: {fileID: 1862205803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1862205805 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7789847663597139659, guid: 29671ada3d1a4324aa2cf059cc2ce3b2, type: 3}
   m_PrefabInstance: {fileID: 1862205803}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1941575891 stripped

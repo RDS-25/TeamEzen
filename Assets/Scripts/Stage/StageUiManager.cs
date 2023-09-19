@@ -21,4 +21,10 @@ public class StageUiManager : MonoBehaviour
         LoadingSceneManager.LoadScene("LobbyScene");
     }
 
+    public void OnStageClearBtnClicked()
+    {
+        GameManager.instance.objectFactory.SlotInit();
+        LoadingSceneManager.LoadScene("LobbyScene");
+    }
+
 }
