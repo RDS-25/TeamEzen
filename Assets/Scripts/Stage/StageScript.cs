@@ -16,7 +16,6 @@ public class StageScript : MonoBehaviour
     private int _nSetRoomCount = 0;
     //스테이지 파라미터
     private StageParams sParams = new StageParams();
-    //시뮬레이터 삭제 예정
     private GameObject[] objRoomPositions;
     private bool _bCreateRoom = false;
     //RoomPositionData 저장 변수
@@ -113,9 +112,9 @@ public class StageScript : MonoBehaviour
         {
             int idx = listUseRoomIdx[0];
             listUseRoomIdx.RemoveAt(0);
-            
+
             if (idx == nBossRoomIdx)
-                objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx],GimmickRoomParams.ROOM_TYPE.STORE_ROOM,StageManager.Instance.player,true);
+                objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx], GimmickRoomParams.ROOM_TYPE.STORE_ROOM, StageManager.Instance.player, true);
             else
                 objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx], GimmickRoomParams.ROOM_TYPE.STORE_ROOM, StageManager.Instance.player, false);
         }
@@ -124,9 +123,9 @@ public class StageScript : MonoBehaviour
         foreach (int idx in listUseRoomIdx)
         {
             if (idx == nBossRoomIdx)
-                objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx],RoomType(Random.Range(1,101)) , StageManager.Instance.player, true);
+                objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx], RoomType(Random.Range(1, 101)), StageManager.Instance.player, true);
             else
-                objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx], RoomType(Random.Range(1,101)), StageManager.Instance.player, false);
+                objRoomPositions[idx].GetComponent<RoomManager>().Initialize(objRoomPositions[idx], RoomType(Random.Range(1, 101)), StageManager.Instance.player, false);
         }
     }
 
@@ -178,13 +177,75 @@ public class StageScript : MonoBehaviour
         StageManager.EpisodeBtnClicked -= Initialize;
     }
 
+    private bool IsDropItem(int minNum, int maxNum, float standardRate, List<int> rateList)
+    {
+        bool value = false;
+        int idx = Random.Range(minNum, maxNum);
+
+        if (rateList[idx] < standardRate)
+            value = true;
+
+        return value;
+
+    }
+
+
+    //
+    //Stage UI작업 진행해야함
     //Event Delegate?
-    //void StageClear()
-    //{ 
-    //}
-    //void StageFailed()
-    //{ 
-    //}
+    public void StageClear()
+    {
+        string path = FolderPath.PARAMS_ITEM_COUNT + FileName.STR_JSON_INVEN_SAVE;
+        int minNum = 0;
+        int maxNum = 101;
+        List<GameObject> itemList = GameManager.instance.objectFactory.ItemObjectFactory.listPool;
+        List<int> itemDropRateList = RandomL.RandomList.Inistance.DuplicateRandomList(minNum, maxNum, 100);
+        Dictionary<string, string> itemCountDic = GameManager.instance.DataRead(path);
+
+        foreach (GameObject item in itemList)
+        {
+
+            UiCellView itemData = item.GetComponent<UiCellView>();
+            bool bAddItem = IsDropItem(minNum, maxNum, item.GetComponent<UiCellView>().DROP_RATE, itemDropRateList);
+            int nDropItemCount = 0;
+            if (!IsDropItem(minNum, maxNum, item.GetComponent<UiCellView>().DROP_RATE, itemDropRateList))
+                continue;
+
+            if (itemData.TYPE == ItemParameter.ItemType.PROFESSIONAL)
+            {
+                if (itemData.COUNT < 1)
+                {
+                    nDropItemCount = 1;
+                    itemCountDic[itemData.ID.ToString()] = nDropItemCount.ToString();
+                }
+                else
+                    bAddItem = false;
+            }
+            else
+            {
+                int value = int.Parse(itemCountDic[itemData.ID.ToString()]);
+                nDropItemCount = Random.Range(1, 6);
+                value += nDropItemCount;
+                itemCountDic[itemData.ID.ToString()] = value.ToString();
+            }
+
+            if (bAddItem)
+            {
+                //보상 UI에 보상 이미지및 갯수 추가
+            }
+            //switch (item.GetComponent<UiCellView>().TYPE)
+            //{
+            //    case ItemParameter.ItemType.PROFESSIONAL:
+            //        break;
+            //    case ItemParameter.ItemType.EQUIPMENT:
+            //        break;
+            //    case ItemParameter.ItemType.GEMSTONE:
+            //        break;
+            //    case ItemParameter.ItemType.MATERIAL:
+            //        break;
+            //}
+        }
+    }
 
 
 }
