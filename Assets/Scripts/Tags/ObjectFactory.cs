@@ -53,15 +53,16 @@ public class ObjectFactory
 
         // ½ºÅ³
         SelectingSkillObjectFactory.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
-        SelectingSkillObjectFactory.CreateObject(Resources.LoadAll<GameObject>(FolderPath.PREFABS_COMMON_SKILL));
+        SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_COMMON_SKILL);
         AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
 
         // ½½·Ô
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                             , characterFactory.listPool.Count);
         OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
-                                            , characterFactory.listPool.Count);
-        SelectingSkillSlotFactory.CreateFactory(FolderPath.PREFABS_SKILL_SLOT + PrefabName.STR_SKILL_SLOT);
+                            , characterFactory.listPool.Count);
+        SelectingSkillSlotFactory.CreateFactory(FolderPath.PREFABS_SKILL_SLOT + PrefabName.STR_SKILL_SLOT
+                            , SelectingSkillObjectFactory.listPool.Count);
 
         // ±â¹Í·ë
         MonsterRoomFactory.CreateFactory(FolderPath.PREFABS_ROOM + PrefabName.STR_MONSTER_ROOM, 15);

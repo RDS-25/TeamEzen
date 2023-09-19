@@ -56,8 +56,8 @@ public class SettingUIManager : MonoBehaviour
         gGamePanel.SetActive(true);
     }public void ButtonExit()
     {
-        gSettingPanel.SetActive(false);
         Init();
+        gSettingPanel.SetActive(false);
     }
 
 }
