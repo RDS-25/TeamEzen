@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 6045902223356207093}
   - component: {fileID: 6045902223356207098}
   - component: {fileID: 6045902223356207099}
+  - component: {fileID: 7606294284021127872}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -247,6 +248,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gStore: {fileID: 6045902223999871349}
   gStoreUi: {fileID: 2482336233491219970}
+--- !u!114 &7606294284021127872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045902223356207097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b80dec9b27d5e41a944380c353d1a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  room_type: 4
 --- !u!1 &6045902223999871349
 GameObject:
   m_ObjectHideFlags: 0
