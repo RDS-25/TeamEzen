@@ -1163,10 +1163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d0cb08d9511cd4ca91c214d53cadae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objLoadingPanel: {fileID: 0}
-  imgLoadSliderImage: {fileID: 0}
   Charactors: []
   player: {fileID: 0}
+  trItemGridView: {fileID: 1862205805}
 --- !u!4 &550504360
 Transform:
   m_ObjectHideFlags: 0
@@ -3778,6 +3777,11 @@ PrefabInstance:
 --- !u!224 &1862205804 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7789847662232111079, guid: 29671ada3d1a4324aa2cf059cc2ce3b2, type: 3}
+  m_PrefabInstance: {fileID: 1862205803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1862205805 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7789847663597139659, guid: 29671ada3d1a4324aa2cf059cc2ce3b2, type: 3}
   m_PrefabInstance: {fileID: 1862205803}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1941575891 stripped
