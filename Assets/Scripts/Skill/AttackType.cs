@@ -48,8 +48,8 @@ public class AttackType : Skill
 
     public void EffectStart()
     {
-        GameObject obj = GameObject.FindWithTag("Player");
-        FirePoint = obj.transform.GetChild(3);
-        Instantiate(EffectPrefab, FirePoint.position, FirePoint.rotation);//팩토리로 바꾸기
+        //GameObject obj = GameObject.FindWithTag("Player");
+        //FirePoint = obj.transform.GetChild(3);
+        //Instantiate(EffectPrefab, FirePoint.position, FirePoint.rotation);//팩토리로 바꾸기
     }
 }

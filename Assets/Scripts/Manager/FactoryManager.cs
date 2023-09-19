@@ -88,6 +88,7 @@ public class FactoryManager
     // 오브젝트 배열을 받아서 하나씩 생성
     public void CreateObject(GameObject[] gPrefabs)
     {
+        _gPrefabs = gPrefabs;
         if (gPrefabs == null)
         {
             Debug.LogError("게임오브젝트가 없습니다.");
@@ -96,6 +97,20 @@ public class FactoryManager
         {
             CreateObject(gPrefab);
            
+        }
+    }
+    public void CreateObject(string sPrefabPath)
+    {
+        GameObject[] gPrefabs = Resources.LoadAll<GameObject>(sPrefabPath);
+        _gPrefabs = gPrefabs;
+        if (gPrefabs == null)
+        {
+            Debug.LogError("게임오브젝트가 없습니다.");
+        }
+        foreach (GameObject gPrefab in gPrefabs)
+        {
+            CreateObject(gPrefab);
+
         }
     }
     // 자신의 프리팹 배열에서 해당 번호의 프리팹 생성
