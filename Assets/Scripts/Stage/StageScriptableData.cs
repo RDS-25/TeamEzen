@@ -28,7 +28,8 @@ public class StageScriptableData : ScriptableObject
     private int nStoreCount = 0;
     [SerializeField]
     //스테이지 이름
-    public string strStageName = "";
+    private string strStageName = "";
+
     public bool ChapterTypeCompare(StageParams.STAGE_TYPE type)
     {
         return typeChapter == type;

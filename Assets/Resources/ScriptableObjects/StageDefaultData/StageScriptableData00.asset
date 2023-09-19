@@ -18,4 +18,5 @@ MonoBehaviour:
   nRoomcount: 0
   nClearRoomCount: 0
   nBossCount: 1
+  nStoreCount: 0
   strStageName: Tutorial

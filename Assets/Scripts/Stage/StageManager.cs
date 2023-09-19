@@ -15,7 +15,7 @@ public class StageManager : MonoBehaviour
     public GameObject[] Charactors;
     //임시로 넣어 놓은 플레이어
     public GameObject player;
-    
+
     [SerializeField]
     Transform trItemGridView;
 
@@ -84,6 +84,32 @@ public class StageManager : MonoBehaviour
 
     }
 
+    private List<ItemParameter.ItemType> AvailableItemType(StageParams.STAGE_TYPE stageType)
+    {
+        List<ItemParameter.ItemType> value = null;
+        switch (stageType)
+        {
+            case StageParams.STAGE_TYPE.CHAPTER1:
+                value = new List<ItemParameter.ItemType>() { ItemParameter.ItemType.MATERIAL, ItemParameter.ItemType.EQUIPMENT };
+                break;
+            case StageParams.STAGE_TYPE.CHAPTER2:
+                value = new List<ItemParameter.ItemType>() { ItemParameter.ItemType.MATERIAL, ItemParameter.ItemType.EQUIPMENT };
+                break;
+            case StageParams.STAGE_TYPE.CHAPTER3:
+                value = new List<ItemParameter.ItemType>() { ItemParameter.ItemType.MATERIAL, ItemParameter.ItemType.EQUIPMENT, ItemParameter.ItemType.GEMSTONE };
+                break;
+            case StageParams.STAGE_TYPE.CHAPTER4:
+                value = new List<ItemParameter.ItemType>() { ItemParameter.ItemType.MATERIAL, ItemParameter.ItemType.EQUIPMENT, ItemParameter.ItemType.GEMSTONE };
+                break;
+            case StageParams.STAGE_TYPE.CHAPTER5:
+                value = new List<ItemParameter.ItemType>() { ItemParameter.ItemType.MATERIAL, ItemParameter.ItemType.EQUIPMENT, ItemParameter.ItemType.GEMSTONE, ItemParameter.ItemType.PROFESSIONAL };
+                break;
+        }
+
+
+        return value;
+    }
+
     //
     //Stage UI작업 진행해야함
     //Event Delegate?
@@ -95,6 +121,7 @@ public class StageManager : MonoBehaviour
         List<GameObject> itemList = GameManager.instance.objectFactory.ItemObjectFactory.listPool;
         List<int> itemDropRateList = RandomL.RandomList.Inistance.DuplicateRandomList(minNum, maxNum, 100);
         Dictionary<string, string> itemCountDic = GameManager.instance.DataRead(path);
+        List<ItemParameter.ItemType> avilableItemTypeList = AvailableItemType(_stCurrentStageType);
 
         foreach (GameObject item in itemList)
         {
@@ -102,7 +129,9 @@ public class StageManager : MonoBehaviour
             UiCellView itemData = item.GetComponent<UiCellView>();
             bool bAddItem = IsDropItem(minNum, maxNum, item.GetComponent<UiCellView>().DROP_RATE, itemDropRateList);
             int nDropItemCount = 0;
-            if (!IsDropItem(minNum, maxNum, item.GetComponent<UiCellView>().DROP_RATE, itemDropRateList))
+
+            if (!avilableItemTypeList.Contains(itemData.TYPE)
+                || !bAddItem)
                 continue;
 
             if (itemData.TYPE == ItemParameter.ItemType.PROFESSIONAL)
@@ -127,18 +156,9 @@ public class StageManager : MonoBehaviour
             {
                 //보상 UI에 보상 이미지및 갯수 추가
             }
-            //switch (item.GetComponent<UiCellView>().TYPE)
-            //{
-            //    case ItemParameter.ItemType.PROFESSIONAL:
-            //        break;
-            //    case ItemParameter.ItemType.EQUIPMENT:
-            //        break;
-            //    case ItemParameter.ItemType.GEMSTONE:
-            //        break;
-            //    case ItemParameter.ItemType.MATERIAL:
-            //        break;
-            //}
+
         }
+        GameManager.instance.DataWrite(path, itemCountDic);
     }
 
 
