@@ -9,6 +9,10 @@ public class Action : MonoBehaviour
     float fhori;
 
     public FixedJoystick MoveJoystick;
+    public FixedJoystick ActiveJoystick;
+    public FixedJoystick UltimateJoystick;
+
+
     public enum Motion { 
         Idle,
         Action,
@@ -19,8 +23,6 @@ public class Action : MonoBehaviour
    
     //스킬 취소 상태 여부 
     public bool bIsCancel;
-
-
     //일시 정지 할때 멈추기 
     public bool bIsStop =false;
 
@@ -28,12 +30,14 @@ public class Action : MonoBehaviour
 
 
     Animator ani;
+    Stat stat;
+    public GameObject UIGroup;
+
     public GameObject gBullet;
     public Transform tBulletpos;
-    Stat stat;
 
     //입장 했는가 ?
-    public bool isEntries = false;
+    public bool isEntries;
     //사거리
     public float targetingRange;
     //마지막 본 방향
@@ -46,10 +50,8 @@ public class Action : MonoBehaviour
         ani = GetComponent<Animator>();
         stat = GetComponent<Stat>();
         targetingRange = stat.fDefaultRange;
-
-  
-
-       
+        
+     
     }
 
 	// Update is called once per frame
@@ -59,6 +61,12 @@ public class Action : MonoBehaviour
         {
             onMove();
         }
+        else if (!isEntries) {
+            ani.SetBool("isWalk",false);
+            ani.SetBool("isRun", false);
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!bIsStop)

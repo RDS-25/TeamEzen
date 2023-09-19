@@ -43,9 +43,13 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 	// Update is called once per frame
 	void Update()
     {
+      /*  gRangeIndicator.transform.localScale = new Vector3((skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange), 0, (skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange));
+        gRangeIndicator.transform.position = obj.transform.position + new Vector3(0, 0.02f, 0) + joystickDirection * (skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange)/2;//5는 최대스킬범위 
+
         //SkillFunction();
-        gRangeIndicator.transform.position = obj.transform.position + new Vector3(0, 0.02f, 0) + joystickDirection * 5; // (skillType== SKILLTYPE.ACTIVE?/*액티브 스킬 사거리*/:/*궁극기 스킬 사거리 )//5는 최대스킬범위 
+        gMaxRangeIndicator.transform.localScale = new Vector3((skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange),0,(skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange));
         gMaxRangeIndicator.transform.position = obj.transform.position + new Vector3(0, 0.01f, 0);
+        Debug.Log(ACTIVESKILL);*/
         //GameManager.instance.objectFactory.AllSkill.listPool;
      
     }
@@ -88,9 +92,6 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
         gMaxRangeIndicator.SetActive(false);
         gSkillCancel.SetActive(false);
 
-    
-       
-
         if (action.motion == Action.Motion.Cancel)
         {
           
@@ -103,6 +104,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
             Vector3 targetPosition = obj.transform.position + joystickDirection;
             obj.transform.LookAt(targetPosition);
             /*이 위치에 스킬 발생*/
+            Debug.Log(Vector3.Distance(obj.transform.position,gRangeIndicator.transform.position) +"크기는"+gRangeIndicator.transform.localScale);
             ACTIVESKILL.SetActive(true);
             action.motion = Action.Motion.Idle;
 
@@ -111,8 +113,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
 	public void OnDrag(PointerEventData eventData)
 	{
-
-       
+        Debug.Log(this.name);
         joystickDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
 
         if (joystick.Direction.magnitude > 0.1)
@@ -123,12 +124,23 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
             gMaxRangeIndicator.SetActive(true); //스킬 사거리
             gSkillCancel.SetActive(true);
+            if (skillType == SKILLTYPE.ACTIVE)
+            {
+                Debug.Log(ACTIVESKILL.transform.name);
+            }
+            else {
+                Debug.Log(ULTIMATESKILL.transform.name);
+            }
 
-
-            gMaxRangeIndicator.transform.localScale = new Vector3(10,0.01f,10);  
+            gMaxRangeIndicator.transform.localScale = new Vector3((skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fMaxRange : ULTIMATESKILL.GetComponent<Skill>().fMaxRange), 0.01f, (skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fMaxRange : ULTIMATESKILL.GetComponent<Skill>().fMaxRange));
             gMaxRangeIndicator.transform.position = obj.transform.position;
+      
 
-           
+
+            gRangeIndicator.transform.localScale = new Vector3((skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange), 0.01f, (skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange));
+            gRangeIndicator.transform.position = obj.transform.position+new Vector3(0,0.1f,0)  + joystickDirection * (ACTIVESKILL.GetComponent<Skill>().fMaxRange/2);
+
+
 
             if (action.bIsCancel)
             {
