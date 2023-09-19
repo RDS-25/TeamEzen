@@ -103,8 +103,6 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
         {
             Vector3 targetPosition = obj.transform.position + joystickDirection;
             obj.transform.LookAt(targetPosition);
-            /*이 위치에 스킬 발생*/
-            Debug.Log(Vector3.Distance(obj.transform.position,gRangeIndicator.transform.position) +"크기는"+gRangeIndicator.transform.localScale);
             ACTIVESKILL.SetActive(true);
             action.motion = Action.Motion.Idle;
 
@@ -113,8 +111,11 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
 	public void OnDrag(PointerEventData eventData)
 	{
-        Debug.Log(this.name);
-        joystickDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+
+        joystickDirection = new Vector3(joystick.Horizontal, 0,joystick.Vertical);
+
+
+
 
         if (joystick.Direction.magnitude > 0.1)
         {
@@ -131,15 +132,22 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
             else {
                 Debug.Log(ULTIMATESKILL.transform.name);
             }
+            float maxRange = (skillType == SKILLTYPE.ACTIVE ? 
+                                ACTIVESKILL.GetComponent<Skill>().fMaxRange : 
+                                ULTIMATESKILL.GetComponent<Skill>().fMaxRange);
 
-            gMaxRangeIndicator.transform.localScale = new Vector3((skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fMaxRange : ULTIMATESKILL.GetComponent<Skill>().fMaxRange), 0.01f, (skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fMaxRange : ULTIMATESKILL.GetComponent<Skill>().fMaxRange));
-            gMaxRangeIndicator.transform.position = obj.transform.position;
-      
+            gMaxRangeIndicator.transform.localScale = new Vector3(maxRange, 0.01f, maxRange);
+        
+
+            gMaxRangeIndicator.transform.position = obj.transform.position+new Vector3(0, 0.3f, 0);
+
+            float range = (skillType == SKILLTYPE.ACTIVE ?
+                            ACTIVESKILL.GetComponent<Skill>().fRange :
+                            ULTIMATESKILL.GetComponent<Skill>().fRange);
 
 
-            gRangeIndicator.transform.localScale = new Vector3((skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange), 0.01f, (skillType == SKILLTYPE.ACTIVE ? ACTIVESKILL.GetComponent<Skill>().fRange : ULTIMATESKILL.GetComponent<Skill>().fRange));
-            gRangeIndicator.transform.position = obj.transform.position+new Vector3(0,0.1f,0)  + joystickDirection * (ACTIVESKILL.GetComponent<Skill>().fMaxRange/2);
-
+            gRangeIndicator.transform.localScale = new Vector3(range, 0.01f, range);
+            gRangeIndicator.transform.position = obj.transform.position + new Vector3(0,0.31f,0) +  lastJoystickDirection  * maxRange/2;
 
 
             if (action.bIsCancel)

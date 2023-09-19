@@ -76,7 +76,7 @@ MonoBehaviour:
   fAttackCount: 0
   fBulletCount: 0
   bisUnlockSkill: 0
-  bisCanUse: 0
+  bisCanUse: 1
   bisActtivate: 0
   bisUnlockHiden: 0
   plusval: 10

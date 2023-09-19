@@ -49,6 +49,7 @@ public class AttackType : Skill
 
     public void EffectStart()
     {
+        Debug.Log("이펙트 발사");
         GameObject obj = GameObject.FindWithTag("Player");
         FirePoint = obj.transform.GetChild(3);
         Instantiate(EffectPrefab, FirePoint.position, FirePoint.rotation);//팩토리로 바꾸기

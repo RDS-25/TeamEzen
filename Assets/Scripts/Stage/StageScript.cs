@@ -68,7 +68,7 @@ public class StageScript : MonoBehaviour
             // if(GameManager.instance.roomFactory.)
 
             CreateStage(sParams.typeChapter);
-            SetRoomType();
+            //SetRoomType();
 
             if (target != null)
             {
