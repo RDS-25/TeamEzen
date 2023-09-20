@@ -32,8 +32,28 @@ public class ObjectFactory
 
     // Ω∫≈≥
     public FactoryManager AllSkill = new FactoryManager();
-    public FactoryManager CharAR01BasicEffectFactory = new FactoryManager();
     public FactoryManager SelectingSkillObjectFactory = new FactoryManager();
+
+    public FactoryManager CharARActive01EffectFactory = new FactoryManager();
+    public FactoryManager CharARActive02EffectFactory = new FactoryManager();
+    public FactoryManager CharARActive03EffectFactory = new FactoryManager();
+
+    public FactoryManager CharSRActive01EffectFactory = new FactoryManager();
+    public FactoryManager CharSRActive02EffectFactory = new FactoryManager();
+    public FactoryManager CharSRActive03EffectFactory = new FactoryManager();
+
+    public FactoryManager CharHGActive01EffectFactory = new FactoryManager();
+    public FactoryManager CharHGActive02EffectFactory = new FactoryManager();
+    public FactoryManager CharHGActive03EffectFactory = new FactoryManager();
+
+    public FactoryManager CharSGActive01EffectFactory = new FactoryManager();
+    public FactoryManager CharSGActive02EffectFactory = new FactoryManager();
+    public FactoryManager CharSGActive03EffectFactory = new FactoryManager();
+
+    public FactoryManager Common01EffectFactory = new FactoryManager();
+    public FactoryManager Common02EffectFactory = new FactoryManager();
+    public FactoryManager Common03EffectFactory = new FactoryManager();
+    public FactoryManager Common04EffectFactory = new FactoryManager();
 
     // æ∆¿Ã≈€
     public FactoryManager ItemObjectFactory = new FactoryManager();
@@ -50,12 +70,7 @@ public class ObjectFactory
         MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY);
         
         SelectCharacterInit();
-
-        // Ω∫≈≥
-        SelectingSkillObjectFactory.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
-        SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_COMMON_SKILL);
-        AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
-
+        SelectingSkillInit();
         // ΩΩ∑‘
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                             , characterFactory.listPool.Count);
@@ -63,12 +78,8 @@ public class ObjectFactory
                             , characterFactory.listPool.Count);
         SelectingSkillSlotFactory.CreateFactory(FolderPath.PREFABS_SKILL_SLOT + PrefabName.STR_SKILL_SLOT
                             , SelectingSkillObjectFactory.listPool.Count);
-
-        // ±‚πÕ∑Î
-        MonsterRoomFactory.CreateFactory(FolderPath.PREFABS_ROOM + PrefabName.STR_MONSTER_ROOM, 15);
-        GimmickRoomFactory.CreateFactory(FolderPath.PREFABS_ROOM + PrefabName.STR_PUZZLE_ROOM, 5);
-        GimmickRoomFactory.CreateObject(FolderPath.PREFABS_ROOM + PrefabName.STR_TRAP_ROOM, 5);
-        GimmickRoomFactory.CreateObject(FolderPath.PREFABS_ROOM + PrefabName.STR_STORE_ROOM, 1);
+        GimmickRoomInit();
+        SkillEffectInit();
     }
     public void SlotInit()
     {
@@ -104,6 +115,43 @@ public class ObjectFactory
             }
         }
     }
+    public void GimmickRoomInit()
+    {
+        // ±‚πÕ∑Î
+        MonsterRoomFactory.CreateFactory(FolderPath.PREFABS_ROOM + PrefabName.STR_MONSTER_ROOM, 15);
+        GimmickRoomFactory.CreateFactory(FolderPath.PREFABS_ROOM + PrefabName.STR_PUZZLE_ROOM, 5);
+        GimmickRoomFactory.CreateObject(FolderPath.PREFABS_ROOM + PrefabName.STR_TRAP_ROOM, 5);
+        GimmickRoomFactory.CreateObject(FolderPath.PREFABS_ROOM + PrefabName.STR_STORE_ROOM, 1);
+    }
+    public void SelectingSkillInit()
+    {
+        SelectingSkillObjectFactory.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
+        SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_BUFF_SKILL);
+        SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_COMMON_SKILL);
+        AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
 
+    }
+    public void SkillEffectInit()
+    {
+        CharARActive01EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_AR_ACTIVE_01EFFECT, 5);
+        CharARActive02EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_AR_ACTIVE_02EFFECT, 5);
+        CharARActive03EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_AR_ACTIVE_03EFFECT, 5);
 
+        CharSRActive01EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SR_ACTIVE_01EFFECT, 5);
+        CharSRActive02EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SR_ACTIVE_02EFFECT, 5);
+        CharSRActive03EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SR_ACTIVE_03EFFECT, 5);
+
+        CharHGActive01EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_HG_ACTIVE_01EFFECT, 5);
+        CharHGActive02EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_HG_ACTIVE_02EFFECT, 5);
+        CharHGActive03EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_HG_ACTIVE_03EFFECT, 5);
+
+        CharSGActive01EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SG_ACTIVE_01EFFECT, 5);
+        CharSGActive02EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SG_ACTIVE_02EFFECT, 5);
+        CharSGActive03EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SG_ACTIVE_03EFFECT, 5);
+
+        Common01EffectFactory.CreateObject(FolderPath.PREFABS_COMMON_EFFECT + PrefabName.STR_COMMON_01EFFECT, 5);
+        Common02EffectFactory.CreateObject(FolderPath.PREFABS_COMMON_EFFECT + PrefabName.STR_COMMON_02EFFECT, 5);
+        Common03EffectFactory.CreateObject(FolderPath.PREFABS_COMMON_EFFECT + PrefabName.STR_COMMON_03EFFECT, 5);
+        Common04EffectFactory.CreateObject(FolderPath.PREFABS_COMMON_EFFECT + PrefabName.STR_COMMON_04EFFECT, 5);
+    }
 }
