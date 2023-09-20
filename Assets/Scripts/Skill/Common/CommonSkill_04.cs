@@ -18,6 +18,12 @@ public class CommonSkill_04 : AttackType
         LoadEffect();
     }
 
+	private void OnEnable()
+	{
+
+        SkillTriger();
+    }   
+
 
 	public override void SetType()
     {
@@ -43,8 +49,8 @@ public class CommonSkill_04 : AttackType
         fCoolTime = 1;
         fDuration = 1;
         fSkillCoolReduce = 0;
-        fRange = 50;
-        fMaxRange = 10;
+        fRange = 10;
+        fMaxRange = 50;
         fValue = 10;
         fHidenValue = 10;
         fMagnification = 10;

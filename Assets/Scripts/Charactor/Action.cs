@@ -130,7 +130,7 @@ public class Action : MonoBehaviour
         GameObject closestEnemy = FindClosestEnemyWithTag("Enemy", targetingRange);
         Vector3 direction;
 
-
+        
         if (closestEnemy != null)
         {
             direction = (closestEnemy.transform.position - tBulletpos.position).normalized;
