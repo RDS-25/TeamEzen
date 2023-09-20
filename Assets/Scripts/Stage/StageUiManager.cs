@@ -17,14 +17,23 @@ public class StageUiManager : MonoBehaviour
 
     public void OnRetireBtnClicked()
     {
+        foreach (GameObject charactor in StageManager.Instance.Charactors)
+        {
+            if (charactor == null)
+                continue;
+            charactor.GetComponent<Action>().isEntries = false;
+            charactor.GetComponent<Action>().UIGroup.SetActive(false);
+        }
         GameManager.instance.objectFactory.SlotInit();
         LoadingSceneManager.LoadScene("LobbyScene");
     }
 
-    public void OnStageClearBtnClicked()
-    {
-        GameManager.instance.objectFactory.SlotInit();
-        LoadingSceneManager.LoadScene("LobbyScene");
-    }
+    //public void OnStageClearBtnClicked()
+    //{
+    //    StageManager.Instance.player.GetComponent<Action>().isEntries = false;
+    //    StageManager.Instance.player.GetComponent<Action>().UIGroup.SetActive(false);
+    //    GameManager.instance.objectFactory.SlotInit();
+    //    LoadingSceneManager.LoadScene("LobbyScene");
+    //}
 
 }

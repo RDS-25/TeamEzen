@@ -17,7 +17,7 @@ public class StageManager : MonoBehaviour
     public GameObject player;
 
     [SerializeField]
-    Transform trItemGridView;
+    private Transform trItemGridView;
 
     public void InitializeStage(StageParams.STAGE_TYPE type, GameObject player)
     {
@@ -154,7 +154,12 @@ public class StageManager : MonoBehaviour
 
             if (bAddItem)
             {
-                //보상 UI에 보상 이미지및 갯수 추가
+
+                GameObject slot = Resources.Load<GameObject>(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB);
+                Instantiate(slot, trItemGridView);
+                slot.GetComponent<Image>().sprite = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE_ITEM_ICON+itemData.IMAGE_PATH);
+                slot.GetComponentInChildren<TMPro.TextMeshPro>().text = nDropItemCount.ToString();
+                slot.SetActive(true);
             }
 
         }
