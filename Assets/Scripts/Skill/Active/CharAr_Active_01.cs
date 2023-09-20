@@ -32,6 +32,7 @@ public class CharAr_Active_01 : AttackType
     }
     public override void SetDefault()
     {
+        fCharToUse = 1;
         fSkillLevel = 1;
         fId = 200;
         strName = "ACTIVE01010101";

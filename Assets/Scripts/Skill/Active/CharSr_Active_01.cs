@@ -28,7 +28,7 @@ public class CharSr_Active_01 : AttackType
     }
     public override void SetDefault()
     {//액티브스킬에 다시 복붙
-
+        fCharToUse = 2;
         fSkillLevel = 1;
         fId = 209;
         strName = "Act1";

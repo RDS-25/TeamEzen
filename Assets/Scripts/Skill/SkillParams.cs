@@ -23,6 +23,7 @@ namespace Params
         public string skillType;//저장용
         public string skillDetail;//저장용 
 
+        public float fCharToUse;
         public float fId;//식별자
         public string strName;//이름        
         public float fSkillLevel = 1f;//스킬레벨

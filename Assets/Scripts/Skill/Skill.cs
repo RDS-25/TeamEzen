@@ -48,6 +48,7 @@ public class Skill: SkillParams
     }
     public virtual void SetDefault()//첫 스킬파라미터 입력
     {
+        fCharToUse = -999;
         fSkillLevel = 1;
         fId = -1;
         strName = "Act1";
@@ -84,6 +85,7 @@ public class Skill: SkillParams
         Dictionary<string, string> dictTemp = new Dictionary<string, string>();
         dictTemp.Add("skillType", skillType);
         dictTemp.Add("skillDetail", skillDetail);
+        dictTemp.Add("fCharToUse", fCharToUse.ToString());
         dictTemp.Add("fId", fId.ToString());
         dictTemp.Add("strName", strName);
         dictTemp.Add("fSkillLevel", fSkillLevel.ToString());
@@ -126,6 +128,7 @@ public class Skill: SkillParams
         enumSkillDetail = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dictTemp["skillDetail"]);
         skillType = dictTemp["skillType"];
         skillDetail = dictTemp["skillDetail"];
+        fCharToUse = float.Parse(dictTemp["fCharToUse"]);
         fId = float.Parse(dictTemp["fId"]);
         strName = dictTemp["strName"];
         fSkillLevel = float.Parse(dictTemp["fSkillLevel"]);

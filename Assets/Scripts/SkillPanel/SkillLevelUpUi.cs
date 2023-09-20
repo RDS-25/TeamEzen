@@ -51,7 +51,6 @@ public class SkillLevelUpUi : MonoBehaviour
             default:
                 break;
         }
-
     }
     void SetDictSkillParams(Dictionary<string,string> dictTemp)
     {

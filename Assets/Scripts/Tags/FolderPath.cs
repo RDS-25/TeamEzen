@@ -70,4 +70,5 @@ public class FolderPath
     public const string SPRITE                  = "/Resources/Sprites/";
     public const string SPRITE_CHAR_ICON        = SPRITE + "CharacterIcon/";
     public const string SPRITE_ITEM_ICON        = SPRITE + "ItemIcon/";
+    public const string SPRITE_SKILL_ICON       = SPRITE + "SkillIcon/";
 }
