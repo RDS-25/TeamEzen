@@ -27,7 +27,6 @@ public class CharAr_Passive : BuffType
     }
     public override void SetDefault()
     {
-        base.SetDefault();
         fSkillLevel = 1;
         fId = 100;
         strName = "PASSVIE010101";

@@ -38,8 +38,6 @@ public class ActiveSkillChangeUi : MonoBehaviour
     }
     void Start()
     {
-        skillUiManager = GameObject.Find("SkillUiManager").GetComponent<SkillUiManager>();
-        skillPanelUi = GameObject.Find("SkillPanelUi").GetComponent<SkillPanelUi>();
     }
     void ChangeSkill(int index)
     {

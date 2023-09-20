@@ -45,11 +45,6 @@ public class SkillPanelUi : MonoBehaviour
     public Dictionary<string, string> dictCurBasic = new();
     public Dictionary<string, string> dictCurUlt = new();
 
-    private const string _STR_ID = "fId";
-    private const string _STR_IMAGE_URL = "strFilepath";
-    private const string _STR_LEVEL = "fSkillLevel";
-    private const string _STR_NAME = "strName";
-    private const string _STR_DESCRIPT = "strDiscription";
     void Start()
     {
         charactorUIManager = GameObject.Find("CharManager").GetComponent<SelectCharactorUIManager>();
@@ -89,9 +84,9 @@ public class SkillPanelUi : MonoBehaviour
     {
         foreach (Dictionary<string, string> mySkill in dictTemp)
         {
-            if (mySkill[_STR_ID] == skillId.ToString())
+            if (mySkill[SkillID.ID] == skillId.ToString())
             {
-                switch (mySkill["skillType"])
+                switch (mySkill[SkillID.TYPE])
                 {
                     case "BASIC":
                         dictCurBasic = mySkill;
@@ -106,10 +101,11 @@ public class SkillPanelUi : MonoBehaviour
                         dictCurUlt = mySkill;
                         break;
                 }
-                //imageIcon.sprite = GameManager.instance.LoadAndSetSprite(mySkill[_STR_IMAGE_URL]);
-                textLevel.text = mySkill[_STR_LEVEL];
-                textName.text = "Lv. " + mySkill[_STR_NAME];
-                textDescription.text = mySkill[_STR_DESCRIPT];
+                imageIcon.sprite = GameManager.instance.LoadAndSetSprite
+                    (FolderPath.SPRITE_SKILL_ICON + mySkill[SkillID.ICON_NAME]);
+                textLevel.text = "Lv. " + mySkill[SkillID.LEVEL];
+                textName.text = mySkill[SkillID.NAME];
+                textDescription.text = mySkill[SkillID.DESCRIPT];
                 break;
             }
         }
