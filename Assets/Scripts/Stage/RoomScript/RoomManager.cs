@@ -6,6 +6,7 @@ using Params;
 // 1회만 실행 시킬 예정
 public class RoomManager : MonoBehaviour, DefaultRoom
 {
+    
     [SerializeField]
     private bool bUseBoss = false;
     [SerializeField]
@@ -15,12 +16,14 @@ public class RoomManager : MonoBehaviour, DefaultRoom
     [SerializeField]
     private GimmickRoomParams roomParam = new GimmickRoomParams();
     //GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
+    
     public bool Initialize(GameObject positionObjects, object roomType, GameObject player, bool bUseBoss)
     {
         roomParam.trGroundPositions = positionObjects.GetComponentsInChildren<Transform>();
         roomParam.roomType = (GimmickRoomParams.ROOM_TYPE)roomType;
         this.bUseBoss = bUseBoss;
         this.player = player;
+        Debug.Log("이니셜 라이즈 시작");
         SetObjectPosition();
         return false;
     }
@@ -53,15 +56,14 @@ public class RoomManager : MonoBehaviour, DefaultRoom
     {
         //if (roomParam.nMaxEventCount > 1)
         //{
+        Debug.Log("셋 오브젝트 포지션 시작");
 
-        if (GameManager.instance.objectFactory.GimmickRoomFactory.listPool[0].GetComponent<GimmickScript>().GIMMICK_TYPE
-            == GimmickRoomParams.ROOM_TYPE.STORE_ROOM)
-        { 
-        }
-        //GameManager.instance.objectFactory.GimmickRoomFactory.listPool
-        ////GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
-        //Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
-        //string GimmickType = roomParam.roomType.ToString().Split("_")[0]; //puzzle, trap, store, monster, boss
+        List<GameObject> gimmicks = GameManager.instance.objectFactory.GimmickRoomFactory.listPool;
+        Debug.Log(gimmicks);
+
+
+        Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
+        string GimmickType = roomParam.roomType.ToString();
         //gimmick.transform.position = GimmickPos.position;
         //gimmick.transform.rotation = GimmickPos.rotation;
         ////string scPath = "Prefabs/Room/";
@@ -69,21 +71,18 @@ public class RoomManager : MonoBehaviour, DefaultRoom
         //print(gimmick.transform.position);
         //print(GimmickType);
 
-        //Instantiate(Board, GimmickPos.position, GimmickPos.rotation);
+            //Instantiate(Board, GimmickPos.position, GimmickPos.rotation);
 
-
-
-
-        //}
-        //else if (roomParam.nMaxEventCount > 0)
-        //{
-        //    GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
-        //    Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
-        //    Params.GimmickRoomParams.ROOM_TYPE GimmickType = roomParam.roomType;
-        //    gimmick.transform.position = GimmickPos.position;
-        //    gimmick.transform.rotation = GimmickPos.rotation;
-        //    //gimmick.SetActive(false);
-        //}
+            //}
+            //else if (roomParam.nMaxEventCount > 0)
+            //{
+            //    GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
+            //    Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
+            //    Params.GimmickRoomParams.ROOM_TYPE GimmickType = roomParam.roomType;
+            //    gimmick.transform.position = GimmickPos.position;
+            //    gimmick.transform.rotation = GimmickPos.rotation;
+            //    //gimmick.SetActive(false);
+            //}
     }
 
 }
