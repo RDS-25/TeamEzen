@@ -120,6 +120,10 @@ public class ShowPannel : MonoBehaviour
         ShowItemDataPanel.SetActive(false);
 
     }
+    public void ButtonBackToLobby()
+    {
+        transform.parent.gameObject.SetActive(false);
+    }
     void Update()
     {
 
