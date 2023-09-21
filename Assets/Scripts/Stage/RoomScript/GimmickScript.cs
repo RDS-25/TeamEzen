@@ -9,6 +9,9 @@ public class GimmickScript : MonoBehaviour
     private GimmickRoomParams.ROOM_TYPE room_type = GimmickRoomParams.ROOM_TYPE.NONE;
     [SerializeField]
     private Gimmick activeGimmick;
+
+    public GameObject gStore;
+    public GameObject gStoreUi;
     public GimmickRoomParams.ROOM_TYPE GIMMICK_TYPE
     {
         get
@@ -32,7 +35,7 @@ public class GimmickScript : MonoBehaviour
                 break;
         }
         
-        activeGimmick.InitializeGimmick(this);
+        activeGimmick.InitializeGimmick(this, gStore, gStoreUi);
     }
 
     void OnTriggerEnter(Collider other)

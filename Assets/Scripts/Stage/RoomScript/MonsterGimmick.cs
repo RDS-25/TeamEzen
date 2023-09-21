@@ -13,9 +13,12 @@ public class MonsterGimmick : Gimmick
     MonoBehaviour mb;
     private bool bState = false;
 
-    public void InitializeGimmick(MonoBehaviour mb)
+    public void InitializeGimmick(MonoBehaviour mb, GameObject a, GameObject b)
     {
         this.mb = mb;
+        string prePath = "Prefabs/Room/";
+        monsterPrefab = Resources.Load<GameObject>(prePath + "Monster");
+        Player = GameObject.Find("Player");
         // GameObject 변수 받아오기
     }
     public void ActiveGimmick()
@@ -23,7 +26,7 @@ public class MonsterGimmick : Gimmick
         if (!bState)
         {
             bState = true;
-            mb.InvokeRepeating("MonsterSpawn", 2f, 1.0f);
+            mb.StartCoroutine(MonsterSpawn());
         }
     }
 
@@ -32,34 +35,33 @@ public class MonsterGimmick : Gimmick
 
     }
 
-
-    void MonsterSpawn()
+    private IEnumerator MonsterSpawn()
     {
-        // 필드 위 그냥 랜덤 위치 생성
+        yield return new WaitForSeconds(2.0f);
+
         if (nCount < monsterCount)
         {
-            nCount++;
-            Vector3 randomPosition = new Vector3(Random.Range(-mb.transform.lossyScale.x / 2, mb.transform.lossyScale.x / 2), 0, Random.Range(-mb.transform.lossyScale.z / 2, mb.transform.lossyScale.z / 2));
+            for (var i = nCount; i < monsterCount; i++)
+            {
+                Vector3 randomPosition = new Vector3(Random.Range(-mb.transform.lossyScale.x / 2, mb.transform.lossyScale.x / 2), 0, Random.Range(-mb.transform.lossyScale.z / 2, mb.transform.lossyScale.z / 2));
 
-            if (randomPosition.x > Player.transform.position.x + playerRange || randomPosition.x < Player.transform.position.x - playerRange || randomPosition.z > Player.transform.position.z + playerRange || randomPosition.z < Player.transform.position.z - playerRange)
-            {
-                //MonoBehaviour.Instantiate(monsterPrefab, mb.transform.position + randomPosition, mb.transform.rotation);
-                List<GameObject> monsterList = GameManager.instance.objectFactory.MonsterRoomFactory.listPool;
-                foreach (GameObject monster in monsterList)
+                if (randomPosition.x > Player.transform.position.x + playerRange || randomPosition.x < Player.transform.position.x - playerRange || randomPosition.z > Player.transform.position.z + playerRange || randomPosition.z < Player.transform.position.z - playerRange)
                 {
-                    monster.transform.position = mb.transform.position + randomPosition;
-                    monster.transform.rotation = mb.transform.rotation;
-                    monster.SetActive(true);
+                    //MonoBehaviour.Instantiate(monsterPrefab, mb.transform.position + randomPosition, mb.transform.rotation);
+                    List<GameObject> monsterList = GameManager.instance.objectFactory.MonsterRoomFactory.listPool;
+                    foreach (GameObject monster in monsterList)
+                    {
+                        monster.transform.position = mb.transform.position + randomPosition;
+                        monster.transform.rotation = mb.transform.rotation;
+                        monster.SetActive(true);
+                    }
                 }
+                else
+                {
+                    nCount--;
+                }
+                yield return new WaitForSeconds(1.0f); 
             }
-            else
-            {
-                nCount--;
-            }
-        }
-        else
-        {
-            mb.CancelInvoke("MonsterSpawn");
         }
     }
 }

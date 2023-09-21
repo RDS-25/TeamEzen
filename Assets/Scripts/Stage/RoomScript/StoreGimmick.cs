@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class StoreGimmick : Gimmick
 {
-    public GameObject gStore;
-    public GameObject gStoreUi;
+    private GameObject gStore;
+    private GameObject gStoreUi;
     private bool bState = false;
 
-    public void InitializeGimmick(MonoBehaviour mb)
+    public void InitializeGimmick(MonoBehaviour mb, GameObject a, GameObject b)
     {
         // GameObject 변수 받아오기
+        gStore = a;
+        gStoreUi = b;
     }
     public void ActiveGimmick()
     {
