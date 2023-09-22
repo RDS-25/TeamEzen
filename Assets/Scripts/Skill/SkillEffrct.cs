@@ -18,6 +18,7 @@ public class SkillEffrct : MonoBehaviour
     protected float fMonProperty;
     protected Stat ChaStat;
 
+
     public  float CalculDamage(float chadam, float chacriper, float chacridam, float chadefenpier, float Attacker,
         float mondadge, float moncrire, float mondefen, float Defender)//받은 스텟으로 다시쓰기
     {
@@ -65,7 +66,8 @@ public class SkillEffrct : MonoBehaviour
         // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
         if (distance > range)//Ex_Active1Params의 Range를 가져오는 방법??
         {
-
+            // setactive 해주기
+            //GameManager.instance.objectFactory.CharARActive01EffectFactory.SetObject(gameObject);
             Destroy(this.gameObject);//안대 초기화
         }
         else
