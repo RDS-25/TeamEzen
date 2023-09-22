@@ -20,6 +20,14 @@ public class CharAr_Basic : AttackType
         InitParams();
         LoadEffect();
     }
+    // 지우고 skill 스크
+    public override void ShotEffect(Vector3 pos)
+    {
+        GameObject aa = GameManager.instance.objectFactory.CharARBasicEffectFactory.GetObject();
+        aa.SetActive(true);
+        aa.transform.position = pos;
+    }
+
     public override void SetType()
     {
         base.SetType();

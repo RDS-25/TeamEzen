@@ -50,8 +50,17 @@ public class Action : MonoBehaviour
         ani = GetComponent<Animator>();
         stat = GetComponent<Stat>();
         targetingRange = stat.fDefaultRange;
-        
-     
+
+        //현재 캐릭터 스킬 
+        GameManager.instance.objectFactory.AllSkill.listPool[0].SetActive(true);//active
+        GameManager.instance.objectFactory.AllSkill.listPool[8].SetActive(true); //basic
+        GameManager.instance.objectFactory.AllSkill.listPool[20].SetActive(true); //passive
+        GameManager.instance.objectFactory.AllSkill.listPool[24].SetActive(true); //ultimate
+
+        //캐릭터 2
+
+        //캐릭터 3
+
     }
 
 	// Update is called once per frame
@@ -129,8 +138,9 @@ public class Action : MonoBehaviour
     {
         GameObject closestEnemy = FindClosestEnemyWithTag("Enemy", targetingRange);
         Vector3 direction;
-
         
+
+
         if (closestEnemy != null)
         {
             direction = (closestEnemy.transform.position - tBulletpos.position).normalized;
@@ -142,8 +152,8 @@ public class Action : MonoBehaviour
         }
         else if (closestEnemy == null)
         {
-            GameObject bullet = GameManager.instance.objectFactory.CharARActive01EffectFactory.listPool[0];
-            bullet.SetActive(true);
+            //한캐릭터가 가지고 있는 스킬  //조건문걸어야함
+            GameManager.instance.objectFactory.AllSkill.listPool[8].GetComponent<Skill>().ShotEffect(tBulletpos.position);
             //Rigidbody bulletrigid = bullet.GetComponent<Rigidbody>();
             //bulletrigid.velocity = tBulletpos.forward * 50;
         }

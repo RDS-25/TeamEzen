@@ -23,8 +23,22 @@ public class CharAr_Active_01 : AttackType
         InitParams();
         LoadEffect();
     }
-    
-    public override void SetType()
+
+	//private void OnEnable()
+	//{
+ //       SkillTriger();
+
+ //   }
+
+    //지우고 스킬 스크립트에
+    public override void ShotEffect(Vector3 pos)
+	{
+        GameObject aa = GameManager.instance.objectFactory.CharARActive01EffectFactory.GetObject();
+        aa.SetActive(true);
+        aa.transform.position = pos;
+    }
+
+	public override void SetType()
     {
         base.SetType();
         skillType = "ACTIVE";

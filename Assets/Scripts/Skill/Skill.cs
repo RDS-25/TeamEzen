@@ -77,6 +77,11 @@ public class Skill: SkillParams
         fBulletCount = 1;
         checkLevel = 1000;
     }
+    //팩토리 매니저와  총알 위치 찾아서  넣기 
+    public virtual void ShotEffect(Vector3 Bulletpos)
+    {
+        
+    }
 
     protected void SaveParams()//스킬 파라미터 적용
 
