@@ -18,13 +18,6 @@ public class CommonSkill_04 : AttackType
         LoadEffect();
     }
 
-	private void OnEnable()
-	{
-
-        SkillTriger();
-    }   
-
-
 	public override void SetType()
     {
         base.SetType();
