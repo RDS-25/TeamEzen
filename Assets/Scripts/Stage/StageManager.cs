@@ -72,7 +72,12 @@ public class StageManager : MonoBehaviour
         Debug.Log(GameManager.instance.stageType);
     }
 
-    private bool IsDropItem(int minNum, int maxNum, float standardRate, List<int> rateList)
+	private void Update()
+	{
+        SwitchChar();
+
+    }
+	private bool IsDropItem(int minNum, int maxNum, float standardRate, List<int> rateList)
     {
         bool value = false;
         int idx = Random.Range(minNum, maxNum);
@@ -166,5 +171,59 @@ public class StageManager : MonoBehaviour
         GameManager.instance.DataWrite(path, itemCountDic);
     }
 
+    void SwitchChar() {
 
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+
+            Charactors[0].SetActive(true);
+            Charactors[0].transform.rotation = player.transform.rotation;
+            Charactors[0].transform.position = player.transform.position;
+
+
+            for (int i = 0; i < Charactors.Length; i++)
+            {
+                if (i != 0)
+                {
+                    Charactors[i].SetActive(false);
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            Charactors[1].SetActive(true);
+            Charactors[2].transform.rotation = player.transform.rotation;
+            Charactors[2].transform.position = player.transform.position;
+
+            for (int i = 0; i < Charactors.Length; i++)
+            {
+                if (i != 1)
+                {
+                    Charactors[i].SetActive(false);
+                }
+            }
+        }
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            Charactors[2].SetActive(true);
+            Charactors[2].transform.rotation = player.transform.rotation;
+            Charactors[2].transform.position = player.transform.position;
+
+            if (Charactors[2] != null)
+            {
+                Charactors[2].SetActive(true);
+                for (int i = 0; i < Charactors.Length; i++)
+                {
+                    if (i != 2)
+                    {
+                        Charactors[i].SetActive(false);
+                    }
+                }
+            }
+        }
+    }
 }
+
+
+
