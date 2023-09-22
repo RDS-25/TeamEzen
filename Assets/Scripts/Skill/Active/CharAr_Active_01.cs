@@ -36,6 +36,7 @@ public class CharAr_Active_01 : AttackType
         GameObject aa = GameManager.instance.objectFactory.CharARActive01EffectFactory.GetObject();
         aa.SetActive(true);
         aa.transform.position = pos;
+        Debug.Log("fdsf");
     }
 
 	public override void SetType()

@@ -6,49 +6,29 @@ using System;
 
 public class Ex_Active1Effect : SkillEffrct
 {
-    
+
     //public Charater1 Charater1;
     //public Ex_Active1Skill ex_Active1Skill;
-    float fSpeed = 100f;
-    public Action SkillHit;//스킬 이펙트가 몬스터에게 충돌했을때    
-    public Vector3 Firepiont;
+    Rigidbody rig;
+    
 
     private void OnDisable()
     {
         ChaStat = null;
     }
 
-    public void SkillActivationInit(ref Stat activeObjectStat)
-    {
-        ChaStat = activeObjectStat;
-    }
-
 
     void Start()
     {
-
-        MoveEffect();
+        rig = GetComponent<Rigidbody>();
+        fSpeed = 100f;
+        myFactory(GameManager.instance.objectFactory.CharARActive01EffectFactory);
+        //MoveEffect();
         fRancri = UnityEngine.Random.Range(0f, 100f);
         fRanmondod = UnityEngine.Random.Range(0f, 100f);
         Firepiont = gameObject.GetComponent<Transform>().position;
     }
-    public  void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Monster")
-        {
-            Debug.Log(other.tag);
-            var monsterStat= other.GetComponent<Stat>();
-            fMonDadge = monsterStat.fMiss;
-            fMonCriresi = monsterStat.fCriticalResist;
-            fMonDefense = monsterStat.fDef;
-            fMonProperty = monsterStat.fProperty;
-            
-            CalculDamage(ChaStat.fAtk,ChaStat.fCriticalPer,ChaStat.fCriticalDmg,ChaStat.fDefBreak,ChaStat.fProperty
-                ,fMonDadge,fMonCriresi, fMonDefense,fMonProperty);
-            // 오류 있음
-            monsterStat.fHealth -= fTotalDamage;                        
-        }        
-    }
+    
     //public override float CheckPro(float Attacker, float Defender)
     //{
     //    return base.CheckPro(Attacker, Defender);
@@ -105,12 +85,14 @@ public class Ex_Active1Effect : SkillEffrct
         else
             return;
     }
-    public void MoveEffect()
+    public override void MoveEffect()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * fSpeed);
+        rig.AddForce(transform.forward * fSpeed * Time.deltaTime);
+        Debug.Log("sad");
     }
     void Update()
     {
+        MoveEffect();
         //CheckDistance(Firepiont, ex_Active1Skill.fRange);
     }
 }

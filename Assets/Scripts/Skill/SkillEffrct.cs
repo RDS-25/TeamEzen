@@ -6,8 +6,11 @@ using System;
 public class SkillEffrct : MonoBehaviour
     //해당캐릭 
 {//적과의 충돌감지,대미지관련값 받아오고 마저 계산(o)
-    //몬스터와 캐릭터에게 대미지값 전달
+ //몬스터와 캐릭터에게 대미지값 전달
+    FactoryManager factoryManager;
     
+    protected float fSpeed=100f;
+    protected Vector3 Firepiont;
     protected float fRancri;
     protected float fRanmondod;
     protected float fMonDadge;
@@ -17,8 +20,20 @@ public class SkillEffrct : MonoBehaviour
     public  float fRange;
     protected float fMonProperty;
     protected Stat ChaStat;
+    public Action SkillHit;//스킬 이펙트가 몬스터에게 충돌했을때   
 
-
+    void Start()
+    {
+        
+        fRancri = UnityEngine.Random.Range(0f, 100f);
+        fRanmondod = UnityEngine.Random.Range(0f, 100f);
+        Firepiont = gameObject.GetComponent<Transform>().position;
+    }
+    
+    public void SkillActivationInit(ref Stat activeObjectStat)
+    {
+        ChaStat = activeObjectStat;
+    }
     public  float CalculDamage(float chadam, float chacriper, float chacridam, float chadefenpier, float Attacker,
         float mondadge, float moncrire, float mondefen, float Defender)//받은 스텟으로 다시쓰기
     {
@@ -40,9 +55,23 @@ public class SkillEffrct : MonoBehaviour
             return fTotalDamage;
         }
     }
-    public void SkillActivationInit(ref Stat activeObjectStat)
+    public void OnTriggerEnter(Collider other)
     {
-        ChaStat = activeObjectStat;
+        if (other.tag == "Enemy")
+        {
+            Debug.Log(other.tag);
+            var monsterStat = other.GetComponent<Stat>();
+            fMonDadge = monsterStat.fMiss;
+            fMonCriresi = monsterStat.fCriticalResist;
+            fMonDefense = monsterStat.fDef;
+            fMonProperty = monsterStat.fProperty;
+
+            CalculDamage(ChaStat.fAtk, ChaStat.fCriticalPer, ChaStat.fCriticalDmg, ChaStat.fDefBreak, ChaStat.fProperty
+                , fMonDadge, fMonCriresi, fMonDefense, fMonProperty);
+            // 오류 있음
+            monsterStat.fHealth -= fTotalDamage;
+
+        }
     }
     public virtual float CheckPro(float Attacker, float Defender)
     {
@@ -67,13 +96,25 @@ public class SkillEffrct : MonoBehaviour
         if (distance > range)//Ex_Active1Params의 Range를 가져오는 방법??
         {
             // setactive 해주기
-            //GameManager.instance.objectFactory.CharARActive01EffectFactory.SetObject(gameObject);
-            Destroy(this.gameObject);//안대 초기화
+            factoryManager.SetObject(gameObject);
+            
+
         }
         else
             return;
     }
+    public virtual void MoveEffect()
+    {        
+        //GetComponent<Rigidbody>().AddForce(transform.forward * fSpeed*Time.deltaTime);
+             
+    }
+    public virtual void myFactory(FactoryManager myFactoryManager)
+    {
+        factoryManager = myFactoryManager;
+    }
+   
 }
+
 
 /*public virtual float CalculDamage(float damage, float critical, float criticaldamage,
         float defensepierce, int chaprotype, float mondodge, float mondsfense, float moncriresi, int monprotype)
