@@ -72,6 +72,7 @@ public class StageManager : MonoBehaviour
         Debug.Log(GameManager.instance.stageType);
     }
 
+
     private bool IsDropItem(int minNum, int maxNum, float standardRate, List<int> rateList)
     {
         bool value = false;
@@ -165,6 +166,61 @@ public class StageManager : MonoBehaviour
         }
         GameManager.instance.DataWrite(path, itemCountDic);
     }
+
+    void SwitchChar() {
+
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            curPos = curChar;
+            curRot = curChar;
+            SelectedChar[0].SetActive(true);
+            curChar = SelectedChar[0].transform;
+            SelectedChar[0].transform.rotation = curRot.rotation;
+            SelectedChar[0].transform.position = curPos.position;
+
+
+            for (int i = 0; i < SelectedChar.Count; i++)
+            {
+                if (i != 0)
+                {
+                    SelectedChar[i].SetActive(false);
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            curPos = curChar;
+            curRot = curChar;
+            SelectedChar[1].SetActive(true);
+            curChar = SelectedChar[1].transform;
+            SelectedChar[1].transform.rotation = curRot.rotation;
+            SelectedChar[1].transform.position = curPos.position;
+
+            for (int i = 0; i < SelectedChar.Count; i++)
+            {
+                if (i != 1)
+                {
+                    SelectedChar[i].SetActive(false);
+                }
+            }
+        }
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            if (SelectedChar[2] != null)
+            {
+                SelectedChar[2].SetActive(true);
+                for (int i = 0; i < SelectedChar.Count; i++)
+                {
+                    if (i != 2)
+                    {
+                        SelectedChar[i].SetActive(false);
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 }
