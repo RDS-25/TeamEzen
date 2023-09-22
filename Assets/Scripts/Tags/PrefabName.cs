@@ -21,6 +21,11 @@ public class PrefabName
     public const string STR_CHAR_HG = "Char_HG_";
     public const string STR_CHAR_SG = "Char_SG_";
 
+    public const string STR_CHAR_AR_BASIC_EFFECT = "CharAr_Basic_Effect";
+    public const string STR_CHAR_SR_BASIC_EFFECT = "CharSr_Basic_Effect";
+    public const string STR_CHAR_HG_BASIC_EFFECT = "CharHg_Basic_Effect";
+    public const string STR_CHAR_SG_BASIC_EFFECT = "CharSg_Basic_Effect";
+
     public const string STR_CHAR_AR_ACTIVE_01EFFECT = "CharAr_Active_01Effect";
     public const string STR_CHAR_AR_ACTIVE_02EFFECT = "CharAr_Active_02Effect";
     public const string STR_CHAR_AR_ACTIVE_03EFFECT = "CharAr_Active_03Effect";

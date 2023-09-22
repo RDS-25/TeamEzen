@@ -134,16 +134,18 @@ public class Action : MonoBehaviour
         if (closestEnemy != null)
         {
             direction = (closestEnemy.transform.position - tBulletpos.position).normalized;
-            GameObject bullet = Instantiate(gBullet, tBulletpos.position, Quaternion.LookRotation(direction));
-            Rigidbody bulletrigid = bullet.GetComponent<Rigidbody>();
+            GameObject bullet = GameManager.instance.objectFactory.CharARActive01EffectFactory.listPool[0];
+            bullet.SetActive(true);
+            //Rigidbody bulletrigid = bullet.GetComponent<Rigidbody>();
             transform.LookAt(direction);
-            bulletrigid.velocity = direction * 50;
+            //bulletrigid.velocity = direction * 50;
         }
         else if (closestEnemy == null)
         {
-            GameObject bullet = Instantiate(gBullet, tBulletpos.position, tBulletpos.rotation);
-            Rigidbody bulletrigid = bullet.GetComponent<Rigidbody>();
-            bulletrigid.velocity = tBulletpos.forward * 50;
+            GameObject bullet = GameManager.instance.objectFactory.CharARActive01EffectFactory.listPool[0];
+            bullet.SetActive(true);
+            //Rigidbody bulletrigid = bullet.GetComponent<Rigidbody>();
+            //bulletrigid.velocity = tBulletpos.forward * 50;
         }
 
 
