@@ -72,8 +72,12 @@ public class StageManager : MonoBehaviour
         Debug.Log(GameManager.instance.stageType);
     }
 
+	private void Update()
+	{
+        SwitchChar();
 
-    private bool IsDropItem(int minNum, int maxNum, float standardRate, List<int> rateList)
+    }
+	private bool IsDropItem(int minNum, int maxNum, float standardRate, List<int> rateList)
     {
         bool value = false;
         int idx = Random.Range(minNum, maxNum);
@@ -171,50 +175,49 @@ public class StageManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            curPos = curChar;
-            curRot = curChar;
-            SelectedChar[0].SetActive(true);
-            curChar = SelectedChar[0].transform;
-            SelectedChar[0].transform.rotation = curRot.rotation;
-            SelectedChar[0].transform.position = curPos.position;
+
+            Charactors[0].SetActive(true);
+            Charactors[0].transform.rotation = player.transform.rotation;
+            Charactors[0].transform.position = player.transform.position;
 
 
-            for (int i = 0; i < SelectedChar.Count; i++)
+            for (int i = 0; i < Charactors.Length; i++)
             {
                 if (i != 0)
                 {
-                    SelectedChar[i].SetActive(false);
+                    Charactors[i].SetActive(false);
                 }
             }
         }
 
         if (Input.GetKey(KeyCode.Alpha2))
         {
-            curPos = curChar;
-            curRot = curChar;
-            SelectedChar[1].SetActive(true);
-            curChar = SelectedChar[1].transform;
-            SelectedChar[1].transform.rotation = curRot.rotation;
-            SelectedChar[1].transform.position = curPos.position;
+            Charactors[1].SetActive(true);
+            Charactors[2].transform.rotation = player.transform.rotation;
+            Charactors[2].transform.position = player.transform.position;
 
-            for (int i = 0; i < SelectedChar.Count; i++)
+            for (int i = 0; i < Charactors.Length; i++)
             {
                 if (i != 1)
                 {
-                    SelectedChar[i].SetActive(false);
+                    Charactors[i].SetActive(false);
                 }
             }
         }
         if (Input.GetKey(KeyCode.Alpha3))
         {
-            if (SelectedChar[2] != null)
+            Charactors[2].SetActive(true);
+            Charactors[2].transform.rotation = player.transform.rotation;
+            Charactors[2].transform.position = player.transform.position;
+
+            if (Charactors[2] != null)
             {
-                SelectedChar[2].SetActive(true);
-                for (int i = 0; i < SelectedChar.Count; i++)
+                Charactors[2].SetActive(true);
+                for (int i = 0; i < Charactors.Length; i++)
                 {
                     if (i != 2)
                     {
-                        SelectedChar[i].SetActive(false);
+                        Charactors[i].SetActive(false);
                     }
                 }
             }
@@ -223,4 +226,4 @@ public class StageManager : MonoBehaviour
 }
 
 
-}
+
