@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57905fa716f8a9e4abe13d56a6702a7a, type: 3}
+  m_Name: RangedEnemy
+  m_EditorClassIdentifier: 
+  fId: 200
+  sImage: 
+  strName: Ranged
+  fLevel: 20
+  fHealth: 205
+  fAtk: 13
+  fDef: 10
+  fCriticalPer: 10
+  fCriticalDmg: 200
+  fMiss: 10
+  fMoveSpeed: 5
+  fAtkSpeed: 3
+  fCoolDownReduction: 0
+  fExp: 10
+  fDefBreak: 0
+  fCriticalResist: 0
+  fDamageReduction: 0
+  fHealthSteel: 0
+  fIBD: 0
+  fHRR: 0
+  fRecoveryRate: 0
+  fSightRange: 0
+  fDefaultRange: 0
+  fProperty: 0
+  strDescription: 
+  fType: 0
+  fUltimateGauge: 0
+  bIsOwn: 0
+  PassiveSkill: 0
+  BasicSkill: 0
+  ActiveSkill: 0
+  UltimateSkill: 0
+  Equip: 0
+  PersonalEquip: 0
+  Stone: 0
