@@ -50,9 +50,7 @@ public class SelectCharactorUIManager : MonoBehaviour
 	{
 		audio = GetComponent<AudioSource>();
 
-		gSlotPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(800f, 900f);
 		gSlotPanel.GetComponentInChildren<GridLayoutGroup>().constraintCount= 3;
-
 		slotManager.SetSlot(GameManager.instance.objectFactory.CharSlotFactory.listPool,
 			GameManager.instance.objectFactory.characterFactory.listPool,
 			transformSlots,

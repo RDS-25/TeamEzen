@@ -39,7 +39,7 @@ public class SlotManager : MonoBehaviour
         for (int i = 0; i < SlotButtons.Length; i++)
         {
             int buttonIndex = i;
-            SlotButtons[i].onClick.AddListener(() => OnSkillChange(buttonIndex));
+            SlotButtons[i].onClick.AddListener(() => OnSkillChangeButton(buttonIndex));
         }
     }
     public void SetSlot(List<GameObject> slotObjects, List<GameObject> allObjList, Transform Slots, OBJECT_TYPE objType)
@@ -53,7 +53,7 @@ public class SlotManager : MonoBehaviour
                 if (allObjList[i].GetComponent<Stat>().bIsOwn)
                 {
                     slotObjects[i].SetActive(true);
-                    Slots.GetChild(i).GetComponent<Image>().sprite
+                    Slots.GetChild(i).GetChild(0).GetComponent<Image>().sprite
                         = GameManager.instance.LoadAndSetSprite
                         (FolderPath.SPRITE_CHAR_ICON + allObjList[i].GetComponent<Stat>().sImagepath);
                 }
@@ -69,7 +69,7 @@ public class SlotManager : MonoBehaviour
                 if (dictTemp[key] != "0")
                 {
                     slotObjects[i].SetActive(true);
-                    Slots.GetChild(i).GetComponent<Image>().sprite
+                    Slots.GetChild(i).GetChild(0).GetComponent<Image>().sprite
                          = GameManager.instance.LoadAndSetSprite
                          (FolderPath.SPRITE_ITEM_ICON + allObjList[i].GetComponent<UiCellView>().IMAGE_PATH);
                 }

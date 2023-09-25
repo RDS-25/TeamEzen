@@ -33,7 +33,7 @@ public class OrganizingUiManager : MonoBehaviour
         {
             if(GameManager.instance.arrCurCharacters[i] !=null)
             {
-                buttons[i].GetComponent<Image>().sprite
+                buttons[i].transform.GetChild(0).GetComponent<Image>().sprite
                     = GameManager.instance.LoadAndSetSprite(
                         FolderPath.SPRITE_CHAR_ICON + GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
             }
@@ -75,8 +75,8 @@ public class OrganizingUiManager : MonoBehaviour
             {
                 GameManager.instance.arrCurCharacters[i] = null;
                 GameManager.instance.fCharid[i] = -1;
-                buttons[i].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE + "SkillImagetest.png");
+                buttons[i].transform.GetChild(0).GetComponent<Image>().sprite
+                    = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE_CHAR_ICON + "Char_Default.png");
                 eraseObject = true;
                 eraseObjectIdx = i;
                 //return;
@@ -86,13 +86,13 @@ public class OrganizingUiManager : MonoBehaviour
             {
                 GameManager.instance.arrCurCharacters[i - 1] = GameManager.instance.arrCurCharacters[i];
                 GameManager.instance.fCharid[i - 1] = GameManager.instance.fCharid[i];
-                buttons[i - 1].GetComponent<Image>().sprite
-                    = buttons[i].GetComponent<Image>().sprite;
+                buttons[i - 1].transform.GetChild(0).GetComponent<Image>().sprite
+                    = buttons[i].transform.GetChild(0).GetComponent<Image>().sprite;
 
                 GameManager.instance.arrCurCharacters[i] = null;
                 GameManager.instance.fCharid[i] = -1;
-                buttons[i].GetComponent<Image>().sprite
-                    = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE + "SkillImagetest.png");
+                buttons[i].transform.GetChild(0).GetComponent<Image>().sprite
+                    = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE_CHAR_ICON + "Char_Default.png");
             }
         }
 
@@ -107,13 +107,11 @@ public class OrganizingUiManager : MonoBehaviour
                     = GameManager.instance.objectFactory.ownCharFactory.listPool[index];
                 GameManager.instance.SetCharId(i, 
                     GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().fId);
-                buttons[i].GetComponent<Image>().sprite 
+                buttons[i].transform.GetChild(0).GetComponent<Image>().sprite 
                     = GameManager.instance.LoadAndSetSprite
                     (FolderPath.SPRITE_CHAR_ICON + GameManager.instance.arrCurCharacters[i].GetComponent<Stat>().sImagepath);
                 break;
             }
         }
-
-
     }
 }
