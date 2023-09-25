@@ -11,13 +11,15 @@ public class Enemy : MonoBehaviour
 	public GameObject AtkRange;
 	public GameObject gBullet;
 
-	public bool do_attack_coroutine = false;
-	public enum MonsterType { 
+	public enum EnemyType { 
 		Melee,
-		Range,
+		Ranged,
 		Boss
 	}
-	public MonsterType monsterType;
+	public EnemyType enemyType;
+
+	public bool do_attack_coroutine = false;
+
 
 	public enum State
 	{
@@ -43,31 +45,15 @@ public class Enemy : MonoBehaviour
 	}
 
 
-	// Update is called once per frame
-	/*  void Update()
-	  {
-		  target = GameObject.FindWithTag("Player");
-
-		  if (state == State.CHASE)
-		  { 
-			  nav.SetDestination(target.transform.position);
-			  ani.SetBool("doWalk", true);
-		  }
-
-		  if (target == null)
-		  {
-			  Debug.Log("플레이어 없음  없음");
-			  state = State.IDLE;
-		  }
-
-	  }*/
-
 	private void FixedUpdate()
 	{
 		target = GameObject.FindWithTag("Player");
 		FreezeVelocity();
-		Search();
-		Targeting();
+		
+	    Search();
+	    Targeting();
+	
+		
 
 
 	}
@@ -76,13 +62,13 @@ public class Enemy : MonoBehaviour
 	void Search()
 	{
 		float targetRadius = 20f;// 적의 사거리로  바꾸기
-		float targetRange = 0;// 적의 사거리로 바꾸기 
+		float targetRange = 0; //구체가 나가는 거리 
 		RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
 
 		// Chase 상태일때 search가 작동안함
 		// Chase 상태이면 else if 문을 타서
 		// nav.Setdestination이 자기 자신의 위치가 찍힘
-		// 상태는 IDLE임? -> 이건 모르겠음
+
 		
 		if (rayHits.Length > 0 && state == State.IDLE)
 		{
@@ -133,9 +119,29 @@ public class Enemy : MonoBehaviour
 			nav.SetDestination(target.transform.position);
 			state = State.CHASE;
 		}
+	}
 
 
+	void BossTargeting() {
+		float targetRadius = 10f;// 적의 사거리로  바꾸기
+		float targetRange = 0;// 적의 사거리로 바꾸기 
 
+		RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
+		if (rayHits.Length > 0f && state != State.ATTACK)
+		{
+			//방어 코드  이유 : 중복 실행 방지
+			if (!do_attack_coroutine)
+				StartCoroutine("Attack");
+			
+		}
+		else if (rayHits.Length == 0 && state == State.ATTACK)
+		{
+
+			ani.SetBool("doAttack", false);
+			ani.SetBool("doWalk", true);
+		
+			state = State.CHASE;
+		}
 	}
 	private void OnDrawGizmos()
 	{
@@ -147,7 +153,7 @@ public class Enemy : MonoBehaviour
 
 		//공격 사거리
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawWireSphere(transform.position, 10);
+		Gizmos.DrawWireSphere(transform.position, 3);
 	}
 
 	IEnumerator Attack()
@@ -169,10 +175,14 @@ public class Enemy : MonoBehaviour
 			}
 			yield return new WaitForSeconds(0.2f);
 			AtkRange.SetActive(true);
-			GameObject newBullet = Instantiate(gBullet, AtkRange.transform.position, AtkRange.transform.rotation);
-			Rigidbody bulletrigid = newBullet.GetComponent<Rigidbody>();
-			
-			bulletrigid.velocity = target.transform.position * 3;
+			if (enemyType == EnemyType.Ranged)
+			{
+				
+				GameObject newBullet = Instantiate(gBullet, AtkRange.transform.position, AtkRange.transform.rotation);
+				Rigidbody bulletrigid = newBullet.GetComponent<Rigidbody>();
+				bulletrigid.velocity = distance * 3;
+				AtkRange.GetComponent<BoxCollider>().enabled = false;
+			}
 			yield return new WaitForSeconds(ani.GetCurrentAnimatorStateInfo(0).length);
 			AtkRange.SetActive(false);
 		}
