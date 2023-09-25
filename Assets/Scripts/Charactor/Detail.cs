@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class Detail : MonoBehaviour
 {
-    public Text TLevel;
-    public Text THp; 
-    public Text TAtk;
-    public Text TDef;
-    public Text TCritiper;
+    public TMP_Text TName;
+    public TMP_Text TLevel;
+    public TMP_Text THp; 
+    public TMP_Text TAtk;
+    public TMP_Text TDef;
+    public TMP_Text TCritiper;
  
 
     public GameObject select;
@@ -22,11 +23,12 @@ public class Detail : MonoBehaviour
         GameObject curChar = GameManager.instance.objectFactory.ownCharFactory.listPool[gSelectCharM.curCharID];
         //현재 선택된 캐릭터 정보  보여주기 
 
-        TLevel.text ="레벨 :" + curChar.GetComponent<Stat>().fLevel; 
-        THp.text ="체력 :"+ curChar.GetComponent<Stat>().fHealth;
-        TAtk.text = "공격력 :" + curChar.GetComponent<Stat>().fAtk; 
-        TDef.text = "방어력 :" + curChar.GetComponent<Stat>().fDef; 
-        TCritiper.text = "크티리컬 확률 :" + curChar.GetComponent<Stat>().fCriticalPer;
+        TName.text     = curChar.GetComponent<Stat>().strName; 
+        TLevel.text     = curChar.GetComponent<Stat>().fLevel.ToString(); 
+        THp.text        = curChar.GetComponent<Stat>().fHealth.ToString();
+        TAtk.text       = curChar.GetComponent<Stat>().fAtk.ToString();
+        TDef.text       = curChar.GetComponent<Stat>().fDef.ToString();
+        TCritiper.text  = curChar.GetComponent<Stat>().fCriticalPer.ToString();
 
     }
 

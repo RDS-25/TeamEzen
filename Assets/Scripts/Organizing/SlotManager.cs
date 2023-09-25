@@ -96,10 +96,12 @@ public class SlotManager : MonoBehaviour
     {
         nButtonIndex = index;
         OnButtonClick?.Invoke(nButtonIndex);
+        Debug.Log(index);
     }
     void OnSkillChangeButton(int index)
     {
         nSkillIndex = index;
         OnSkillChange?.Invoke(nSkillIndex);
+        Debug.Log(index);
     }
 }
