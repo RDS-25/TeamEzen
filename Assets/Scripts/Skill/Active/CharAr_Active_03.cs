@@ -18,7 +18,7 @@ public class CharAr_Active_03 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-        LoadEffect();
+     //LoadEffect();
     }
     
     public override void SetType()

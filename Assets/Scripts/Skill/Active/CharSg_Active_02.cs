@@ -18,7 +18,7 @@ public class CharSg_Active_02 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-        LoadEffect();
+     //LoadEffect();
     }
     public override void SetType()
     {

@@ -17,7 +17,7 @@ public class CharHg_Basic : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-        LoadEffect();
+     //LoadEffect();
     }
     public override void SetType()
     {

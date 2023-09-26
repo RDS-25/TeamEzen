@@ -15,7 +15,7 @@ public class CommonSkill_04 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-        LoadEffect();
+     //LoadEffect();
     }
 
 	public override void SetType()

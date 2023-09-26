@@ -66,10 +66,10 @@ public class SkillEffrct : MonoBehaviour
         // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
         if (distance > range)//Ex_Active1Params의 Range를 가져오는 방법??
         {
-            // setactive 해주기
-            //GameManager.instance.objectFactory.CharARActive01EffectFactory.SetObject(gameObject);
-            Destroy(this.gameObject);//안대 초기화
-        }
+			// setactive 해주기
+			GameManager.instance.objectFactory.CharARActive02EffectFactory.SetObject(gameObject);
+			//Destroy(this.gameObject);//안대 초기화
+		}
         else
             return;
     }
