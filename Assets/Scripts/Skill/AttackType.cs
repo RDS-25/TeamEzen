@@ -25,7 +25,7 @@ public class AttackType : Skill
     }
 
 
-    public override void SkillTriger()
+    public override void SkillTriger(Transform Pos)
     {
         if (bisCanUse == true || bisActtivate == false)
         {
@@ -35,7 +35,7 @@ public class AttackType : Skill
 
             fTimer = 0f;
 
-            EffectStart();//이펙트 있는 스킬인 경우
+            EffectStart(Pos);//이펙트 있는 스킬인 경우
 
             StartCoroutine(SkillCoolDown());
         }
@@ -47,11 +47,11 @@ public class AttackType : Skill
         EffectPrefab = Resources.Load<GameObject>(strEffectPath + strEffectName);
     }
 
-    public void EffectStart()
+    public void EffectStart(Transform Pos)
     {
         Debug.Log("이펙트 발사");
         GameObject obj = GameObject.FindWithTag("Player");
         FirePoint = obj.transform.GetChild(3);
-        Instantiate(EffectPrefab, FirePoint.position, FirePoint.rotation);//팩토리로 바꾸기
+        Instantiate(EffectPrefab,new Vector3(Pos.position.x,0, Pos.position.z) , Pos.rotation);//팩토리로 바꾸기
     }
 }

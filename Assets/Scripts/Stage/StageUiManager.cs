@@ -19,7 +19,7 @@ public class StageUiManager : MonoBehaviour
             charactor.GetComponent<Action>().UIGroup.SetActive(false);
         }
     }
-
+    
     public void OnContinueBtnClicked()
     {
         Time.timeScale = 1.0f;

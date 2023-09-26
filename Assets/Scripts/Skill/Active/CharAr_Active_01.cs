@@ -48,7 +48,7 @@ public class CharAr_Active_01 : AttackType
     {
         fCharToUse = 1;
         fSkillLevel = 1;
-        fId = 200;
+        fId = 210;
         strName = "ACTIVE01010101";
         strDiscription = "ACTIVE010150";
         strIconName = "CharArActive01.png";
@@ -62,8 +62,8 @@ public class CharAr_Active_01 : AttackType
         fCoolTime = 1;
         fDuration = 1;
         fSkillCoolReduce = 0;
-        fRange = 50;
-        fMaxRange = 10;
+        fRange = 10;
+        fMaxRange = 50;
         fValue = 10;
         fHidenValue = 10;
         fMagnification = 10;
