@@ -52,6 +52,9 @@ public class Action : MonoBehaviour
         targetingRange = stat.fDefaultRange;
 
         //현재 캐릭터 스킬 
+        for (int i = 0; i < GameManager.instance.objectFactory.AllSkill.listPool.Count;i++) {
+            
+        }
         GameManager.instance.objectFactory.AllSkill.listPool[0].SetActive(true);//active
         GameManager.instance.objectFactory.AllSkill.listPool[8].SetActive(true); //basic
         GameManager.instance.objectFactory.AllSkill.listPool[20].SetActive(true); //passive

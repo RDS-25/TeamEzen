@@ -44,6 +44,6 @@ MonoBehaviour:
   BasicSkill: 0
   ActiveSkill: 200
   UltimateSkill: 300
-  Equip: 21
-  PersonalEquip: 30
-  Stone: 5
+  Equip: 400
+  PersonalEquip: 500
+  Stone: 600

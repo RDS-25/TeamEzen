@@ -187,7 +187,7 @@ public class Skill: SkillParams
         //추가기능
 
     }
-    public virtual void SkillTriger()//스킬 발동(단발형)
+    public virtual void SkillTriger(Transform Pos)//스킬 발동(단발형)
     {//애니메이션, 효과음, 투사체발사, 범위내 대미지주기, 
         Debug.Log("x투사체 발사 ");
         

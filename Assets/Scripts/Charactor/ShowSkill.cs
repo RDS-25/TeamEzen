@@ -28,6 +28,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
     Action action;
     Stat stat;
 
+    Transform Pos;
 	private void Start()
 	{
         action = GetComponentInParent<Action>();
@@ -108,14 +109,19 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
         }
     }
+    public void TestSC() {
+      
+        ACTIVESKILL.GetComponent<Skill>().SkillTriger(Pos);
 
+    }
+    
 	public void OnDrag(PointerEventData eventData)
 	{
 
         joystickDirection = new Vector3(joystick.Horizontal, 0,joystick.Vertical);
 
-
-
+        Transform Pos = ACTIVESKILL.transform;
+        Debug.Log(Pos.position);
 
         if (joystick.Direction.magnitude > 0.1)
         {
@@ -125,12 +131,18 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
             gMaxRangeIndicator.SetActive(true); //스킬 사거리
             gSkillCancel.SetActive(true);
+
             if (skillType == SKILLTYPE.ACTIVE)
             {
                 Debug.Log(ACTIVESKILL.transform.name);
+                //ACTIVESKILL.GetComponent<Skill>().SkillTriger();
+                Debug.Log("액티브 스킬 ");
             }
             else {
                 Debug.Log(ULTIMATESKILL.transform.name);
+                Debug.Log("궁극기 스킬");
+              
+                
             }
             float maxRange = (skillType == SKILLTYPE.ACTIVE ? 
                                 ACTIVESKILL.GetComponent<Skill>().fMaxRange : 
