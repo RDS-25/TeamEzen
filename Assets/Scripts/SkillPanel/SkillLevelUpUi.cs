@@ -60,7 +60,8 @@ public class SkillLevelUpUi : MonoBehaviour
     {
         currentLevel.text = "Lv. " + dictSelectedSkillParams[SkillID.LEVEL];
         nextLevel.text = "Lv. " + (float.Parse(dictSelectedSkillParams[SkillID.LEVEL]) + 1);
-        //skillImamge.sprite = GameManager.instance.LoadAndSetSprite(dictSelectedSkillParams[SkillID.ICON_PATH]);
+        skillImamge.sprite = GameManager.instance.LoadAndSetSprite
+            (FolderPath.SPRITE_SKILL_ICON + dictSelectedSkillParams[SkillID.ICON_NAME]);
         skillName.text = dictSelectedSkillParams[SkillID.NAME];
         skillDescription.text = dictSelectedSkillParams[SkillID.DESCRIPT];
 

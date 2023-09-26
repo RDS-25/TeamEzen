@@ -17,27 +17,26 @@ public class ActiveSkillChangeUi : MonoBehaviour
         List<GameObject> SelectingSKillSlot = GameManager.instance.objectFactory.SelectingSkillSlotFactory.listPool;
         for (int i = 0; i < SelectingSKill.Count; i++)
         {
-            if(skillPanelUi.curCharStat.fId == SelectingSKill[i].GetComponent<Skill>().fCharToUse
-                || SelectingSKill[i].GetComponent<Skill>().fCharToUse == -1)
+            if(!SelectingSKill[i].GetComponent<Skill>().bisUnlockSkill &&
+                (skillPanelUi.curCharStat.fId == SelectingSKill[i].GetComponent<Skill>().fCharToUse
+                || SelectingSKill[i].GetComponent<Skill>().fCharToUse == -1))
             {
                 SelectingSKillSlot[i].SetActive(true);
             }
         }
+        slotManager.SetSkillChangeEvent();
     }
     private void OnDisable()
     {
         SlotManager.OnSkillChange -= ChangeSkill;
     }
-    private void Awake()
+
+    void Start()
     {
         slotManager.SetSlot(GameManager.instance.objectFactory.SelectingSkillSlotFactory.listPool,
                     GameManager.instance.objectFactory.SelectingSkillObjectFactory.listPool,
                     gSlots,
                     SlotManager.OBJECT_TYPE.SKILL);
-        slotManager.SetSkillChangeEvent();
-    }
-    void Start()
-    {
     }
     void ChangeSkill(int index)
     {
