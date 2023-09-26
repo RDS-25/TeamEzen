@@ -3,37 +3,75 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-/* 20230814
- * 각각의 활성화 버튼 함수 작성
- */
+
 public class LobbyUIManager : MonoBehaviour
 {
     // 메인 로비 UI 버튼
+    public GameObject gLobbyPanel;
     public GameObject gSettingPanel;
+    public GameObject gInvenPanel;
+    public GameObject gSelectStagePanel;
+    public GameObject gSelectCharacterPanel;
+    public GameObject gSkillPanel;
+    public GameObject gCharacterDetail;
 
-    // 설정 버튼
+    private void Start()
+    {
+        Init();
+    }
+    public void Init()
+    {
+        gSettingPanel.SetActive(false);
+        gInvenPanel.SetActive(false);
+        gSelectStagePanel.SetActive(false);
+        gSelectCharacterPanel.SetActive(false);
+        gSkillPanel.SetActive(false);
+        gCharacterDetail.SetActive(false);
+    }
     public void ButtonSetting()
     {
         gSettingPanel.SetActive(true);
+        gInvenPanel.SetActive(false);
+        gSelectStagePanel.SetActive(false);
+        gSelectCharacterPanel.SetActive(false);
+        gSkillPanel.SetActive(false);
+        gCharacterDetail.SetActive(false);
     }
-    // 인벤토리 버튼
     public void ButtonInventory()
     {
-
+        gSettingPanel.SetActive(false);
+        gInvenPanel.SetActive(true);
+        gSelectStagePanel.SetActive(false);
+        gSelectCharacterPanel.SetActive(false);
+        gSkillPanel.SetActive(false);
+        gCharacterDetail.SetActive(false);
     }
-    // 스테이지 버튼
-    public void ButtonStage()
+    public void ButtonSelectStage()
     {
-        SceneManager.LoadScene("SelectStageScene");
+        gSettingPanel.SetActive(false);
+        gInvenPanel.SetActive(false);
+        gSelectStagePanel.SetActive(true);
+        gSelectCharacterPanel.SetActive(false);
+        gSkillPanel.SetActive(false);
+        gCharacterDetail.SetActive(false);
     }
-    // 캐릭터 버튼
     public void ButtonCharacter()
     {
-
+        gSettingPanel.SetActive(false);
+        gInvenPanel.SetActive(false);
+        gSelectStagePanel.SetActive(false);
+        gSelectCharacterPanel.SetActive(true);
+        gSkillPanel.SetActive(false);
+        gCharacterDetail.SetActive(false);
     }
-    // 스킬 버튼
     public void ButtonSkill()
     {
-
+        gSettingPanel.SetActive(false);
+        gInvenPanel.SetActive(false);
+        gSelectStagePanel.SetActive(false);
+        gSelectCharacterPanel.SetActive(false);
+        gSkillPanel.SetActive(true);
+        bool a = gSkillPanel.activeSelf;
+        gCharacterDetail.SetActive(false);
     }
 }

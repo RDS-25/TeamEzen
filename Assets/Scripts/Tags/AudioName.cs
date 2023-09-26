@@ -7,4 +7,5 @@ public class AudioName : MonoBehaviour
     // 오디오 이름 const string으로 저장
     public const string STR_MAIN_BACKGROUND = "01.MainBackground";
     public const string STR_CHARACTER_ATTACK_1 = "02.characterAttack";
+    public const string STR_CHARACTER_SELECT_1 = "03.characterSelect";
 }

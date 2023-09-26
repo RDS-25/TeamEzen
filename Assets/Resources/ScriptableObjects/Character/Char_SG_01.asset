@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57905fa716f8a9e4abe13d56a6702a7a, type: 3}
+  m_Name: Char_SG_01
+  m_EditorClassIdentifier: 
+  fId: 4
+  sImage: Char_SG_01.png
+  strName: UnityChan3
+  fLevel: 1
+  fHealth: 100
+  fAtk: 20
+  fDef: 10
+  fCriticalPer: 15
+  fCriticalDmg: 200
+  fMiss: 20
+  fMoveSpeed: 5
+  fAtkSpeed: 1
+  fCoolDownReduction: 20
+  fExp: 100000
+  fDefBreak: 7
+  fCriticalResist: 5
+  fDamageReduction: 4.5
+  fHealthSteel: 1.2
+  fIBD: 1
+  fHRR: 2
+  fRecoveryRate: 2
+  fSightRange: 5
+  fDefaultRange: 7
+  fProperty: 2
+  strDescription: "\uC124\uBA85"
+  fType: 1
+  fUltimateGauge: 100
+  bIsOwn: 1
+  PassiveSkill: 102
+  BasicSkill: 2
+  ActiveSkill: 202
+  UltimateSkill: 302
+  Equip: 190
+  PersonalEquip: 207
+  Stone: 311

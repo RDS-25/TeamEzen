@@ -2,49 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-#region 타임라인
-/* 20230811
- * 싱글톤 패턴 추가
- * Init() 추가
- * 
- * public void PlayBackgroundSound(AudioSource audioSource, string sClipName)
- * AudioSource sClipName 받아와서 private void BackgroundSound 에 넘겨줌
- * 
- * private void BackgroundSound(AudioSource audioSource, AudioClip audioClip)
- * AudioSource에 AudioClip을 넣어주고 loop시켜 재생
- * 
- * private void EffectSound(AudioSource audioSource, AudioClip audioClip)
- * AudioSource에 AudioClip을 넣어주고 한번 재생
- * 
- * public void SetMasterVolume(float fVolume)       마스터 볼륨 셋
- * public void SetBackgroundVolume(float fVolume)   배경음악 볼륨 셋
- * public void SetEffectVolume(float fVolume)       이펙트 볼륨 셋
- */
-/* 20230814
- * 파일경로 지정
- * void SetVolumes()
- * 볼륨 초기값 불러오기 설정
- * public float fMasterVolume { get { return _fMasterVolume; } }
- * public float fBackgroundVolume { get { return _fBackgroundVolume; } }
- * public float fEffectVolume { get { return _fEffectVolume; } }
- * private 볼륨값 public get 설정
- * void UpdateAllAudioSource()
- * 오디오 소스 전부 찾아서 볼륨 적용하기
- */
-/* 20230816
- * private void WriteVolumes()
- * private void ReadVolumes()
- * 
- * 
- * 
- * 
- * 
- */
-#endregion
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    private static string _strJsonVolumeValuePath;
+    private string _strSoundFolderPath;
+    private string _strSoundFileName;
     [SerializeField]
     private float _fMasterVolume = 1.0f;
     [SerializeField]
@@ -59,8 +22,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        // 경로 불러오기
-        _strJsonVolumeValuePath = Application.persistentDataPath + "/" + FilePath.STR_JSON_VOLUME_VALUE;
 
         if (instance == null)
         {
@@ -80,11 +41,15 @@ public class AudioManager : MonoBehaviour
     }
     private void Init()
     {
-        // 세팅하기. -> 파일이 이미있다면 그파일 데이터 읽기 아니면 초기값 설정//
-        //if(GameManager.instance.FileCheck())
-        ReadVolumes();
-        // else
-        // 초기값 설정
+        // 폴더 경로
+        _strSoundFolderPath = FolderPath.PARAMS_SOUND;
+        // 파일경로
+        _strSoundFileName = FileName.STR_SOUND_VALUES;
+        // 파일이 이미있다면 그파일 데이터 읽기, 아니면 초기값 설정
+        if (GameManager.instance.CheckExist(_strSoundFolderPath, _strSoundFileName))
+            ReadVolumes();
+        else
+            WriteVolumes();
         // 오디오 클립 임시 배열 리소스폴더의 SoundClip 폴더 내 모든 audioclip 등록
         AudioClip[] audioClips = Resources.LoadAll<AudioClip>("SoundClip");
         // 배열에 담긴 audioClip을 _dictAudioClip에 이름을 키값으로 넣어줌
@@ -99,7 +64,7 @@ public class AudioManager : MonoBehaviour
     private void ReadVolumes()
     {
         // 게임매니저로 데이터 읽어오기
-        Dictionary<string, string> dictVolumeValues = GameManager.instance.DataRead(_strJsonVolumeValuePath);
+        Dictionary<string, string> dictVolumeValues = GameManager.instance.DataRead(_strSoundFolderPath + _strSoundFileName);
         // 볼륨값 저장된 값으로 지정
         _fMasterVolume      = float.Parse(dictVolumeValues["MasterVolume"]);
         _fBackgroundVolume  = float.Parse(dictVolumeValues["BackgroundVolume"]);
@@ -111,8 +76,8 @@ public class AudioManager : MonoBehaviour
         dictVolumeValues.Add("MasterVolume",    _fMasterVolume.ToString());
         dictVolumeValues.Add("BackgroundVolume",_fBackgroundVolume.ToString());
         dictVolumeValues.Add("EffectVolume",    _fEffectVolume.ToString());
-
-        GameManager.instance.DataWrite(_strJsonVolumeValuePath, dictVolumeValues);
+        
+        GameManager.instance.DataWrite(_strSoundFolderPath + _strSoundFileName, dictVolumeValues);
     }
     // 외부에서 호출할 배경음악 재생기
     public void PlayBackgroundSound(AudioSource audioSource, string strClipName)

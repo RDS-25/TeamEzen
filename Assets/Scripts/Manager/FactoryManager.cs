@@ -2,54 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#region 타임라인
-/*20230809
- * public void PoolConstruct(string path, int nSize)
- * public void PoolDeAllocate()
- * public GameObject GetObject(int nSize)
- * 큐 해제는 추가 구현 필요
- * get오브젝트 추가 구현 필요
- * get한 오브젝트 setActive false시 enqueue해주는 과정 필요
- */
-/*20230810
- * 리스트 대신 Queue 사용
- * PoolConstruct -> public void CreateFactory(string sPath, int nSize)
- * 이름 바꿈, 메모리풀 생성, 게임오브젝트 타입으로 지정
- * PoolDeAllocate -> public void DeCreatePool()
- * 큐 클리어
- * private GameObject CreateObject(GameObject gPrefab)
- * 프리팹으로 게임 오브젝트 생성 반환
- * public GameObject GetObject()
- * Pool에서 DeQueue, 없다면 새로 생성
- * public void SetObject(GameObject gObj)
- * 사용 종료된 오브젝트 EnQueue
- * public void Init()
- * 프리팹 초기화, 큐 초기화
- */
-/*
-추가해야할 기능
-프리팹을 전역변수로 선언해야되나? -> 중요
-CreateFactory 에서 지역변수로 선언해야하나?
-*/
-#endregion
-
-public class FactoryManager : MonoBehaviour
+public class FactoryManager
 {
     bool isCreate = false;
     private GameObject _gPrefab;
-    private Queue<GameObject> quePool = new Queue<GameObject>();
-    void Start()
-    {
-        Init();
-    }
-    // 이니셜라이즈
-    public void Init()
-    {
-        _gPrefab = null;
-        quePool.Clear();
-    }
-    // 메모리풀 생성
-    public void CreateFactory(string sPath, int nSize)
+    private GameObject[] _gPrefabs;
+
+    public List<GameObject> listPool = new List<GameObject>();
+
+    // 메모리풀 생성 Resources/ 이 다음 경로 + 파일명 넣어주기
+    public void CreateFactory(string sPrefabPathPrefabName, int nSize)
     {
         if (isCreate == true)
         {
@@ -57,48 +19,181 @@ public class FactoryManager : MonoBehaviour
             return;
         }
         isCreate = true;
-        _gPrefab = Resources.Load<GameObject>(sPath);
-        for (int i = 0; i < nSize; i++)
-        {
-            CreateObject(_gPrefab);
-        }
+        _gPrefab = Resources.Load<GameObject>(sPrefabPathPrefabName);
+        CreateObject(_gPrefab, nSize);
     }
-    private GameObject CreateObject(GameObject gPrefab)
+    // 메모리풀 생성 배열로 받아서 하나씩
+    public void CreateFactory(string sFolderPath)
     {
-        GameObject gNewObj = Instantiate(gPrefab, transform);
-        quePool.Enqueue(gNewObj);
-        gNewObj.SetActive(false);
-        return gNewObj;
+        if (isCreate == true)
+        {
+            Debug.Log("이미 존재합니다.");
+            return;
+        }
+        isCreate = true;
+        _gPrefabs = Resources.LoadAll<GameObject>(sFolderPath);
+        CreateObject(_gPrefabs);
     }
     // 메모리풀 소멸
     // 할당된 리스트 소멸해주는 함수
     public void DeCreatePool()
     {
         isCreate = false;
-        quePool.Clear();
-        quePool = null;
+        foreach(GameObject obj in listPool)
+        {
+            MonoBehaviour.Destroy(obj);
+        }
+        listPool.Clear();
     }
-    // 오브젝트 Queue에서 꺼내오기
+    // 오브젝트 하나만 생성
+    public GameObject CreateObject(GameObject gPrefab)
+    {
+        if(gPrefab == null)
+        {
+            Debug.LogError("게임오브젝트가 없습니다.");
+            return null;
+        }
+        _gPrefab = gPrefab;
+        GameObject gNewObj = GameObject.Instantiate(gPrefab, GameManager.instance.gameObject.transform.GetChild(0));
+        gNewObj.name = gNewObj.name.Replace("(Clone)", "").Trim();
+        listPool.Add(gNewObj);
+        gNewObj.SetActive(false);
+        return gNewObj;
+    }
+    // 오브젝트 사이즈 받아서 여러개 생성
+    public void CreateObject(GameObject gPrefab, int nSize)
+    {
+        if (gPrefab == null)
+        {
+            Debug.LogError("게임오브젝트가 없습니다.");
+        }
+        for (int i = 0; i < nSize; i++)
+        {
+            CreateObject(gPrefab);
+        }
+    }
+    // 경로 받아서 오브젝트 추가하기
+    public void CreateObject(string sPrefabPathPrefabName, int nSize)
+    {
+        GameObject gPrefab = Resources.Load<GameObject>(sPrefabPathPrefabName);
+        if (gPrefab == null)
+        {
+            Debug.LogError("게임오브젝트가 없습니다.");
+        }
+        for (int i = 0; i < nSize; i++)
+        {
+            CreateObject(gPrefab);
+        }
+    }
+    // 오브젝트 배열을 받아서 하나씩 생성
+    public void CreateObject(GameObject[] gPrefabs)
+    {
+        _gPrefabs = gPrefabs;
+        if (gPrefabs == null)
+        {
+            Debug.LogError("게임오브젝트가 없습니다.");
+        }
+        foreach (GameObject gPrefab in gPrefabs)
+        {
+            CreateObject(gPrefab);
+           
+        }
+    }
+    public void CreateObject(string sPrefabPath)
+    {
+        GameObject[] gPrefabs = Resources.LoadAll<GameObject>(sPrefabPath);
+        _gPrefabs = gPrefabs;
+        if (gPrefabs == null)
+        {
+            Debug.LogError("게임오브젝트가 없습니다.");
+        }
+        foreach (GameObject gPrefab in gPrefabs)
+        {
+            CreateObject(gPrefab);
+
+        }
+    }
+    // 자신의 프리팹 배열에서 해당 번호의 프리팹 생성
+    public void CreateObject(int nPrefabNum)
+    {
+        if (_gPrefabs == null)
+        {
+            Debug.LogError("프리팹 리스트가 존재하지 않습니다.");
+            return;
+        }
+        CreateObject(_gPrefabs[nPrefabNum]);
+    }
+    // 오브젝트 리스트 맨뒤에서 하나씩 꺼내오기
     public GameObject GetObject()
     {
-        if(quePool.Count > 0)
+        
+        if(listPool.Count > 0)
         {
-            GameObject gObjInPool = quePool.Dequeue();
-            gObjInPool.SetActive(true);
+            GameObject gObjInPool = listPool[^1];
+            listPool.RemoveAt(listPool.Count - 1);
             return gObjInPool;
         }
         else
         {
             GameObject gNewObj = CreateObject(_gPrefab);
-            Debug.Assert(gNewObj != null, "팩토리 먼저 만들기");
-            gNewObj.SetActive(true);
             return gNewObj;
         }
     }
-    // 오브젝트 Queue 안으로 넣어주기
+    // 리스트 다빼오기
+    public List<GameObject> GetObjectAll()
+    {
+        if(listPool.Count <= 0)
+        {
+            Debug.LogError("리스트가 비어있습니다.");
+            return null;
+        }
+        List<GameObject> listTemp = null;
+        foreach(GameObject gObj in listPool)
+        {
+            listTemp.Add(gObj);
+            listPool.Remove(gObj);
+        }
+        return listTemp;
+    }
+    // 원하는 리스트 번호 뽑기
+    public GameObject GetObject(int nListNum)
+    {
+        if (listPool[nListNum] != null)
+        {
+            GameObject gObjInPool = listPool[nListNum];
+            listPool.RemoveAt(nListNum);
+            return gObjInPool;
+        }
+        else
+        {
+            Debug.LogError("해당 번호의 오브젝트가 존재하지 않습니다.");
+            return null;
+        }
+    }
+    // 리스트 원하는 갯수 빼오기
+    public List<GameObject> GetObjects(int nSize)
+    {
+        if(listPool.Count < nSize)
+        {
+            Debug.Log("리스트의 남은 갯수가 더 적습니다.");
+            return null;
+        }
+        List<GameObject> listTemp = null;
+        for(int i = listPool.Count; i > listPool.Count - nSize; i--)
+        {
+            listTemp.Add(listPool[i]);
+            listPool.RemoveAt(i);
+        }
+        return listTemp;
+    }
+
+    // 오브젝트 리스트 안으로 넣어주기
     public void SetObject(GameObject gObj)
     {
         gObj.SetActive(false);
-        quePool.Enqueue(gObj);
+        listPool.Add(gObj);
     }
+
+
+   
 }
