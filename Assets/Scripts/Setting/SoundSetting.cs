@@ -54,4 +54,19 @@ public class SoundSetting : MonoBehaviour
     {
         AudioManager.instance.SetEffectVolume(fValue);
     }
+    public void MuteMasterVolume()
+    {
+        AudioManager.instance.SetMasterVolume(0);
+        Init();
+    }
+    public void MuteBackgroundVolume()
+    {
+        AudioManager.instance.SetMasterVolume(0);
+        Init();
+    }
+    public void MuteEffectVolume()
+    {
+        AudioManager.instance.SetMasterVolume(0);
+        Init();
+    }
 }

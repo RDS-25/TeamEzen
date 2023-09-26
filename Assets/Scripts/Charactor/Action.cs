@@ -120,7 +120,8 @@ public class Action : MonoBehaviour
         */
         fhori = MoveJoystick.Horizontal;
         fverti = MoveJoystick.Vertical;
-
+        Debug.Log(MoveJoystick.Horizontal);
+        Debug.Log(MoveJoystick.Vertical);
         Vmove = new Vector3(fhori, 0, fverti).normalized;
 
 
