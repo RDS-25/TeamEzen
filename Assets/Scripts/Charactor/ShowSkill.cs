@@ -100,10 +100,13 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
         else if (action.motion == Action.Motion.Action)
         {
             Vector3 targetPosition = obj.transform.position + joystickDirection;
-            
+
+            float aa  = Vector3.Distance(obj.transform.position,gRangeIndicator.transform.position);
+           
             obj.transform.LookAt(targetPosition);
 
-            ACTIVESKILL.GetComponent<Skill>().SkillTriger(gRangeIndicator.transform.position);//Camera.main.WorldToScreenPoint(gRangeIndicator.transform.position));
+            ACTIVESKILL.GetComponent<Skill>().SkillTriger(gRangeIndicator.transform.position) ;
+
             action.motion = Action.Motion.Idle;
 
         }
@@ -155,6 +158,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
             gRangeIndicator.transform.localScale = new Vector3(range, 0.01f, range);
             gRangeIndicator.transform.position = obj.transform.position + new Vector3(0,0.31f,0) +  lastJoystickDirection  * maxRange/2;
+            Debug.Log("드래그 다운에서의 포지션"+ gRangeIndicator.transform.position);
 
             if (action.bIsCancel)
             {
