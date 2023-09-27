@@ -60,7 +60,8 @@ public class SkillLevelUpUi : MonoBehaviour
     {
         currentLevel.text = "Lv. " + dictSelectedSkillParams[SkillID.LEVEL];
         nextLevel.text = "Lv. " + (float.Parse(dictSelectedSkillParams[SkillID.LEVEL]) + 1);
-        //skillImamge.sprite = GameManager.instance.LoadAndSetSprite(dictSelectedSkillParams[SkillID.ICON_PATH]);
+        skillImamge.sprite = GameManager.instance.LoadAndSetSprite
+            (FolderPath.SPRITE_SKILL_ICON + dictSelectedSkillParams[SkillID.ICON_NAME]);
         skillName.text = dictSelectedSkillParams[SkillID.NAME];
         skillDescription.text = dictSelectedSkillParams[SkillID.DESCRIPT];
 
@@ -72,13 +73,15 @@ public class SkillLevelUpUi : MonoBehaviour
             if(skills.GetComponent<Skill>().fId.ToString() == dictSelectedSkillParams[SkillID.ID])
             {
                 var skillScript = skills.GetComponent<Skill>();
-                if(skillScript.fSkillLevel <= 10)
+                if(skillScript.fSkillLevel < 10)
                 {
                     skillScript.SkillActivationInit(ref skillPanelUi.curCharStat);
                     skillScript.SkillLevelUp();
-                    dictSelectedSkillParams = GameManager.instance.DataRead(skillScript.strSkillFolderPath + skillScript.strSkillParamsName);
+                    //dictSelectedSkillParams = GameManager.instance.DataRead(skillScript.strSkillFolderPath + skillScript.strSkillParamsName);
                     ShowSkillData();
                     skillPanelUi.ShowSkill();
+                    if(skillScript.fSkillLevel == 10)
+                        nextLevel.text = "Max";
                 }
             }
         }

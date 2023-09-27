@@ -28,7 +28,7 @@ public class CommonSkill_01 : AttackType
     {
         fCharToUse = -1;
         fSkillLevel = 1;
-        fId = 202;
+        fId = 500;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharArActive01.png";
