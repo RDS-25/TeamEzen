@@ -12,6 +12,10 @@ public class ActiveSkillChangeUi : MonoBehaviour
 
     private void OnEnable()
     {
+        slotManager.SetSlot(GameManager.instance.objectFactory.SelectingSkillSlotFactory.listPool,
+            GameManager.instance.objectFactory.SelectingSkillObjectFactory.listPool,
+            gSlots,
+            SlotManager.OBJECT_TYPE.SKILL);
         SlotManager.OnSkillChange += ChangeSkill;
         List<GameObject> SelectingSKill = GameManager.instance.objectFactory.SelectingSkillObjectFactory.listPool;
         List<GameObject> SelectingSKillSlot = GameManager.instance.objectFactory.SelectingSkillSlotFactory.listPool;
@@ -33,15 +37,19 @@ public class ActiveSkillChangeUi : MonoBehaviour
 
     void Start()
     {
-        slotManager.SetSlot(GameManager.instance.objectFactory.SelectingSkillSlotFactory.listPool,
-                    GameManager.instance.objectFactory.SelectingSkillObjectFactory.listPool,
-                    gSlots,
-                    SlotManager.OBJECT_TYPE.SKILL);
+
     }
     void ChangeSkill(int index)
     {
-        Debug.Log(index);
-        skillPanelUi.curCharStat.fActiveSkill = GameManager.instance.objectFactory.SelectingSkillObjectFactory.listPool[index].GetComponent<Skill>().fId;
+        foreach(GameObject skill in GameManager.instance.objectFactory.SelectingSkillObjectFactory.listPool)
+        {
+            float skillid = skill.GetComponent<Skill>().fId;
+            if (skillid.ToString() == slotManager.SlotButtons[index].name)
+            {
+                skillPanelUi.curCharStat.fActiveSkill = skillid;
+                break;
+            }
+        }
         skillUiManager.ButtonToSkillPanelBack();
         skillPanelUi.ShowSkill();
     }

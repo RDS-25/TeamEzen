@@ -81,6 +81,7 @@ public class SlotManager : MonoBehaviour
             for (int i = 0; i < slotObjects.Count; i++)
             {
                 slotObjects[i].transform.parent = Slots;
+                slotObjects[i].name = allObjList[i].GetComponent<Skill>().fId.ToString();
                 slotObjects[i].transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite
                     = GameManager.instance.LoadAndSetSprite
                         (FolderPath.SPRITE_SKILL_ICON + allObjList[i].GetComponent<Skill>().strIconName);

@@ -48,7 +48,7 @@ public class CharAr_Active_01 : AttackType
     {
         fCharToUse = 1;
         fSkillLevel = 1;
-        fId = 210;
+        fId = 200;
         strName = "ACTIVE01010101";
         strDiscription = "ACTIVE010150";
         strIconName = "CharArActive01.png";

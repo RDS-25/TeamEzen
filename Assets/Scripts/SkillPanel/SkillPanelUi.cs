@@ -71,6 +71,7 @@ public class SkillPanelUi : MonoBehaviour
         fUltimateSkillId = curCharStat.fUltimateSkill;
         dictPassive = GameManager.instance.DataReadAll(FolderPath.PARAMS_PASSIVE_SKILL);
         dictActive = GameManager.instance.DataReadAll(FolderPath.PARAMS_ACTIVE_SKILL);
+        dictActive.AddRange(GameManager.instance.DataReadAll(FolderPath.PARAMS_COMMON_SKILL));
         dictBasic = GameManager.instance.DataReadAll(FolderPath.PARAMS_BASIC_SKILL);
         dictUlt = GameManager.instance.DataReadAll(FolderPath.PARAMS_ULTIMATE_SKILL);
 

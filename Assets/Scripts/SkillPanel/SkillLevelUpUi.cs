@@ -73,13 +73,15 @@ public class SkillLevelUpUi : MonoBehaviour
             if(skills.GetComponent<Skill>().fId.ToString() == dictSelectedSkillParams[SkillID.ID])
             {
                 var skillScript = skills.GetComponent<Skill>();
-                if(skillScript.fSkillLevel <= 10)
+                if(skillScript.fSkillLevel < 10)
                 {
                     skillScript.SkillActivationInit(ref skillPanelUi.curCharStat);
                     skillScript.SkillLevelUp();
-                    dictSelectedSkillParams = GameManager.instance.DataRead(skillScript.strSkillFolderPath + skillScript.strSkillParamsName);
+                    //dictSelectedSkillParams = GameManager.instance.DataRead(skillScript.strSkillFolderPath + skillScript.strSkillParamsName);
                     ShowSkillData();
                     skillPanelUi.ShowSkill();
+                    if(skillScript.fSkillLevel == 10)
+                        nextLevel.text = "Max";
                 }
             }
         }
