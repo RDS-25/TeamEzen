@@ -6,20 +6,48 @@ using UnityEngine.EventSystems;
 public class OnClickSkills : MonoBehaviour
 {
 
+	public List<GameObject> BtnSKills;
+
 	public void ClickSkills() {
-
 		GameObject Skill = EventSystem.current.currentSelectedGameObject;
-		var a = Skill.GetComponent<SkillTest>();
-		a.targetCircle.enabled = true;
-		a.indicatorRangeCircle.enabled = true;
+		var scSKill = Skill.GetComponent<SkillTest>();
 
-		//4.5f는 기존 원이미지가 4.5칸이어서 1로 만들어 주기위해, 3은 캐릭터사이즈만큼 증가 
-		Vector2 abc = a.indicatorRangeCircle.GetComponent<RectTransform>().sizeDelta;
-		float x = abc.x / 4.5f * 3f;
-		float y = abc.y / 4.5f * 3f;
-		float maxDistacne = a.maxActiveSkillDistance;
-		float targetSize = a.targetCircleSize;
-		a.indicatorRangeCircle.GetComponent<RectTransform>().sizeDelta = new Vector2(maxDistacne*3f ,  maxDistacne*3f);
 
+		if (scSKill.sKillType == SkillTest.SKillType.Ranged) {
+			
+			scSKill.targetCircle.enabled = true;
+			scSKill.indicatorRangeCircle.enabled = true;
+			//범위 표시기 크기 지정 
+			float maxDistacne = scSKill.maxActiveSkillDistance * 2f;
+			//스킬 범위 크기 지정
+			float targetSize = scSKill.targetCircleSize * 2f;
+
+			scSKill.indicatorRangeCircle.GetComponent<RectTransform>().sizeDelta = new Vector2(maxDistacne, maxDistacne);
+			scSKill.targetCircle.GetComponent<RectTransform>().sizeDelta = new Vector2(targetSize, targetSize);
+
+		}else if (scSKill.sKillType == SkillTest.SKillType.Arrow)
+		{
+			
+			scSKill.ABCImage.enabled = true;
+		}
+
+
+		foreach (GameObject btn in BtnSKills) {
+			if (btn != Skill )
+			{
+				btn.GetComponent<SkillTest>().enabled = false;
+
+				if (btn.GetComponent<SkillTest>().sKillType == SkillTest.SKillType.Ranged) {
+					btn.GetComponent<SkillTest>().ABCImage.enabled = false;
+				}
+				else if (btn.GetComponent<SkillTest>().sKillType == SkillTest.SKillType.Arrow)
+				{
+					btn.GetComponent<SkillTest>().ABCImage.enabled = true;
+					btn.GetComponent<SkillTest>().targetCircle.enabled = false;
+					btn.GetComponent<SkillTest>().indicatorRangeCircle.enabled = false;
+				}
+			}
+		
+		}
 	}
 }
