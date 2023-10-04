@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,IDragHandler
 {
     public enum SKILLTYPE
@@ -28,7 +29,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
     Action action;
     Stat stat;
 
-    Transform Pos;
+
 	private void Start()
 	{
         action = GetComponentInParent<Action>();
@@ -53,11 +54,6 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
         Debug.Log(ACTIVESKILL);*/
         //GameManager.instance.objectFactory.AllSkill.listPool;
      
-    }
-	private void OnEnable()
-	{
-       
-      
     }
 
     void OwnSkills()
@@ -99,21 +95,23 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
             action.motion = Action.Motion.Idle;
             action.bIsCancel = false;
             /*이 위치에 스킬 실행 취소*/
+            Debug.Log("취소");
         }
         else if (action.motion == Action.Motion.Action)
         {
             Vector3 targetPosition = obj.transform.position + joystickDirection;
+
+            float aa  = Vector3.Distance(obj.transform.position,gRangeIndicator.transform.position);
+           
             obj.transform.LookAt(targetPosition);
-            ACTIVESKILL.SetActive(true);
+
+            ACTIVESKILL.GetComponent<Skill>().SkillTriger(gRangeIndicator.transform.position) ;
+
             action.motion = Action.Motion.Idle;
 
         }
     }
-    public void TestSC() {
-      
-        ACTIVESKILL.GetComponent<Skill>().SkillTriger(Pos);
 
-    }
     
 	public void OnDrag(PointerEventData eventData)
 	{
@@ -160,7 +158,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
             gRangeIndicator.transform.localScale = new Vector3(range, 0.01f, range);
             gRangeIndicator.transform.position = obj.transform.position + new Vector3(0,0.31f,0) +  lastJoystickDirection  * maxRange/2;
-
+            Debug.Log("드래그 다운에서의 포지션"+ gRangeIndicator.transform.position);
 
             if (action.bIsCancel)
             {

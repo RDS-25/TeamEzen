@@ -53,12 +53,13 @@ public class Action : MonoBehaviour
 
         //현재 캐릭터 스킬 
         for (int i = 0; i < GameManager.instance.objectFactory.AllSkill.listPool.Count;i++) {
-            
+			if (GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fCharToUse == stat.fId)
+			{
+                GameManager.instance.objectFactory.AllSkill.listPool[i].SetActive(true);
+
+            }
         }
-        GameManager.instance.objectFactory.AllSkill.listPool[0].SetActive(true);//active
-        GameManager.instance.objectFactory.AllSkill.listPool[8].SetActive(true); //basic
-        GameManager.instance.objectFactory.AllSkill.listPool[20].SetActive(true); //passive
-        GameManager.instance.objectFactory.AllSkill.listPool[24].SetActive(true); //ultimate
+       
 
         //캐릭터 2
 
@@ -123,8 +124,7 @@ public class Action : MonoBehaviour
         */
         fhori = MoveJoystick.Horizontal;
         fverti = MoveJoystick.Vertical;
-        Debug.Log(MoveJoystick.Horizontal);
-        Debug.Log(MoveJoystick.Vertical);
+    
         Vmove = new Vector3(fhori, 0, fverti).normalized;
 
 
