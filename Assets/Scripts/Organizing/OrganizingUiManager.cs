@@ -28,7 +28,6 @@ public class OrganizingUiManager : MonoBehaviour
     }
     void Start()
     {
-        gOranaizngPanel.SetActive(false);
         for(int i = 0; i < buttons.Length; i++)
         {
             if(GameManager.instance.arrCurCharacters[i] !=null)

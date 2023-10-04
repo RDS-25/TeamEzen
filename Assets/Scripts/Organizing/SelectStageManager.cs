@@ -26,6 +26,7 @@ public class SelectStageManager : MonoBehaviour
     }
     void OnClickButton(int index)
     {
+        Debug.Log("스테이지 버튼 " + index);
         nStageNum = index;
         GameManager.instance.stageType = (StageParams.STAGE_TYPE)nStageNum;
         gOrganizingPanel.SetActive(true);
