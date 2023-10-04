@@ -159,7 +159,7 @@ public class FieldofView3D : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, dir, out hit, viewRadius, obstacleMask))
         {
-            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("VisibleObstacle"));
+            //if (hit.collider.gameObject.layer != LayerMask.NameToLayer("VisibleObstacle"));
             //hit.collider.gameObject.layer = LayerMask.NameToLayer("VisibleObstacle");
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
         }
@@ -237,7 +237,7 @@ public class FieldofView3D : MonoBehaviour
         if (StageManager.Instance.player != null)
         { 
             trPlayer = StageManager.Instance.player.transform;
-            transform.position = trPlayer.position;
+            transform.position = trPlayer.position + Vector3.up*0.5f;
         }
         else
             trPlayer = GameObject.FindWithTag("PLAYER").transform;
@@ -248,7 +248,7 @@ public class FieldofView3D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = trPlayer.position;
+        transform.position = trPlayer.position + Vector3.up * 0.5f;
         DrawFieldofView();
     }
 }

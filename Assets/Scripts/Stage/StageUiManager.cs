@@ -41,7 +41,12 @@ public class StageUiManager : MonoBehaviour
             charactor.GetComponent<Action>().UIGroup.SetActive(false);
         }
         GameManager.instance.objectFactory.SlotInit();
+        Time.timeScale = 1.0f;
         LoadingSceneManager.LoadScene("LobbyScene");
+    }
+    public void OnChangeCharactorBtnClicked()
+    {
+        StageManager.Instance.ChangeCurrentCharactor();
     }
 
     //public void OnStageClearBtnClicked()
