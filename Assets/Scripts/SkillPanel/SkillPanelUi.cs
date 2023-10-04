@@ -45,10 +45,42 @@ public class SkillPanelUi : MonoBehaviour
     public Dictionary<string, string> dictCurBasic = new();
     public Dictionary<string, string> dictCurUlt = new();
 
+    public SkillLevelUpUi skillLevelUpUi;
+    public List<Button> listButtons = new();
+
     void Start()
     {
         charactorUIManager = GameObject.Find("CharManager").GetComponent<SelectCharactorUIManager>();
         Init();
+        for (int i = 0; i < listButtons.Count; i++)
+        {
+            int buttonIndex = i;
+            listButtons[i].onClick.AddListener(() => OnClickButton(buttonIndex));
+        }
+    }
+    void OnClickButton(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                skillLevelUpUi.SetDictSkillParams(dictCurPassive);
+                skillLevelUpUi.ShowSkillData();
+                break;
+            case 1:
+                skillLevelUpUi.SetDictSkillParams(dictCurBasic);
+                skillLevelUpUi.ShowSkillData();
+                break;
+            case 2:
+                skillLevelUpUi.SetDictSkillParams(dictCurActive);
+                skillLevelUpUi.ShowSkillData();
+                break;
+            case 3:
+                skillLevelUpUi.SetDictSkillParams(dictCurUlt);
+                skillLevelUpUi.ShowSkillData();
+                break;
+            default:
+                break;
+        }
     }
     void Init()
     {

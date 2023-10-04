@@ -43,7 +43,7 @@ public class ShowStat : MonoBehaviour
 
         for (int i = 0; i < Statlist.Count; i++)
         {
-            Statlist[i].text = Statlist[i].name + ":" + curDic[Statlist[i].name];
+            Statlist[i].text = curDic[Statlist[i].gameObject.name];
         }
 
     }

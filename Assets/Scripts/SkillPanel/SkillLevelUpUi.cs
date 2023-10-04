@@ -16,68 +16,68 @@ public class SkillLevelUpUi : MonoBehaviour
     public Dictionary<float, float> dictMatExp = new();
     Dictionary<string, string> dictItemCount = new();
 
-    public List<Button> listButtons = new();
     public List<Button> listMatButtons = new();
     public SkillPanelUi skillPanelUi;
     Dictionary<string, string> dictSelectedSkillParams = new();
     // Start is called before the first frame update
+    private void OnEnable()
+    {
+        dictItemCount = GameManager.instance.DataRead(FolderPath.PARAMS_ITEM_COUNT + FileName.STR_JSON_INVEN_SAVE);
+
+        for (int i = 0; i < listMatButtons.Count; i++)
+        {
+            if (!dictMatExp.ContainsKey(i + 300))
+                dictMatExp.Add(i + 300, 0);
+            listMatButtons[i].transform.GetChild(1).GetComponent<TMP_Text>().text
+                = dictMatExp[i + 300] + "/" + dictItemCount[(i + 300).ToString()];
+        }
+    }
+    private void OnDisable()
+    {
+        dictMatExp.Clear();
+    }
     void Start()
     {
-        dictItemCount = GameManager.instance.DataRead(FolderPath.PARAMS_ITEM_COUNT);
-
-        for (int i = 0; i < listButtons.Count; i++)
+        for (int i = 0; i < listMatButtons.Count; i++)
         {
             int buttonIndex = i;
-            listButtons[i].onClick.AddListener(() => OnClickButton(buttonIndex));
+            listMatButtons[i].onClick.AddListener(() => OnClickMatExpButton(buttonIndex));
         }
-        for (int i = 0; i < listButtons.Count; i++)
+        int fNum = 0;
+        foreach(GameObject items in GameManager.instance.objectFactory.ItemObjectFactory.listPool)
         {
-            int buttonIndex = i;
-            listButtons[i].onClick.AddListener(() => OnClickMatExpButton(buttonIndex));
+            UiCellView uiCellView = items.GetComponent<UiCellView>();
+            if(uiCellView.ID == fNum + 300)
+            {
+                listMatButtons[fNum].GetComponent<Image>().sprite
+                    = GameManager.instance.LoadAndSetSprite
+                    (FolderPath.SPRITE_ITEM_ICON + uiCellView.IMAGE_PATH);
+            }
         }
     }
     void Update()
     {
         // dictMatExp 여기에 들어있는 id 값을 가진 머테리얼 표시해주기
     }
-    void OnClickButton(int index)
-    {
-        switch (index)
-        {
-            case 0:
-                SetDictSkillParams(skillPanelUi.dictCurPassive);
-                ShowSkillData();
-                break;
-            case 1:
-                SetDictSkillParams(skillPanelUi.dictCurBasic);
-                ShowSkillData();
-                break;
-            case 2:
-                SetDictSkillParams(skillPanelUi.dictCurActive);
-                ShowSkillData();
-                break;
-            case 3:
-                SetDictSkillParams(skillPanelUi.dictCurUlt);
-                ShowSkillData();
-                break;
-            default:
-                break;
-        }
-    }
+
     void OnClickMatExpButton(int index)
     {
         // 선택한 재료 딕셔너리에 개수 저장
         index += 300;
-        if (!dictMatExp.ContainsKey(index))
-            dictMatExp.Add(index, 0);
+        if(dictItemCount[index.ToString()] == "0")
+        {
+            return;
+        }
+        listMatButtons[index].transform.GetChild(1).GetComponent<TMP_Text>().text
+                = dictMatExp[index] + "/" + dictItemCount[index.ToString()];
         dictMatExp[index] += 1;
     }
 
-    void SetDictSkillParams(Dictionary<string,string> dictTemp)
+    public void SetDictSkillParams(Dictionary<string,string> dictTemp)
     {
         dictSelectedSkillParams = dictTemp;
     }
-    void ShowSkillData()
+    public void ShowSkillData()
     {
         currentLevel.text = "Lv. " + dictSelectedSkillParams[SkillID.LEVEL];
         nextLevel.text = "Lv. " + (float.Parse(dictSelectedSkillParams[SkillID.LEVEL]) + 1);

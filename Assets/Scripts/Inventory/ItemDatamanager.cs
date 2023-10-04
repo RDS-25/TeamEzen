@@ -50,6 +50,7 @@ public class ItemDatamanager : MonoBehaviour
         // 슬롯 getchild 해서 텍스트에 개수 표시해주기>>슬롯에 표시된 아이템 순번과 정보담긴 프리팹의 순번이 같음
         CountSetUp();        
         GetComponent<SlotManager>().SetButtonClickedEvent();
+        gameObject.SetActive(false);
     }
    
     public void InitInven()
