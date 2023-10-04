@@ -18,6 +18,7 @@ public class Skill: SkillParams
     protected float PLUS_TARGET_COUNT = 0f;
     protected float PLUS_ATTACK_COUNT = 0f;
     protected Stat ChaStat;
+    public GameObject EffectPrefab;
 
     public void SkillActivationInit(ref Stat activeObjectStat)//스킬 장착할때 불러달라고 말하기
     {
@@ -75,12 +76,13 @@ public class Skill: SkillParams
         fTargetCount = 1;
         fAttackCount = 1;
         fBulletCount = 1;
+        fSpeed = 100;
         checkLevel = 1000;
     }
     //팩토리 매니저와  총알 위치 찾아서  넣기 
     public virtual void ShotEffect(Vector3 Bulletpos)
     {
-        
+        SkillTriger();
     }
 
     protected void SaveParams()//스킬 파라미터 적용
@@ -117,6 +119,7 @@ public class Skill: SkillParams
         dictTemp.Add("fTargetCount", fTargetCount.ToString());
         dictTemp.Add("fAttackCount", fAttackCount.ToString());
         dictTemp.Add("fBulletCount", fBulletCount.ToString());
+        dictTemp.Add("fSpeed", fSpeed.ToString());
         dictTemp.Add("bisUnlockSkill", bisUnlockSkill.ToString());
         dictTemp.Add("bisCanUse", bisCanUse.ToString());
         dictTemp.Add("bisActtivate", bisActtivate.ToString());
@@ -158,6 +161,7 @@ public class Skill: SkillParams
         fMagnification = float.Parse(dictTemp["fMagnification"]);
         fTargetCount = float.Parse(dictTemp["fTargetCount"]);
         fAttackCount = float.Parse(dictTemp["fAttackCount"]);
+        fSpeed = float.Parse(dictTemp["fSpeed"]);
         fBuffDuration = float.Parse(dictTemp["fBulletCount"]);
         bisUnlockSkill = Convert.ToBoolean(dictTemp["bisUnlockSkill"]);
         bisCanUse = Convert.ToBoolean(dictTemp["bisCanUse"]);
@@ -190,8 +194,18 @@ public class Skill: SkillParams
     public virtual void SkillTriger()//스킬 발동(단발형)
     {//애니메이션, 효과음, 투사체발사, 범위내 대미지주기, 
         Debug.Log("x투사체 발사 ");
-        
-                       
+
+        if (bisCanUse == true || bisActtivate == false)
+        {
+            bisCanUse = false;
+
+            bisActtivate = true;
+
+            fTimer = 0f;
+
+            StartCoroutine(SkillCoolDown());
+        }
+
     }
     
     public virtual void SkillExpUp(float exp)
@@ -229,11 +243,14 @@ public class Skill: SkillParams
     }
     public virtual IEnumerator SkillCoolDown()
     {
-        yield return new WaitForSeconds(fCoolTime);
+        yield return new WaitForSeconds(fCoolTime*fSkillCoolReduce);
         bisCanUse = true;
         bisActtivate = false;
     }
-
+    public void LoadEffect()
+    {
+        EffectPrefab = Resources.Load<GameObject>(strEffectPath + strEffectName);
+    }
 
 
 }

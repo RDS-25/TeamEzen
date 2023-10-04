@@ -17,6 +17,7 @@ public class CharHg_Passive : BuffType
         SetType();
         LevelUpValue();
         InitParams();
+        CharaterStatUp(ref ChaStat.fMoveSpeed, ref ChaStat.fAtkSpeed);
     }
     public override void SetType()
     {
@@ -36,8 +37,8 @@ public class CharHg_Passive : BuffType
         fSkillRequireExp = 100;
         fUnlockLevel = 1;
         fUnlockHidenLevel = 20;
-        fValue = 10;
-        fHidenValue = 10;
+        fValue = 1.2f;
+        fHidenValue = 1.2f;
         fMagnification = 10;
         bisUnlockSkill = false;
         bisUnlockHiden = false;

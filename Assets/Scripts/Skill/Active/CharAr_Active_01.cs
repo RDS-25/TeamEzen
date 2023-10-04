@@ -32,11 +32,11 @@ public class CharAr_Active_01 : AttackType
 
     //지우고 스킬 스크립트에
     public override void ShotEffect(Vector3 pos)
-	{
+	{       
         GameObject aa = GameManager.instance.objectFactory.CharARActive01EffectFactory.GetObject();
         aa.SetActive(true);
         aa.transform.position = pos;
-        Debug.Log("fdsf");
+        Debug.Log("fdsf");        
     }
 
 	public override void SetType()

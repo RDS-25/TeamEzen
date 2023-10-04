@@ -33,6 +33,7 @@ public class SkillID
     public const string TARGET_COUNT        = "fTargetCount";
     public const string ATTACK_COUNT        = "fAttackCount";
     public const string BULLET_COUNT        = "fBulletCount";
+    public const string SPEED               = "fSpeed";
     public const string UNLOCK_SKILL        = "bisUnlockSkill";
     public const string CAN_USE             = "bisCanUse";
     public const string ACTTIVATE           = "bisActtivate";

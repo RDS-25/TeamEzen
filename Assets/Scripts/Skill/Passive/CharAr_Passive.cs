@@ -18,6 +18,7 @@ public class CharAr_Passive : BuffType
         SetType();
         LevelUpValue();
         InitParams();
+        CharaterStatUp(ref ChaStat.fAtk,ref ChaStat.fCriticalPer);
     }
     public override void SetType()
     {

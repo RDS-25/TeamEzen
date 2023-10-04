@@ -34,6 +34,8 @@ public class ObjectFactory
     public FactoryManager AllSkill = new FactoryManager();
     public FactoryManager SelectingSkillObjectFactory = new FactoryManager();
 
+    public FactoryManager BulletFactory = new FactoryManager();
+
     public FactoryManager CharARBasicEffectFactory = new FactoryManager();
     public FactoryManager CharSRBasicEffectFactory = new FactoryManager();
     public FactoryManager CharHGBasicEffectFactory = new FactoryManager();
@@ -85,6 +87,7 @@ public class ObjectFactory
                             , SelectingSkillObjectFactory.listPool.Count);
         GimmickRoomInit();
         SkillEffectInit();
+        BulletFactory.CreateFactory("Prefabs/Bullets" + "Bullet1(1)",10);
     }
     public void SlotInit()
     {
