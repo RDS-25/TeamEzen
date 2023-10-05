@@ -7,6 +7,9 @@ TagManager:
   - Monster
   - Enemy
   - EnemyBullet
+  - GIMMICKROOM
+  - SubCarmera
+  - Button
   layers:
   - Default
   - TransparentFX
