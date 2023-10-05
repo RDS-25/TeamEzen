@@ -9,14 +9,12 @@ public class CharSg_Ulti_Effect : SkillEffrct
     {
         charSg_Ulti = GameObject.FindObjectOfType<CharSg_Ulti>();
         myFactory(GameManager.instance.objectFactory.CharHGActive03EffectFactory);
-        fAttackCount = charSg_Ulti.fAttackCount;
-        fSpeed = charSg_Ulti.fSpeed;
-        fTargetCount = charSg_Ulti.fTargetCount;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckDistance(Firepiont, charSg_Ulti.fRange);
+ 
     }
 }

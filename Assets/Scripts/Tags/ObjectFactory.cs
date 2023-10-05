@@ -34,8 +34,7 @@ public class ObjectFactory
     public FactoryManager AllSkill = new FactoryManager();
     public FactoryManager SelectingSkillObjectFactory = new FactoryManager();
 
-    public FactoryManager BulletFactory = new FactoryManager();
-
+   
     public FactoryManager CharARBasicEffectFactory = new FactoryManager();
     public FactoryManager CharSRBasicEffectFactory = new FactoryManager();
     public FactoryManager CharHGBasicEffectFactory = new FactoryManager();
@@ -62,6 +61,40 @@ public class ObjectFactory
     public FactoryManager Common03EffectFactory = new FactoryManager();
     public FactoryManager Common04EffectFactory = new FactoryManager();
 
+    //√—æÀ
+    public FactoryManager BulletFactory = new FactoryManager();
+
+    public FactoryManager CharAr_Basic_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharHg_Basic_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharSg_Basic_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharSr_Basic_Bullet_Factory = new FactoryManager();
+
+
+    public FactoryManager CharAr_Active_01_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharAr_Active_02_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharAr_Active_03_Bullet_Factory = new FactoryManager();
+
+    public FactoryManager CharHg_Active_01_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharHg_Active_02_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharHg_Active_03_Bullet_Factory = new FactoryManager();
+
+    public FactoryManager CharSg_Active_01_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharSg_Active_02_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharSg_Active_03_Bullet_Factory = new FactoryManager();
+
+    public FactoryManager CharSr_Active_01_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharSr_Active_02_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharSr_Active_03_Bullet_Factory = new FactoryManager();
+
+    public FactoryManager Common_01_BulletFactory = new FactoryManager();
+    public FactoryManager Common_02_BulletFactory = new FactoryManager();
+    public FactoryManager Common_03_BulletFactory = new FactoryManager();
+    public FactoryManager Common_04_BulletFactory = new FactoryManager();
+
+
+
+
+
     // æ∆¿Ã≈€
     public FactoryManager ItemObjectFactory = new FactoryManager();
     public FactoryManager SetItemFactory = new FactoryManager();
@@ -87,7 +120,7 @@ public class ObjectFactory
                             , SelectingSkillObjectFactory.listPool.Count);
         GimmickRoomInit();
         SkillEffectInit();
-        BulletFactory.CreateFactory("Prefabs/Bullets" + "Bullet1(1)",10);
+        SkillBulletInit();        
     }
     public void SlotInit()
     {
@@ -166,5 +199,26 @@ public class ObjectFactory
         Common02EffectFactory.CreateObject(FolderPath.PREFABS_COMMON_EFFECT + PrefabName.STR_COMMON_02EFFECT, 5);
         Common03EffectFactory.CreateObject(FolderPath.PREFABS_COMMON_EFFECT + PrefabName.STR_COMMON_03EFFECT, 5);
         Common04EffectFactory.CreateObject(FolderPath.PREFABS_COMMON_EFFECT + PrefabName.STR_COMMON_04EFFECT, 5);
+    }
+    public void SkillBulletInit()
+    {
+        CharAr_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_01_BULLET, 5);
+        CharAr_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_02_BULLET, 5);
+        CharHg_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_HG_ACTIVE_01_BULLET, 5);
+        CharHg_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_HG_ACTIVE_02_BULLET, 5);
+        CharSg_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SG_ACTIVE_01_BULLET, 5);
+        CharSg_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SG_ACTIVE_02_BULLET, 5);
+        CharSr_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SR_ACTIVE_01_BULLET, 5);
+        CharSr_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SR_ACTIVE_02_BULLET, 5);
+        CharAr_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_AR_BASIC_BULLET, 5);
+        CharHg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_HG_BASIC_BULLET, 5);
+        CharSg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SG_BASIC_BULLET, 5);
+        CharSr_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SR_BASIC_BULLET, 5);
+        Common_01_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_01_BULLET, 5);
+        Common_02_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_02_BULLET, 5);
+        Common_03_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_03_BULLET, 5);
+        Common_04_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_04_BULLET, 5);
+
+
     }
 }

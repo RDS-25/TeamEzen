@@ -7,10 +7,16 @@ using System.IO;
 public class AttackType : Skill
 {
     public Transform FirePoint;
-    
+
 
     //스킬레벨업 변수들 스킬마다 써주기
-
+    public override void ShotEffect(Vector3 Bulletpos)
+    {
+        GameObject bullet = myFactory.GetObject();
+        bullet.transform.position = Bulletpos;
+        bullet.SetActive(true);        
+        SkillTriger();
+    }
 
     public override void SetType()
     {

@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
 
             ParticleSystem swpanparicle = Instantiate(particleSystem, collision.contacts[0].point, Quaternion.identity);
             swpanparicle.Play();
+           
             Destroy(swpanparicle.gameObject, swpanparicle.main.duration);
             //ÃÑ¾Ë
             Destroy(gameObject);

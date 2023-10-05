@@ -6,6 +6,7 @@ public class CommonSkill_01 : AttackType
 {
     private void OnDisable()
     {
+        myBulletFactory(GameManager.instance.objectFactory.Common_01_BulletFactory);
         strSkillFolderPath = FolderPath.PARAMS_COMMON_SKILL;
         strSkillParamsName = FileName.STR_JSON_COMMON1_PARAMS;
         PLUS_VAL = 10f;
@@ -32,8 +33,8 @@ public class CommonSkill_01 : AttackType
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharArActive01.png";
-        strEffectPath = FolderPath.PREFABS_COMMON_EFFECT;
-        strEffectName = FileName.STR_JSON_COMMON1_PARAMS;
+        strEffectPath = FolderPath.PREFABS_COMMON_BULLET;
+        strEffectName = PrefabName.STR_COMMON_01_BULLET;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;

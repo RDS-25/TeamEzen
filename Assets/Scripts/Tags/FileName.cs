@@ -83,7 +83,7 @@ public class FileName
     public const string STR_CHA_SR_ACTIVE_01_EFFECT = "CharSr_Active_01Effect";
     public const string STR_CHA_SR_ACTIVE_02_EFFECT = "CharSr_Active_02Effect";
     public const string STR_CHA_SR_ACTIVE_03_EFFECT = "CharSr_Active_03Effect";
-
+ 
     //public const string STR_CHAR_AR_ACTIVESKILL1=
 
 }

@@ -19,7 +19,12 @@ public class Skill: SkillParams
     protected float PLUS_ATTACK_COUNT = 0f;
     protected Stat ChaStat;
     public GameObject EffectPrefab;
+    protected FactoryManager myFactory;
 
+    public virtual void myBulletFactory(FactoryManager myFactoryManager)
+    {
+        myFactory = myFactoryManager;
+    }
     public void SkillActivationInit(ref Stat activeObjectStat)//스킬 장착할때 불러달라고 말하기
     {
         ChaStat = activeObjectStat;
@@ -82,7 +87,7 @@ public class Skill: SkillParams
     //팩토리 매니저와  총알 위치 찾아서  넣기 
     public virtual void ShotEffect(Vector3 Bulletpos)
     {
-        SkillTriger();
+        
     }
 
     protected void SaveParams()//스킬 파라미터 적용

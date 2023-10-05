@@ -11,6 +11,7 @@ public class CharAr_Active_02 : AttackType
 
     private void OnDisable()
     {
+        myBulletFactory(GameManager.instance.objectFactory.CharAr_Active_02_Bullet_Factory);
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARAR_ACTIVE_02_PARAMS;
         PLUS_VAL = 10f;
@@ -37,8 +38,8 @@ public class CharAr_Active_02 : AttackType
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharArActive02.png";
-        strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
-        strEffectName = FileName.STR_CHA_AR_ACTIVE_02_EFFECT;
+        strEffectPath = FolderPath.PREFABS_ACTIVE_BULLET;
+        strEffectName = PrefabName.STR_CHA_AR_ACTIVE_02_BULLET;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;
