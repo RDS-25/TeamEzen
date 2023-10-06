@@ -25,6 +25,10 @@ public class CharSr_Passive : BuffType
         skillType = "PASSIVE";
         enumSkillType = SkillType.PASSIVE;
     }
+    public override void CharaterStatUp(ref float stat1, ref float stat2)
+    {
+        base.CharaterStatUp(ref ChaStat.fCriticalPer, ref ChaStat.fCriticalDmg);
+    }
     public override void SetDefault()
     {
         fSkillLevel = 1;

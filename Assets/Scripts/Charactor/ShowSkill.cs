@@ -28,7 +28,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
     Vector3 joystickDirection;
     Action action;
     Stat stat;
-
+    
 
 	private void Start()
 	{
@@ -38,7 +38,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
         obj = GameObject.FindWithTag("Player");
         OwnSkills();
-       
+        
     }
     
 
@@ -96,13 +96,14 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
         }
         else if (action.motion == Action.Motion.Action)
         {
+            
             Vector3 targetPosition = obj.transform.position + joystickDirection;
 
             float aa  = Vector3.Distance(obj.transform.position,gRangeIndicator.transform.position);
            
             obj.transform.LookAt(targetPosition);
 
-            ACTIVESKILL.GetComponent<Skill>().SkillTriger();// gRangeIndicator.transform.position) ;
+            ACTIVESKILL.GetComponent<Skill>().SkillTriger(gRangeIndicator.transform.position);// gRangeIndicator.transform.position) ;
 
             action.motion = Action.Motion.Idle;
 

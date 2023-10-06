@@ -113,7 +113,6 @@ public class SkillBullet : MonoBehaviour
     }
     public virtual void CheckDistance()
     {
-
         float distance = Vector3.Distance(Firepiont, this.transform.position);
         //Debug.Log("ran" + range);
         //Debug.Log("dis" + distance);
