@@ -105,7 +105,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
            
             obj.transform.LookAt(targetPosition);
 
-            ACTIVESKILL.GetComponent<Skill>().SkillTriger(gRangeIndicator.transform.position) ;
+            ACTIVESKILL.GetComponent<Skill>().SkillTriger();// gRangeIndicator.transform.position) ;
 
             action.motion = Action.Motion.Idle;
 

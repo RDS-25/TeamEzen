@@ -199,7 +199,7 @@ public class Skill: SkillParams
         //추가기능
 
     }
-    public virtual void SkillTriger(Vector3 Pos)//스킬 발동(단발형)
+    public virtual void SkillTriger()//스킬 발동(단발형)
     {//애니메이션, 효과음, 투사체발사, 범위내 대미지주기, 
         Debug.Log("x투사체 발사 ");
 
@@ -258,12 +258,6 @@ public class Skill: SkillParams
         bisCanUse = true;
         bisActtivate = false;
     }
-    public void LoadEffect()
-    {
-        EffectPrefab = Resources.Load<GameObject>(strEffectPath + strEffectName);
-    }
-
-
 }
 /*public virtual void ActSkill(float characterstat, float value, float magnification,
        float attackcount, float tartgetcount, float fduration)//스킬작동(대미지형)
