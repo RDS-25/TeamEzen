@@ -28,18 +28,32 @@ public class TrapGimmick : Gimmick
     private bool bStart = false;
     string sInfo = "";
     private Image sImg;
-    private Transform tCanvas;
+    private GameObject tCanvas;
     private TextMeshProUGUI tName;
     private TextMeshProUGUI tInfo;
     MonoBehaviour mb;
+    private bool bClearCheck = false;
 
-    public void InitializeGimmick(MonoBehaviour mb, GameObject a, GameObject b)
+    public void InitializeGimmick(MonoBehaviour mb, GameObject Stroe, GameObject StoreUi, GameObject TrapUi)
     {
         this.mb = mb;
+        tCanvas = TrapUi;
         // GameObject 변수 받아오기
     }
+
+    public void UpdateGimmick()
+    {
+        if (bClearCheck)
+        {
+            //mb.gameObject.transform.parent.gameObject.SetActive(false);
+            RoomManager.nClearCount++;
+            bClearCheck = false;
+        }
+    }
+
     public void ActiveGimmick()
     {
+        Debug.Log("콜리더 엔터");
         if (!bStart)
         {
             bStart = true;
@@ -61,9 +75,9 @@ public class TrapGimmick : Gimmick
                 sInfo = cStatusInfo.lincrease[nPriceChoise] + "% 증가합니다.";
             }
 
-            tCanvas = GameObject.Find("TrapCanvas").transform;
-
+            tCanvas.SetActive(true);
             string spPath = "Sprite/";
+
             sImg = tCanvas.transform.Find("Image").gameObject.GetComponent<Image>();
             sImg.sprite = Resources.Load<Sprite>(spPath + STATUS_LIST[nStatusChoise]);
 
@@ -85,7 +99,6 @@ public class TrapGimmick : Gimmick
     }
     public void DiableGimmick()
     {
-
     }
 
     public void ShuffleArr()
@@ -102,8 +115,7 @@ public class TrapGimmick : Gimmick
     IEnumerator CloseCanvas()
     {
         yield return new WaitForSeconds(3.0f);
-        tCanvas.gameObject.SetActive(false);
-
-
+        tCanvas.SetActive(false);
+        bClearCheck = true;
     }
 }

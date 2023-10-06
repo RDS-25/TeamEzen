@@ -6,7 +6,6 @@ using Params;
 // 1회만 실행 시킬 예정
 public class RoomManager : MonoBehaviour, DefaultRoom
 {
-    
     [SerializeField]
     private bool bUseBoss = false;
     [SerializeField]
@@ -15,22 +14,43 @@ public class RoomManager : MonoBehaviour, DefaultRoom
     //GimmickRoomParams roomParams = new GimmickRoomParams();
     [SerializeField]
     private GimmickRoomParams roomParam = new GimmickRoomParams();
+
+    public static int nClearCount = 0;
+    private int nGimmickCount = 0;
+    GameObject Portal;
+    GameObject PortalSpawn;
+    public static Vector3[] vRoomPos = null;
+
     //GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
-    
+    GameObject gimmick;
+
     public bool Initialize(GameObject positionObjects, object roomType, GameObject player, bool bUseBoss)
     {
+        Debug.Log("이니셜라이즈 실행");
         roomParam.trGroundPositions = positionObjects.GetComponentsInChildren<Transform>();
-        roomParam.roomType = (GimmickRoomParams.ROOM_TYPE)roomType;
+        roomParam.roomType = (GimmickRoomParams.ROOM_TYPE)roomType; // MONSTER_ROOM,PUZZLE_ROOM,TRAP_ROOM,STORE_ROOM
         this.bUseBoss = bUseBoss;
         this.player = player;
-        Debug.Log("이니셜 라이즈 시작");
         SetObjectPosition();
         return false;
     }
 
+    public void Start()
+    {
+        //Debug.Log("실행");
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        //if (nClearCount >= nGimmickCount)
+        {
+            PortalSpawn.SetActive(true);
+        }
+    }
+
     public void ClearRoom()
     {
-        GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
         gimmick.SetActive(false);
     }
 
@@ -41,48 +61,67 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
     public void DisableRoom()
     {
-        GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
         gimmick.SetActive(false);
     }
 
     public void EnableRoom()
     {
-        GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
+        if(bUseBoss)
+        {
+            string prePath = "Prefabs/Room/";
+            Portal = Resources.Load<GameObject>(prePath + "Portal");
+            PortalSpawn = Instantiate(Portal, new Vector3(gimmick.transform.position.x,2, gimmick.transform.position.z), gimmick.transform.rotation);
+            PortalSpawn.transform.parent = gimmick.transform;
+        }
         gimmick.SetActive(true);
     }
     
 
     public void SetObjectPosition()
     {
+        Debug.Log("셋 오브젝트 포지션 실행");
         //if (roomParam.nMaxEventCount > 1)
         //{
-        Debug.Log("셋 오브젝트 포지션 시작");
-
         List<GameObject> gimmicks = GameManager.instance.objectFactory.GimmickRoomFactory.listPool;
-        Debug.Log(gimmicks);
-
-
+        List<GameObject> monsters = GameManager.instance.objectFactory.MonsterRoomFactory.listPool;
         Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
-        string GimmickType = roomParam.roomType.ToString();
-        //gimmick.transform.position = GimmickPos.position;
-        //gimmick.transform.rotation = GimmickPos.rotation;
-        ////string scPath = "Prefabs/Room/";
-        ////GameObject Board = Resources.Load<GameObject>(scPath + GimmickType + "_BOARD");
-        //print(gimmick.transform.position);
-        //print(GimmickType);
+        string rType = roomParam.roomType.ToString().Split("_")[0];
+        if (rType == "MONSTER")
+        {
+            foreach (GameObject obj in monsters)
+            {
+                if (obj.activeSelf == false)
+                {
+                    obj.transform.position = GimmickPos.position;
+                    obj.transform.rotation = GimmickPos.rotation;
+                    //vRoomPos[nGimmickCount] = GimmickPos.position;
 
-            //Instantiate(Board, GimmickPos.position, GimmickPos.rotation);
+                    gimmick = obj;
+                    EnableRoom();
+                    break;
+                }
+            }
+        }
+        else
+        {
+            foreach (GameObject obj in gimmicks)
+            {
+                string gType = obj.name.Split("_")[0];
+                if (gType == rType)
+                {
+                    if (obj.activeSelf == false)
+                    {
+                        obj.transform.position = GimmickPos.position;
+                        obj.transform.rotation = GimmickPos.rotation;
+                        //vRoomPos[nGimmickCount] = GimmickPos.position;
 
-            //}
-            //else if (roomParam.nMaxEventCount > 0)
-            //{
-            //    GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
-            //    Transform GimmickPos = roomParam.trGroundPositions[Random.Range(0, roomParam.trGroundPositions.Length)];
-            //    Params.GimmickRoomParams.ROOM_TYPE GimmickType = roomParam.roomType;
-            //    gimmick.transform.position = GimmickPos.position;
-            //    gimmick.transform.rotation = GimmickPos.rotation;
-            //    //gimmick.SetActive(false);
-            //}
+                        gimmick = obj;
+                        EnableRoom();
+                        break;
+                    }
+                }
+            }
+        }
+        nGimmickCount++;
     }
-
 }

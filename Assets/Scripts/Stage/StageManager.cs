@@ -111,7 +111,6 @@ public class StageManager : MonoBehaviour
                 break;
         }
 
-
         return value;
     }
 
@@ -159,7 +158,6 @@ public class StageManager : MonoBehaviour
 
             if (bAddItem)
             {
-
                 GameObject slot = Resources.Load<GameObject>(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB);
                 Instantiate(slot, trItemGridView);
                 slot.GetComponent<Image>().sprite = GameManager.instance.LoadAndSetSprite(FolderPath.SPRITE_ITEM_ICON+itemData.IMAGE_PATH);

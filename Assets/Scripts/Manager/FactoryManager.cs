@@ -60,6 +60,7 @@ public class FactoryManager
         gNewObj.SetActive(false);
         return gNewObj;
     }
+
     // 오브젝트 사이즈 받아서 여러개 생성
     public void CreateObject(GameObject gPrefab, int nSize)
     {
@@ -72,6 +73,7 @@ public class FactoryManager
             CreateObject(gPrefab);
         }
     }
+
     // 경로 받아서 오브젝트 추가하기
     public void CreateObject(string sPrefabPathPrefabName, int nSize)
     {
