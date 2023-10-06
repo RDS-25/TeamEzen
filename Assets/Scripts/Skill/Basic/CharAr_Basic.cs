@@ -19,7 +19,7 @@ public class CharAr_Basic : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-        LoadEffect();
+     //LoadEffect();
     }
     // 지우고 skill 스크
     

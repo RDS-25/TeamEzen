@@ -10,7 +10,7 @@ public class SelectStageManager : MonoBehaviour
     public GameObject gOrganizingPanel;
     public GameObject SelectStagePanel;
     public Button[] StageButtons;
-    private void Start()
+    private void OnEnable()
     {
         StageButtons = gSlots.GetComponentsInChildren<Button>();
         for (int i = 0; i < StageButtons.Length; i++)
@@ -19,12 +19,14 @@ public class SelectStageManager : MonoBehaviour
             StageButtons[i].onClick.AddListener(() => OnClickButton(buttonIndex));
         }
     }
+
     public void ButtonExit()
     {
         SelectStagePanel.SetActive(false);
     }
     void OnClickButton(int index)
     {
+        Debug.Log("스테이지 버튼 " + index);
         nStageNum = index;
         GameManager.instance.stageType = (StageParams.STAGE_TYPE)nStageNum;
         gOrganizingPanel.SetActive(true);

@@ -15,7 +15,7 @@ public class CommonSkill_03 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-        LoadEffect();
+     //LoadEffect();
     }
 
     public override void SetType()
@@ -29,7 +29,7 @@ public class CommonSkill_03 : AttackType
         myBulletFactory(GameManager.instance.objectFactory.Common_03_BulletFactory);
         fCharToUse = -1;
         fSkillLevel = 1;
-        fId = 200;
+        fId = 502;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharArActive01.png";

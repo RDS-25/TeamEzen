@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,IDragHandler
 {
     public enum SKILLTYPE
@@ -28,6 +29,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
     Action action;
     Stat stat;
 
+
 	private void Start()
 	{
         action = GetComponentInParent<Action>();
@@ -52,11 +54,6 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
         Debug.Log(ACTIVESKILL);*/
         //GameManager.instance.objectFactory.AllSkill.listPool;
      
-    }
-	private void OnEnable()
-	{
-       
-      
     }
 
     void OwnSkills()
@@ -98,24 +95,31 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
             action.motion = Action.Motion.Idle;
             action.bIsCancel = false;
             /*이 위치에 스킬 실행 취소*/
+            Debug.Log("취소");
         }
         else if (action.motion == Action.Motion.Action)
         {
             Vector3 targetPosition = obj.transform.position + joystickDirection;
+
+            float aa  = Vector3.Distance(obj.transform.position,gRangeIndicator.transform.position);
+           
             obj.transform.LookAt(targetPosition);
-            ACTIVESKILL.SetActive(true);
+
+            ACTIVESKILL.GetComponent<Skill>().SkillTriger(gRangeIndicator.transform.position) ;
+
             action.motion = Action.Motion.Idle;
 
         }
     }
 
+    
 	public void OnDrag(PointerEventData eventData)
 	{
 
         joystickDirection = new Vector3(joystick.Horizontal, 0,joystick.Vertical);
 
-
-
+        Transform Pos = ACTIVESKILL.transform;
+        Debug.Log(Pos.position);
 
         if (joystick.Direction.magnitude > 0.1)
         {
@@ -125,12 +129,18 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
             gMaxRangeIndicator.SetActive(true); //스킬 사거리
             gSkillCancel.SetActive(true);
+
             if (skillType == SKILLTYPE.ACTIVE)
             {
                 Debug.Log(ACTIVESKILL.transform.name);
+                //ACTIVESKILL.GetComponent<Skill>().SkillTriger();
+                Debug.Log("액티브 스킬 ");
             }
             else {
                 Debug.Log(ULTIMATESKILL.transform.name);
+                Debug.Log("궁극기 스킬");
+              
+                
             }
             float maxRange = (skillType == SKILLTYPE.ACTIVE ? 
                                 ACTIVESKILL.GetComponent<Skill>().fMaxRange : 
@@ -148,7 +158,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
             gRangeIndicator.transform.localScale = new Vector3(range, 0.01f, range);
             gRangeIndicator.transform.position = obj.transform.position + new Vector3(0,0.31f,0) +  lastJoystickDirection  * maxRange/2;
-
+            Debug.Log("드래그 다운에서의 포지션"+ gRangeIndicator.transform.position);
 
             if (action.bIsCancel)
             {

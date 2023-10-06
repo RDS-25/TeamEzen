@@ -13,58 +13,83 @@ public class SkillLevelUpUi : MonoBehaviour
     //public Image imgFirstMaterial;
     //public Image imgSecondMaterial;
     //public Image imgThirdMaterial;
+    public Dictionary<float, float> dictMatExp = new();
+    Dictionary<string, string> dictItemCount = new();
 
-
-    public List<Button> listButtons = new();
+    public List<Button> listMatButtons = new();
     public SkillPanelUi skillPanelUi;
     Dictionary<string, string> dictSelectedSkillParams = new();
-    // Start is called before the first frame update
+
+    private const int MAT_INDEX = 300;
+    private void OnEnable()
+    {
+        ShowMatData();
+    }
+    private void OnDisable()
+    {
+        dictMatExp.Clear();
+    }
     void Start()
     {
-        for(int i = 0; i < listButtons.Count; i++)
+        for (int i = 0; i < listMatButtons.Count; i++)
         {
             int buttonIndex = i;
-            listButtons[i].onClick.AddListener(() => OnClickButton(buttonIndex));
+            listMatButtons[i].onClick.AddListener(() => OnClickMatExpButton(buttonIndex));
         }
+        int fNum = 0;
+        foreach(GameObject items in GameManager.instance.objectFactory.ItemObjectFactory.listPool)
+        {
+            UiCellView uiCellView = items.GetComponent<UiCellView>();
+            if(uiCellView.ID == fNum + MAT_INDEX)
+            {
+                listMatButtons[fNum].GetComponent<Image>().sprite
+                    = GameManager.instance.LoadAndSetSprite
+                    (FolderPath.SPRITE_ITEM_ICON + uiCellView.IMAGE_PATH);
+            }
+        }
+    }
+    void Update()
+    {
+        // dictMatExp 여기에 들어있는 id 값을 가진 머테리얼 표시해주기
+    }
+    void ShowMatData()
+    {
+        dictItemCount = GameManager.instance.DataRead(FolderPath.PARAMS_ITEM_COUNT + FileName.STR_JSON_INVEN_SAVE);
+
+        for (int i = 0; i < listMatButtons.Count; i++)
+        {
+            if (!dictMatExp.ContainsKey(i + MAT_INDEX))
+                dictMatExp.Add(i + MAT_INDEX, 0);
+            listMatButtons[i].transform.GetChild(1).GetComponent<TMP_Text>().text
+                = dictMatExp[i + MAT_INDEX] + "/" + dictItemCount[(i + MAT_INDEX).ToString()];
+        }
+    }
+    void OnClickMatExpButton(int index)
+    {
+        // 선택한 재료 딕셔너리에 개수 저장
+        if(dictItemCount[(index + MAT_INDEX).ToString()] == "0")
+        {
+            return;
+        }
+        listMatButtons[index].transform.GetChild(1).GetComponent<TMP_Text>().text
+                = dictMatExp[index + MAT_INDEX] + "/" + dictItemCount[(index + MAT_INDEX).ToString()];
+        dictMatExp[index + MAT_INDEX] += 1;
     }
 
-    void OnClickButton(int index)
-    {
-        switch (index)
-        {
-            case 0:
-                SetDictSkillParams(skillPanelUi.dictCurPassive);
-                ShowSkillData();
-                break;
-            case 1:
-                SetDictSkillParams(skillPanelUi.dictCurBasic);
-                ShowSkillData();
-                break;
-            case 2:
-                SetDictSkillParams(skillPanelUi.dictCurActive);
-                ShowSkillData();
-                break;
-            case 3:
-                SetDictSkillParams(skillPanelUi.dictCurUlt);
-                ShowSkillData();
-                break;
-            default:
-                break;
-        }
-    }
-    void SetDictSkillParams(Dictionary<string,string> dictTemp)
+    public void SetDictSkillParams(Dictionary<string,string> dictTemp)
     {
         dictSelectedSkillParams = dictTemp;
     }
-    void ShowSkillData()
+    public void ShowSkillData()
     {
         currentLevel.text = "Lv. " + dictSelectedSkillParams[SkillID.LEVEL];
         nextLevel.text = "Lv. " + (float.Parse(dictSelectedSkillParams[SkillID.LEVEL]) + 1);
-        //skillImamge.sprite = GameManager.instance.LoadAndSetSprite(dictSelectedSkillParams[SkillID.ICON_PATH]);
+        skillImamge.sprite = GameManager.instance.LoadAndSetSprite
+            (FolderPath.SPRITE_SKILL_ICON + dictSelectedSkillParams[SkillID.ICON_NAME]);
         skillName.text = dictSelectedSkillParams[SkillID.NAME];
         skillDescription.text = dictSelectedSkillParams[SkillID.DESCRIPT];
-
     }
+
     public void LevelUpSkill()
     {
         foreach(GameObject skills in GameManager.instance.objectFactory.AllSkill.listPool)
@@ -72,16 +97,42 @@ public class SkillLevelUpUi : MonoBehaviour
             if(skills.GetComponent<Skill>().fId.ToString() == dictSelectedSkillParams[SkillID.ID])
             {
                 var skillScript = skills.GetComponent<Skill>();
-                if(skillScript.fSkillLevel <= 10)
+                if(skillScript.fSkillLevel < 10)
                 {
                     skillScript.SkillActivationInit(ref skillPanelUi.curCharStat);
-                    skillScript.SkillLevelUp();
-                    dictSelectedSkillParams = GameManager.instance.DataRead(skillScript.strSkillFolderPath + skillScript.strSkillParamsName);
+                    skillScript.SkillExpUp(SelectMaterialToExpUp());
                     ShowSkillData();
                     skillPanelUi.ShowSkill();
+                    if(skillScript.fSkillLevel == 10)
+                        nextLevel.text = "Max";
                 }
+                ShowMatData();
+                break;
             }
         }
-        //currentLevel.text = "Lv. " + dictSelectedSkillParams[SkillID.LEVEL] + 1;
+    }
+    float SelectMaterialToExpUp()
+    {
+        float fSumExp = 0;
+        int index = 0;
+        List<GameObject> MatItem = new();
+        foreach(GameObject item in GameManager.instance.objectFactory.ItemObjectFactory.listPool)
+        {
+            if(Mathf.FloorToInt(item.GetComponent<UiCellView>().ID / 100) == 3)
+            {
+                MatItem.Add(item);
+            }
+        }
+        foreach (KeyValuePair<float, float> MatExpPair in dictMatExp)
+        {
+            fSumExp += MatItem[index].GetComponent<UiCellView>().EXP * MatExpPair.Value;
+            // 재료 선택한 딕셔너리 초기화해주고 itemcount 빼주기 만들기
+            dictItemCount[MatExpPair.Key.ToString()]
+                = (int.Parse(dictItemCount[MatExpPair.Key.ToString()]) - MatExpPair.Value).ToString();
+            index++;
+            dictMatExp[MatExpPair.Key] = 0;
+        }
+        ShowMatData();
+        return fSumExp;
     }
 }

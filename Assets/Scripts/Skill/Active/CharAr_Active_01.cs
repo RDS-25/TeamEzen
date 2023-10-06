@@ -22,7 +22,7 @@ public class CharAr_Active_01 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-        LoadEffect();
+      //LoadEffect();
     }
 
     //private void OnEnable()
@@ -58,8 +58,8 @@ public class CharAr_Active_01 : AttackType
         fCoolTime = 1;
         fDuration = 1;
         fSkillCoolReduce = 0;
-        fRange = 50;
-        fMaxRange = 10;
+        fRange = 10;
+        fMaxRange = 50;
         fValue = 10;
         fHidenValue = 10;
         fMagnification = 10;

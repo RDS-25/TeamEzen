@@ -52,10 +52,14 @@ public class Action : MonoBehaviour
         targetingRange = stat.fDefaultRange;
 
         //현재 캐릭터 스킬 
-        GameManager.instance.objectFactory.AllSkill.listPool[0].SetActive(true);//active
-        GameManager.instance.objectFactory.AllSkill.listPool[8].SetActive(true); //basic
-        GameManager.instance.objectFactory.AllSkill.listPool[20].SetActive(true); //passive
-        GameManager.instance.objectFactory.AllSkill.listPool[24].SetActive(true); //ultimate
+        for (int i = 0; i < GameManager.instance.objectFactory.AllSkill.listPool.Count;i++) {
+			if (GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fCharToUse == stat.fId)
+			{
+                GameManager.instance.objectFactory.AllSkill.listPool[i].SetActive(true);
+
+            }
+        }
+       
 
         //캐릭터 2
 
@@ -71,11 +75,11 @@ public class Action : MonoBehaviour
             onMove();
         }
         else if (!isEntries) {
-            ani.SetBool("isWalk",false);
+            //ani.SetBool("isWalk",false);
             ani.SetBool("isRun", false);
         }
 
-
+        /*
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!bIsStop)
@@ -85,7 +89,7 @@ public class Action : MonoBehaviour
 			{
                 reStart();
 			}
-        }
+        }*/
      
         /*
         if (Input.GetMouseButtonDown(0) && isEntries)
@@ -120,14 +124,14 @@ public class Action : MonoBehaviour
         */
         fhori = MoveJoystick.Horizontal;
         fverti = MoveJoystick.Vertical;
-
+    
         Vmove = new Vector3(fhori, 0, fverti).normalized;
 
 
         transform.position += Vmove * 5f * (Input.GetKey(KeyCode.LeftShift) ? 0.7f : 1.3f) * Time.deltaTime;
   
         
-        ani.SetBool("isWalk", Input.GetKey(KeyCode.LeftShift));
+        //ani.SetBool("isWalk", Input.GetKey(KeyCode.LeftShift));
         ani.SetBool("isRun", Vmove != Vector3.zero);
 
         transform.LookAt(transform.position + Vmove);
@@ -202,6 +206,8 @@ public class Action : MonoBehaviour
         bIsStop = true;
         ani.enabled = false;
         isEntries = false;
+        UIGroup.SetActive(false);
+        
         Debug.Log("일시 정지");
          
     }
@@ -210,6 +216,7 @@ public class Action : MonoBehaviour
         bIsStop = false;
         ani.enabled = true;
         isEntries = true;
+        UIGroup.SetActive(true);
         Debug.Log("일시 정지 해제 ");
 
     }

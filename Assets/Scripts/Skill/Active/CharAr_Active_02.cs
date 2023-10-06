@@ -21,7 +21,7 @@ public class CharAr_Active_02 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-        LoadEffect();
+        LoadEffect(GameManager.instance.objectFactory.CharARActive02EffectFactory);
     }
     
     public override void SetType()
@@ -32,7 +32,7 @@ public class CharAr_Active_02 : AttackType
     }
     public override void SetDefault()
     {//액티브스킬에 다시 복붙
-        fCharToUse = 1;
+        fCharToUse = 5;
         fSkillLevel = 1;
         fId = 201;
         strName = "Act1";
@@ -48,8 +48,8 @@ public class CharAr_Active_02 : AttackType
         fCoolTime = 1;
         fDuration = 1;
         fSkillCoolReduce = 0;
-        fRange = 50;
-        fMaxRange = 10;
+        fRange = 10;
+        fMaxRange = 50;
         fValue = 10;
         fHidenValue = 10;
         fMagnification = 10;

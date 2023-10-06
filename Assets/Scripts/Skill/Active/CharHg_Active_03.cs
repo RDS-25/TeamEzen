@@ -18,7 +18,7 @@ public class CharHg_Active_03 : BuffType
         SetType();
         LevelUpValue();
         InitParams();
-        LoadEffect();
+     //LoadEffect();
     }
     public override void SetType()
     {

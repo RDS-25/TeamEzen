@@ -240,19 +240,6 @@ public class GameManager : MonoBehaviour
             return null;
         }
     }
-
-    //string NAME
-    //{
-    //    get 
-    //    {
-    //        return LoadFild("name");
-    //    }
-    //    set
-    //    {
-    //        saveFile("key", value);
-    //    }
-    //}
-
     //폴더 확인
     public bool CheckExist(string sFolderPath, string sFileName)
     {

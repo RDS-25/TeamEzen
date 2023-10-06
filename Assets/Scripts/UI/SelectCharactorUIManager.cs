@@ -35,7 +35,6 @@ public class SelectCharactorUIManager : MonoBehaviour
 	//slot 게임오브젝트 리스트 
 	List<GameObject> listSlots = new List<GameObject>();
 
-
 	//씬매니저
 	private void OnEnable()
 	{
@@ -45,36 +44,17 @@ public class SelectCharactorUIManager : MonoBehaviour
 	{
 		SlotManager.OnButtonClick -= SelectOne;
 	}
-
     private void Start()
 	{
 		audio = GetComponent<AudioSource>();
 
-		gSlotPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(800f, 900f);
 		gSlotPanel.GetComponentInChildren<GridLayoutGroup>().constraintCount= 3;
-
 		slotManager.SetSlot(GameManager.instance.objectFactory.CharSlotFactory.listPool,
 			GameManager.instance.objectFactory.characterFactory.listPool,
 			transformSlots,
 			SlotManager.OBJECT_TYPE.CHARACTER);
 		slotManager.SetButtonClickedEvent();
 	}	
-
-	//캐릭서 상세 
-	public void ShowDetail()
-	{
-		CharDetail.SetActive(true);
-		gStatDetail.SetActive(false);
-	}
-	public void ExitDetail() {
-		CharDetail.SetActive(false);
-	}
-	public void SkillPanel()
-    {
-		gSkillPanel.SetActive(true);
-    }
-
-
 	//누르면 캐릭터 보여주기 
 	public void SelectOne(int index) {
 		if (curChr != null) {
@@ -104,22 +84,33 @@ public class SelectCharactorUIManager : MonoBehaviour
 		}
 		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(true);
 	}
-
-	//캐릭터 스텟상세보기
-	public void StatDetail() {
-		gStatDetail.SetActive(true);
-	}
-
-	public void StatDetailExit() {
-		gStatDetail.SetActive(false);
-	}
-
 	//캐릭터 셀렉트 음악
 	void BackgroundMusic() {
 		AudioManager.instance.PlayBackgroundSound(audio, AudioName.STR_CHARACTER_SELECT_1);
 	}
-
-
+	//캐릭터 스텟상세보기
+	public void StatDetail()
+	{
+		gStatDetail.SetActive(true);
+	}
+	public void StatDetailExit()
+	{
+		gStatDetail.SetActive(false);
+	}
+	//캐릭서 상세 
+	public void ShowDetail()
+	{
+		CharDetail.SetActive(true);
+		gStatDetail.SetActive(false);
+	}
+	public void ExitDetail()
+	{
+		CharDetail.SetActive(false);
+	}
+	public void SkillPanel()
+	{
+		gSkillPanel.SetActive(true);
+	}
 	public void BtnNextChar() {
 		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(false);
 		if (curCharID >= GameManager.instance.objectFactory.ownCharFactory.listPool.Count - 1)
@@ -144,14 +135,5 @@ public class SelectCharactorUIManager : MonoBehaviour
 		CharSelect.SetActive(false);
 		GameManager.instance.objectFactory.ownCharFactory.listPool[curCharID].SetActive(false);
 		curCharID = -1;
-	}
-
-	public void TestMove() {
-
-		SceneManager.LoadScene("characterMove");
-		for (int i = 0; i < GameManager.instance.objectFactory.ownCharFactory.listPool.Count; i++) {
-			GameManager.instance.objectFactory.ownCharFactory.listPool[i].GetComponent<Action>().isEntries = true;
-		}
-	
 	}
 }

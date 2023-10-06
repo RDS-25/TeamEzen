@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class ShowStat : MonoBehaviour
 {
     [SerializeField]
-    List<Text> Statlist;
+    List<TMP_Text> Statlist;
     [SerializeField]
     Detail detail;
 
@@ -23,7 +23,7 @@ public class ShowStat : MonoBehaviour
       
         for (int i = 0; i < transform.GetChild(0).GetChild(0).childCount; i++)
         {
-            Statlist.Add(transform.GetChild(0).GetChild(0).GetChild(i).gameObject.GetComponent<Text>());
+            Statlist.Add(transform.GetChild(0).GetChild(0).GetChild(i).GetChild(2).gameObject.GetComponent<TMP_Text>());
         }
     }
 
@@ -43,7 +43,7 @@ public class ShowStat : MonoBehaviour
 
         for (int i = 0; i < Statlist.Count; i++)
         {
-            Statlist[i].text = Statlist[i].name + ":" + curDic[Statlist[i].name];
+            Statlist[i].text = curDic[Statlist[i].gameObject.name];
         }
 
     }
