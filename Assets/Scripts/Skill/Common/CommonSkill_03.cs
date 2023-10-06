@@ -26,14 +26,15 @@ public class CommonSkill_03 : AttackType
     }
     public override void SetDefault()
     {
+        myBulletFactory(GameManager.instance.objectFactory.Common_03_BulletFactory);
         fCharToUse = -1;
         fSkillLevel = 1;
         fId = 502;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharArActive01.png";
-        strEffectPath = FolderPath.PREFABS_COMMON_EFFECT;
-        strEffectName = FileName.STR_JSON_COMMON3_PARAMS;
+        strEffectPath = FolderPath.PREFABS_COMMON_BULLET;
+        strEffectName = PrefabName.STR_COMMON_03_BULLET;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;

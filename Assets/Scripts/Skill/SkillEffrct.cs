@@ -4,76 +4,19 @@ using UnityEngine;
 using System;
 
 public class SkillEffrct : MonoBehaviour
-    //해당캐릭 
-{//적과의 충돌감지,대미지관련값 받아오고 마저 계산(o)
-    //몬스터와 캐릭터에게 대미지값 전달
-    
-    protected float fRancri;
-    protected float fRanmondod;
-    protected float fMonDadge;
-    protected float fMonDefense;
-    protected float fMonCriresi;
-    protected float fTotalDamage;
-    public  float fRange;
-    protected float fMonProperty;
-    protected Stat ChaStat;
-
-
-    public  float CalculDamage(float chadam, float chacriper, float chacridam, float chadefenpier, float Attacker,
-        float mondadge, float moncrire, float mondefen, float Defender)//받은 스텟으로 다시쓰기
+{
+    FactoryManager factoryManager;
+    //파티클 실행시간 이후 없애기
+    protected virtual void myFactory(FactoryManager myFactoryManager)
     {
-        if (fRanmondod < mondadge)
-        {
-            fTotalDamage = 0;
-            return fTotalDamage;
-        }
-        else
-        {
-            if (fRancri <= chacriper - moncrire)
-            {
-                fTotalDamage = (chadam * chacridam * (mondefen - chadefenpier / mondefen + 100)) * CheckPro(Attacker, Defender);
-            }
-            else
-            {
-                fTotalDamage = chadam * (mondefen - chadefenpier / mondefen + 100) * CheckPro(Attacker, Defender);
-            }
-            return fTotalDamage;
-        }
+        factoryManager = myFactoryManager;
     }
-    public void SkillActivationInit(ref Stat activeObjectStat)
+    protected virtual void EndEffect()
     {
-        ChaStat = activeObjectStat;
-    }
-    public virtual float CheckPro(float Attacker, float Defender)
-    {
-        if (Attacker - Defender == -1 || Attacker - Defender == 2)
-        {//AttackerWin;
-            return 1.3f;
-        }
-        if (Attacker - Defender == 1 || Attacker - Defender == -2)
-        {//AttackerLose;
-            return 0.7f;
-        }
-        else
-            return 1f;
-    }
-    public virtual void CheckDistance(Vector3 firepoint,float range)
-    {
-
-        float distance = Vector3.Distance(firepoint, this.transform.position);
-        Debug.Log("ran" + range);
-        Debug.Log("dis" + distance);
-        // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
-        if (distance > range)//Ex_Active1Params의 Range를 가져오는 방법??
-        {
-			// setactive 해주기
-			GameManager.instance.objectFactory.CharARActive02EffectFactory.SetObject(gameObject);
-			//Destroy(this.gameObject);//안대 초기화
-		}
-        else
-            return;
+        factoryManager.SetObject(gameObject);
     }
 }
+
 
 /*public virtual float CalculDamage(float damage, float critical, float criticaldamage,
         float defensepierce, int chaprotype, float mondodge, float mondsfense, float moncriresi, int monprotype)

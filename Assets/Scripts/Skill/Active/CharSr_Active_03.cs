@@ -5,7 +5,7 @@ using System.IO;
 using System;
 using Params;
 
-public class CharSr_Active_03 : AttackType
+public class CharSr_Active_03 : BuffType
 {
     private void OnDisable()
     {
@@ -40,25 +40,22 @@ public class CharSr_Active_03 : AttackType
         fSkillRequireExp = 100;
         fUnlockLevel = 1;
         fUnlockHidenLevel = 20;
-        fTimer = 0;
-        fCoolTime = 1;
+        fCoolTime = 30;
         fDuration = 1;
-        fSkillCoolReduce = 0;
-        fRange = 50;
-        fMaxRange = 10;
+        fSkillCoolReduce = 1;
+        fBuffDuration = 10;
         fValue = 10;
         fHidenValue = 10;
         fMagnification = 10;
-        fTargetCount = 1;
-        fAttackCount = 1;
-        fBulletCount = 1;
         bisUnlockSkill = false;
         bisUnlockHiden = false;
         bisCanUse = false;
         bisActtivate = false;
     }
-
-
+    public override void CharaterStatUp(ref float stat1, ref float stat2)
+    {
+        base.CharaterStatUp(ref ChaStat.fCriticalPer, ref ChaStat.fCriticalDmg);
+    }
 
 
     public override void SkillHidenUnlock()

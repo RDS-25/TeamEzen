@@ -50,6 +50,7 @@ namespace Params
         public float fTargetCount;//스킬 타겟수
         public float fAttackCount;//스킬타격횟수        
         public float fBulletCount;//발사체 갯수
+        public float fSpeed;//발사체 속도
         public bool bisUnlockSkill = false;//스킬 해금
         public bool bisCanUse = false;//스킬이 사용가능한지
         public bool bisActtivate = false;//스킬 발동여부

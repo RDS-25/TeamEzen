@@ -47,6 +47,28 @@ public class PrefabName
     public const string STR_COMMON_03EFFECT         = "Common_03Effect";
     public const string STR_COMMON_04EFFECT         = "Common_04Effect";
 
+    public const string STR_CHA_AR_BASIC_BULLET = "CharAr_Basic_Bullet";
+    public const string STR_CHA_HG_BASIC_BULLET = "CharHg_Basic_Bullet";
+    public const string STR_CHA_SG_BASIC_BULLET = "CharSg_Basic_Bullet";
+    public const string STR_CHA_SR_BASIC_BULLET = "CharSr_Basic_Bullet";
 
+    public const string STR_CHA_AR_ACTIVE_01_BULLET = "CharAr_Active_01Bullet";
+    public const string STR_CHA_AR_ACTIVE_02_BULLET = "CharAr_Active_02Bullet";
+
+    public const string STR_CHA_HG_ACTIVE_01_BULLET = "CharHg_Active_01Bullet";
+    public const string STR_CHA_HG_ACTIVE_02_BULLET = "CharHg_Active_02Bullet";
+
+
+    public const string STR_CHA_SG_ACTIVE_01_BULLET = "CharSg_Active_01Bullet";
+    public const string STR_CHA_SG_ACTIVE_02_BULLET = "CharSg_Active_02Bullet";
+
+
+    public const string STR_CHA_SR_ACTIVE_01_BULLET = "CharSr_Active_01Bullet";
+    public const string STR_CHA_SR_ACTIVE_02_BULLET = "CharSr_Active_02Bullet";
+
+    public const string STR_COMMON_01_BULLET = "Common_01Bullet";
+    public const string STR_COMMON_02_BULLET = "Common_02Bullet";
+    public const string STR_COMMON_03_BULLET = "Common_03Bullet";
+    public const string STR_COMMON_04_BULLET = "Common_04Bullet";
 
 }

@@ -9,6 +9,7 @@ public class CharSr_Active_01 : AttackType
 {
     private void OnDisable()
     {
+        myBulletFactory(GameManager.instance.objectFactory.CharSr_Active_01_Bullet_Factory);
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSR_ACTIVE_01_PARAMS;
         PLUS_VAL = 10f;
@@ -34,8 +35,8 @@ public class CharSr_Active_01 : AttackType
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharSrActive01.png";
-        strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
-        strEffectName = FileName.STR_CHA_SR_ACTIVE_01_EFFECT;
+        strEffectPath = FolderPath.PREFABS_ACTIVE_BULLET;
+        strEffectName = PrefabName.STR_CHA_SR_ACTIVE_01_BULLET;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;

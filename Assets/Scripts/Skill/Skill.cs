@@ -18,7 +18,13 @@ public class Skill: SkillParams
     protected float PLUS_TARGET_COUNT = 0f;
     protected float PLUS_ATTACK_COUNT = 0f;
     protected Stat ChaStat;
+    public GameObject EffectPrefab;
+    protected FactoryManager myFactory;
 
+    public virtual void myBulletFactory(FactoryManager myFactoryManager)
+    {
+        myFactory = myFactoryManager;
+    }
     public void SkillActivationInit(ref Stat activeObjectStat)//스킬 장착할때 불러달라고 말하기
     {
         ChaStat = activeObjectStat;
@@ -75,6 +81,7 @@ public class Skill: SkillParams
         fTargetCount = 1;
         fAttackCount = 1;
         fBulletCount = 1;
+        fSpeed = 100;
         checkLevel = 1000;
     }
     //팩토리 매니저와  총알 위치 찾아서  넣기 
@@ -117,6 +124,7 @@ public class Skill: SkillParams
         dictTemp.Add("fTargetCount", fTargetCount.ToString());
         dictTemp.Add("fAttackCount", fAttackCount.ToString());
         dictTemp.Add("fBulletCount", fBulletCount.ToString());
+        dictTemp.Add("fSpeed", fSpeed.ToString());
         dictTemp.Add("bisUnlockSkill", bisUnlockSkill.ToString());
         dictTemp.Add("bisCanUse", bisCanUse.ToString());
         dictTemp.Add("bisActtivate", bisActtivate.ToString());
@@ -128,6 +136,7 @@ public class Skill: SkillParams
     public virtual void LoadParams()
     {
         Dictionary<string, string> dictTemp = GameManager.instance.DataRead(strSkillFolderPath + strSkillParamsName);
+        SkillStat = GameManager.instance.DataRead(strSkillFolderPath + strSkillParamsName);
 
         enumSkillType = (SkillType)Enum.Parse(typeof(SkillType), dictTemp["skillType"]);
         enumSkillDetail = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dictTemp["skillDetail"]);
@@ -158,6 +167,7 @@ public class Skill: SkillParams
         fMagnification = float.Parse(dictTemp["fMagnification"]);
         fTargetCount = float.Parse(dictTemp["fTargetCount"]);
         fAttackCount = float.Parse(dictTemp["fAttackCount"]);
+        fSpeed = float.Parse(dictTemp["fSpeed"]);
         fBuffDuration = float.Parse(dictTemp["fBulletCount"]);
         bisUnlockSkill = Convert.ToBoolean(dictTemp["bisUnlockSkill"]);
         bisCanUse = Convert.ToBoolean(dictTemp["bisCanUse"]);
@@ -171,7 +181,8 @@ public class Skill: SkillParams
         if (fSkillLevel > fUnlockLevel)
         {
             bisUnlockSkill = true;
-            SkillStat.Add("bisUnlockSkill", true.ToString());
+            SkillStat["bisUnlockSkill"]= true.ToString();
+            //SkillStat.Add("bisUnlockSkill", true.ToString());
         }
         SaveParams();
         //추가기능
@@ -181,7 +192,8 @@ public class Skill: SkillParams
         if (ChaStat.fLevel > fUnlockHidenLevel)
         {
             bisUnlockHiden = true;
-            SkillStat.Add("bisUnlockHiden", true.ToString());
+            SkillStat["bisUnlockHiden"]= true.ToString();
+            //SkillStat.Add("bisUnlockHiden", true.ToString());
         }
         SaveParams();
         //추가기능
@@ -190,8 +202,18 @@ public class Skill: SkillParams
     public virtual void SkillTriger(Vector3 Pos)//스킬 발동(단발형)
     {//애니메이션, 효과음, 투사체발사, 범위내 대미지주기, 
         Debug.Log("x투사체 발사 ");
-        
-                       
+
+        if (bisCanUse == true || bisActtivate == false)
+        {
+            bisCanUse = false;
+
+            bisActtivate = true;
+
+            fTimer = 0f;
+
+            StartCoroutine(SkillCoolDown());
+        }
+
     }
     
     public virtual void SkillExpUp(float exp)
@@ -201,10 +223,13 @@ public class Skill: SkillParams
         {
             SkillLevelUp();
             fSkillExp -= fSkillRequireExp;
-            SkillStat.Add("fSkillExp", fSkillExp.ToString());
+            SkillStat["fSkillExp"] = fSkillExp.ToString();
+            //SkillStat.Add("fSkillExp", fSkillExp.ToString());//애드가 아니라 바꿔주기
         }
         else
-            SkillStat.Add("fSkillExp", fSkillExp.ToString());
+            SkillStat["fSkillExp"] = fSkillExp.ToString();
+        //SkillStat.Add("fSkillExp", fSkillExp.ToString());
+        SaveParams();
     }
     public virtual void SkillLevelUp()//스킬 레벨업(강화)
     {//상승후 딕셔너리에 다시 정보주기
@@ -229,11 +254,14 @@ public class Skill: SkillParams
     }
     public virtual IEnumerator SkillCoolDown()
     {
-        yield return new WaitForSeconds(fCoolTime);
+        yield return new WaitForSeconds(fCoolTime*fSkillCoolReduce);
         bisCanUse = true;
         bisActtivate = false;
     }
-
+    public void LoadEffect()
+    {
+        EffectPrefab = Resources.Load<GameObject>(strEffectPath + strEffectName);
+    }
 
 
 }

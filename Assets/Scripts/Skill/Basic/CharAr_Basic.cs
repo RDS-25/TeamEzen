@@ -9,6 +9,7 @@ public class CharAr_Basic : AttackType
 {
     private void OnDisable()
     {
+        myBulletFactory(GameManager.instance.objectFactory.CharAr_Basic_Bullet_Factory);
         strSkillFolderPath = FolderPath.PARAMS_BASIC_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARAR_BASIC_PARAMS;
         PLUS_VAL = 10f;
@@ -21,12 +22,7 @@ public class CharAr_Basic : AttackType
      //LoadEffect();
     }
     // 지우고 skill 스크
-    public override void ShotEffect(Vector3 pos)
-    {
-        GameObject aa = GameManager.instance.objectFactory.CharARBasicEffectFactory.GetObject();
-        aa.SetActive(true);
-        aa.transform.position = pos;
-    }
+    
 
     public override void SetType()
     {
@@ -42,8 +38,8 @@ public class CharAr_Basic : AttackType
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharArBasic.png";
-        strEffectPath = FolderPath.PREFABS_BASIC_EFFECT;
-        strEffectName = FileName.STR_CHA_AR_BASIC_EFFECT;
+        strEffectPath = FolderPath.PREFABS_BASIC_BULLET;
+        strEffectName = PrefabName.STR_CHA_AR_BASIC_BULLET;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;

@@ -12,6 +12,7 @@ public class CharAr_Active_01 : AttackType
     //디저블로 스타트를
     private void OnDisable()
     {
+        myBulletFactory(GameManager.instance.objectFactory.CharAr_Active_01_Bullet_Factory);
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARAR_ACTIVE_01_PARAMS;
         PLUS_VAL = 10f;
@@ -24,21 +25,16 @@ public class CharAr_Active_01 : AttackType
       //LoadEffect();
     }
 
-	//private void OnEnable()
-	//{
- //       SkillTriger();
+    //private void OnEnable()
+    //{
+    //       SkillTriger();
 
- //   }
+    //   }
 
     //지우고 스킬 스크립트에
-    public override void ShotEffect(Vector3 pos)
-	{
-        GameObject aa = GameManager.instance.objectFactory.CharARActive01EffectFactory.GetObject();
-        aa.SetActive(true);
-        aa.transform.position = pos;
-    }
+   
 
-	public override void SetType()
+    public override void SetType()
     {
         base.SetType();
         skillType = "ACTIVE";
@@ -52,8 +48,8 @@ public class CharAr_Active_01 : AttackType
         strName = "ACTIVE01010101";
         strDiscription = "ACTIVE010150";
         strIconName = "CharArActive01.png";
-        strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
-        strEffectName = FileName.STR_CHA_AR_ACTIVE_01_EFFECT;
+        strEffectPath = FolderPath.PREFABS_ACTIVE_BULLET;
+        strEffectName = PrefabName.STR_CHA_AR_ACTIVE_01_BULLET;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;
