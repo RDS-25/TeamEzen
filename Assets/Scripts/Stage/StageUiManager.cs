@@ -44,6 +44,7 @@ public class StageUiManager : MonoBehaviour
         Time.timeScale = 1.0f;
         LoadingSceneManager.LoadScene("LobbyScene");
     }
+    
     public void OnChangeCharactorBtnClicked()
     {
         StageManager.Instance.ChangeCurrentCharactor();
