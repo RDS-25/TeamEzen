@@ -21,6 +21,9 @@ public class PrefabName
     public const string STR_CHAR_HG                 = "Char_HG_";
     public const string STR_CHAR_SG                 = "Char_SG_";
 
+    public const string STR_MELEE_MONSTER           = "MeleeEnemy";
+    public const string STR_RANGED_MONSTER          = "RangedEnemy";
+
     public const string STR_CHAR_AR_BASIC_EFFECT    = "CharAr_Basic_Effect";
     public const string STR_CHAR_SR_BASIC_EFFECT    = "CharSr_Basic_Effect";
     public const string STR_CHAR_HG_BASIC_EFFECT    = "CharHg_Basic_Effect";

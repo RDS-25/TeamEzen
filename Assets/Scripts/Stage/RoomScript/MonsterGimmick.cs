@@ -57,9 +57,15 @@ public class MonsterGimmick : Gimmick
         {
             Vector3 randomPosition = new Vector3(Random.Range(-mb.transform.lossyScale.x / 2, mb.transform.lossyScale.x / 2), 0, Random.Range(-mb.transform.lossyScale.z / 2, mb.transform.lossyScale.z / 2));
 
-            if (randomPosition.x > Player.transform.position.x + playerRange || randomPosition.x < Player.transform.position.x - playerRange || randomPosition.z > Player.transform.position.z + playerRange || randomPosition.z < Player.transform.position.z - playerRange)
-                SpawnMonster = MonoBehaviour.Instantiate(monsterPrefab, mb.transform.position + randomPosition, Quaternion.identity);
-                SpawnMonster.transform.parent = mb.gameObject.transform;
+            if (randomPosition.x > Player.transform.position.x + playerRange 
+                || randomPosition.x < Player.transform.position.x - playerRange 
+                || randomPosition.z > Player.transform.position.z + playerRange 
+                || randomPosition.z < Player.transform.position.z - playerRange)
+            {
+                SpawnMonster = GameManager.instance.objectFactory.MeleeMonsterFactory.GetObject();
+                //SpawnMonster = GameManager.instance.objectFactory.RangedMonsterFactory.GetObject();
+                SpawnMonster.transform.position = mb.transform.position + randomPosition;
+            }
             yield return new WaitForSeconds(1.0f);
         }
         bClearCheck = true;

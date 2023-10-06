@@ -107,8 +107,8 @@ public class ObjectFactory
 	{
         // Ä³¸¯ÅÍ
 		characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
-        MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY);
-        
+        MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY + PrefabName.STR_MELEE_MONSTER, 15);
+        RangedMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY + PrefabName.STR_RANGED_MONSTER, 15);
         SelectCharacterInit();
         SelectingSkillInit();
         // ½½·Ô
@@ -160,7 +160,6 @@ public class ObjectFactory
     {
         // ±â¹Í·ë
         MonsterRoomFactory.CreateFactory(FolderPath.PREFABS_ROOM + PrefabName.STR_MONSTER_ROOM, 15);
-        GimmickRoomFactory.CreateFactory(FolderPath.PREFABS_ROOM + PrefabName.STR_PUZZLE_ROOM, 5);
         GimmickRoomFactory.CreateObject(FolderPath.PREFABS_ROOM + PrefabName.STR_TRAP_ROOM, 5);
         GimmickRoomFactory.CreateObject(FolderPath.PREFABS_ROOM + PrefabName.STR_STORE_ROOM, 1);
     }
