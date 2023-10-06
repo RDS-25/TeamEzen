@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 	public GameObject target;
 	Animator ani;
 	public GameObject AtkRange;
+	public float SightRange;
+	public float DefaultRange;
 	public GameObject gBullet;
 
 	public enum EnemyType { 
@@ -42,6 +44,11 @@ public class Enemy : MonoBehaviour
 		rigidbody = GetComponent<Rigidbody>();
 		state = State.IDLE;
 
+		if (enemyType == EnemyType.Melee) {
+			SightRange = GameManager.instance.objectFactory.MeleeMonsterFactory.listPool[0].GetComponent<Stat>().fSightRange;
+			DefaultRange = GameManager.instance.objectFactory.MeleeMonsterFactory.listPool[0].GetComponent<Stat>().fDefaultRange;
+		}
+		
 	}
 
 

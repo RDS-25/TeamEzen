@@ -461,6 +461,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   AtkRange: {fileID: 0}
+  SightRange: 0
+  DefaultRange: 0
   gBullet: {fileID: 0}
   enemyType: 0
   do_attack_coroutine: 0
@@ -1121,6 +1123,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1194952242832670975, guid: f30fcef24952b4d4cb415dc660b5dfac, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194952242832670975, guid: f30fcef24952b4d4cb415dc660b5dfac, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4747083789627672744, guid: f30fcef24952b4d4cb415dc660b5dfac, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1171,7 +1181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8627311763271137979, guid: f30fcef24952b4d4cb415dc660b5dfac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f30fcef24952b4d4cb415dc660b5dfac, type: 3}
