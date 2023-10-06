@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
             CreateFoler(FolderPath.PARAMS_PASSIVE_SKILL);
         if (!FolderExists(FolderPath.PARAMS_ULTIMATE_SKILL))
             CreateFoler(FolderPath.PARAMS_ULTIMATE_SKILL);
+        if (!FolderExists(FolderPath.PARAMS_COMMON_SKILL))
+            CreateFoler(FolderPath.PARAMS_COMMON_SKILL);
 
         if (!FolderExists(FolderPath.PARAMS_CHARACTER))
             CreateFoler(FolderPath.PARAMS_CHARACTER);
