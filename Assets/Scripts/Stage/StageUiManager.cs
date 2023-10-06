@@ -37,6 +37,7 @@ public class StageUiManager : MonoBehaviour
         {
             if (charactor == null)
                 continue;
+            charactor.GetComponent<Stat>().ReadParams();
             charactor.GetComponent<Action>().isEntries = false;
             charactor.GetComponent<Action>().UIGroup.SetActive(false);
         }

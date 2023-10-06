@@ -58,7 +58,7 @@ public class Stat : StatParams
     }
 
    
-    void ReadParams()
+    public void ReadParams()
     {
         Dictionary<string, string> dictTemp = GameManager.instance.DataRead(_sFolderPath + _sFileName);
        // Debug.Log(dictTemp[CharPath.IMAGE]);
