@@ -9,8 +9,7 @@ public class Action : MonoBehaviour
     float fhori;
 
     public FixedJoystick MoveJoystick;
-    public FixedJoystick ActiveJoystick;
-    public FixedJoystick UltimateJoystick;
+
 
 
     public enum Motion { 
@@ -32,13 +31,11 @@ public class Action : MonoBehaviour
     Animator ani;
     Stat stat;
     public GameObject UIGroup;
-
-    public GameObject gBullet;
     public Transform tBulletpos;
 
     //입장 했는가 ?
     public bool isEntries;
-    //사거리
+    //평타 사거리
     public float targetingRange;
     //마지막 본 방향
     public Vector3 lastJoystickDirection;
@@ -75,32 +72,9 @@ public class Action : MonoBehaviour
             onMove();
         }
         else if (!isEntries) {
-            //ani.SetBool("isWalk",false);
+          
             ani.SetBool("isRun", false);
         }
-
-        /*
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!bIsStop)
-            {
-                Pause();
-            }else if (bIsStop)
-			{
-                reStart();
-			}
-        }*/
-     
-        /*
-        if (Input.GetMouseButtonDown(0) && isEntries)
-        {
-            ani.SetBool("isAim", true);
-            StartCoroutine("onShot");
-        }
-        else if (Input.GetMouseButtonUp(0) && isEntries)
-        {
-            ani.SetBool("isAim", false);
-        }*/
 
     }
 
@@ -118,10 +92,7 @@ public class Action : MonoBehaviour
 
     void onMove()
     {
-        /*
-        fhori = Input.GetAxisRaw("Horizontal");
-        fverti = Input.GetAxisRaw("Vertical");
-        */
+      
         fhori = MoveJoystick.Horizontal;
         fverti = MoveJoystick.Vertical;
     
@@ -130,8 +101,7 @@ public class Action : MonoBehaviour
 
         transform.position += Vmove * 5f * (Input.GetKey(KeyCode.LeftShift) ? 0.7f : 1.3f) * Time.deltaTime;
   
-        
-        //ani.SetBool("isWalk", Input.GetKey(KeyCode.LeftShift));
+       
         ani.SetBool("isRun", Vmove != Vector3.zero);
 
         transform.LookAt(transform.position + Vmove);
