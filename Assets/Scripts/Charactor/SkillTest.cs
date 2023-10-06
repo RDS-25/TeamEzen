@@ -62,10 +62,13 @@ public class SkillTest : MonoBehaviour
             }
         }
 
-        Quaternion transRot = Quaternion.LookRotation(Pos - Player.transform.position);
-        ABC.transform.rotation = Quaternion.Lerp(transRot, ABC.transform.rotation, 0f);
+        Vector3 targetDirection = Pos - Player.transform.position;
+        targetDirection.y = 0; // Set the y-value of the target direction to 0
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+        float interpolationFactor = 0.5f;
+        ABC.transform.rotation = Quaternion.Lerp(ABC.transform.rotation, targetRotation, interpolationFactor);
 
-       
+
         var hitPosDir = (hit.point - Player.transform.position).normalized; //  나아가는 방향만
        
         float distance = Vector3.Distance(hit.point, Player.transform.position); //거리 
