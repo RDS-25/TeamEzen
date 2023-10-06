@@ -203,21 +203,24 @@ public class ObjectFactory
     {
         CharAr_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_01_BULLET, 5);
         CharAr_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_02_BULLET, 5);
+
         CharHg_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_HG_ACTIVE_01_BULLET, 5);
         CharHg_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_HG_ACTIVE_02_BULLET, 5);
+
         CharSg_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SG_ACTIVE_01_BULLET, 5);
         CharSg_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SG_ACTIVE_02_BULLET, 5);
+
         CharSr_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SR_ACTIVE_01_BULLET, 5);
         CharSr_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SR_ACTIVE_02_BULLET, 5);
+
         CharAr_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_AR_BASIC_BULLET, 5);
         CharHg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_HG_BASIC_BULLET, 5);
         CharSg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SG_BASIC_BULLET, 5);
         CharSr_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SR_BASIC_BULLET, 5);
+
         Common_01_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_01_BULLET, 5);
         Common_02_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_02_BULLET, 5);
         Common_03_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_03_BULLET, 5);
         Common_04_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_04_BULLET, 5);
-
-
     }
 }
