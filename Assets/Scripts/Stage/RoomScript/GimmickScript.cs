@@ -12,6 +12,7 @@ public class GimmickScript : MonoBehaviour
 
     public GameObject gStore;
     public GameObject gStoreUi;
+    public GameObject gTrapUi;
     public GimmickRoomParams.ROOM_TYPE GIMMICK_TYPE
     {
         get
@@ -35,12 +36,18 @@ public class GimmickScript : MonoBehaviour
                 break;
         }
         
-        activeGimmick.InitializeGimmick(this, gStore, gStoreUi);
+        activeGimmick.InitializeGimmick(this, gStore, gStoreUi, gTrapUi);
+    }
+
+    void Update()
+    {
+        activeGimmick.UpdateGimmick();
     }
 
     void OnTriggerEnter(Collider other)
     {
         activeGimmick.ActiveGimmick();
+        Debug.Log("콜라이더 실행");
     }
 
     private void OnTriggerExit(Collider other)

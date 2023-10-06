@@ -19,6 +19,7 @@ namespace Params
     //    - 트리거 타입
     //    - 최대 오브젝트 갯수
     //    - 기믹 타입(상세 기입)
+
     public class StageParams
     {
         //스테이지 챕터 상수

@@ -32,20 +32,20 @@ public class Store : MonoBehaviour
             for (int i = 1; i <= nStoreLength; i++)
             {
                 string sInformation = "% 증가합니다.";
-                int nStatusChoise = Random.Range(0, Trap.STATUS_LIST.Length); // 랜덤 값을 통해 배열 내 status를 선택
+                int nStatusChoise = Random.Range(0, TrapGimmick.STATUS_LIST.Length); // 랜덤 값을 통해 배열 내 status를 선택
                 int nPriceChoise = Random.Range(0, 3); // 0 = 100 / 1 = 200 / 2 = 300
 
                 string scPath = "ScriptableObjects/RoomStoreStatus/";
-                cStatusInfo = Resources.Load<StatusInfo>(scPath + "Room_Store_" + Trap.STATUS_LIST[nStatusChoise]);
+                cStatusInfo = Resources.Load<StatusInfo>(scPath + "Room_Store_" + TrapGimmick.STATUS_LIST[nStatusChoise]);
 
                 // Name Text 변경
                 tName = GameObject.Find("Slot" + i).transform.Find("Name").gameObject.GetComponent<TextMeshProUGUI>();
                 tName.text = cStatusInfo.kName;
 
                 // 이미지 변경
-                string spPath = "Sprite/";
+                string spPath = "Sprites/RoomStoreStatus/";
                 sImg = GameObject.Find("Slot" + i).transform.Find("Image").gameObject.GetComponent<Image>();
-                sImg.sprite = Resources.Load<Sprite>(spPath + Trap.STATUS_LIST[nStatusChoise]);
+                sImg.sprite = Resources.Load<Sprite>(spPath + TrapGimmick.STATUS_LIST[nStatusChoise]);
 
                 // 골드 값 변경
                 tGold = GameObject.Find("Slot" + i).transform.Find("Button").Find("Gold").gameObject.GetComponent<TextMeshProUGUI>();
@@ -56,7 +56,7 @@ public class Store : MonoBehaviour
                 tInfo = GameObject.Find("Slot" + i).transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
                 tInfo.text = sInformation;
 
-                aStoreData[i - 1, 0] = Trap.STATUS_LIST[nStatusChoise]; // 이름
+                aStoreData[i - 1, 0] = TrapGimmick.STATUS_LIST[nStatusChoise]; // 이름
                 aStoreData[i - 1, 1] = cStatusInfo.lGold[nPriceChoise]; // 골드
                 aStoreData[i - 1, 2] = cStatusInfo.lincrease[nPriceChoise]; // 증가 수치
             }
