@@ -45,6 +45,7 @@ public class SkillLevelUpUi : MonoBehaviour
                 listMatButtons[fNum].GetComponent<Image>().sprite
                     = GameManager.instance.LoadAndSetSprite
                     (FolderPath.SPRITE_ITEM_ICON + uiCellView.IMAGE_PATH);
+                fNum++;
             }
         }
     }
@@ -71,9 +72,9 @@ public class SkillLevelUpUi : MonoBehaviour
         {
             return;
         }
+        dictMatExp[index + MAT_INDEX] += 1;
         listMatButtons[index].transform.GetChild(1).GetComponent<TMP_Text>().text
                 = dictMatExp[index + MAT_INDEX] + "/" + dictItemCount[(index + MAT_INDEX).ToString()];
-        dictMatExp[index + MAT_INDEX] += 1;
     }
 
     public void SetDictSkillParams(Dictionary<string,string> dictTemp)
@@ -114,7 +115,6 @@ public class SkillLevelUpUi : MonoBehaviour
     float SelectMaterialToExpUp()
     {
         float fSumExp = 0;
-        int index = 0;
         List<GameObject> MatItem = new();
         foreach(GameObject item in GameManager.instance.objectFactory.ItemObjectFactory.listPool)
         {
@@ -123,15 +123,25 @@ public class SkillLevelUpUi : MonoBehaviour
                 MatItem.Add(item);
             }
         }
-        foreach (KeyValuePair<float, float> MatExpPair in dictMatExp)
+        //foreach (KeyValuePair<float, float> MatExpPair in dictMatExp)
+        for(int i = 0; i < dictMatExp.Count; i++)
         {
-            fSumExp += MatItem[index].GetComponent<UiCellView>().EXP * MatExpPair.Value;
+            fSumExp += MatItem[i].GetComponent<UiCellView>().EXP * dictMatExp[i + MAT_INDEX];
             // 재료 선택한 딕셔너리 초기화해주고 itemcount 빼주기 만들기
-            dictItemCount[MatExpPair.Key.ToString()]
-                = (int.Parse(dictItemCount[MatExpPair.Key.ToString()]) - MatExpPair.Value).ToString();
-            index++;
-            dictMatExp[MatExpPair.Key] = 0;
+            dictItemCount[(i + MAT_INDEX).ToString()]
+                = (int.Parse(dictItemCount[(i + MAT_INDEX).ToString()]) - dictMatExp[i + MAT_INDEX]).ToString();
+            dictMatExp[i + MAT_INDEX] = 0;
         }
+        //foreach (float key in dictMatExp.Keys)
+        //{
+        //    fSumExp += MatItem[index].GetComponent<UiCellView>().EXP * dictMatExp[key];
+        //    // 재료 선택한 딕셔너리 초기화해주고 itemcount 빼주기 만들기
+        //    dictItemCount[key.ToString()]
+        //        = (int.Parse(dictItemCount[key.ToString()]) - dictMatExp[key]).ToString();
+        //    index++;
+        //}
+
+        GameManager.instance.DataWrite(FolderPath.PARAMS_ITEM_COUNT + FileName.STR_JSON_INVEN_SAVE, dictItemCount);
         ShowMatData();
         return fSumExp;
     }
