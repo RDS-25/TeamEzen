@@ -9,14 +9,12 @@ public class CommonSkill_03_Effect : SkillEffrct
     {
         commonSkill_03 = GameObject.FindObjectOfType<CommonSkill_03>();
         myFactory(GameManager.instance.objectFactory.CharHGActive03EffectFactory);
-        fAttackCount = commonSkill_03.fAttackCount;
-        fSpeed = commonSkill_03.fSpeed;
-        fTargetCount = commonSkill_03.fTargetCount;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckDistance(Firepiont, commonSkill_03.fRange);
+
     }
 }

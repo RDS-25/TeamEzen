@@ -136,6 +136,7 @@ public class Skill: SkillParams
     public virtual void LoadParams()
     {
         Dictionary<string, string> dictTemp = GameManager.instance.DataRead(strSkillFolderPath + strSkillParamsName);
+        SkillStat = GameManager.instance.DataRead(strSkillFolderPath + strSkillParamsName);
 
         enumSkillType = (SkillType)Enum.Parse(typeof(SkillType), dictTemp["skillType"]);
         enumSkillDetail = (SkillDetailType)Enum.Parse(typeof(SkillDetailType), dictTemp["skillDetail"]);
@@ -180,7 +181,8 @@ public class Skill: SkillParams
         if (fSkillLevel > fUnlockLevel)
         {
             bisUnlockSkill = true;
-            SkillStat.Add("bisUnlockSkill", true.ToString());
+            SkillStat["bisUnlockSkill"]= true.ToString();
+            //SkillStat.Add("bisUnlockSkill", true.ToString());
         }
         SaveParams();
         //추가기능
@@ -190,7 +192,8 @@ public class Skill: SkillParams
         if (ChaStat.fLevel > fUnlockHidenLevel)
         {
             bisUnlockHiden = true;
-            SkillStat.Add("bisUnlockHiden", true.ToString());
+            SkillStat["bisUnlockHiden"]= true.ToString();
+            //SkillStat.Add("bisUnlockHiden", true.ToString());
         }
         SaveParams();
         //추가기능
@@ -220,10 +223,13 @@ public class Skill: SkillParams
         {
             SkillLevelUp();
             fSkillExp -= fSkillRequireExp;
-            SkillStat.Add("fSkillExp", fSkillExp.ToString());
+            SkillStat["fSkillExp"] = fSkillExp.ToString();
+            //SkillStat.Add("fSkillExp", fSkillExp.ToString());//애드가 아니라 바꿔주기
         }
         else
-            SkillStat.Add("fSkillExp", fSkillExp.ToString());
+            SkillStat["fSkillExp"] = fSkillExp.ToString();
+        //SkillStat.Add("fSkillExp", fSkillExp.ToString());
+        SaveParams();
     }
     public virtual void SkillLevelUp()//스킬 레벨업(강화)
     {//상승후 딕셔너리에 다시 정보주기

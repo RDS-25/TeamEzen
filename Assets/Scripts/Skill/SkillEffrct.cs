@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SkillEffrct : MonoBehaviour    
+public class SkillEffrct : MonoBehaviour
 {
     FactoryManager factoryManager;
     //파티클 실행시간 이후 없애기
-    public virtual void myFactory(FactoryManager myFactoryManager)
+    protected virtual void myFactory(FactoryManager myFactoryManager)
     {
         factoryManager = myFactoryManager;
     }
-    
+    protected virtual void EndEffect()
+    {
+        factoryManager.SetObject(gameObject);
+    }
 }
 
 

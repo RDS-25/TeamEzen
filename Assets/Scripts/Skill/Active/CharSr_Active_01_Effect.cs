@@ -9,14 +9,12 @@ public class CharSr_Active_01_Effect : SkillEffrct
     {
         charSr_Active_01 = GameObject.FindObjectOfType<CharSr_Active_01>();
         myFactory(GameManager.instance.objectFactory.CharHGActive03EffectFactory);
-        fAttackCount = charSr_Active_01.fAttackCount;
-        fSpeed = charSr_Active_01.fSpeed;
-        fTargetCount = charSr_Active_01.fTargetCount;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckDistance(Firepiont, charSr_Active_01.fRange);
+ 
     }
 }

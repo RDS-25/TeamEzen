@@ -7,6 +7,7 @@ public class CommonSkill_04_Bullet : SkillBullet
     // Start is called before the first frame update
     void Start()
     {
+        skillinfo = new CommonSkill_04();
         myFactory(GameManager.instance.objectFactory.Common_04_BulletFactory);
         EffectFactory(GameManager.instance.objectFactory.Common04EffectFactory);
     }

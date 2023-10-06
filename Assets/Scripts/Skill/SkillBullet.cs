@@ -17,10 +17,8 @@ public class SkillBullet : MonoBehaviour
     protected float fTotalDamage;
     protected float fMonProperty;
     protected Stat ChaStat;
-    protected float fAttackCount;
-    protected float fTargetCount;   
     int count;
-    public Skill skillinfo;
+    protected Skill skillinfo;
 
 
     void Start()
@@ -44,7 +42,7 @@ public class SkillBullet : MonoBehaviour
     {
         ChaStat = activeObjectStat;
     }
-    public float CalculDamage(float attackcount)//받은 스텟으로 다시쓰기
+    public float CalculDamage()
     {
         if (fRanmondod < fMonDadge)
         {
@@ -55,11 +53,11 @@ public class SkillBullet : MonoBehaviour
         {
             if (fRancri <= ChaStat.fCriticalPer - fMonCriresi)
             {
-                fTotalDamage = (ChaStat.fAtk * ChaStat.fCriticalDmg * (fMonDefense - ChaStat.fDefBreak / fMonDefense + 100)) * CheckPro(ChaStat.fProperty, fMonProperty) * attackcount;
+                fTotalDamage = (ChaStat.fAtk * ChaStat.fCriticalDmg * (fMonDefense - ChaStat.fDefBreak / fMonDefense + 100)) * CheckPro(ChaStat.fProperty, fMonProperty) * skillinfo.fAttackCount;
             }
             else
             {
-                fTotalDamage = ChaStat.fAtk * (fMonDefense - ChaStat.fDefBreak / fMonDefense + 100) * CheckPro(ChaStat.fProperty, fMonProperty) * attackcount;
+                fTotalDamage = ChaStat.fAtk * (fMonDefense - ChaStat.fDefBreak / fMonDefense + 100) * CheckPro(ChaStat.fProperty, fMonProperty) * skillinfo.fAttackCount;
             }
             return fTotalDamage;
         }
@@ -93,7 +91,7 @@ public class SkillBullet : MonoBehaviour
             fMonDefense = monsterStat.fDef;
             fMonProperty = monsterStat.fProperty;
 
-            CalculDamage(fAttackCount);
+            CalculDamage();
             // 오류 있음
             monsterStat.fHealth -= fTotalDamage;
             
@@ -104,19 +102,19 @@ public class SkillBullet : MonoBehaviour
         }
     }
     public void ShowEffect(Vector3 contactpoint)
-    {
+    {        
         GameObject Effect = effectFactoryManager.GetObject();
         Effect.transform.position = contactpoint;
         Effect.SetActive(true);
     }
     void moveBullet()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * fSpeed * Time.deltaTime);
+        GetComponent<Rigidbody>().AddForce(transform.forward * skillinfo.fSpeed * Time.deltaTime);
     }
-    public virtual void CheckDistance(Vector3 firepoint, float range)
+    public virtual void CheckDistance()
     {
 
-        float distance = Vector3.Distance(firepoint, this.transform.position);
+        float distance = Vector3.Distance(Firepiont, this.transform.position);
         //Debug.Log("ran" + range);
         //Debug.Log("dis" + distance);
         // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
@@ -124,7 +122,6 @@ public class SkillBullet : MonoBehaviour
         {
             // setactive 해주기
             myfactoryManager.SetObject(gameObject);
-
         }
         else
             return;
@@ -133,6 +130,6 @@ public class SkillBullet : MonoBehaviour
     void Update()
     {
         moveBullet();
-
+        CheckDistance();
     }
 }

@@ -7,6 +7,7 @@ public class CharSg_Basic_Bullet : SkillBullet
     // Start is called before the first frame update
     void Start()
     {
+        skillinfo = new CharSg_Basic();
         myFactory(GameManager.instance.objectFactory.CharSg_Basic_Bullet_Factory);
         EffectFactory(GameManager.instance.objectFactory.CharSGBasicEffectFactory);
     }

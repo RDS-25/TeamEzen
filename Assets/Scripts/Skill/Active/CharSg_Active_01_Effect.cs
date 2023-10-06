@@ -9,7 +9,6 @@ public class CharSg_Active_01_Effect : SkillEffrct
     {
         charSg_Active_01 = GameObject.FindObjectOfType<CharSg_Active_01>();
         myFactory(GameManager.instance.objectFactory.CharHGActive03EffectFactory);
-
     }
 
     // Update is called once per frame
