@@ -21,7 +21,6 @@ public class CharAr_Active_02 : AttackType
         SetType();
         LevelUpValue();
         InitParams();
-        LoadEffect(GameManager.instance.objectFactory.CharARActive02EffectFactory);
     }
     
     public override void SetType()
