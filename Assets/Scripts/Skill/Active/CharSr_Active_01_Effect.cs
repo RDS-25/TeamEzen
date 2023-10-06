@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class CharSr_Active_01_Effect : SkillEffrct
 {
-    CharSr_Active_01 charSr_Active_01;
+    
     void Start()
     {
-        charSr_Active_01 = GameObject.FindObjectOfType<CharSr_Active_01>();
-        myFactory(GameManager.instance.objectFactory.CharHGActive03EffectFactory);
+    
+        myFactory(GameManager.instance.objectFactory.CharSRActive01EffectFactory);
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
- 
-    }
 }

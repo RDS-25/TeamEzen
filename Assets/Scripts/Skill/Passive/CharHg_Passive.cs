@@ -17,7 +17,7 @@ public class CharHg_Passive : BuffType
         SetType();
         LevelUpValue();
         InitParams();
-        CharaterStatUp(ref ChaStat.fMoveSpeed, ref ChaStat.fAtkSpeed);
+        //CharaterStatUp(ref ChaStat.fMoveSpeed, ref ChaStat.fAtkSpeed);
     }
     public override void SetType()
     {

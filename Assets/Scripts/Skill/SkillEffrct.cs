@@ -13,8 +13,16 @@ public class SkillEffrct : MonoBehaviour
     }
     protected virtual void EndEffect()
     {
+        StartCoroutine("time");
+        //factoryManager.SetObject(gameObject);
+
+    }
+    IEnumerator time()
+    {
+        yield return new WaitForSeconds(GetComponent<ParticleSystem>().time);
         factoryManager.SetObject(gameObject);
     }
+
 }
 
 
