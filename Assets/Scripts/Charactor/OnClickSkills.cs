@@ -12,10 +12,9 @@ public class OnClickSkills : MonoBehaviour
 
 	public void ClickSkills() {
 
-		
 		GameObject Skill = EventSystem.current.currentSelectedGameObject;
 		var scSKill = Skill.GetComponent<SkillTest>();
-		
+
 		scSKill.enabled = true;
 		Skill.GetComponent<SkillTest>().isSkilling = true;
 		/*Skill.GetComponent<SkillTest>().Skillstate = SkillTest.SkillState.Clicked;*/
@@ -53,7 +52,5 @@ public class OnClickSkills : MonoBehaviour
 			}
 	
 		}
-
-		BtnPrev = Skill;
 	}
 }

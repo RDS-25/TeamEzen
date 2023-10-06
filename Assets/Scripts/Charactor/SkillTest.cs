@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SkillTest : MonoBehaviour
 {
@@ -22,11 +23,15 @@ public class SkillTest : MonoBehaviour
 
     public enum SkillState {Init,Clicked,Active,}
     public SkillState Skillstate;
+
     GameObject Player;
     //스킬 사용중?
     public bool isSkilling;
     //스킬 캔슬
     public bool isCancel;
+
+    RaycastHit hit;
+    Ray ray;
 
 
 
@@ -35,15 +40,16 @@ public class SkillTest : MonoBehaviour
         
         Player = GameObject.FindWithTag("Player");
         cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        AllImageFalse();
+        //정보 꺼내와서 초기화 
     }
 
     // Update is called once per frame
     void Update()
     {
-   
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin,ray.direction ,Color.yellow);
+        
+         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
@@ -62,40 +68,46 @@ public class SkillTest : MonoBehaviour
        
         var hitPosDir = (hit.point - Player.transform.position).normalized; //  나아가는 방향만
        
-        float distance = Vector3.Distance(hit.point, Player.transform.position);
+        float distance = Vector3.Distance(hit.point, Player.transform.position); //거리 
 
         distance = Mathf.Min(distance, maxActiveSkillDistance);  // 3을 스킬 스텟  MaxRange;
        
         var newHitPos = Player.transform.position  + hitPosDir * distance;
 
         ActiveSkillCanvas.transform.position = newHitPos;
-        
+
         //Arrow와 Range의 나가는 스킬이 다르다 
         //Arrow는  발사체  Range는 소환
 
         //버튼 누를때 실행 안되게 and 처음에 실행 안되게 
-        if (Input.GetMouseButtonDown(0)) {
-            Debug.Log("겟마우스 다운 실행");
-			if (isCancel)
-			{
-                isCancel = !isCancel;
-                return;
-			}
-            Instantiate(TestOBJ, newHitPos, TestOBJ.transform.rotation);
-            isSkilling = false;
-            AllImageFalse();
-            Debug.Log(hit.collider.gameObject);
+       
+        if (Input.GetMouseButtonDown(0) && isSkilling)
+        {
+            if ((!EventSystem.current.IsPointerOverGameObject()))
+            {
+                Debug.Log("겟마우스 다운 실행");
+               /* if (isCancel)
+                {
+                    isCancel = !isCancel;
+                    return;
+                }*/
+         
+                AllImageFalse();
+
+                //여기  스킬 발사 skilltrigger
+                isSkilling = false;
+            }
+        
         }
 
     }
+  
 
-    void AllImageFalse() {
+	public void AllImageFalse() {
 
         targetCircle.GetComponent<Image>().enabled = false;
         indicatorRangeCircle.GetComponent<Image>().enabled = false;
         ABCImage.GetComponent<Image>().enabled = false;
     }
-
-
 
 }

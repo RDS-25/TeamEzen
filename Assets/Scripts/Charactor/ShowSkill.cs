@@ -69,9 +69,6 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
             {
                 ULTIMATESKILL = GameManager.instance.objectFactory.AllSkill.listPool[i];
             }
-           
-            
-           
         }
     }
 
