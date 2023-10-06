@@ -19,18 +19,11 @@ public class SkillLevelUpUi : MonoBehaviour
     public List<Button> listMatButtons = new();
     public SkillPanelUi skillPanelUi;
     Dictionary<string, string> dictSelectedSkillParams = new();
-    // Start is called before the first frame update
+
+    private const int MAT_INDEX = 300;
     private void OnEnable()
     {
-        dictItemCount = GameManager.instance.DataRead(FolderPath.PARAMS_ITEM_COUNT + FileName.STR_JSON_INVEN_SAVE);
-
-        for (int i = 0; i < listMatButtons.Count; i++)
-        {
-            if (!dictMatExp.ContainsKey(i + 300))
-                dictMatExp.Add(i + 300, 0);
-            listMatButtons[i].transform.GetChild(1).GetComponent<TMP_Text>().text
-                = dictMatExp[i + 300] + "/" + dictItemCount[(i + 300).ToString()];
-        }
+        ShowMatData();
     }
     private void OnDisable()
     {
@@ -47,7 +40,7 @@ public class SkillLevelUpUi : MonoBehaviour
         foreach(GameObject items in GameManager.instance.objectFactory.ItemObjectFactory.listPool)
         {
             UiCellView uiCellView = items.GetComponent<UiCellView>();
-            if(uiCellView.ID == fNum + 300)
+            if(uiCellView.ID == fNum + MAT_INDEX)
             {
                 listMatButtons[fNum].GetComponent<Image>().sprite
                     = GameManager.instance.LoadAndSetSprite
@@ -59,18 +52,28 @@ public class SkillLevelUpUi : MonoBehaviour
     {
         // dictMatExp 여기에 들어있는 id 값을 가진 머테리얼 표시해주기
     }
+    void ShowMatData()
+    {
+        dictItemCount = GameManager.instance.DataRead(FolderPath.PARAMS_ITEM_COUNT + FileName.STR_JSON_INVEN_SAVE);
 
+        for (int i = 0; i < listMatButtons.Count; i++)
+        {
+            if (!dictMatExp.ContainsKey(i + MAT_INDEX))
+                dictMatExp.Add(i + MAT_INDEX, 0);
+            listMatButtons[i].transform.GetChild(1).GetComponent<TMP_Text>().text
+                = dictMatExp[i + MAT_INDEX] + "/" + dictItemCount[(i + MAT_INDEX).ToString()];
+        }
+    }
     void OnClickMatExpButton(int index)
     {
         // 선택한 재료 딕셔너리에 개수 저장
-        index += 300;
-        if(dictItemCount[index.ToString()] == "0")
+        if(dictItemCount[(index + MAT_INDEX).ToString()] == "0")
         {
             return;
         }
         listMatButtons[index].transform.GetChild(1).GetComponent<TMP_Text>().text
-                = dictMatExp[index] + "/" + dictItemCount[index.ToString()];
-        dictMatExp[index] += 1;
+                = dictMatExp[index + MAT_INDEX] + "/" + dictItemCount[(index + MAT_INDEX).ToString()];
+        dictMatExp[index + MAT_INDEX] += 1;
     }
 
     public void SetDictSkillParams(Dictionary<string,string> dictTemp)
@@ -103,6 +106,7 @@ public class SkillLevelUpUi : MonoBehaviour
                     if(skillScript.fSkillLevel == 10)
                         nextLevel.text = "Max";
                 }
+                ShowMatData();
                 break;
             }
         }
@@ -110,13 +114,25 @@ public class SkillLevelUpUi : MonoBehaviour
     float SelectMaterialToExpUp()
     {
         float fSumExp = 0;
+        int index = 0;
+        List<GameObject> MatItem = new();
+        foreach(GameObject item in GameManager.instance.objectFactory.ItemObjectFactory.listPool)
+        {
+            if(Mathf.FloorToInt(item.GetComponent<UiCellView>().ID / 100) == 3)
+            {
+                MatItem.Add(item);
+            }
+        }
         foreach (KeyValuePair<float, float> MatExpPair in dictMatExp)
         {
-            fSumExp = MatExpPair.Key * MatExpPair.Value;
+            fSumExp += MatItem[index].GetComponent<UiCellView>().EXP * MatExpPair.Value;
             // 재료 선택한 딕셔너리 초기화해주고 itemcount 빼주기 만들기
             dictItemCount[MatExpPair.Key.ToString()]
                 = (int.Parse(dictItemCount[MatExpPair.Key.ToString()]) - MatExpPair.Value).ToString();
+            index++;
+            dictMatExp[MatExpPair.Key] = 0;
         }
+        ShowMatData();
         return fSumExp;
     }
 }
