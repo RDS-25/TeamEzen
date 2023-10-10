@@ -42,8 +42,8 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        //if (nClearCount >= nGimmickCount)
+        //if (Input.GetKeyDown(KeyCode.A))
+        if (nClearCount >= nGimmickCount)
         {
             PortalSpawn.SetActive(true);
         }
@@ -98,7 +98,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
                     gimmick = obj;
                     EnableRoom();
-                    monsterMaxCount += obj.GetComponent<MonsterGimmick>().monsterCount;
+                   // monsterMaxCount += obj.GetComponent<MonsterGimmick>().monsterCount;
                     break;
                 }
             }
