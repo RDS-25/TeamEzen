@@ -200,16 +200,22 @@ public class StageManager : MonoBehaviour
             enemy.transform.rotation = Quaternion.identity;
             GameManager.instance.objectFactory.MeleeMonsterFactory.SetObject(enemy);
         }
-        else if(eType == Enemy.EnemyType.Ranged)
+        else if (eType == Enemy.EnemyType.Ranged)
         {
             enemy.transform.position = Vector3.zero;
             enemy.transform.rotation = Quaternion.identity;
             GameManager.instance.objectFactory.RangedMonsterFactory.SetObject(enemy);
         }
+        else if (eType == Enemy.EnemyType.Boss)
+        {
+            StageClear();
+            return;
+        }
 
         if (qManager.QUEST_CLEAR)
         {
-            
+            if(ClearRoomEvent != null)
+                ClearRoomEvent();
         }
     }
 }
