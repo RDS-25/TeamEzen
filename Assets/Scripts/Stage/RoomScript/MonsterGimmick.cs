@@ -14,7 +14,6 @@ public class MonsterGimmick : Gimmick
     MonoBehaviour mb;
     private bool bState = false;
     private bool bClearCheck = false;
-
     public void InitializeGimmick(MonoBehaviour mb, GameObject Stroe, GameObject StoreUi, GameObject TrapUi)
     {
         Debug.Log("tt");
@@ -28,7 +27,7 @@ public class MonsterGimmick : Gimmick
     {
         if (bState && bClearCheck)
         {
-            if(mb.gameObject.transform.childCount == 0)
+            if (mb.gameObject.transform.childCount == 0)
             {
                 RoomManager.nClearCount++;
                 bClearCheck = false;
@@ -57,17 +56,24 @@ public class MonsterGimmick : Gimmick
         {
             Vector3 randomPosition = new Vector3(Random.Range(-mb.transform.lossyScale.x / 2, mb.transform.lossyScale.x / 2), 0, Random.Range(-mb.transform.lossyScale.z / 2, mb.transform.lossyScale.z / 2));
 
-            if (randomPosition.x > Player.transform.position.x + playerRange 
-                || randomPosition.x < Player.transform.position.x - playerRange 
-                || randomPosition.z > Player.transform.position.z + playerRange 
+            if (randomPosition.x > Player.transform.position.x + playerRange
+                || randomPosition.x < Player.transform.position.x - playerRange
+                || randomPosition.z > Player.transform.position.z + playerRange
                 || randomPosition.z < Player.transform.position.z - playerRange)
             {
-                SpawnMonster = GameManager.instance.objectFactory.MeleeMonsterFactory.GetObject();
-                //SpawnMonster = GameManager.instance.objectFactory.RangedMonsterFactory.GetObject();
+                if (Random.Range(0, 2) == 0 ? true : false)
+                    SpawnMonster = GameManager.instance.objectFactory.MeleeMonsterFactory.GetObject();
+                else
+                    SpawnMonster = GameManager.instance.objectFactory.RangedMonsterFactory.GetObject();
+
                 SpawnMonster.transform.position = mb.transform.position + randomPosition;
+                SpawnMonster.transform.parent = mb.gameObject.transform;
+                SpawnMonster.GetComponent<Enemy>().DieEvent += StageManager.Instance.MonsterDieEvent;
             }
             yield return new WaitForSeconds(1.0f);
         }
         bClearCheck = true;
     }
+
+
 }

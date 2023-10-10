@@ -18,7 +18,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
     public static int nClearCount = 0;
     private int nGimmickCount = 0;
     GameObject Portal;
-    GameObject PortalSpawn;
+    public GameObject PortalSpawn;
     public static Vector3[] vRoomPos = null;
 
     //GameObject gimmick = new GameObject();//Fectory.GetObjct()¿¡¼­ ±â¹Í »Ì¾Æ¿À±â
@@ -40,15 +40,6 @@ public class RoomManager : MonoBehaviour, DefaultRoom
         //Debug.Log("½ÇÇà");
     }
 
-    public void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.A))
-        if (nClearCount >= nGimmickCount)
-        {
-            PortalSpawn.SetActive(true);
-        }
-    }
-
     public void ClearRoom()
     {
         gimmick.SetActive(false);
@@ -66,16 +57,17 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
     public void EnableRoom()
     {
-        if(bUseBoss)
+        if (bUseBoss)
         {
             string prePath = "Prefabs/Room/";
             Portal = Resources.Load<GameObject>(prePath + "Portal");
-            PortalSpawn = Instantiate(Portal, new Vector3(gimmick.transform.position.x,2, gimmick.transform.position.z), gimmick.transform.rotation);
+            PortalSpawn = Instantiate(Portal, new Vector3(gimmick.transform.position.x, 2, gimmick.transform.position.z), gimmick.transform.rotation);
             PortalSpawn.transform.parent = gimmick.transform;
+
         }
         gimmick.SetActive(true);
     }
-    
+
 
     public void SetObjectPosition()
     {
@@ -98,7 +90,8 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
                     gimmick = obj;
                     EnableRoom();
-                   // monsterMaxCount += obj.GetComponent<MonsterGimmick>().monsterCount;
+                    obj.GetComponentInChildren<GimmickScript>().SetRoomType();
+                    monsterMaxCount += obj.GetComponentInChildren<GimmickScript>().OBJECT_COUNT;
                     break;
                 }
             }
@@ -118,6 +111,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
                         gimmick = obj;
                         EnableRoom();
+                        obj.GetComponentInChildren<GimmickScript>().SetRoomType();
                         break;
                     }
                 }
@@ -137,7 +131,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
             return;
         }
         else
-        { 
+        {
         }
     }
 }

@@ -20,7 +20,8 @@ public class StageManager : MonoBehaviour
     private Transform trItemGridView;
     public QuestManager qManager;
     public GameObject _questPanel;
-
+    public delegate void ClearRoomDelegate();
+    public event ClearRoomDelegate ClearRoomEvent;
     public void InitializeStage(StageParams.STAGE_TYPE type, GameObject player)
     {
         _stCurrentStageType = type;
@@ -166,7 +167,7 @@ public class StageManager : MonoBehaviour
     {
         int prevCurrentIdx = nCurrentCharactorInx;
 
-        if (nCurrentCharactorInx >= Charactors.Length-1)
+        if (nCurrentCharactorInx >= Charactors.Length - 1)
             nCurrentCharactorInx = 0;
         else
             nCurrentCharactorInx++;
@@ -178,7 +179,7 @@ public class StageManager : MonoBehaviour
         precCharactor.SetActive(false);
 
         player = Charactors[nCurrentCharactorInx];
-       
+
         player.transform.position = precCharactor.transform.position;
         player.transform.rotation = precCharactor.transform.rotation;
 
@@ -188,6 +189,28 @@ public class StageManager : MonoBehaviour
         player.GetComponent<Action>().isEntries = true;
         player.GetComponent<Action>().UIGroup.SetActive(true);
         player.SetActive(true);
+    }
+
+    public void MonsterDieEvent(Enemy.EnemyType eType, GameObject enemy)
+    {
+        qManager.UpdateQuestProgress(1);
+        if (eType == Enemy.EnemyType.Melee)
+        {
+            enemy.transform.position = Vector3.zero;
+            enemy.transform.rotation = Quaternion.identity;
+            GameManager.instance.objectFactory.MeleeMonsterFactory.SetObject(enemy);
+        }
+        else if(eType == Enemy.EnemyType.Ranged)
+        {
+            enemy.transform.position = Vector3.zero;
+            enemy.transform.rotation = Quaternion.identity;
+            GameManager.instance.objectFactory.RangedMonsterFactory.SetObject(enemy);
+        }
+
+        if (qManager.QUEST_CLEAR)
+        {
+            
+        }
     }
 }
 

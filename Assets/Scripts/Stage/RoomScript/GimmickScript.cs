@@ -21,7 +21,7 @@ public class GimmickScript : MonoBehaviour
         }
     }
     // Start is called before the first frame update
-    void Start()
+    public void SetRoomType()
     {
         switch (room_type)
         {
@@ -35,13 +35,14 @@ public class GimmickScript : MonoBehaviour
                 activeGimmick = new TrapGimmick();
                 break;
         }
-        
+
         activeGimmick.InitializeGimmick(this, gStore, gStoreUi, gTrapUi);
     }
 
     void Update()
     {
-        activeGimmick.UpdateGimmick();
+        if(activeGimmick!= null)
+            activeGimmick.UpdateGimmick();
     }
 
     void OnTriggerEnter(Collider other)
@@ -53,5 +54,28 @@ public class GimmickScript : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         activeGimmick.DiableGimmick();
+    }
+
+    public int OBJECT_COUNT
+    {
+        get
+        {
+            int value = 0;
+            switch (room_type)
+            {
+                case GimmickRoomParams.ROOM_TYPE.MONSTER_ROOM:
+                    value = ((MonsterGimmick)activeGimmick).monsterCount;
+                    break;
+                case GimmickRoomParams.ROOM_TYPE.STORE_ROOM:
+                    value = 1;
+                    break;
+                case GimmickRoomParams.ROOM_TYPE.TRAP_ROOM:
+                    value = 1;
+                    break;
+            }
+            
+            return value;
+
+        }
     }
 }
