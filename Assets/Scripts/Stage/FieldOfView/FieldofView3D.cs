@@ -248,6 +248,9 @@ public class FieldofView3D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (trPlayer.gameObject != StageManager.Instance.player)
+            trPlayer = StageManager.Instance.player.transform;
+
         transform.position = trPlayer.position + Vector3.up * 0.5f;
         DrawFieldofView();
     }

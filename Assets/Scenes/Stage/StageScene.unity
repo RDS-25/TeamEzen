@@ -416,7 +416,7 @@ MonoBehaviour:
   Charactors: []
   player: {fileID: 0}
   trItemGridView: {fileID: 1334544508}
-  _questPanel: {fileID: 0}
+  _questPanel: {fileID: 1937496779}
 --- !u!4 &550504360
 Transform:
   m_ObjectHideFlags: 0
