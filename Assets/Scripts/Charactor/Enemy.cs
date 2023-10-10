@@ -65,14 +65,18 @@ public class Enemy : MonoBehaviour
 	    Targeting();
 	}
 
-	void Dodie() {
-		//예시용 코드 
-		if (stat.fHealth <= 0) {
-			if (DieEvent != null)
+	public void Dodie() {
+        //예시용 코드 
+
+        if (DieEvent != null)
+        {
+			if (stat.fHealth <= 0)
 			{
-				DieEvent(enemyType,gameObject);
+				DieEvent(enemyType, gameObject);
 			}
-		}
+			DieEvent = null;
+        }
+ 
 	}
 
 	//시야 사거리안에 적 찾아서   추적하기 
