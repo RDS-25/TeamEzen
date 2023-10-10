@@ -24,6 +24,8 @@ public class PrefabName
     public const string STR_MELEE_MONSTER           = "MeleeEnemy";
     public const string STR_RANGED_MONSTER          = "RangedEnemy";
 
+    public const string STR_CHAR_BASIC_EFFECT = "Char_Basic_Effect";
+
     public const string STR_CHAR_AR_BASIC_EFFECT    = "CharAr_Basic_Effect";
     public const string STR_CHAR_SR_BASIC_EFFECT    = "CharSr_Basic_Effect";
     public const string STR_CHAR_HG_BASIC_EFFECT    = "CharHg_Basic_Effect";
@@ -49,6 +51,8 @@ public class PrefabName
     public const string STR_COMMON_02EFFECT         = "Common_02Effect";
     public const string STR_COMMON_03EFFECT         = "Common_03Effect";
     public const string STR_COMMON_04EFFECT         = "Common_04Effect";
+
+    public const string STR_CHA_BASIC_BULLET = "Char_Basic_Bullet";
 
     public const string STR_CHA_AR_BASIC_BULLET = "CharAr_Basic_Bullet";
     public const string STR_CHA_HG_BASIC_BULLET = "CharHg_Basic_Bullet";

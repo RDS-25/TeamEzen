@@ -6,7 +6,8 @@ using System.IO;
 using Params;
 public class BuffType : Skill
 {
-    
+    float stat1;
+    float stat2;
     public override void SetType()
     {
         skillDetail = "BUFF";//딕셔너리 저장용 변수
@@ -24,9 +25,15 @@ public class BuffType : Skill
         //추가기능 구현
 
     }
-    public virtual void CharaterStatUp(ref float stat1, ref float stat2)//ref는 주는 쪽에도 영향을 줌 변수의 얕은 복사
+    public override void SkillTriger(Vector3 playerposition)
     {
-        stat1 = stat1 * fMagnification + fValue;
+        base.SkillTriger(playerposition);
+        CharaterStatUp();
+
+    }
+    public virtual void CharaterStatUp()//ref float stat1, ref float stat2)//ref는 주는 쪽에도 영향을 줌 변수의 얕은 복사
+    {
+        stat1= stat1 * fMagnification + fValue;
 
         
         if (bisUnlockHiden)

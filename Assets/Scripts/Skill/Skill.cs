@@ -206,11 +206,8 @@ public class Skill: SkillParams
         if (bisCanUse == true || bisActtivate == false)
         {
             bisCanUse = false;
-
-            bisActtivate = true;
-
-            fTimer = 0f;
-
+            bisActtivate = true;            
+            ShotEffect(playerposition);
             StartCoroutine(SkillCoolDown());
         }
 

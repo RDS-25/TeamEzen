@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2424480510053422829}
   - component: {fileID: -1223314124754302046}
   - component: {fileID: 6381050700580146029}
+  - component: {fileID: 1085967681197754564}
   m_Layer: 0
   m_Name: CharAr_Basic_Bullet
   m_TagString: Untagged
@@ -85,6 +86,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1085967681197754564
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375494519634185399}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.06
+  m_Height: 0.64
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.27, z: 0}
 --- !u!1 &2375494520144794405
 GameObject:
   m_ObjectHideFlags: 0
