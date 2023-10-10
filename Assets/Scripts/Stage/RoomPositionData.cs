@@ -30,14 +30,14 @@ public class RoomPositionData : ScriptableObject
         trRoomPosObject.transform.position = new Vector3(fPos_x, fPos_y, fPos_z);
     }
     //스크립터블 오브젝트가 가진 기밎의 좌표 건내주는 함수
-    public bool SetGimmickPosData(GameObject objGimmickPos, int idx)
+    public bool SetGimmickPosData(GameObject RoomPosObject, GameObject objGimmickPos, int idx)
     {
         if (idx >= fGimmick_pos_x.Length
             || idx >= fGimmick_pos_y.Length
             || idx >= fGimmick_pos_z.Length)
             return false;
 
-        objGimmickPos.transform.position = new Vector3(fPos_x + fGimmick_pos_x[idx], fPos_y + fGimmick_pos_y[idx], fPos_z + fGimmick_pos_z[idx]);
+        objGimmickPos.transform.position = RoomPosObject.transform.TransformPoint(fGimmick_pos_x[idx]*10, fGimmick_pos_y[idx]*10, fGimmick_pos_z[idx]*10);
 
         return true;
     }

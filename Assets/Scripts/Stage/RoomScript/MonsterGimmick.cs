@@ -69,6 +69,7 @@ public class MonsterGimmick : Gimmick
                 SpawnMonster.transform.position = mb.transform.position + randomPosition;
                 SpawnMonster.transform.parent = mb.gameObject.transform;
                 SpawnMonster.GetComponent<Enemy>().DieEvent += StageManager.Instance.MonsterDieEvent;
+                SpawnMonster.SetActive(true);
             }
             yield return new WaitForSeconds(1.0f);
         }

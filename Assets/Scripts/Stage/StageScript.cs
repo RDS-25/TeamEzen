@@ -25,23 +25,23 @@ public class StageScript : MonoBehaviour
     private Transform trStartPosition;
 
     //룸 포지션 셋팅
-    bool RoomPosInit(object[] objRoomDataArray)
-    {
-        try
-        {
-            _rpdPositionData = new RoomPositionData[objRoomDataArray.Length];
+    //bool RoomPosInit(object[] objRoomDataArray)
+    //{
+    //    try
+    //    {
+    //        _rpdPositionData = new RoomPositionData[objRoomDataArray.Length];
 
-            for (int cnt = 0; cnt < _rpdPositionData.Length; cnt++)
-            {
-                _rpdPositionData[cnt] = (RoomPositionData)objRoomDataArray[cnt];
-            }
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
-    }
+    //        for (int cnt = 0; cnt < _rpdPositionData.Length; cnt++)
+    //        {
+    //            _rpdPositionData[cnt] = (RoomPositionData)objRoomDataArray[cnt];
+    //        }
+    //        return true;
+    //    }
+    //    catch
+    //    {
+    //        return false;
+    //    }
+    //}
 
     //초기화 함수
     bool Initialize(StageParams.STAGE_TYPE staygeType, GameObject target = null)
@@ -145,8 +145,9 @@ public class StageScript : MonoBehaviour
             //룸 펙토리 생성 후 스크립터블 데이터를 통해 포지션 설정
             _bCreateRoom = true;
             string roomPosDataPath = FolderPath.SCRIPTABLE_ROOM_POSITION + ((int)stStageType).ToString();
-            Object[] roomPosData = Resources.LoadAll(roomPosDataPath);
-            RoomPosInit(roomPosData);
+            RoomPositionData[] roomPosData = Resources.LoadAll<RoomPositionData>(roomPosDataPath);
+            _rpdPositionData = roomPosData;
+            //RoomPosInit(roomPosData);
 
             objRoomPositions = new GameObject[_nSetRoomCount];
             List<int> lstIdxList = RandomList.Inistance.NotDuplicatedRandomList(0, _nMaxRoomCount, _nSetRoomCount);
@@ -158,7 +159,7 @@ public class StageScript : MonoBehaviour
                 _rpdPositionData[lstIdxList[i]].SetRoomPosData(objRoomPositions[i]);
                 for (int gimmick_idx = 0; gimmick_idx < objRoomPositions[i].transform.childCount; gimmick_idx++)
                 {
-                    _rpdPositionData[lstIdxList[i]].SetGimmickPosData(objRoomPositions[i].transform.GetChild(gimmick_idx).gameObject, gimmick_idx);
+                    _rpdPositionData[lstIdxList[i]].SetGimmickPosData(objRoomPositions[i], objRoomPositions[i].transform.GetChild(gimmick_idx).gameObject, gimmick_idx);
                 }
 
                 objRoomPositions[i].SetActive(true);

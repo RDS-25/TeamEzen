@@ -84,7 +84,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
             {
                 if (obj.activeSelf == false)
                 {
-                    obj.transform.position = GimmickPos.position;
+                    obj.transform.position = GimmickPos.position + Vector3.up;
                     obj.transform.rotation = GimmickPos.rotation;
                     //vRoomPos[nGimmickCount] = GimmickPos.position;
 
@@ -105,7 +105,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
                 {
                     if (obj.activeSelf == false)
                     {
-                        obj.transform.position = GimmickPos.position;
+                        obj.transform.position = GimmickPos.position + Vector3.up;
                         obj.transform.rotation = GimmickPos.rotation;
                         //vRoomPos[nGimmickCount] = GimmickPos.position;
 
