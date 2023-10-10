@@ -4,10 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class StageUiManager : MonoBehaviour
 {
-    
-
-
-
     public void OnOptionBtnClicked()
     {
         //플레이어 움직임 펄스 화

@@ -18,6 +18,8 @@ public class StageManager : MonoBehaviour
 
     [SerializeField]
     private Transform trItemGridView;
+    public QuestManager qManager;
+    public GameObject _questPanel;
 
     public void InitializeStage(StageParams.STAGE_TYPE type, GameObject player)
     {
@@ -59,7 +61,7 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        print(GameManager.instance.stageType.ToString());
+        qManager = new QuestManager(_questPanel);
         Charactors = GameManager.instance.arrCurCharacters;
         player = Charactors[0];
         player.SetActive(true);
@@ -221,20 +223,27 @@ public class StageManager : MonoBehaviour
     }
     public void ChangeCurrentCharactor()
     {
-
         int prevCurrentIdx = nCurrentCharactorInx;
 
-        if (nCurrentCharactorInx >= Charactors.Length)
+        if (nCurrentCharactorInx >= Charactors.Length-1)
             nCurrentCharactorInx = 0;
         else
             nCurrentCharactorInx++;
 
         GameObject precCharactor = Charactors[prevCurrentIdx];
+
         precCharactor.GetComponent<Action>().isEntries = false;
         precCharactor.GetComponent<Action>().UIGroup.SetActive(false);
         precCharactor.SetActive(false);
 
         player = Charactors[nCurrentCharactorInx];
+       
+        player.transform.position = precCharactor.transform.position;
+        player.transform.rotation = precCharactor.transform.rotation;
+
+        precCharactor.transform.position = Vector3.zero;
+        precCharactor.transform.rotation = Quaternion.identity;
+
         player.GetComponent<Action>().isEntries = true;
         player.GetComponent<Action>().UIGroup.SetActive(true);
         player.SetActive(true);
