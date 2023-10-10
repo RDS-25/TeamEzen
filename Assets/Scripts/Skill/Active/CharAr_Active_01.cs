@@ -12,7 +12,7 @@ public class CharAr_Active_01 : AttackType
     //디저블로 스타트를
     private void OnDisable()
     {
-        myBulletFactory(GameManager.instance.objectFactory.CharAr_Active_01_Bullet_Factory);
+        myBulletFactory(GameManager.instance.objectFactory.CharAr_Active_01_Bullet_Factory);        
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARAR_ACTIVE_01_PARAMS;
         PLUS_VAL = 10f;
@@ -59,7 +59,7 @@ public class CharAr_Active_01 : AttackType
         fDuration = 1;
         fSkillCoolReduce = 0;
         fRange = 10;
-        fMaxRange = 50;
+        fMaxRange = 20;
         fValue = 10;
         fHidenValue = 10;
         fMagnification = 10;

@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   fId: 101
-  strName: b
+  strName: helmets
   strDiscription: bb
-  strImage: axe.png
-  fDropRate: 0
-  fDamage: 0
-  fDefense: 0
+  strImage: helmets.png
+  fDropRate: 5
+  fDamage: 2
+  fDefense: 8
   fSpeed: 0
   fCrtical: 0
   fCriticalDamage: 0

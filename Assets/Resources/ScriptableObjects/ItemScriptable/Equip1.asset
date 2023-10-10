@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   fId: 100
-  strName: a
+  strName: armor
   strDiscription: aa
   strImage: armor.png
-  fDropRate: 0
+  fDropRate: 5
   fDamage: 0
-  fDefense: 0
+  fDefense: 10
   fSpeed: 0
   fCrtical: 0
   fCriticalDamage: 0

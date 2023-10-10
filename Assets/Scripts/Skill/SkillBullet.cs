@@ -6,8 +6,8 @@ public class SkillBullet : MonoBehaviour
 {
     protected Rigidbody rig;
     float fSpeed = 100;
-    FactoryManager myfactoryManager;
-    FactoryManager effectFactoryManager;
+    public FactoryManager myfactoryManager;
+    public FactoryManager effectFactoryManager;
     protected Vector3 Firepiont;
     protected float fRancri;
     protected float fRanmondod;
@@ -107,7 +107,7 @@ public class SkillBullet : MonoBehaviour
         Effect.transform.position = contactpoint;
         Effect.SetActive(true);
     }
-    void moveBullet()
+    protected virtual void moveBullet()
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * skillinfo.fSpeed * Time.deltaTime);
     }

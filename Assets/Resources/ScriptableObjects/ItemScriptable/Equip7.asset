@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   fId: 106
-  strName: g
+  strName: boots
   strDiscription: gg
   strImage: boots.png
-  fDropRate: 0
+  fDropRate: 5
   fDamage: 0
-  fDefense: 0
-  fSpeed: 0
-  fCrtical: 0
+  fDefense: 5
+  fSpeed: 5
+  fCrtical: 5
   fCriticalDamage: 0
   fCount: 0

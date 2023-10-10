@@ -8,7 +8,7 @@ public class CharHg_Basic : AttackType
 {
     private void OnDisable()
     {
-        myBulletFactory(GameManager.instance.objectFactory.CharHg_Basic_Bullet_Factory);
+        myBulletFactory(GameManager.instance.objectFactory.CharHg_Basic_Bullet_Factory);        
         strSkillFolderPath = FolderPath.PARAMS_BASIC_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARHG_BASIC_PARAMS;
         PLUS_VAL = 10f;
@@ -31,6 +31,7 @@ public class CharHg_Basic : AttackType
 
         fSkillLevel = 1;
         fId = 1;
+        fCharToUse = 2;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharHgBasic.png";

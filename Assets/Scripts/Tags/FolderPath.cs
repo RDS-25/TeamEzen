@@ -52,6 +52,8 @@ public class FolderPath
     public const string PREFABS_ACTIVE_BULLET   = PREFABS_BULLET + "Active/";
     public const string PREFABS_BASIC_BULLET    = PREFABS_BULLET + "Basic/";
     public const string PREFABS_COMMON_BULLET   = PREFABS_BULLET + "Common/";
+    public const string PREFABS_ULTIMATE_BULLET = PREFABS_BULLET + "Ulti/";
+
 
     public const string PREFABS_STAGE_ROOM      = PREFABS + "StagePrefabs/";
     public const string PREFABS_ROOM            = PREFABS + "Room/";

@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   fId: 105
-  strName: f
+  strName: rings
   strDiscription: ff
-  strImage: boots.png
+  strImage: rings.png
   fDropRate: 0
   fDamage: 0
   fDefense: 0
   fSpeed: 0
-  fCrtical: 0
-  fCriticalDamage: 0
+  fCrtical: 30
+  fCriticalDamage: 20
   fCount: 0

@@ -11,7 +11,7 @@ public class CharSr_Active_01_Bullet : SkillBullet
         myFactory(GameManager.instance.objectFactory.CharSr_Active_01_Bullet_Factory);
         EffectFactory(GameManager.instance.objectFactory.CharSRActive01EffectFactory);
     }
-
+   
     // Update is called once per frame
     void Update()
     {

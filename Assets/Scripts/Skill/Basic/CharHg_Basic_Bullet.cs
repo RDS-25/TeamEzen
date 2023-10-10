@@ -13,8 +13,5 @@ public class CharHg_Basic_Bullet : SkillBullet
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

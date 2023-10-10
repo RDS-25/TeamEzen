@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   fId: 108
-  strName: i
+  strName: gloves
   strDiscription: ii
-  strImage: boots.png
-  fDropRate: 0
-  fDamage: 0
+  strImage: gloves.png
+  fDropRate: 5
+  fDamage: 10
   fDefense: 0
   fSpeed: 0
-  fCrtical: 0
-  fCriticalDamage: 0
+  fCrtical: 20
+  fCriticalDamage: 20
   fCount: 0

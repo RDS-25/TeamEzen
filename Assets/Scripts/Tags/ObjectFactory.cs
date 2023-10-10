@@ -8,31 +8,31 @@ public class ObjectFactory
     public FactoryManager activeSkillFactory = new FactoryManager();
     public FactoryManager test = new FactoryManager();
 
-    // ½ºÅ×ÀÌÁö
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public FactoryManager roomFactory = new FactoryManager();
     
-    // Ä³¸¯ÅÍ
+    // Ä³ï¿½ï¿½ï¿½ï¿½
     public FactoryManager characterFactory = new FactoryManager();
-    //º¸À¯ Ä³¸¯ÅÍ
+    //ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½
     public FactoryManager ownCharFactory = new FactoryManager();
 
-    // ½½·Ô ¸¸µé±â °í¹Î
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public FactoryManager CharSlotFactory = new FactoryManager();
     public FactoryManager OrganizingSlotFactory = new FactoryManager();
     public FactoryManager ItemSlotFactory = new FactoryManager();
     public FactoryManager SelectingSkillSlotFactory = new FactoryManager();
 
-    //¸ó½ºÅÍ Á¾·ùº°·Î ¸¸µé±â
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    //±Ù°Å¸® ¸ó½ºÅÍ
+    //ï¿½Ù°Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½
     public FactoryManager MeleeMonsterFactory = new FactoryManager();
-    //¿ø°Å¸®
+    //ï¿½ï¿½ï¿½Å¸ï¿½
     public FactoryManager RangedMonsterFactory = new FactoryManager();
-    //º¸½º
+    //ï¿½ï¿½ï¿½ï¿½
     public FactoryManager BossMonsterFactory = new FactoryManager();
 
 
-    // ½ºÅ³
+    // ï¿½ï¿½Å³
     public FactoryManager AllSkill = new FactoryManager();
     public FactoryManager SelectingSkillObjectFactory = new FactoryManager();
 
@@ -63,7 +63,7 @@ public class ObjectFactory
     public FactoryManager Common03EffectFactory = new FactoryManager();
     public FactoryManager Common04EffectFactory = new FactoryManager();
 
-    //ÃÑ¾Ë
+    //ï¿½Ñ¾ï¿½
     public FactoryManager BulletFactory = new FactoryManager();
 
     public FactoryManager CharAr_Basic_Bullet_Factory = new FactoryManager();
@@ -93,28 +93,31 @@ public class ObjectFactory
     public FactoryManager Common_03_BulletFactory = new FactoryManager();
     public FactoryManager Common_04_BulletFactory = new FactoryManager();
 
+    public FactoryManager CharAr_Ultimate_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharHg_Ultimate_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharSg_Ultimate_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharSr_Ultimate_Bullet_Factory = new FactoryManager();
 
 
 
-
-    // ¾ÆÀÌÅÛ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public FactoryManager ItemObjectFactory = new FactoryManager();
     public FactoryManager SetItemFactory = new FactoryManager();
 
-    // ±â¹Í·ë
+    // ï¿½ï¿½Í·ï¿½
     public FactoryManager MonsterRoomFactory = new FactoryManager();
     public FactoryManager GimmickRoomFactory = new FactoryManager();
 
     public void InitFactory()
 	{
-        // Ä³¸¯ÅÍ
+        // Ä³ï¿½ï¿½ï¿½ï¿½
 		characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
         MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY + PrefabName.STR_MELEE_MONSTER, 15);
         RangedMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY + PrefabName.STR_RANGED_MONSTER, 15);
         BossMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY + PrefabName.STR_BOSS_MONSTER, 1);
         SelectCharacterInit();
         SelectingSkillInit();
-        // ½½·Ô
+        // ï¿½ï¿½ï¿½ï¿½
         CharSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
                             , characterFactory.listPool.Count);
         OrganizingSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB
@@ -161,7 +164,7 @@ public class ObjectFactory
     }
     public void GimmickRoomInit()
     {
-        // ±â¹Í·ë
+        // ï¿½ï¿½Í·ï¿½
         MonsterRoomFactory.CreateFactory(FolderPath.PREFABS_ROOM + PrefabName.STR_MONSTER_ROOM, 15);
         GimmickRoomFactory.CreateObject(FolderPath.PREFABS_ROOM + PrefabName.STR_TRAP_ROOM, 5);
         GimmickRoomFactory.CreateObject(FolderPath.PREFABS_ROOM + PrefabName.STR_STORE_ROOM, 1);
@@ -217,6 +220,11 @@ public class ObjectFactory
         CharHg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_HG_BASIC_BULLET, 5);
         CharSg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SG_BASIC_BULLET, 5);
         CharSr_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SR_BASIC_BULLET, 5);
+
+        CharAr_Ultimate_Bullet_Factory.CreateObject(FolderPath.PREFABS_ULTIMATE_BULLET + PrefabName.STR_CHA_AR_ULTIMATE_BULLET, 1);
+        CharAr_Ultimate_Bullet_Factory.CreateObject(FolderPath.PREFABS_ULTIMATE_BULLET + PrefabName.STR_CHA_HG_ULTIMATE_BULLET, 1);
+        CharAr_Ultimate_Bullet_Factory.CreateObject(FolderPath.PREFABS_ULTIMATE_BULLET + PrefabName.STR_CHA_SG_ULTIMATE_BULLET, 1);
+        CharAr_Ultimate_Bullet_Factory.CreateObject(FolderPath.PREFABS_ULTIMATE_BULLET + PrefabName.STR_CHA_SR_ULTIMATE_BULLET, 1);
 
         Common_01_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_01_BULLET, 5);
         Common_02_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_02_BULLET, 5);

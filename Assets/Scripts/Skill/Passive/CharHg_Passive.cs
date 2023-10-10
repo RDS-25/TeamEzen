@@ -7,7 +7,7 @@ public class CharHg_Passive : BuffType
 {
 
     private void OnDisable()
-    {
+    {        
         strSkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARHG_PASSIVE_PARAMS;
         PLUS_VAL = 10f;
@@ -29,6 +29,7 @@ public class CharHg_Passive : BuffType
     {
         fSkillLevel = 1;
         fId = 101;
+        fCharToUse = 2;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharHgPassive.png";
