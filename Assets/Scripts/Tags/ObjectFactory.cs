@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ObjectFactory
 {
-   /* public FactoryManager basicSkillFactory = new FactoryManager();
+    public FactoryManager basicSkillFactory = new FactoryManager();
     public FactoryManager activeSkillFactory = new FactoryManager();
-    public FactoryManager test = new FactoryManager();*/
+    public FactoryManager test = new FactoryManager();
 
     // 스테이지
     public FactoryManager roomFactory = new FactoryManager();
@@ -30,13 +30,12 @@ public class ObjectFactory
     public FactoryManager RangedMonsterFactory = new FactoryManager();
 
 
-	// 스킬
-	public FactoryManager AllSkill = new FactoryManager();
+    // 스킬
+    public FactoryManager AllSkill = new FactoryManager();
+    public FactoryManager SelectingSkillObjectFactory = new FactoryManager();
 
-	public FactoryManager SelectingSkillObjectFactory = new FactoryManager();
-
-
-	public FactoryManager CharARBasicEffectFactory = new FactoryManager();
+   
+    public FactoryManager CharARBasicEffectFactory = new FactoryManager();
     public FactoryManager CharSRBasicEffectFactory = new FactoryManager();
     public FactoryManager CharHGBasicEffectFactory = new FactoryManager();
     public FactoryManager CharSGBasicEffectFactory = new FactoryManager();
@@ -169,9 +168,9 @@ public class ObjectFactory
         SelectingSkillObjectFactory.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
         SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_BUFF_SKILL);
         SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_COMMON_SKILL);
-		AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
+        AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
 
-	}
+    }
     public void SkillEffectInit()
     {
         CharARBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_AR_BASIC_EFFECT, 5);
@@ -204,21 +203,24 @@ public class ObjectFactory
     {
         CharAr_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_01_BULLET, 5);
         CharAr_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_02_BULLET, 5);
+
         CharHg_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_HG_ACTIVE_01_BULLET, 5);
         CharHg_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_HG_ACTIVE_02_BULLET, 5);
+
         CharSg_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SG_ACTIVE_01_BULLET, 5);
         CharSg_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SG_ACTIVE_02_BULLET, 5);
+
         CharSr_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SR_ACTIVE_01_BULLET, 5);
         CharSr_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SR_ACTIVE_02_BULLET, 5);
+
         CharAr_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_AR_BASIC_BULLET, 5);
         CharHg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_HG_BASIC_BULLET, 5);
         CharSg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SG_BASIC_BULLET, 5);
         CharSr_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SR_BASIC_BULLET, 5);
+
         Common_01_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_01_BULLET, 5);
         Common_02_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_02_BULLET, 5);
         Common_03_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_03_BULLET, 5);
         Common_04_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_04_BULLET, 5);
-
-
     }
 }
