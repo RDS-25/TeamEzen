@@ -165,9 +165,9 @@ public class ObjectFactory
     }
     public void SelectingSkillInit()
     {
-        SelectingSkillObjectFactory.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
-        SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_BUFF_SKILL);
-        SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_COMMON_SKILL);
+        //SelectingSkillObjectFactory.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
+        //SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_BUFF_SKILL);
+        //SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_COMMON_SKILL);
         AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
 
     }
