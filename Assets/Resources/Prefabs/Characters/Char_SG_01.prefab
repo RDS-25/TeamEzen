@@ -1270,6 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveJoystick: {fileID: 4046746998811380350}
+  Skills: []
   motion: 0
   bIsCancel: 0
   bIsStop: 0
@@ -4101,18 +4102,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterUiGroups1.1
       objectReference: {fileID: 0}
-    - target: {fileID: 2797198634712999546, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2797198635136801717, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2797198635136801717, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 2797198635994583340, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3955521184578160943}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
 --- !u!4 &4046746998680260713 stripped

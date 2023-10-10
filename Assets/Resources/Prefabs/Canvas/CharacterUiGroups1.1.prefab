@@ -269,7 +269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2797198634712999545
 Transform:
   m_ObjectHideFlags: 0
@@ -552,6 +552,7 @@ MonoBehaviour:
   Skillstate: 0
   isSkilling: 0
   isCancel: 0
+  temp: {fileID: 0}
 --- !u!1 &2797198634850352232
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +875,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1278,6 +1279,7 @@ MonoBehaviour:
   Skillstate: 0
   isSkilling: 0
   isCancel: 0
+  temp: {fileID: 0}
 --- !u!1 &2797198635896054797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,9 +1478,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2797198636496378774}
-        m_TargetAssemblyTypeName: OnClickSkills, Assembly-CSharp
-        m_MethodName: ClickSkills
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Action, Assembly-CSharp
+        m_MethodName: ShootStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1514,6 +1516,7 @@ MonoBehaviour:
   Skillstate: 0
   isSkilling: 0
   isCancel: 0
+  temp: {fileID: 0}
 --- !u!1 &2797198636496378768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,8 +1571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BtnSKills:
   - {fileID: 2797198634835300977}
-  - {fileID: 2797198635994583343}
-  - {fileID: 2797198635810641204}
+  - {fileID: 6275162905462402032}
   BtnPrev: {fileID: 0}
 --- !u!1 &2797198636519830261
 GameObject:

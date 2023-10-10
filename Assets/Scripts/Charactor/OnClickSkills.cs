@@ -23,10 +23,7 @@ public class OnClickSkills : MonoBehaviour
 			case 0://active
 				scSKill.ReadStat(Params.SkillParams.SkillType.ACTIVE);
 				break;
-			case 1: //basic
-				scSKill.ReadStat(Params.SkillParams.SkillType.BASIC);
-				break;
-			case 2: //ulti
+			case 1: //ulti
 				scSKill.ReadStat(Params.SkillParams.SkillType.ULTIMATE);
 				break;
 		}
