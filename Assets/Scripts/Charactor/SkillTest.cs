@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 
 public class SkillTest : MonoBehaviour
 {
-    public Canvas ABC;
-    public Image ABCImage;
+    public Canvas Arrow;
+    public Image ArrowImage;
     public Image targetCircle; //타겟팅 범위  이미지
     public Image indicatorRangeCircle; // 최대 사거리 이미지 
     public Canvas ActiveSkillCanvas; //타겟팅캔버스
@@ -66,7 +66,7 @@ public class SkillTest : MonoBehaviour
         targetDirection.y = 0; // Set the y-value of the target direction to 0
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         float interpolationFactor = 0.5f;
-        ABC.transform.rotation = Quaternion.Lerp(ABC.transform.rotation, targetRotation, interpolationFactor);
+        Arrow.transform.rotation = Quaternion.Lerp(Arrow.transform.rotation, targetRotation, interpolationFactor);
 
 
         var hitPosDir = (hit.point - Player.transform.position).normalized; //  나아가는 방향만
@@ -110,7 +110,7 @@ public class SkillTest : MonoBehaviour
 
         targetCircle.GetComponent<Image>().enabled = false;
         indicatorRangeCircle.GetComponent<Image>().enabled = false;
-        ABCImage.GetComponent<Image>().enabled = false;
+        ArrowImage.GetComponent<Image>().enabled = false;
     }
 
 }

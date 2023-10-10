@@ -12,7 +12,12 @@ public class Enemy : MonoBehaviour
 	public float SightRange;
 	public float DefaultRange;
 	public GameObject gBullet;
+	
+	public delegate void DieDelegate(EnemyType Etyep);
 
+	public event DieDelegate DieEvent;
+
+	Stat stat;
 	public enum EnemyType { 
 		Melee,
 		Ranged,
@@ -27,7 +32,8 @@ public class Enemy : MonoBehaviour
 	{
 		IDLE,
 		CHASE,
-		ATTACK
+		ATTACK,
+		DIE
 	}
 
 	public State state;
@@ -35,20 +41,18 @@ public class Enemy : MonoBehaviour
 	Rigidbody rigidbody;
 
 	
-
-
 	void Start()
 	{
 		nav = GetComponent<NavMeshAgent>();
 		ani = GetComponentInChildren<Animator>();
 		rigidbody = GetComponent<Rigidbody>();
 		state = State.IDLE;
+		stat = GetComponent<Stat>();
 
-		if (enemyType == EnemyType.Melee) {
-			SightRange = GameManager.instance.objectFactory.MeleeMonsterFactory.listPool[0].GetComponent<Stat>().fSightRange;
-			DefaultRange = GameManager.instance.objectFactory.MeleeMonsterFactory.listPool[0].GetComponent<Stat>().fDefaultRange;
-		}
-		
+		//추적 사거리
+	    SightRange = GetComponent<Stat>().fSightRange;
+		//공격 사거리 
+	    DefaultRange = GetComponent<Stat>().fDefaultRange;
 	}
 
 
@@ -59,12 +63,18 @@ public class Enemy : MonoBehaviour
 		
 	    Search();
 	    Targeting();
-	
-		
-
-
 	}
-	
+
+	void Dodie() {
+		//예시용 코드 
+		if (stat.fHealth <= 0) {
+			if (DieEvent != null)
+			{
+				DieEvent(enemyType);
+			}
+		}
+	}
+
 	//시야 사거리안에 적 찾아서   추적하기 
 	void Search()
 	{
@@ -155,12 +165,12 @@ public class Enemy : MonoBehaviour
 
 		//시야 사거리
 		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(transform.position, 20);
+		Gizmos.DrawWireSphere(transform.position, SightRange);
 
 
 		//공격 사거리
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawWireSphere(transform.position, 3);
+		Gizmos.DrawWireSphere(transform.position, DefaultRange);
 	}
 
 	IEnumerator Attack()
@@ -193,12 +203,6 @@ public class Enemy : MonoBehaviour
 			yield return new WaitForSeconds(ani.GetCurrentAnimatorStateInfo(0).length);
 			AtkRange.SetActive(false);
 		}
-
-
-
-
-
-
 	}
 	void FreezeVelocity()
 	{

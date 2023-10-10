@@ -44,8 +44,8 @@ public class CharAr_Active_01 : AttackType
     {
         fCharToUse = 1;
         fSkillLevel = 1;
-        fId = 200;
-        strName = "ACTIVE01010101";
+        fId = 201;
+        strName = "";
         strDiscription = "ACTIVE010150";
         strIconName = "CharArActive01.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_BULLET;

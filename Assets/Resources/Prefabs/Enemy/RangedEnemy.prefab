@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 7324544213232874404}
   - component: {fileID: 7324544213232874407}
   - component: {fileID: -8297140956195051466}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RangedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -453,6 +453,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   AtkRange: {fileID: 7324544213129164710}
+  SightRange: 0
+  DefaultRange: 0
   gBullet: {fileID: 8687621084049323187, guid: 45fafb1d61153494cb85310f993aa5ca, type: 3}
   enemyType: 1
   do_attack_coroutine: 0

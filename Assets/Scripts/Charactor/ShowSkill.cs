@@ -56,23 +56,23 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
      
     }
 
-    void OwnSkills()
-    {
-        
-        for (int i = 0; i < GameManager.instance.objectFactory.AllSkill.listPool.Count; i++)
-        {
-            if (obj.GetComponent<Stat>().fActiveSkill == GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fId)
-            {
-                ACTIVESKILL = GameManager.instance.objectFactory.AllSkill.listPool[i];
-            }
-            else if (obj.GetComponent<Stat>().fUltimateSkill == GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fId)
-            {
-                ULTIMATESKILL = GameManager.instance.objectFactory.AllSkill.listPool[i];
-            }
-        }
-    }
+	void OwnSkills()
+	{
 
-    public void OnPointerDown(PointerEventData eventData)
+		for (int i = 0; i < GameManager.instance.objectFactory.AllSkill.listPool.Count; i++)
+		{
+			if (obj.GetComponent<Stat>().fActiveSkill == GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fId)
+			{
+				ACTIVESKILL = GameManager.instance.objectFactory.AllSkill.listPool[i];
+			}
+			else if (obj.GetComponent<Stat>().fUltimateSkill == GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fId)
+			{
+				ULTIMATESKILL = GameManager.instance.objectFactory.AllSkill.listPool[i];
+			}
+		}
+	}
+
+	public void OnPointerDown(PointerEventData eventData)
     {
        /*포인트 다운 실행*/
         OnDrag(eventData);

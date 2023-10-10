@@ -732,8 +732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c5e33e847bfec4c96ca6373a9dc2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ABC: {fileID: 383241277771173919}
-  ABCImage: {fileID: 383241277064802534}
+  Arrow: {fileID: 383241277771173919}
+  ArrowImage: {fileID: 383241277064802534}
   targetCircle: {fileID: 2797198635896054787}
   indicatorRangeCircle: {fileID: 2797198635136434658}
   ActiveSkillCanvas: {fileID: 2797198635672508384}
@@ -1631,8 +1631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c5e33e847bfec4c96ca6373a9dc2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ABC: {fileID: 383241277771173919}
-  ABCImage: {fileID: 383241277064802534}
+  Arrow: {fileID: 383241277771173919}
+  ArrowImage: {fileID: 383241277064802534}
   targetCircle: {fileID: 2797198635896054787}
   indicatorRangeCircle: {fileID: 2797198635136434658}
   ActiveSkillCanvas: {fileID: 2797198635672508384}
@@ -1868,8 +1868,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c5e33e847bfec4c96ca6373a9dc2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ABC: {fileID: 383241277771173919}
-  ABCImage: {fileID: 383241277064802534}
+  Arrow: {fileID: 383241277771173919}
+  ArrowImage: {fileID: 383241277064802534}
   targetCircle: {fileID: 2797198635896054787}
   indicatorRangeCircle: {fileID: 2797198635136434658}
   ActiveSkillCanvas: {fileID: 2797198635672508384}

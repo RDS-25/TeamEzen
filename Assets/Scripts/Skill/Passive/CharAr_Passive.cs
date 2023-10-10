@@ -30,7 +30,7 @@ public class CharAr_Passive : BuffType
     public override void SetDefault()
     {
         fSkillLevel = 1;
-        fId = 100;
+        fId = 1;
         strName = "PASSVIE010101";
         strDiscription = "Pasve Descriptond";
         strIconName = "CharArPassive.png";
@@ -45,6 +45,7 @@ public class CharAr_Passive : BuffType
         bisUnlockSkill = false;
         bisUnlockHiden = false;
         bisActtivate = false;
+        fCharToUse = 1;
     }
     
     

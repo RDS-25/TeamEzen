@@ -48,21 +48,23 @@ public class Action : MonoBehaviour
         stat = GetComponent<Stat>();
         targetingRange = stat.fDefaultRange;
 
-        //현재 캐릭터 스킬 
-        for (int i = 0; i < GameManager.instance.objectFactory.AllSkill.listPool.Count;i++) {
+		//현재 캐릭터 스킬 
+		for (int i = 0; i < GameManager.instance.objectFactory.AllSkill.listPool.Count; i++)
+		{
 			if (GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fCharToUse == stat.fId)
 			{
-                GameManager.instance.objectFactory.AllSkill.listPool[i].SetActive(true);
+				GameManager.instance.objectFactory.AllSkill.listPool[i].SetActive(true);
+				Debug.Log(GameManager.instance.objectFactory.AllSkill.listPool[i]);
 
-            }
-        }
-       
+			}
+		}
 
-        //캐릭터 2
 
-        //캐릭터 3
+		//캐릭터 2
 
-    }
+		//캐릭터 3
+
+	}
 
 	// Update is called once per frame
 	void Update()
@@ -82,12 +84,13 @@ public class Action : MonoBehaviour
     {
         ani.SetBool("isAim", true);
         StartCoroutine("onShot");
+     
     }
-    public void ShootEnd()
-    {
-        ani.SetBool("isAim", false);
+     public void ShootEnd()
+     {
+         ani.SetBool("isAim", false);
 
-    }
+     }
 
 
     void onMove()
@@ -118,22 +121,26 @@ public class Action : MonoBehaviour
         if (closestEnemy != null)
         {
             direction = (closestEnemy.transform.position - tBulletpos.position).normalized;
-            GameObject bullet = GameManager.instance.objectFactory.CharARActive01EffectFactory.listPool[0];
-            bullet.SetActive(true);
-            //Rigidbody bulletrigid = bullet.GetComponent<Rigidbody>();
+            GameObject aa = GameManager.instance.objectFactory.BulletFactory.GetObject();
+            aa.SetActive(true);
+            aa.transform.position = tBulletpos.position;
             transform.LookAt(direction);
-            //bulletrigid.velocity = direction * 50;
+          
         }
         else if (closestEnemy == null)
         {
             //한캐릭터가 가지고 있는 스킬  //조건문걸어야함
-            GameManager.instance.objectFactory.AllSkill.listPool[8].GetComponent<Skill>().ShotEffect(tBulletpos.position);
-            //Rigidbody bulletrigid = bullet.GetComponent<Rigidbody>();
-            //bulletrigid.velocity = tBulletpos.forward * 50;
+            
+          /* GameObject aa=  .GetObject();*/
+            /*aa.transform.position = tBulletpos.position;*/
+
+            Debug.Log(00);
+            transform.LookAt(Vector3.forward);
         }
 
 
         yield return new WaitForSeconds(0.1f);
+        ani.SetBool("isAim", false);
     }
 
     private GameObject FindClosestEnemyWithTag(string tag, float range)
@@ -162,14 +169,7 @@ public class Action : MonoBehaviour
     }
 
 
-	private void OnTriggerEnter(Collider other)
-	{
-        if (other.tag == "EnemyBullet") {
-            //데미지 연산식
-            stat.fHealth -= 10; 
-        }
-	}
-
+	
 
 	//Bool 변수 false로 바꾸는 변수 
 	public void Pause() {
@@ -202,6 +202,9 @@ public class Action : MonoBehaviour
         bIsCancel = false;
     }
 
-   
+
+    void ShowSkill() { 
+    
+    }
 
 }

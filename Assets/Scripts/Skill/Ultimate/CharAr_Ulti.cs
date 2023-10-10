@@ -59,6 +59,7 @@ public class CharAr_Ulti : AttackType
         bisUnlockHiden = false;
         bisCanUse = false;
         bisActtivate = false;
+        fCharToUse = 1;
     }
     
 }

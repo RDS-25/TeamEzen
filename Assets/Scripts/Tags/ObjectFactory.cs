@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ObjectFactory
 {
-    public FactoryManager basicSkillFactory = new FactoryManager();
+   /* public FactoryManager basicSkillFactory = new FactoryManager();
     public FactoryManager activeSkillFactory = new FactoryManager();
-    public FactoryManager test = new FactoryManager();
+    public FactoryManager test = new FactoryManager();*/
 
     // 스테이지
     public FactoryManager roomFactory = new FactoryManager();
@@ -30,12 +30,13 @@ public class ObjectFactory
     public FactoryManager RangedMonsterFactory = new FactoryManager();
 
 
-    // 스킬
-    public FactoryManager AllSkill = new FactoryManager();
-    public FactoryManager SelectingSkillObjectFactory = new FactoryManager();
+	// 스킬
+	public FactoryManager AllSkill = new FactoryManager();
 
-   
-    public FactoryManager CharARBasicEffectFactory = new FactoryManager();
+	public FactoryManager SelectingSkillObjectFactory = new FactoryManager();
+
+
+	public FactoryManager CharARBasicEffectFactory = new FactoryManager();
     public FactoryManager CharSRBasicEffectFactory = new FactoryManager();
     public FactoryManager CharHGBasicEffectFactory = new FactoryManager();
     public FactoryManager CharSGBasicEffectFactory = new FactoryManager();
@@ -168,9 +169,9 @@ public class ObjectFactory
         SelectingSkillObjectFactory.CreateFactory(FolderPath.PREFABS_ACTIVE_SKILL);
         SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_BUFF_SKILL);
         SelectingSkillObjectFactory.CreateObject(FolderPath.PREFABS_COMMON_SKILL);
-        AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
+		AllSkill.CreateFactory(FolderPath.PREFABS_SKILL);
 
-    }
+	}
     public void SkillEffectInit()
     {
         CharARBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_AR_BASIC_EFFECT, 5);
