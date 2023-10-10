@@ -17,7 +17,7 @@ public class OnClickSkills : MonoBehaviour
 
 		scSKill.enabled = true;
 		Skill.GetComponent<SkillTest>().isSkilling = true;
-		/*Skill.GetComponent<SkillTest>().Skillstate = SkillTest.SkillState.Clicked;*/
+
 		if(Skill != BtnPrev)
 		{
 			scSKill.isCancel = true;
@@ -27,7 +27,7 @@ public class OnClickSkills : MonoBehaviour
 
 				scSKill.targetCircle.enabled = true;
 				scSKill.indicatorRangeCircle.enabled = true;
-				scSKill.ABCImage.enabled = false;
+				scSKill.ArrowImage.enabled = false;
 				//범위 표시기 크기 지정 
 				float maxDistacne = scSKill.maxActiveSkillDistance * 2f;
 				//스킬 범위 크기 지정
@@ -39,7 +39,7 @@ public class OnClickSkills : MonoBehaviour
 			}
 			else if (scSKill.sKillType == SkillTest.SKillType.Arrow)
 			{
-				scSKill.ABCImage.enabled = true;
+				scSKill.ArrowImage.enabled = true;
 				scSKill.targetCircle.enabled = false;
 				scSKill.indicatorRangeCircle.enabled = false;
 			}

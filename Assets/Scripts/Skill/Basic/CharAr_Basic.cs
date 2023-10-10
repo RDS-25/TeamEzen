@@ -60,6 +60,7 @@ public class CharAr_Basic : AttackType
         bisUnlockHiden = false;
         bisCanUse = false;
         bisActtivate = false;
+        fCharToUse = 1;
     }
     
 }

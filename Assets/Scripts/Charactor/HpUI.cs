@@ -14,14 +14,15 @@ public class HpUI : MonoBehaviour
 
     void Start()
     {
-        obj = GameObject.Find("Char_AR_01");
+        obj = transform.parent.parent.parent.gameObject;
+        Debug.Log("부모는"+obj);
         m_cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = m_cam.WorldToScreenPoint(obj.transform.position + new Vector3(0, HpBarPos, 0));
+        transform.position = m_cam.WorldToScreenPoint(obj.transform.position);
 
         //피깍이는걸 시각화
         transform.GetComponent<Slider>().value = obj.GetComponent<Stat>().fHealth / 100;

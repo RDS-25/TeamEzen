@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 6061299269586905824}
   - component: {fileID: 6061299269586905831}
   - component: {fileID: 1797554675}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MeleeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -913,6 +913,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   AtkRange: {fileID: 6061299269496829988}
+  SightRange: 0
+  DefaultRange: 0
   gBullet: {fileID: 0}
   enemyType: 0
   do_attack_coroutine: 0
