@@ -127,6 +127,7 @@ public class Action : MonoBehaviour
             GameObject aa = GameManager.instance.objectFactory.basicSkillFactory.GetObject();
             aa.SetActive(true);
             aa.transform.position = tBulletpos.position;
+            aa.transform.LookAt(direction);
             transform.LookAt(direction);
           
         }
