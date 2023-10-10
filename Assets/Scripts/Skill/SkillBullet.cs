@@ -92,6 +92,7 @@ public class SkillBullet : MonoBehaviour
             fMonProperty = monsterStat.fProperty;
 
             CalculDamage();
+            Debug.Log("데미지 받음");
             // 오류 있음
             monsterStat.fHealth -= fTotalDamage;
             
