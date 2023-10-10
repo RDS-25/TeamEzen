@@ -13,7 +13,7 @@ public class SkillTest : MonoBehaviour
     public Canvas ActiveSkillCanvas; //타겟팅캔버스
     public Vector3 Pos; //마우스 포인터 위치 
     public float maxActiveSkillDistance; //최대사거리  
-    public float targetCircleSize;
+    public float targetCircleSize;  // 범위 사거리
     public GameObject TestOBJ;
    
     public Camera cam;
@@ -22,6 +22,7 @@ public class SkillTest : MonoBehaviour
     public SKillType sKillType;
 
     public enum SkillState {Init,Clicked,Active,}
+
     public SkillState Skillstate;
 
     GameObject Player;
@@ -32,6 +33,10 @@ public class SkillTest : MonoBehaviour
 
     RaycastHit hit;
     Ray ray;
+
+    //무슨 스킬인지 확인 
+    [SerializeField]
+    Skill temp;
 
 
 
@@ -96,7 +101,7 @@ public class SkillTest : MonoBehaviour
                 }*/
          
                 AllImageFalse();
-
+                temp.SkillTriger(Player.GetComponent<Action>().tBulletpos.position);
                 //여기  스킬 발사 skilltrigger
                 isSkilling = false;
             }
@@ -104,7 +109,45 @@ public class SkillTest : MonoBehaviour
         }
 
     }
-  
+
+    public void ReadStat(Params.SkillParams.SkillType skillType) {
+        for (int i = 0; i < Player.GetComponent<Action>().Skills.Count; i++)
+        {
+            if(skillType == Player.GetComponent<Action>().Skills[i].GetComponent<Skill>().enumSkillType)
+                temp = Player.GetComponent<Action>().Skills[i].GetComponent<Skill>();
+        }
+
+        if (temp.enumSkillType == Params.SkillParams.SkillType.ACTIVE) {
+            targetCircleSize = temp.fRange;
+            maxActiveSkillDistance = temp.fMaxRange;
+            Debug.Log(temp.name);
+            Debug.Log("스킬 가동 범위 :" + temp.fRange);
+            Debug.Log("스킬 최대 범위 :" + temp.fMaxRange);
+        return;
+        }
+        else if (temp.enumSkillType == Params.SkillParams.SkillType.ULTIMATE)
+        {
+            targetCircleSize = temp.fRange;
+            maxActiveSkillDistance = temp.fMaxRange;
+            Debug.Log(temp.name);
+            Debug.Log("스킬 가동 범위 :" + temp.fRange);
+            Debug.Log("스킬 최대 범위 :" + temp.fMaxRange);
+        return;
+        } else if(temp.enumSkillType == Params.SkillParams.SkillType.BASIC)
+        {
+            targetCircleSize = temp.fRange;
+            maxActiveSkillDistance = temp.fMaxRange;
+            Debug.Log(temp.name);
+            Debug.Log("스킬 가동 범위 :" + temp.fRange);
+            Debug.Log("스킬 최대 범위 :" + temp.fMaxRange);
+        return;
+        }
+
+         
+      
+           
+     
+    }
 
 	public void AllImageFalse() {
 

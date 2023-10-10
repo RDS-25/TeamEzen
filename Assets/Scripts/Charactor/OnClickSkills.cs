@@ -17,6 +17,19 @@ public class OnClickSkills : MonoBehaviour
 
 		scSKill.enabled = true;
 		Skill.GetComponent<SkillTest>().isSkilling = true;
+		Debug.Log(BtnSKills.IndexOf(Skill));
+
+		switch (BtnSKills.IndexOf(Skill)) {
+			case 0://active
+				scSKill.ReadStat(Params.SkillParams.SkillType.ACTIVE);
+				break;
+			case 1: //basic
+				scSKill.ReadStat(Params.SkillParams.SkillType.BASIC);
+				break;
+			case 2: //ulti
+				scSKill.ReadStat(Params.SkillParams.SkillType.ULTIMATE);
+				break;
+		}
 
 		if(Skill != BtnPrev)
 		{

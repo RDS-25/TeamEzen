@@ -4672,7 +4672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5784580704326217624
 Transform:
   m_ObjectHideFlags: 0
@@ -6223,6 +6223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveJoystick: {fileID: 1194952243080996644}
+  Skills: []
   motion: 0
   bIsCancel: 0
   bIsStop: 0
