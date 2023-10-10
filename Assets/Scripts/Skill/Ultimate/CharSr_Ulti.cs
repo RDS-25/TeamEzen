@@ -31,6 +31,7 @@ public class CharSr_Ulti : AttackType
 
         fSkillLevel = 1;
         fId = 303;
+        fCharToUse = 4;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharSrUlti.png";

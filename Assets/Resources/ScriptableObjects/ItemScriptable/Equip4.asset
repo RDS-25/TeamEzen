@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   fId: 103
-  strName: d
+  strName: necklace
   strDiscription: dd
-  strImage: boots.png
-  fDropRate: 0
-  fDamage: 0
+  strImage: necklace.png
+  fDropRate: 5
+  fDamage: 4
   fDefense: 0
   fSpeed: 0
-  fCrtical: 0
-  fCriticalDamage: 0
+  fCrtical: 10
+  fCriticalDamage: 10
   fCount: 0

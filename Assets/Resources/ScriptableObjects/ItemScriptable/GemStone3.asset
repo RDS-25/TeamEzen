@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   fId: 202
-  strName: l
+  strName: GemStone lilac
   strDiscription: ll
-  strImage: book.png
-  fDropRate: 0
-  fUpDamage: 0
+  strImage: lilac.png
+  fDropRate: 10
+  fUpDamage: 25
   fCount: 0

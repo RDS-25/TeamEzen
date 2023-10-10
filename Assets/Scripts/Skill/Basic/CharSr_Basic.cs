@@ -32,6 +32,7 @@ public class CharSr_Basic : AttackType
 
         fSkillLevel = 1;
         fId = 3;
+        fCharToUse = 4;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharSrBasic.png";

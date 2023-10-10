@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   fId: 206
-  strName: p
+  strName: GemStone Blue
   strDiscription: pp
-  strImage: boots.png
-  fDropRate: 0
-  fUpDamage: 0
+  strImage: Blue.png
+  fDropRate: 5
+  fUpDamage: 40
   fCount: 0

@@ -5,9 +5,14 @@ using System;
 
 public class SkillEffrct : MonoBehaviour
 {
+    
     FactoryManager factoryManager;
     //파티클 실행시간 이후 없애기
-    protected virtual void myFactory(FactoryManager myFactoryManager)
+    private void Start()
+    {
+        EndEffect();
+    }
+    public virtual void myFactory(FactoryManager myFactoryManager)
     {
         factoryManager = myFactoryManager;
     }
@@ -19,7 +24,7 @@ public class SkillEffrct : MonoBehaviour
     }
     IEnumerator time()
     {
-        yield return new WaitForSeconds(GetComponent<ParticleSystem>().time);
+        yield return new WaitForSeconds(GetComponent<ParticleSystem>().main.duration);
         factoryManager.SetObject(gameObject);
     }
 

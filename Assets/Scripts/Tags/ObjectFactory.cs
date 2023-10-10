@@ -91,7 +91,10 @@ public class ObjectFactory
     public FactoryManager Common_03_BulletFactory = new FactoryManager();
     public FactoryManager Common_04_BulletFactory = new FactoryManager();
 
-
+    public FactoryManager CharAr_Ultimate_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharHg_Ultimate_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharSg_Ultimate_Bullet_Factory = new FactoryManager();
+    public FactoryManager CharSr_Ultimate_Bullet_Factory = new FactoryManager();
 
 
 
@@ -213,6 +216,10 @@ public class ObjectFactory
         CharHg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_HG_BASIC_BULLET, 5);
         CharSg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SG_BASIC_BULLET, 5);
         CharSr_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SR_BASIC_BULLET, 5);
+        CharAr_Ultimate_Bullet_Factory.CreateObject(FolderPath.PREFABS_ULTIMATE_BULLET + PrefabName.STR_CHA_AR_ULTIMATE_BULLET, 1);
+        CharAr_Ultimate_Bullet_Factory.CreateObject(FolderPath.PREFABS_ULTIMATE_BULLET + PrefabName.STR_CHA_HG_ULTIMATE_BULLET, 1);
+        CharAr_Ultimate_Bullet_Factory.CreateObject(FolderPath.PREFABS_ULTIMATE_BULLET + PrefabName.STR_CHA_SG_ULTIMATE_BULLET, 1);
+        CharAr_Ultimate_Bullet_Factory.CreateObject(FolderPath.PREFABS_ULTIMATE_BULLET + PrefabName.STR_CHA_SR_ULTIMATE_BULLET, 1);
         Common_01_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_01_BULLET, 5);
         Common_02_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_02_BULLET, 5);
         Common_03_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_03_BULLET, 5);

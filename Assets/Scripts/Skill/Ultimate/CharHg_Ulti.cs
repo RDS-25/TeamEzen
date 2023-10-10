@@ -9,7 +9,7 @@ public class CharHg_Ulti : AttackType
 
 {    
     private void OnDisable()
-    {
+    {        
         strSkillFolderPath = FolderPath.PARAMS_ULTIMATE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARHG_ULTIMATE_PARAMS;
         PLUS_VAL = 10f;
@@ -32,6 +32,7 @@ public class CharHg_Ulti : AttackType
 
         fSkillLevel = 1;
         fId = 301;
+        fCharToUse = 2;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharHgUlti.png";

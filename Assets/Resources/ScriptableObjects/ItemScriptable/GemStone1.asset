@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   fId: 200
-  strName: j
+  strName: GemStone bule
   strDiscription: jj
-  strImage: book.png
-  fDropRate: 0
-  fUpDamage: 0
+  strImage: blue.png
+  fDropRate: 10
+  fUpDamage: 20
   fCount: 0

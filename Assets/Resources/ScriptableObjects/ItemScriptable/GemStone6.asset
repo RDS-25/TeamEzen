@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   fId: 205
-  strName: o
+  strName: GemStone yellow
   strDiscription: oo
-  strImage: boots.png
-  fDropRate: 0
-  fUpDamage: 0
+  strImage: yellow.png
+  fDropRate: 8
+  fUpDamage: 30
   fCount: 0

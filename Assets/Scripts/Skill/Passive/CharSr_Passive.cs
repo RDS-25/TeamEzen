@@ -33,6 +33,7 @@ public class CharSr_Passive : BuffType
     {
         fSkillLevel = 1;
         fId = 103;
+        fCharToUse = 4;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharSrPassive.png";      

@@ -7,7 +7,7 @@ using System.IO;
 public class CharSg_Passive : BuffType
 {
     private void OnDisable()
-    {
+    {        
         strSkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSG_PASSIVE_PARAMS;
         PLUS_VAL = 10f;
@@ -29,6 +29,7 @@ public class CharSg_Passive : BuffType
     {
         fSkillLevel = 1;
         fId = 102;
+        fCharToUse = 3;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharSgPassive.png";

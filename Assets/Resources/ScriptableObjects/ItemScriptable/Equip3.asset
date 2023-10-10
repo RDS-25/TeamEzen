@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   fId: 102
-  strName: c
+  strName: pants
   strDiscription: cc
-  strImage: belts.png
+  strImage: pants.png
   fDropRate: 0
-  fDamage: 0
-  fDefense: 0
+  fDamage: 3
+  fDefense: 7
   fSpeed: 0
   fCrtical: 0
   fCriticalDamage: 0

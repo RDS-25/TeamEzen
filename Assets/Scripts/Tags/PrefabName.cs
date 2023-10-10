@@ -74,4 +74,9 @@ public class PrefabName
     public const string STR_COMMON_03_BULLET = "Common_03Bullet";
     public const string STR_COMMON_04_BULLET = "Common_04Bullet";
 
+    public const string STR_CHA_AR_ULTIMATE_BULLET = "CharAr_Ultimate_Bullet";
+    public const string STR_CHA_HG_ULTIMATE_BULLET = "CharHg_Ultimate_Bullet";
+    public const string STR_CHA_SG_ULTIMATE_BULLET = "CharSg_Ultimate_Bullet";
+    public const string STR_CHA_SR_ULTIMATE_BULLET = "CharSr_Ultimate_Bullet";
+
 }
