@@ -28,6 +28,8 @@ public class ObjectFactory
     public FactoryManager MeleeMonsterFactory = new FactoryManager();
     //원거리
     public FactoryManager RangedMonsterFactory = new FactoryManager();
+    //보스
+    public FactoryManager BossMonsterFactory = new FactoryManager();
 
 
     // 스킬
@@ -109,6 +111,7 @@ public class ObjectFactory
 		characterFactory.CreateFactory(FolderPath.PREFABS_CHARACTER);
         MeleeMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY + PrefabName.STR_MELEE_MONSTER, 15);
         RangedMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY + PrefabName.STR_RANGED_MONSTER, 15);
+        BossMonsterFactory.CreateFactory(FolderPath.PREFABS_ENEMY + PrefabName.STR_BOSS_MONSTER, 1);
         SelectCharacterInit();
         SelectingSkillInit();
         // 슬롯

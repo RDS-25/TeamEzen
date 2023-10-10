@@ -23,6 +23,7 @@ public class PrefabName
 
     public const string STR_MELEE_MONSTER           = "MeleeEnemy";
     public const string STR_RANGED_MONSTER          = "RangedEnemy";
+    public const string STR_BOSS_MONSTER            = "BossEnemy";
 
     public const string STR_CHAR_AR_BASIC_EFFECT    = "CharAr_Basic_Effect";
     public const string STR_CHAR_SR_BASIC_EFFECT    = "CharSr_Basic_Effect";
