@@ -10,6 +10,7 @@ public class Action : MonoBehaviour
 
     public FixedJoystick MoveJoystick;
 
+    public List<GameObject> Skills;
 
 
     public enum Motion { 
@@ -53,10 +54,12 @@ public class Action : MonoBehaviour
 		{
 			if (GameManager.instance.objectFactory.AllSkill.listPool[i].GetComponent<Skill>().fCharToUse == stat.fId)
 			{
-				GameManager.instance.objectFactory.AllSkill.listPool[i].SetActive(true);
+            
+                GameManager.instance.objectFactory.AllSkill.listPool[i].SetActive(true);
 				Debug.Log(GameManager.instance.objectFactory.AllSkill.listPool[i]);
+                Skills.Add(GameManager.instance.objectFactory.AllSkill.listPool[i]);
 
-			}
+            }
 		}
 
 
@@ -203,8 +206,6 @@ public class Action : MonoBehaviour
     }
 
 
-    void ShowSkill() { 
     
-    }
 
 }
