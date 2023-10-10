@@ -179,8 +179,24 @@ public class StageScript : MonoBehaviour
     }
     private void OnDisable()
     {
+        if (!_bCreateRoom)
+            return;
         _bCreateRoom = false;
         StageManager.EpisodeBtnClicked -= Initialize;
+        for (int i = 0; i < objRoomPositions.Length; i++)
+        {
+            objRoomPositions[i].transform.position = Vector3.zero;                                                                            //수정필요
+            objRoomPositions[i].transform.rotation = Quaternion.identity;                                                                            //수정필요
+            for (int gimmick_idx = 0; gimmick_idx < objRoomPositions[i].transform.childCount; gimmick_idx++)
+            {
+                objRoomPositions[i].transform.GetChild(gimmick_idx).transform.position = Vector3.zero;
+                objRoomPositions[i].transform.GetChild(gimmick_idx).transform.rotation = Quaternion.identity;
+            }
+
+            objRoomPositions[i].GetComponent<SphereCollider>().enabled = false;
+            objRoomPositions[i].GetComponent<RoomManager>().DisableRoom();
+            GameManager.instance.objectFactory.roomFactory.SetObject(objRoomPositions[i]);
+        }
     }
 
     private void ClearRoom()
