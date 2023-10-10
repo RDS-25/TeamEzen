@@ -14,7 +14,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
     //GimmickRoomParams roomParams = new GimmickRoomParams();
     [SerializeField]
     private GimmickRoomParams roomParam = new GimmickRoomParams();
-
+    private int monsterMaxCount = 0;
     public static int nClearCount = 0;
     private int nGimmickCount = 0;
     GameObject Portal;
@@ -98,6 +98,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
                     gimmick = obj;
                     EnableRoom();
+                    monsterMaxCount += obj.GetComponent<MonsterGimmick>().monsterCount;
                     break;
                 }
             }
@@ -123,5 +124,20 @@ public class RoomManager : MonoBehaviour, DefaultRoom
             }
         }
         nGimmickCount++;
+    }
+
+    public void SetQuest(GimmickRoomParams.ROOM_TYPE roomType)
+    {
+        if (roomType == GimmickRoomParams.ROOM_TYPE.MONSTER_ROOM || roomType == GimmickRoomParams.ROOM_TYPE.BOSS_ROOM)
+        {
+            StageManager.Instance.qManager.InitQuest(QuestManager.QuestType.MONSTER, monsterMaxCount);
+        }
+        else if (roomType == GimmickRoomParams.ROOM_TYPE.STORE_ROOM)
+        {
+            return;
+        }
+        else
+        { 
+        }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class StageCamera : MonoBehaviour
 {
     private Transform trCam;
-    private Transform trPlayer;
+    private GameObject Player;
     [SerializeField] private float fHeight = 30.0f;
     [SerializeField] private float fOfset = 15.0f;
     [SerializeField] private float fRotate = 60.0f;
@@ -17,13 +17,17 @@ public class StageCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        trPlayer = StageManager.Instance.player.transform;
+        Player = StageManager.Instance.player;
     }
+
     private void LateUpdate()
     {
-        float fX = trPlayer.position.x;
-        float fY = trPlayer.position.y + fHeight;
-        float fZ = trPlayer.position.z - fOfset;
+        if (Player != StageManager.Instance.player)
+            Player = StageManager.Instance.player;
+
+        float fX = Player.transform.position.x;
+        float fY = Player.transform.position.y + fHeight;
+        float fZ = Player.transform.position.z - fOfset;
         
         trCam.position = new Vector3(fX,fY,fZ);
         trCam.eulerAngles = Vector3.right * fRotate;
