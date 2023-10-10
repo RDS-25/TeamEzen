@@ -124,7 +124,7 @@ public class Action : MonoBehaviour
         if (closestEnemy != null)
         {
             direction = (closestEnemy.transform.position - tBulletpos.position).normalized;
-            GameObject aa = GameManager.instance.objectFactory.BulletFactory.GetObject();
+            GameObject aa = GameManager.instance.objectFactory.basicSkillFactory.GetObject();
             aa.SetActive(true);
             aa.transform.position = tBulletpos.position;
             transform.LookAt(direction);
@@ -137,8 +137,8 @@ public class Action : MonoBehaviour
           /* GameObject aa=  .GetObject();*/
             /*aa.transform.position = tBulletpos.position;*/
 
-            Debug.Log(00);
-            transform.LookAt(Vector3.forward);
+            Debug.Log("적이없으니 직진");
+            transform.LookAt(transform.position);
         }
 
 

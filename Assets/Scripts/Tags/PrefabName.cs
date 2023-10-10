@@ -25,10 +25,8 @@ public class PrefabName
     public const string STR_RANGED_MONSTER          = "RangedEnemy";
     public const string STR_BOSS_MONSTER            = "BossEnemy";
 
-    public const string STR_CHAR_AR_BASIC_EFFECT    = "CharAr_Basic_Effect";
-    public const string STR_CHAR_SR_BASIC_EFFECT    = "CharSr_Basic_Effect";
-    public const string STR_CHAR_HG_BASIC_EFFECT    = "CharHg_Basic_Effect";
-    public const string STR_CHAR_SG_BASIC_EFFECT    = "CharSg_Basic_Effect";
+    public const string STR_BASIC_EFFECT    = "CharAr_Basic_Effect";
+
 
     public const string STR_CHAR_AR_ACTIVE_01EFFECT = "CharAr_Active_01Effect";
     public const string STR_CHAR_AR_ACTIVE_02EFFECT = "CharAr_Active_02Effect";

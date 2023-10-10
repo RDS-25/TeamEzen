@@ -176,10 +176,7 @@ public class ObjectFactory
     }
     public void SkillEffectInit()
     {
-        CharARBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_AR_BASIC_EFFECT, 5);
-        CharSRBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_SR_BASIC_EFFECT, 5);
-        CharHGBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_HG_BASIC_EFFECT, 5);
-        CharSGBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_SG_BASIC_EFFECT, 5);
+        basicSkillFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_BASIC_EFFECT, 5);
 
         CharARActive01EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_AR_ACTIVE_01EFFECT, 5);
         CharARActive02EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_AR_ACTIVE_02EFFECT, 5);
