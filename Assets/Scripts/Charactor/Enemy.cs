@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 	public float DefaultRange;
 	public GameObject gBullet;
 	
-	public delegate void DieDelegate(EnemyType Etyep);
+	public delegate void DieDelegate(EnemyType Etype,GameObject game);
 
 	public event DieDelegate DieEvent;
 
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
 		if (stat.fHealth <= 0) {
 			if (DieEvent != null)
 			{
-				DieEvent(enemyType);
+				DieEvent(enemyType,gameObject);
 			}
 		}
 	}
