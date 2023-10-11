@@ -9,6 +9,8 @@ public class CharHg_Active_03 : BuffType
 {
     private void OnDisable()
     {
+        stat1 = ChaStat.fMoveSpeed;
+        stat2 = ChaStat.fAtkSpeed;
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARHG_ACTIVE_03_PARAMS;
         PLUS_VAL = 10f;
@@ -31,7 +33,7 @@ public class CharHg_Active_03 : BuffType
         fCharToUse = 3;
         fSkillLevel = 1;
         fId = 205;
-        strName = "Act1";
+        strName = "HgActive03";
         strDiscription = "ok";
         strIconName = "CharHgActive03.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
@@ -52,9 +54,6 @@ public class CharHg_Active_03 : BuffType
         bisCanUse = false;
         bisActtivate = false;
     }
+   
 
-    public override void CharaterStatUp(ref float stat1, ref float stat2)
-    {
-        base.CharaterStatUp(ref ChaStat.fAtkSpeed, ref ChaStat.fDefBreak);
-    }
 }

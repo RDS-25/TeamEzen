@@ -9,7 +9,7 @@ public class CharAr_Basic : AttackType
 {
     private void OnDisable()
     {
-        myBulletFactory(GameManager.instance.objectFactory.CharAr_Basic_Bullet_Factory);                
+        myBulletFactory(GameManager.instance.objectFactory.Char_Basic_Bullet_Factory);                
         strSkillFolderPath = FolderPath.PARAMS_BASIC_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHAR_BASIC_PARAMS;
         PLUS_VAL = 10f;

@@ -9,6 +9,8 @@ public class CharSg_Active_03 : BuffType
 {
     private void OnDisable()
     {
+        stat1 = ChaStat.fCriticalDmg;
+        stat2 = ChaStat.fCriticalResist;
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSG_ACTIVE_03_PARAMS;
         PLUS_VAL = 10f;
@@ -18,7 +20,7 @@ public class CharSg_Active_03 : BuffType
         SetType();
         LevelUpValue();
         InitParams();
-     //LoadEffect();
+        //LoadEffect();
     }
     public override void SetType()
     {
@@ -31,7 +33,7 @@ public class CharSg_Active_03 : BuffType
         fCharToUse = 4;
         fSkillLevel = 1;
         fId = 208;
-        strName = "Act1";
+        strName = "SgActive03";
         strDiscription = "ok";
         strIconName = "CharSgActive03.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
@@ -52,14 +54,7 @@ public class CharSg_Active_03 : BuffType
         bisCanUse = false;
         bisActtivate = false;
     }
-    public override void CharaterStatUp(ref float stat1, ref float stat2)
-    {
-        base.CharaterStatUp(ref ChaStat.fAtk, ref ChaStat.fAtk);
-    }
 
+    
 
-    public override void SkillHidenUnlock()
-    {
-        base.SkillHidenUnlock();
-    }
 }

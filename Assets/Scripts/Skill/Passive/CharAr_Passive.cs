@@ -8,7 +8,9 @@ using System.IO;
 public class CharAr_Passive : BuffType
 {
     private void OnDisable()
-    {        
+    {
+        stat1 = ChaStat.fAtk;
+        stat2 = ChaStat.fCriticalPer;
         strSkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARAR_PASSIVE_PARAMS;
         PLUS_VAL = 10f;

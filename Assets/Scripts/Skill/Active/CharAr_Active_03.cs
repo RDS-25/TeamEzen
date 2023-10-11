@@ -9,6 +9,9 @@ public class CharAr_Active_03 : BuffType
 {
     private void OnDisable()
     {
+        skillinfo = new CharAr_Active_01();
+        stat1 = ChaStat.fCriticalDmg;
+        stat2 = ChaStat.fAtkSpeed;
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARAR_ACTIVE_03_PARAMS;
         PLUS_VAL = 10f;
@@ -32,7 +35,7 @@ public class CharAr_Active_03 : BuffType
         fCharToUse = 1;
         fSkillLevel = 1;
         fId = 202;
-        strName = "Act1";
+        strName = "ArActive03";
         strDiscription = "ok";
         strIconName = "CharArActive03.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
@@ -53,8 +56,5 @@ public class CharAr_Active_03 : BuffType
         bisCanUse = false;
         bisActtivate = false;
     }
-    public override void CharaterStatUp(ref float stat1, ref float stat2)//스킬 버튼 눌렀을때
-    {
-        base.CharaterStatUp(ref ChaStat.fAtkSpeed, ref ChaStat.fCriticalPer);
-    }
+    
 }

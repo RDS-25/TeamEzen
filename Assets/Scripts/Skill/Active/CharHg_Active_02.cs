@@ -32,7 +32,7 @@ public class CharHg_Active_02 : AttackType
         fCharToUse = 3;
         fSkillLevel = 1;
         fId = 204;
-        strName = "Act1";
+        strName = "HgActive02";
         strDiscription = "ok";
         strIconName = "CharHgActive02.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_BULLET;

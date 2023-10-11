@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2376435856696339085}
   - component: {fileID: 2424480510053422829}
-  - component: {fileID: -1223314124754302046}
   - component: {fileID: 6381050700580146029}
   - component: {fileID: 1085967681197754564}
+  - component: {fileID: 7227866918241607396}
   m_Layer: 0
-  m_Name: CharAr_Basic_Bullet
+  m_Name: Char_Basic_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,18 +58,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-1223314124754302046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2375494519634185399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb18f92a2d821d746ae2c04c09cda9b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &6381050700580146029
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100,6 +88,18 @@ CapsuleCollider:
   m_Height: 0.64
   m_Direction: 1
   m_Center: {x: 0, y: 0.27, z: 0}
+--- !u!114 &7227866918241607396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375494519634185399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f284142fa2d4a043ad94316b377867b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2375494520144794405
 GameObject:
   m_ObjectHideFlags: 0

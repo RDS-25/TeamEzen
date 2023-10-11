@@ -26,11 +26,6 @@ public class PrefabName
 
     public const string STR_CHAR_BASIC_EFFECT = "Char_Basic_Effect";
 
-    public const string STR_CHAR_AR_BASIC_EFFECT    = "CharAr_Basic_Effect";
-    public const string STR_CHAR_SR_BASIC_EFFECT    = "CharSr_Basic_Effect";
-    public const string STR_CHAR_HG_BASIC_EFFECT    = "CharHg_Basic_Effect";
-    public const string STR_CHAR_SG_BASIC_EFFECT    = "CharSg_Basic_Effect";
-
     public const string STR_CHAR_AR_ACTIVE_01EFFECT = "CharAr_Active_01Effect";
     public const string STR_CHAR_AR_ACTIVE_02EFFECT = "CharAr_Active_02Effect";
     public const string STR_CHAR_AR_ACTIVE_03EFFECT = "CharAr_Active_03Effect";
@@ -53,11 +48,6 @@ public class PrefabName
     public const string STR_COMMON_04EFFECT         = "Common_04Effect";
 
     public const string STR_CHA_BASIC_BULLET = "Char_Basic_Bullet";
-
-    public const string STR_CHA_AR_BASIC_BULLET = "CharAr_Basic_Bullet";
-    public const string STR_CHA_HG_BASIC_BULLET = "CharHg_Basic_Bullet";
-    public const string STR_CHA_SG_BASIC_BULLET = "CharSg_Basic_Bullet";
-    public const string STR_CHA_SR_BASIC_BULLET = "CharSr_Basic_Bullet";
 
     public const string STR_CHA_AR_ACTIVE_01_BULLET = "CharAr_Active_01Bullet";
     public const string STR_CHA_AR_ACTIVE_02_BULLET = "CharAr_Active_02Bullet";

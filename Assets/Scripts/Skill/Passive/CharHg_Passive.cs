@@ -7,7 +7,9 @@ public class CharHg_Passive : BuffType
 {
 
     private void OnDisable()
-    {        
+    {
+        stat1 = ChaStat.fDef;
+        stat2 = ChaStat.fCriticalResist;
         strSkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARHG_PASSIVE_PARAMS;
         PLUS_VAL = 10f;

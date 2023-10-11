@@ -7,7 +7,9 @@ using System.IO;
 public class CharSg_Passive : BuffType
 {
     private void OnDisable()
-    {        
+    {
+        stat1 = ChaStat.fAtk;
+        stat2 = ChaStat.fHealth;
         strSkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSG_PASSIVE_PARAMS;
         PLUS_VAL = 10f;

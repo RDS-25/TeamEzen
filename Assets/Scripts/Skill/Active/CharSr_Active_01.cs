@@ -32,7 +32,7 @@ public class CharSr_Active_01 : AttackType
         fCharToUse = 2;
         fSkillLevel = 1;
         fId = 209;
-        strName = "Act1";
+        strName = "SrActive01";
         strDiscription = "ok";
         strIconName = "CharSrActive01.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_BULLET;

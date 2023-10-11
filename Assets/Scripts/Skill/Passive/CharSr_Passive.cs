@@ -8,6 +8,8 @@ public class CharSr_Passive : BuffType
 
     private void OnDisable()
     {
+        stat1 = ChaStat.fCriticalPer;
+        stat2 = ChaStat.fCriticalDmg;
         strSkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSR_PASSIVE_PARAMS;
         PLUS_VAL = 10f;
@@ -25,10 +27,7 @@ public class CharSr_Passive : BuffType
         skillType = "PASSIVE";
         enumSkillType = SkillType.PASSIVE;
     }
-    public override void CharaterStatUp(ref float stat1, ref float stat2)
-    {
-        base.CharaterStatUp(ref ChaStat.fCriticalPer, ref ChaStat.fCriticalDmg);
-    }
+    
     public override void SetDefault()
     {
         fSkillLevel = 1;

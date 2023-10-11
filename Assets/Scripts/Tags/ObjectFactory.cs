@@ -34,11 +34,7 @@ public class ObjectFactory
     public FactoryManager AllSkill = new FactoryManager();
     public FactoryManager SelectingSkillObjectFactory = new FactoryManager();
 
-   
-    public FactoryManager CharARBasicEffectFactory = new FactoryManager();
-    public FactoryManager CharSRBasicEffectFactory = new FactoryManager();
-    public FactoryManager CharHGBasicEffectFactory = new FactoryManager();
-    public FactoryManager CharSGBasicEffectFactory = new FactoryManager();
+    public FactoryManager CharBasicEffectFactory = new FactoryManager();
 
     public FactoryManager CharARActive01EffectFactory = new FactoryManager();
     public FactoryManager CharARActive02EffectFactory = new FactoryManager();
@@ -65,12 +61,6 @@ public class ObjectFactory
     public FactoryManager BulletFactory = new FactoryManager();
 
     public FactoryManager Char_Basic_Bullet_Factory = new FactoryManager();
-
-    public FactoryManager CharAr_Basic_Bullet_Factory = new FactoryManager();
-    public FactoryManager CharHg_Basic_Bullet_Factory = new FactoryManager();
-    public FactoryManager CharSg_Basic_Bullet_Factory = new FactoryManager();
-    public FactoryManager CharSr_Basic_Bullet_Factory = new FactoryManager();
-
 
     public FactoryManager CharAr_Active_01_Bullet_Factory = new FactoryManager();
     public FactoryManager CharAr_Active_02_Bullet_Factory = new FactoryManager();
@@ -178,10 +168,7 @@ public class ObjectFactory
     }
     public void SkillEffectInit()
     {
-        CharARBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_AR_BASIC_EFFECT, 5);
-        CharSRBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_SR_BASIC_EFFECT, 5);
-        CharHGBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_HG_BASIC_EFFECT, 5);
-        CharSGBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_SG_BASIC_EFFECT, 5);
+        CharBasicEffectFactory.CreateObject(FolderPath.PREFABS_BASIC_EFFECT + PrefabName.STR_CHAR_BASIC_EFFECT, 5);
 
         CharARActive01EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_AR_ACTIVE_01EFFECT, 5);
         CharARActive02EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_AR_ACTIVE_02EFFECT, 5);
@@ -223,12 +210,5 @@ public class ObjectFactory
         Common_02_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_02_BULLET, 5);
         Common_03_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_03_BULLET, 5);
         Common_04_BulletFactory.CreateObject(FolderPath.PREFABS_COMMON_BULLET + PrefabName.STR_COMMON_04_BULLET, 5);
-
-        CharAr_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_AR_BASIC_BULLET, 5);
-        CharHg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_HG_BASIC_BULLET, 5);
-        CharSg_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SG_BASIC_BULLET, 5);
-        CharSr_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_SR_BASIC_BULLET, 5);
-
-
     }
 }

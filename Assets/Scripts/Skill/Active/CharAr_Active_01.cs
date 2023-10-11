@@ -45,7 +45,7 @@ public class CharAr_Active_01 : AttackType
         fCharToUse = 1;
         fSkillLevel = 1;
         fId = 200;
-        strName = "ACTIVE01010101";
+        strName = "ArActive01";
         strDiscription = "ACTIVE010150";
         strIconName = "CharArActive01.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_BULLET;
@@ -71,8 +71,5 @@ public class CharAr_Active_01 : AttackType
         bisCanUse = false;
         bisActtivate = false;
     }
-    public override void SkillHidenUnlock()
-    {
-        base.SkillHidenUnlock();
-    }
+   
 }

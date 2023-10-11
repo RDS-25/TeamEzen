@@ -17,12 +17,14 @@ public class SkillBullet : MonoBehaviour
     protected float fTotalDamage;
     protected float fMonProperty;
     protected Stat ChaStat;
+    protected float id;
     int count;
     protected Skill skillinfo;
 
 
     void Start()
     {       //skllinfo 총알마다 할당해주기  skllinfo = new CharAr_Active_01();
+        id = ChaStat.fId;
         rig = GetComponent<Rigidbody>();
         fRancri = UnityEngine.Random.Range(0f, 100f);
         fRanmondod = UnityEngine.Random.Range(0f, 100f);
@@ -83,22 +85,20 @@ public class SkillBullet : MonoBehaviour
             
             ContactPoint contactPoint = collision.contacts[0];
             Vector3 pos = contactPoint.point;
-            ShowEffect(pos);//새로 이펙트 나오는 함수만들기
-
             var monsterStat = collision.gameObject.GetComponent<Stat>();
             fMonDadge = monsterStat.fMiss;
             fMonCriresi = monsterStat.fCriticalResist;
             fMonDefense = monsterStat.fDef;
             fMonProperty = monsterStat.fProperty;
-
             CalculDamage();
             // 오류 있음
             monsterStat.fHealth -= fTotalDamage;
-            
+
             if (count >= skillinfo.fTargetCount)
             {
                 myfactoryManager.SetObject(gameObject);
-            }       
+            }
+            ShowEffect(pos);//새로 이펙트 나오는 함수만들기         
         }
     }
     public void ShowEffect(Vector3 contactpoint)

@@ -9,6 +9,8 @@ public class CharSr_Active_03 : BuffType
 {
     private void OnDisable()
     {
+        stat1 = ChaStat.fAtk;
+        stat2 = ChaStat.fDefBreak;
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSR_ACTIVE_03_PARAMS;
         PLUS_VAL = 10f;
@@ -52,14 +54,8 @@ public class CharSr_Active_03 : BuffType
         bisCanUse = false;
         bisActtivate = false;
     }
-    public override void CharaterStatUp(ref float stat1, ref float stat2)
-    {
-        base.CharaterStatUp(ref ChaStat.fCriticalPer, ref ChaStat.fCriticalDmg);
-    }
 
 
-    public override void SkillHidenUnlock()
-    {
-        base.SkillHidenUnlock();
-    }
+
+    
 }
