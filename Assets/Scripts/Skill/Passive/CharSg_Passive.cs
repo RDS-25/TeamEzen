@@ -7,7 +7,8 @@ using System.IO;
 public class CharSg_Passive : BuffType
 {
     private void OnDisable()
-    {        
+    {
+        
         strSkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSG_PASSIVE_PARAMS;
         PLUS_VAL = 10f;
@@ -18,6 +19,11 @@ public class CharSg_Passive : BuffType
         LevelUpValue();
         InitParams();
         //CharaterStatUp(ref ChaStat.fAtk, ref ChaStat.fAtkSpeed);
+    }
+    private void Start()
+    {
+        stat1 = ChaStat.fAtk;
+        stat2 = ChaStat.fHealth;
     }
     public override void SetType()
     {

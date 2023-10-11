@@ -74,7 +74,7 @@ public class Skill: SkillParams
         fSkillCoolReduce = 0;
         fBuffDuration = 0;
         fRange = 0;
-        fMaxRange = 0;
+        fMaxRange = 25;
         fValue = 0;
         fHidenValue = 0;
         fMagnification = 0;
@@ -207,11 +207,8 @@ public class Skill: SkillParams
         if (bisCanUse == true || bisActtivate == false)
         {
             bisCanUse = false;
-
-            bisActtivate = true;
-
-            fTimer = 0f;
-
+            bisActtivate = true;            
+            ShotEffect(playerposition);
             StartCoroutine(SkillCoolDown());
         }
 

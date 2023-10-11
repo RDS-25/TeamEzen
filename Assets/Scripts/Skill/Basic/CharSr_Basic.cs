@@ -9,7 +9,7 @@ public class CharSr_Basic : AttackType
 {
     private void OnDisable()
     {
-        myBulletFactory(GameManager.instance.objectFactory.CharSr_Basic_Bullet_Factory);
+        myBulletFactory(GameManager.instance.objectFactory.Char_Basic_Bullet_Factory);
         strSkillFolderPath = FolderPath.PARAMS_BASIC_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSR_BASIC_PARAMS;
         PLUS_VAL = 10f;
@@ -37,7 +37,7 @@ public class CharSr_Basic : AttackType
         strDiscription = "ok";
         strIconName = "CharSrBasic.png";
         strEffectPath = FolderPath.PREFABS_BASIC_BULLET;
-        strEffectName = PrefabName.STR_CHA_SR_BASIC_BULLET;
+        strEffectName = PrefabName.STR_CHA_BASIC_BULLET;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;
