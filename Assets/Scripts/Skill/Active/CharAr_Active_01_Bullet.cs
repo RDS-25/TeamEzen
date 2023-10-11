@@ -12,9 +12,10 @@ public class CharAr_Active_01_Bullet : SkillBullet
         EffectFactory(GameManager.instance.objectFactory.CharARActive01EffectFactory);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void moveBullet()
     {
-        
+        base.moveBullet();
     }
+
+ 
 }

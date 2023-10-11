@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,IDragHandler
+public class ShowSkill : MonoBehaviour ,IPointerDownHandler,/*IPointerUpHandler,*/IDragHandler
 {
     public enum SKILLTYPE
 	{
@@ -79,7 +79,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
 
     }
 
-	public void OnPointerUp(PointerEventData eventData)
+	/*public void OnPointerUp(PointerEventData eventData)
 	{
 
         gRangeIndicator.SetActive(false);
@@ -91,7 +91,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
           
             action.motion = Action.Motion.Idle;
             action.bIsCancel = false;
-            /*이 위치에 스킬 실행 취소*/
+            *//*이 위치에 스킬 실행 취소*//*
             Debug.Log("취소");
         }
         else if (action.motion == Action.Motion.Action)
@@ -108,7 +108,7 @@ public class ShowSkill : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler,ID
             action.motion = Action.Motion.Idle;
 
         }
-    }
+    }*/
 
     
 	public void OnDrag(PointerEventData eventData)

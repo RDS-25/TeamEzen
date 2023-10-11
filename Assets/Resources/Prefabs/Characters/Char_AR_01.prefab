@@ -4681,7 +4681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5784580704326217625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.342, z: 0.512}
+  m_LocalPosition: {x: 0, y: 1.342, z: 1.22}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6206,7 +6206,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.9
+  m_Radius: 0.5
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}
@@ -6781,12 +6781,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterUiGroups1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2797198634835300980, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
+      propertyPath: sKillType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2797198635994583340, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7395508789144467654}
+    - target: {fileID: 2797198636496378774, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
+      propertyPath: BtnSKills.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797198636496378774, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
+      propertyPath: BtnSKills.Array.data[0]
+      value: 
+      objectReference: {fileID: 1194952243065948475}
+    - target: {fileID: 2797198636496378774, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
+      propertyPath: BtnSKills.Array.data[1]
+      value: 
+      objectReference: {fileID: 1194952242430676606}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
+--- !u!1 &1194952242430676606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2797198635810641204, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
+  m_PrefabInstance: {fileID: 3910522975623863114}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1194952243065948475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2797198634835300977, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}
+  m_PrefabInstance: {fileID: 3910522975623863114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1194952243080996644 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2797198634850352238, guid: 0b9c4e06e3e3ebd43a85bf5a74557d0d, type: 3}

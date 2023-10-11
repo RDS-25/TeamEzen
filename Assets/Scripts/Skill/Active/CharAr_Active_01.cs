@@ -70,6 +70,7 @@ public class CharAr_Active_01 : AttackType
         bisUnlockHiden = false;
         bisCanUse = false;
         bisActtivate = false;
+        fSpeed = 100;
     }
     public override void SkillHidenUnlock()
     {
