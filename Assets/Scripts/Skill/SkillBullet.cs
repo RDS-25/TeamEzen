@@ -81,7 +81,30 @@ public class SkillBullet : MonoBehaviour
         else
             return 1f;
     }
-    private void OnCollisionEnter(Collision collision)
+	private void OnTriggerEnter(Collider other)
+	{
+        if (other.CompareTag("Enemy"))
+        {
+            count++;
+
+
+            var monsterStat = other.gameObject.GetComponent<Stat>();
+            fMonDadge = monsterStat.fMiss;
+            fMonCriresi = monsterStat.fCriticalResist;
+            fMonDefense = monsterStat.fDef;
+            fMonProperty = monsterStat.fProperty;
+            CalculDamage();
+            // 오류 있음
+            monsterStat.fHealth -= fTotalDamage;
+
+            if (count >= skillinfo.fTargetCount)
+            {
+                myfactoryManager.SetObject(gameObject);
+            }
+            ShowEffect(transform.position);//새로 이펙트 나오는 함수만들기         
+        }
+    }
+/*	private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy"))
         {
@@ -104,7 +127,7 @@ public class SkillBullet : MonoBehaviour
             }
             ShowEffect(pos);//새로 이펙트 나오는 함수만들기         
         }
-    }
+    }*/
     public void ShowEffect(Vector3 contactpoint)
     {        
         GameObject Effect = effectFactoryManager.GetObject();
