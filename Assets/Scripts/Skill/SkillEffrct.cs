@@ -10,7 +10,7 @@ public class SkillEffrct : MonoBehaviour
     //파티클 실행시간 이후 없애기
     private void Start()
     {
-        EndEffect();
+        //
     }
     public virtual void myFactory(FactoryManager myFactoryManager)
     {

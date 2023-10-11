@@ -9,14 +9,21 @@ public class SkillBullet : MonoBehaviour
     public FactoryManager myfactoryManager;
     public FactoryManager effectFactoryManager;
     protected Vector3 Firepiont;
+    [SerializeField]
     protected float fRancri;
+    [SerializeField]
     protected float fRanmondod;
+    [SerializeField]
     protected float fMonDadge;
+    [SerializeField]
     protected float fMonDefense;
+    [SerializeField]
     protected float fMonCriresi;
+    [SerializeField]
     protected float fTotalDamage;
+    [SerializeField]
     protected float fMonProperty;
-    protected Stat ChaStat;
+   // protected Stat ChaStat;
     protected float id;
     int count;
     protected Skill skillinfo;
@@ -24,10 +31,11 @@ public class SkillBullet : MonoBehaviour
 
     void Start()
     {       //skllinfo 총알마다 할당해주기  skllinfo = new CharAr_Active_01();
-        id = ChaStat.fId;
+        /*id = ChaStat.fId;*/
         rig = GetComponent<Rigidbody>();
-        fRancri = UnityEngine.Random.Range(0f, 100f);
-        fRanmondod = UnityEngine.Random.Range(0f, 100f);
+
+        
+
    
         count = 0;
     }
@@ -44,16 +52,18 @@ public class SkillBullet : MonoBehaviour
     {
         effectFactoryManager = effcet;
     }
-    public void SkillActivationInit(ref Stat activeObjectStat)
+  /*  public void SkillActivationInit(ref Stat activeObjectStat)
     {
         ChaStat = activeObjectStat;
-    }
+    }*/
     public float CalculDamage()
     {
+        var ChaStat = GameManager.instance.arrCurCharacters[0].GetComponent<Stat>();
         if (fRanmondod < fMonDadge)
         {
             fTotalDamage = 0;
             return fTotalDamage;
+            Debug.Log("회피"+fTotalDamage);
         }
         else
         {
@@ -63,7 +73,8 @@ public class SkillBullet : MonoBehaviour
             }
             else
             {
-                fTotalDamage = ChaStat.fAtk * (fMonDefense - ChaStat.fDefBreak / fMonDefense + 100) * CheckPro(ChaStat.fProperty, fMonProperty) * skillinfo.fAttackCount;
+                //데미지 계산식 수정
+                fTotalDamage = ChaStat.fAtk * (fMonDefense - ChaStat.fDefBreak / (fMonDefense + 100)) * CheckPro(ChaStat.fProperty, fMonProperty) * skillinfo.fAttackCount;
             }
             return fTotalDamage;
         }
@@ -83,19 +94,24 @@ public class SkillBullet : MonoBehaviour
     }
 	private void OnTriggerEnter(Collider other)
 	{
+
         if (other.CompareTag("Enemy"))
         {
+            fRancri = UnityEngine.Random.Range(0f, 100f);
+            fRanmondod = UnityEngine.Random.Range(0f, 100f);
+
             count++;
-
-
             var monsterStat = other.gameObject.GetComponent<Stat>();
             fMonDadge = monsterStat.fMiss;
             fMonCriresi = monsterStat.fCriticalResist;
             fMonDefense = monsterStat.fDef;
             fMonProperty = monsterStat.fProperty;
+            
             CalculDamage();
             // 오류 있음
+            Debug.Log(fTotalDamage);
             monsterStat.fHealth -= fTotalDamage;
+
 
             if (count >= skillinfo.fTargetCount)
             {
@@ -133,6 +149,7 @@ public class SkillBullet : MonoBehaviour
         GameObject Effect = effectFactoryManager.GetObject();
         Effect.transform.position = contactpoint;
         Effect.SetActive(true);
+       Debug.Log( Effect.GetComponent<ParticleSystem>().main.duration);
     }
     protected virtual void moveBullet()
     {

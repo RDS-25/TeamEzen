@@ -58,6 +58,7 @@ public class Action : MonoBehaviour
                 GameManager.instance.objectFactory.AllSkill.listPool[i].SetActive(true);
 				Debug.Log(GameManager.instance.objectFactory.AllSkill.listPool[i]);
                 Skills.Add(GameManager.instance.objectFactory.AllSkill.listPool[i]);
+                
 
             }
 		}
@@ -119,7 +120,6 @@ public class Action : MonoBehaviour
         GameObject closestEnemy = FindClosestEnemyWithTag("Enemy", targetingRange);
         Vector3 direction;
         
-
 
         if (closestEnemy != null)
         {
