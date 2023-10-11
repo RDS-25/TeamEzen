@@ -6,7 +6,7 @@ using System;
 using System.IO;
 public class AttackType : Skill
 {
-    public Transform FirePoint;
+    
 
 
     //스킬레벨업 변수들 스킬마다 써주기
