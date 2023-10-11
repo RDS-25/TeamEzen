@@ -19,7 +19,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
     private int nGimmickCount = 0;
     GameObject Portal;
     public GameObject PortalSpawn;
-    public static Vector3[] vRoomPos = null;
+    public static Vector3 vRoomPos = null;
 
     //GameObject gimmick = new GameObject();//Fectory.GetObjct()¿¡¼­ ±â¹Í »Ì¾Æ¿À±â
     GameObject gimmick;
@@ -35,9 +35,13 @@ public class RoomManager : MonoBehaviour, DefaultRoom
         return false;
     }
 
-    public void Start()
+    public void Update()
     {
-        //Debug.Log("½ÇÇà");
+        if(nClearCount >= nGimmickCount)
+        {
+            PortalSpawn.SetActive(true);
+            vRoomPos = transform.position;
+        }
     }
 
     public void ClearRoom()

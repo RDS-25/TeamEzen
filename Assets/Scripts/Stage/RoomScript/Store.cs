@@ -24,11 +24,10 @@ public class Store : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        gStoreUi.SetActive(true);
-
         if (!bState)
         {
             bState = true;
+            gStoreUi.SetActive(true);
             for (int i = 1; i <= nStoreLength; i++)
             {
                 string sInformation = "% 증가합니다.";
