@@ -28,6 +28,8 @@ public class SkillBullet : MonoBehaviour
         fRanmondod = UnityEngine.Random.Range(0f, 100f);
         Firepiont = gameObject.GetComponent<Transform>().position;
         count = 0;
+  
+
     }
 
     public virtual void myFactory(FactoryManager myFactoryManager)
@@ -92,6 +94,7 @@ public class SkillBullet : MonoBehaviour
             fMonProperty = monsterStat.fProperty;
 
             CalculDamage();
+            Debug.Log("데미지 받음");
             // 오류 있음
             monsterStat.fHealth -= fTotalDamage;
             
@@ -109,7 +112,9 @@ public class SkillBullet : MonoBehaviour
     }
     protected virtual void moveBullet()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * skillinfo.fSpeed * Time.deltaTime);
+        Debug.Log("이동 실행");
+        //GetComponent<Rigidbody>().AddForce(transform.forward * 10f, ForceMode.Impulse);
+        GetComponent<Rigidbody>().velocity = transform.forward * 10f;
     }
     public virtual void CheckDistance()
     {
@@ -117,7 +122,7 @@ public class SkillBullet : MonoBehaviour
         //Debug.Log("ran" + range);
         //Debug.Log("dis" + distance);
         // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
-        if (distance > skillinfo.fRange)//Ex_Active1Params의 Range를 가져오는 방법??
+        if (distance > skillinfo.fMaxRange)//Ex_Active1Params의 Range를 가져오는 방법??
         {
             // setactive 해주기
             myfactoryManager.SetObject(gameObject);
@@ -125,10 +130,15 @@ public class SkillBullet : MonoBehaviour
         else
             return;
     }
-    
-    void Update()
+
+
+/*	private void OnEnable()
+	{
+        moveBullet();
+    }*/
+	void Update()
     {
         moveBullet();
-        CheckDistance();
+        //CheckDistance();
     }
 }

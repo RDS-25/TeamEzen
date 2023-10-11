@@ -101,7 +101,8 @@ public class SkillTest : MonoBehaviour
                 }*/
          
                 AllImageFalse();
-                temp.SkillTriger(Player.GetComponent<Action>().tBulletpos.position);
+                Player.transform.LookAt(newHitPos);
+                temp.SkillTriger(Player.GetComponent<Action>().tBulletpos.position, Player.GetComponent<Action>().tBulletpos.rotation);
                 //여기  스킬 발사 skilltrigger
                 isSkilling = false;
             }
@@ -121,32 +122,18 @@ public class SkillTest : MonoBehaviour
             targetCircleSize = temp.fRange;
             maxActiveSkillDistance = temp.fMaxRange;
             Debug.Log(temp.name);
-            Debug.Log("스킬 가동 범위 :" + temp.fRange);
-            Debug.Log("스킬 최대 범위 :" + temp.fMaxRange);
-        return;
+            Debug.Log("액티브 스킬 가동 범위 :" + temp.fRange);
+            Debug.Log("액티브 스킬 최대 범위 :" + temp.fMaxRange);
+
         }
         else if (temp.enumSkillType == Params.SkillParams.SkillType.ULTIMATE)
         {
             targetCircleSize = temp.fRange;
             maxActiveSkillDistance = temp.fMaxRange;
             Debug.Log(temp.name);
-            Debug.Log("스킬 가동 범위 :" + temp.fRange);
-            Debug.Log("스킬 최대 범위 :" + temp.fMaxRange);
-        return;
-        } else if(temp.enumSkillType == Params.SkillParams.SkillType.BASIC)
-        {
-            targetCircleSize = temp.fRange;
-            maxActiveSkillDistance = temp.fMaxRange;
-            Debug.Log(temp.name);
-            Debug.Log("스킬 가동 범위 :" + temp.fRange);
-            Debug.Log("스킬 최대 범위 :" + temp.fMaxRange);
-        return;
+            Debug.Log("궁극기 스킬 가동 범위 :" + temp.fRange);
+            Debug.Log("궁극기 스킬 최대 범위 :" + temp.fMaxRange);
         }
-
-         
-      
-           
-     
     }
 
 	public void AllImageFalse() {

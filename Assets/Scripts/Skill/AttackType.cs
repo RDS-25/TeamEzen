@@ -10,10 +10,12 @@ public class AttackType : Skill
 
 
     //스킬레벨업 변수들 스킬마다 써주기
-    public override void ShotEffect(Vector3 Bulletpos)
+    public override void ShotEffect(Vector3 Bulletpos, Quaternion firePointRotate)
     {
         GameObject bullet = myFactory.GetObject();
         bullet.transform.position = Bulletpos;
+        bullet.transform.rotation = firePointRotate;
+
         bullet.SetActive(true);                
     }
 

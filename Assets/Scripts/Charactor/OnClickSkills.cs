@@ -16,9 +16,9 @@ public class OnClickSkills : MonoBehaviour
 		var scSKill = Skill.GetComponent<SkillTest>();
 
 		scSKill.enabled = true;
-		Skill.GetComponent<SkillTest>().isSkilling = true;
+	
 		Debug.Log(BtnSKills.IndexOf(Skill));
-
+		Skill.GetComponent<SkillTest>().isSkilling = true;
 		switch (BtnSKills.IndexOf(Skill)) {
 			case 0://active
 				scSKill.ReadStat(Params.SkillParams.SkillType.ACTIVE);
@@ -53,14 +53,15 @@ public class OnClickSkills : MonoBehaviour
 				scSKill.targetCircle.enabled = false;
 				scSKill.indicatorRangeCircle.enabled = false;
 			}
-		
 
-		foreach (GameObject btn in BtnSKills) {
-			if (btn != Skill )
+
+		foreach (GameObject btn in BtnSKills)
+		{
+			Debug.Log(btn);
+			if (btn != Skill)
 			{
 				btn.GetComponent<SkillTest>().enabled = false;
 			}
-	
 		}
 	}
 }

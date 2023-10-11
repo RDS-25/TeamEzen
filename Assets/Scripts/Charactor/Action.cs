@@ -123,12 +123,12 @@ public class Action : MonoBehaviour
 
         if (closestEnemy != null)
         {
+            transform.LookAt(closestEnemy.transform.position);
             direction = (closestEnemy.transform.position - tBulletpos.position).normalized;
             GameObject aa = GameManager.instance.objectFactory.basicSkillFactory.GetObject();
+            aa.transform.LookAt(direction);
             aa.SetActive(true);
             aa.transform.position = tBulletpos.position;
-            transform.LookAt(direction);
-          
         }
         else if (closestEnemy == null)
         {
