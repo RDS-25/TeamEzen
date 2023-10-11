@@ -42,8 +42,6 @@ public class FileName
     public const string STR_JSON_CHARSG_PASSIVE_PARAMS = "CharSg_Passive_Params";
     public const string STR_JSON_CHARSR_PASSIVE_PARAMS = "CharSr_Passive_Params";
 
-    public const string STR_JSON_CHAR_BASIC_PARAMS = "Char_Basic_Params";
-
     public const string STR_JSON_CHARAR_BASIC_PARAMS = "CharAr_Basic_Params";
     public const string STR_JSON_CHARHG_BASIC_PARAMS = "CharHg_Basic_Params";
     public const string STR_JSON_CHARSG_BASIC_PARAMS = "CharSg_Basic_Params";

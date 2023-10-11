@@ -8,7 +8,7 @@ public class CharSg_Basic : AttackType
 {
     private void OnDisable()
     {
-        myBulletFactory(GameManager.instance.objectFactory.Char_Basic_Bullet_Factory);        
+        myBulletFactory(GameManager.instance.objectFactory.CharSg_Basic_Bullet_Factory);        
         strSkillFolderPath = FolderPath.PARAMS_BASIC_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSG_BASIC_PARAMS;
         PLUS_VAL = 10f;
@@ -36,7 +36,7 @@ public class CharSg_Basic : AttackType
         strDiscription = "ok";
         strIconName = "CharSgBasic.png";
         strEffectPath = FolderPath.PREFABS_BASIC_BULLET;
-        strEffectName = PrefabName.STR_CHA_BASIC_BULLET;
+        strEffectName = PrefabName.STR_CHA_SG_BASIC_BULLET;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;

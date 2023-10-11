@@ -5,14 +5,14 @@ using Params;
 using System;
 
 
-public class Skill: SkillParams
-{//1.½ºÅ³ ÇØ±Ý 2.½ºÅ³ ¹ßµ¿ 3.°­È­ 4.È¿°ú°Å¸® 5.Áö¼Ó½Ã°£
-    //½ºÅ³ ·¹º§/°Å¸®/½Ã°£
-    //protected string SkillFolderPath;//Æú´õ°æ·Î
-    //protected string SkillParamsPath;//ÆÄÀÏ°æ·Î
-    protected Dictionary<string, string> SkillStat;//µñ¼Å³Ê¸® »ç¿ë
+public class Skill : SkillParams
+{//1.ï¿½ï¿½Å³ ï¿½Ø±ï¿½ 2.ï¿½ï¿½Å³ ï¿½ßµï¿½ 3.ï¿½ï¿½È­ 4.È¿ï¿½ï¿½ï¿½Å¸ï¿½ 5.ï¿½ï¿½ï¿½Ó½Ã°ï¿½
+    //ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½/ï¿½Å¸ï¿½/ï¿½Ã°ï¿½
+    //protected string SkillFolderPath;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //protected string SkillParamsPath;//ï¿½ï¿½ï¿½Ï°ï¿½ï¿½
+    protected Dictionary<string, string> SkillStat;//ï¿½ï¿½Å³Ê¸ï¿½ ï¿½ï¿½ï¿½
 
-    //½ºÅ³¸¶´Ù ÁöÁ¤µÈ°ª ½áÁÖ±â
+    //ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È°ï¿½ ï¿½ï¿½ï¿½Ö±ï¿½
     protected float PLUS_VAL = 10f;
     protected float PLUS_MAG = 10f;
     protected float PLUS_TARGET_COUNT = 0f;
@@ -25,7 +25,7 @@ public class Skill: SkillParams
     {
         myFactory = myFactoryManager;
     }
-    public void SkillActivationInit(ref Stat activeObjectStat)//½ºÅ³ ÀåÂøÇÒ¶§ ºÒ·¯´Þ¶ó°í ¸»ÇÏ±â
+    public void SkillActivationInit(ref Stat activeObjectStat)//ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ ï¿½Ò·ï¿½ï¿½Þ¶ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
     {
         ChaStat = activeObjectStat;
     }
@@ -37,7 +37,7 @@ public class Skill: SkillParams
         plusattackcount = PLUS_ATTACK_COUNT;
     }
     public virtual void InitParams()
-    {//µ¥ÀÌÅÍÆÄÀÏ ÀÖÀ¸¸é LoadParams() ¾øÀ¸¸é SetParams()
+    {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ LoadParams() ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ SetParams()
         if (GameManager.instance.CheckExist(strSkillFolderPath, strSkillParamsName))
         {
             LoadParams();
@@ -52,7 +52,7 @@ public class Skill: SkillParams
     {
 
     }
-    public virtual void SetDefault()//Ã¹ ½ºÅ³ÆÄ¶ó¹ÌÅÍ ÀÔ·Â
+    public virtual void SetDefault()//Ã¹ ï¿½ï¿½Å³ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
     {
         fCharToUse = -999;
         fSkillLevel = 1;
@@ -63,7 +63,7 @@ public class Skill: SkillParams
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARAR_ACTIVE_01_PARAMS;
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
-        strEffectName= FileName.STR_CHA_AR_ACTIVE_01_EFFECT;
+        strEffectName = FileName.STR_CHA_AR_ACTIVE_01_EFFECT;
         fSkillExp = 0;
         fSkillRequireExp = 0;
         fUnlockLevel = 0;
@@ -74,7 +74,7 @@ public class Skill: SkillParams
         fSkillCoolReduce = 0;
         fBuffDuration = 0;
         fRange = 0;
-        fMaxRange = 25;
+        fMaxRange = 10;
         fValue = 0;
         fHidenValue = 0;
         fMagnification = 0;
@@ -84,16 +84,16 @@ public class Skill: SkillParams
         fSpeed = 100;
         checkLevel = 1000;
     }
-    //ÆÑÅä¸® ¸Å´ÏÀú¿Í  ÃÑ¾Ë À§Ä¡ Ã£¾Æ¼­  ³Ö±â 
+    //ï¿½ï¿½ï¿½ä¸® ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½Ñ¾ï¿½ ï¿½ï¿½Ä¡ Ã£ï¿½Æ¼ï¿½  ï¿½Ö±ï¿½ 
     public virtual void ShotEffect(Vector3 Bulletpos, Quaternion firePointRotate)
     {
-        
+
     }
 
-    protected void SaveParams()//½ºÅ³ ÆÄ¶ó¹ÌÅÍ Àû¿ë
+    protected void SaveParams()//ï¿½ï¿½Å³ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     {
-        //½ºÅ³Å¸ÀÔ ³Ö±â, ¾Èµé¾î°£ °ª ´Ù¾²±â
+        //ï¿½ï¿½Å³Å¸ï¿½ï¿½ ï¿½Ö±ï¿½, ï¿½Èµï¿½î°£ ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½
         Dictionary<string, string> dictTemp = new Dictionary<string, string>();
         dictTemp.Add("skillType", skillType);
         dictTemp.Add("skillDetail", skillDetail);
@@ -129,7 +129,7 @@ public class Skill: SkillParams
         dictTemp.Add("bisCanUse", bisCanUse.ToString());
         dictTemp.Add("bisActtivate", bisActtivate.ToString());
         dictTemp.Add("bisUnlockHiden", bisUnlockHiden.ToString());
-        // ÀÌÆåÆ®ÀÌ¸§
+        // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ì¸ï¿½
         GameManager.instance.DataWrite(strSkillFolderPath + strSkillParamsName, dictTemp);
     }
 
@@ -176,44 +176,46 @@ public class Skill: SkillParams
     }
 
 
-    public virtual void SkillUnlock()//½ºÅ³ ÇØ±Ý
+    public virtual void SkillUnlock()//ï¿½ï¿½Å³ ï¿½Ø±ï¿½
     {
         if (fSkillLevel > fUnlockLevel)
         {
             bisUnlockSkill = true;
-            SkillStat["bisUnlockSkill"]= true.ToString();
+            SkillStat["bisUnlockSkill"] = true.ToString();
             //SkillStat.Add("bisUnlockSkill", true.ToString());
         }
         SaveParams();
-        //Ãß°¡±â´É
+        //ï¿½ß°ï¿½ï¿½ï¿½ï¿½
     }
     public virtual void SkillHidenUnlock()
     {
         if (ChaStat.fLevel > fUnlockHidenLevel)
         {
             bisUnlockHiden = true;
-            SkillStat["bisUnlockHiden"]= true.ToString();
+            SkillStat["bisUnlockHiden"] = true.ToString();
             //SkillStat.Add("bisUnlockHiden", true.ToString());
         }
         SaveParams();
-        //Ãß°¡±â´É
+      
 
     }
-    public virtual void SkillTriger(Vector3 playerposition, Quaternion firePointRotate)//½ºÅ³ ¹ßµ¿(´Ü¹ßÇü)
-    {//¾Ö´Ï¸ÞÀÌ¼Ç, È¿°úÀ½, Åõ»çÃ¼¹ß»ç, ¹üÀ§³» ´ë¹ÌÁöÁÖ±â, 
-        Debug.Log("xÅõ»çÃ¼ ¹ß»ç ");
+    public virtual void SkillTriger(Vector3 playerposition, Quaternion firePointRotate)
+    {
         ShotEffect(playerposition, firePointRotate);
-        Debug.Log("¹ß»ç");
+        
         if (bisCanUse == true || bisActtivate == false)
         {
             bisCanUse = false;
-            bisActtivate = true;            
-            ShotEffect(playerposition);
+
+            bisActtivate = true;
+
+            fTimer = 0f;
+
             StartCoroutine(SkillCoolDown());
         }
 
     }
-    
+
     public virtual void SkillExpUp(float exp)
     {
         fSkillExp += exp;
@@ -222,15 +224,15 @@ public class Skill: SkillParams
             SkillLevelUp();
             fSkillExp -= fSkillRequireExp;
             SkillStat["fSkillExp"] = fSkillExp.ToString();
-            //SkillStat.Add("fSkillExp", fSkillExp.ToString());//¾Öµå°¡ ¾Æ´Ï¶ó ¹Ù²ãÁÖ±â
+            //SkillStat.Add("fSkillExp", fSkillExp.ToString());//ï¿½Öµå°¡ ï¿½Æ´Ï¶ï¿½ ï¿½Ù²ï¿½ï¿½Ö±ï¿½
         }
         else
             SkillStat["fSkillExp"] = fSkillExp.ToString();
         //SkillStat.Add("fSkillExp", fSkillExp.ToString());
         SaveParams();
     }
-    public virtual void SkillLevelUp()//½ºÅ³ ·¹º§¾÷(°­È­)
-    {//»ó½ÂÈÄ µñ¼Å³Ê¸®¿¡ ´Ù½Ã Á¤º¸ÁÖ±â
+    public virtual void SkillLevelUp()//ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½È­)
+    {//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³Ê¸ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
         if (fSkillLevel % 5 == 0)
         {
             if (fSkillLevel % 5 == 0)
@@ -242,34 +244,34 @@ public class Skill: SkillParams
             pulsmag = PLUS_MAG + (checkLevel * 10f);
 
         }
-        fSkillLevel++;//·¹º§
-        fValue += plusval;//±âº»´ë¹ÌÁö
-        fMagnification += pulsmag;//´ë¹ÌÁö»ó½Â·®
-        fSkillRequireExp += fSkillLevel * 10;//¿ä±¸°æÇèÄ¡ Áõ°¡
+        fSkillLevel++;//ï¿½ï¿½ï¿½ï¿½
+        fValue += plusval;//ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½
+        fMagnification += pulsmag;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½
+        fSkillRequireExp += fSkillLevel * 10;//ï¿½ä±¸ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
 
         SaveParams();
         SkillHidenUnlock();
     }
     public virtual IEnumerator SkillCoolDown()
     {
-        yield return new WaitForSeconds(fCoolTime*fSkillCoolReduce);
+        yield return new WaitForSeconds(fCoolTime * fSkillCoolReduce);
         bisCanUse = true;
         bisActtivate = false;
     }
 }
 /*public virtual void ActSkill(float characterstat, float value, float magnification,
-       float attackcount, float tartgetcount, float fduration)//½ºÅ³ÀÛµ¿(´ë¹ÌÁöÇü)
-{//½ºÅ³±âº» °ª, ¹èÀ², Å¸°ÝÈ½¼ö, Å¸°Ù¼ö, Áö¼Ó½Ã°£
+       float attackcount, float tartgetcount, float fduration)//ï¿½ï¿½Å³ï¿½Ûµï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+{//ï¿½ï¿½Å³ï¿½âº» ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, Å¸ï¿½ï¿½È½ï¿½ï¿½, Å¸ï¿½Ù¼ï¿½, ï¿½ï¿½ï¿½Ó½Ã°ï¿½
     float skilldamage = value + characterstat * magnification;
 public virtual void ActSkill(float characterstat, float value, float magnification,
-       float attackcount, float tartgetcount, float fduration)//½ºÅ³ÀÛµ¿(´ë¹ÌÁöÇü)
-        //¿©±â ÀÖÀ» ÇÊ¿ä ¾ø°í ÀÌÆåÆ®ÂÊÀ¸·Î
-    {//½ºÅ³±âº» °ª, ¹èÀ², Å¸°ÝÈ½¼ö, Å¸°Ù¼ö, Áö¼Ó½Ã°£
+       float attackcount, float tartgetcount, float fduration)//ï¿½ï¿½Å³ï¿½Ûµï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    {//ï¿½ï¿½Å³ï¿½âº» ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, Å¸ï¿½ï¿½È½ï¿½ï¿½, Å¸ï¿½Ù¼ï¿½, ï¿½ï¿½ï¿½Ó½Ã°ï¿½
         skilParams.isAtctivate = false;
     }
     public virtual void ActSkill(float characterstat ,float value, float magnification,
-        float fbuffduration)//½ºÅ³ÀÛµ¿(¹öÇÁÇü)
-    {//Ä³¸¯ÅÍ ½ºÅÝ, ±âº» ½ºÅ³°ª, ¹èÀ², ¹öÇÁ Áö¼Ó½Ã°£
+        float fbuffduration)//ï¿½ï¿½Å³ï¿½Ûµï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+    {//Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½âº» ï¿½ï¿½Å³ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½Ã°ï¿½
         skilParams.fTimer = 0;        
         float buffstat = characterstat + value + characterstat * magnification;
         if (skilParams.isAtctivate == true)
@@ -284,7 +286,7 @@ public virtual void ActSkill(float characterstat, float value, float magnificati
         }   
     }
 public virtual void SkillCoolDown()
-    {//ÄðÅ¸ÀÓµ¿¾È »ç¿ëºÒ°¡ ÄðÅ¸ÀÓ Á¾·á½Ã »ç¿ë°¡´É
+    {//ï¿½ï¿½Å¸ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò°ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ë°¡ï¿½ï¿½
         skilParams.fTimer += Time.deltaTime;
         if (skilParams.fTimer >= skilParams.fCoolTime)
             skilParams.canUse = true;
