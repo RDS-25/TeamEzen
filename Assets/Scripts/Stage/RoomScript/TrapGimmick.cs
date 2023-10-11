@@ -47,13 +47,13 @@ public class TrapGimmick : Gimmick
         {
             //mb.gameObject.transform.parent.gameObject.SetActive(false);
             RoomManager.nClearCount++;
+            RoomManager.vRoomPos = mb.transform.position;
             bClearCheck = false;
         }
     }
 
     public void ActiveGimmick()
     {
-        Debug.Log("콜리더 엔터");
         if (!bStart)
         {
             bStart = true;

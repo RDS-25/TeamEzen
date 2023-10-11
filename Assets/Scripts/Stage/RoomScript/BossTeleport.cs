@@ -13,6 +13,7 @@ public class BossTeleport : MonoBehaviour
         {
             bStart = true;
             gameObject.transform.position = vBossRoom;
+
         }
     }
 }
