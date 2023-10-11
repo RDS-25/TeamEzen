@@ -101,7 +101,8 @@ public class SkillTest : MonoBehaviour
                 }*/
          
                 AllImageFalse();
-                temp.SkillTriger(Player.GetComponent<Action>().tBulletpos.position);
+                Player.transform.LookAt(newHitPos);
+                temp.SkillTriger(Player.GetComponent<Action>().tBulletpos.position, Player.GetComponent<Action>().tBulletpos.rotation);
                 //여기  스킬 발사 skilltrigger
                 isSkilling = false;
             }

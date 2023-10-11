@@ -30,6 +30,7 @@ public class MonsterGimmick : Gimmick
             if (mb.gameObject.transform.childCount == 0)
             {
                 RoomManager.nClearCount++;
+                RoomManager.vRoomPos = mb.transform.position;
                 bClearCheck = false;
             }
         }

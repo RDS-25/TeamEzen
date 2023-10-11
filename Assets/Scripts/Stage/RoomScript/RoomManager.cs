@@ -7,8 +7,6 @@ using Params;
 public class RoomManager : MonoBehaviour, DefaultRoom
 {
     [SerializeField]
-    private bool bUseBoss = false;
-    [SerializeField]
     private GameObject player;
     //public static RoomManager Instance { get; private set; }
     //GimmickRoomParams roomParams = new GimmickRoomParams();
@@ -17,9 +15,10 @@ public class RoomManager : MonoBehaviour, DefaultRoom
     private int monsterMaxCount = 0;
     public static int nClearCount = 0;
     private int nGimmickCount = 0;
-    GameObject Portal;
+    GameObject Boss;
     public GameObject PortalSpawn;
-    public static Vector3[] vRoomPos = null;
+    public static Vector3 vRoomPos;
+    private bool bState = false;
 
     //GameObject gimmick = new GameObject();//Fectory.GetObjct()에서 기믹 뽑아오기
     GameObject gimmick;
@@ -29,15 +28,25 @@ public class RoomManager : MonoBehaviour, DefaultRoom
         Debug.Log("이니셜라이즈 실행");
         roomParam.trGroundPositions = positionObjects.GetComponentsInChildren<Transform>();
         roomParam.roomType = (GimmickRoomParams.ROOM_TYPE)roomType; // MONSTER_ROOM,PUZZLE_ROOM,TRAP_ROOM,STORE_ROOM
-        this.bUseBoss = bUseBoss;
         this.player = player;
         SetObjectPosition();
         return false;
     }
 
-    public void Start()
+    public void Update()
     {
-        //Debug.Log("실행");
+        if(nClearCount >= nGimmickCount)
+        {
+            if (!bState)
+            {
+                bState = true;
+
+                Boss = GameManager.instance.objectFactory.BossMonsterFactory.GetObject();
+                Boss.transform.position = vRoomPos;
+                Boss.SetActive(true);
+                Debug.Log("테스트");
+            }
+        }
     }
 
     public void ClearRoom()
@@ -57,14 +66,6 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
     public void EnableRoom()
     {
-        if (bUseBoss)
-        {
-            string prePath = "Prefabs/Room/";
-            Portal = Resources.Load<GameObject>(prePath + "Portal");
-            PortalSpawn = Instantiate(Portal, new Vector3(gimmick.transform.position.x, 2, gimmick.transform.position.z), gimmick.transform.rotation);
-            PortalSpawn.transform.parent = gimmick.transform;
-
-        }
         gimmick.SetActive(true);
     }
 
@@ -107,7 +108,6 @@ public class RoomManager : MonoBehaviour, DefaultRoom
                     {
                         obj.transform.position = GimmickPos.position + Vector3.up;
                         obj.transform.rotation = GimmickPos.rotation;
-                        //vRoomPos[nGimmickCount] = GimmickPos.position;
 
                         gimmick = obj;
                         EnableRoom();

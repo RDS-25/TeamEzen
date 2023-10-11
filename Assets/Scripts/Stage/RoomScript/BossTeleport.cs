@@ -12,8 +12,8 @@ public class BossTeleport : MonoBehaviour
         if (bStart)
         {
             bStart = true;
-            vBossRoom = RoomManager.vRoomPos[Random.Range(0, RoomManager.vRoomPos.Length)];
             gameObject.transform.position = vBossRoom;
+
         }
     }
 }

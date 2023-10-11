@@ -219,7 +219,6 @@ public class StageManager : MonoBehaviour
             StageClear();
             return;
         }
-
         if (qManager.QUEST_CLEAR)
         {
             if(ClearRoomEvent != null)
