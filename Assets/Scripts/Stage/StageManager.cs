@@ -20,7 +20,8 @@ public class StageManager : MonoBehaviour
     private Transform trItemGridView;
     public QuestManager qManager;
     public GameObject _questPanel;
-
+    public delegate void ClearRoomDelegate();
+    public event ClearRoomDelegate ClearRoomEvent;
     public void InitializeStage(StageParams.STAGE_TYPE type, GameObject player)
     {
         _stCurrentStageType = type;
@@ -166,28 +167,64 @@ public class StageManager : MonoBehaviour
     {
         int prevCurrentIdx = nCurrentCharactorInx;
 
-        if (nCurrentCharactorInx >= Charactors.Length-1)
+        if (nCurrentCharactorInx >= Charactors.Length - 1)
             nCurrentCharactorInx = 0;
         else
             nCurrentCharactorInx++;
+        
+        if (Charactors[nCurrentCharactorInx] == null)
+            nCurrentCharactorInx = 0;
 
-        GameObject precCharactor = Charactors[prevCurrentIdx];
+        GameObject prevCharactor = Charactors[prevCurrentIdx];
 
-        precCharactor.GetComponent<Action>().isEntries = false;
-        precCharactor.GetComponent<Action>().UIGroup.SetActive(false);
-        precCharactor.SetActive(false);
+        prevCharactor.GetComponent<Action>().isEntries = false;
+        prevCharactor.GetComponent<Action>().UIGroup.SetActive(false);
+        prevCharactor.SetActive(false);
 
         player = Charactors[nCurrentCharactorInx];
-       
-        player.transform.position = precCharactor.transform.position;
-        player.transform.rotation = precCharactor.transform.rotation;
 
-        precCharactor.transform.position = Vector3.zero;
-        precCharactor.transform.rotation = Quaternion.identity;
+        player.transform.position = prevCharactor.transform.position;
+        player.transform.rotation = prevCharactor.transform.rotation;
+
+        prevCharactor.transform.position = Vector3.zero;
+        prevCharactor.transform.rotation = Quaternion.identity;
 
         player.GetComponent<Action>().isEntries = true;
         player.GetComponent<Action>().UIGroup.SetActive(true);
         player.SetActive(true);
+    }
+
+    public void MonsterDieEvent(Enemy.EnemyType eType, GameObject enemy)
+    {
+        qManager.UpdateQuestProgress(1);
+        if (eType == Enemy.EnemyType.Melee)
+        {
+            enemy.transform.position = Vector3.zero;
+            enemy.transform.rotation = Quaternion.identity;
+            enemy.GetComponent<Enemy>().DieEvent -= MonsterDieEvent;
+            GameManager.instance.objectFactory.MeleeMonsterFactory.SetObject(enemy);
+        }
+        else if (eType == Enemy.EnemyType.Ranged)
+        {
+            enemy.transform.position = Vector3.zero;
+            enemy.transform.rotation = Quaternion.identity;
+            GameManager.instance.objectFactory.RangedMonsterFactory.SetObject(enemy);
+        }
+        else if (eType == Enemy.EnemyType.Boss)
+        {
+            enemy.transform.position = Vector3.zero;
+            enemy.transform.rotation = Quaternion.identity;
+            GameManager.instance.objectFactory.BossMonsterFactory.SetObject(enemy);
+
+            StageClear();
+            return;
+        }
+
+        if (qManager.QUEST_CLEAR)
+        {
+            if(ClearRoomEvent != null)
+                ClearRoomEvent();
+        }
     }
 }
 

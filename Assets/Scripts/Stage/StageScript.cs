@@ -14,6 +14,7 @@ public class StageScript : MonoBehaviour
     //만들 수 있는 기믹룸의 최소 갯수
     private int _nMinRoomCount = 0;
     private int _nSetRoomCount = 0;
+    private int _nBossIdx = 0;
     //스테이지 파라미터
     private StageParams sParams = new StageParams();
     private GameObject[] objRoomPositions;
@@ -24,23 +25,23 @@ public class StageScript : MonoBehaviour
     private Transform trStartPosition;
 
     //룸 포지션 셋팅
-    bool RoomPosInit(object[] objRoomDataArray)
-    {
-        try
-        {
-            _rpdPositionData = new RoomPositionData[objRoomDataArray.Length];
+    //bool RoomPosInit(object[] objRoomDataArray)
+    //{
+    //    try
+    //    {
+    //        _rpdPositionData = new RoomPositionData[objRoomDataArray.Length];
 
-            for (int cnt = 0; cnt < _rpdPositionData.Length; cnt++)
-            {
-                _rpdPositionData[cnt] = (RoomPositionData)objRoomDataArray[cnt];
-            }
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
-    }
+    //        for (int cnt = 0; cnt < _rpdPositionData.Length; cnt++)
+    //        {
+    //            _rpdPositionData[cnt] = (RoomPositionData)objRoomDataArray[cnt];
+    //        }
+    //        return true;
+    //    }
+    //    catch
+    //    {
+    //        return false;
+    //    }
+    //}
 
     //초기화 함수
     bool Initialize(StageParams.STAGE_TYPE staygeType, GameObject target = null)
@@ -63,7 +64,10 @@ public class StageScript : MonoBehaviour
             _nMaxRoomCount = sParams.nMaxRoomCount;
             _nMinRoomCount = _nMaxRoomCount - 2;
             _nSetRoomCount = Random.Range(_nMinRoomCount, _nMaxRoomCount);
-
+            sParams.nRoomcount = _nSetRoomCount;
+            sParams.nClearRoomCount = 0;
+            sParams.nBossCount = 1;
+            StageManager.Instance.ClearRoomEvent += ClearRoom;
             //펙토리에 존재하는 룸 수 체크하여 필요한 Max값보다 작은경우 Object추가
             // if(GameManager.instance.roomFactory.)
 
@@ -75,7 +79,6 @@ public class StageScript : MonoBehaviour
                 sParams.gPlayer = target;
                 sParams.gPlayer.transform.position = trStartPosition.position;
             }
-
             return true;
         }
         catch
@@ -107,6 +110,7 @@ public class StageScript : MonoBehaviour
     {
         List<int> listUseRoomIdx = RandomList.Inistance.NotDuplicatedRandomList(0, objRoomPositions.Length, objRoomPositions.Length);
         int nBossRoomIdx = listUseRoomIdx[Random.Range(0, listUseRoomIdx.Count)];
+        _nBossIdx = nBossRoomIdx;
         print("Boss Idx : " + nBossRoomIdx);
         //상점 배치
         if (Random.Range(0, 2) == 1 ? true : false)
@@ -141,8 +145,9 @@ public class StageScript : MonoBehaviour
             //룸 펙토리 생성 후 스크립터블 데이터를 통해 포지션 설정
             _bCreateRoom = true;
             string roomPosDataPath = FolderPath.SCRIPTABLE_ROOM_POSITION + ((int)stStageType).ToString();
-            Object[] roomPosData = Resources.LoadAll(roomPosDataPath);
-            RoomPosInit(roomPosData);
+            RoomPositionData[] roomPosData = Resources.LoadAll<RoomPositionData>(roomPosDataPath);
+            _rpdPositionData = roomPosData;
+            //RoomPosInit(roomPosData);
 
             objRoomPositions = new GameObject[_nSetRoomCount];
             List<int> lstIdxList = RandomList.Inistance.NotDuplicatedRandomList(0, _nMaxRoomCount, _nSetRoomCount);
@@ -154,7 +159,7 @@ public class StageScript : MonoBehaviour
                 _rpdPositionData[lstIdxList[i]].SetRoomPosData(objRoomPositions[i]);
                 for (int gimmick_idx = 0; gimmick_idx < objRoomPositions[i].transform.childCount; gimmick_idx++)
                 {
-                    _rpdPositionData[lstIdxList[i]].SetGimmickPosData(objRoomPositions[i].transform.GetChild(gimmick_idx).gameObject, gimmick_idx);
+                    _rpdPositionData[lstIdxList[i]].SetGimmickPosData(objRoomPositions[i], objRoomPositions[i].transform.GetChild(gimmick_idx).gameObject, gimmick_idx);
                 }
 
                 objRoomPositions[i].SetActive(true);
@@ -174,8 +179,33 @@ public class StageScript : MonoBehaviour
     }
     private void OnDisable()
     {
+        if (!_bCreateRoom)
+            return;
         _bCreateRoom = false;
         StageManager.EpisodeBtnClicked -= Initialize;
+        for (int i = 0; i < objRoomPositions.Length; i++)
+        {
+            objRoomPositions[i].transform.position = Vector3.zero;                                                                            //수정필요
+            objRoomPositions[i].transform.rotation = Quaternion.identity;                                                                            //수정필요
+            for (int gimmick_idx = 0; gimmick_idx < objRoomPositions[i].transform.childCount; gimmick_idx++)
+            {
+                objRoomPositions[i].transform.GetChild(gimmick_idx).transform.position = Vector3.zero;
+                objRoomPositions[i].transform.GetChild(gimmick_idx).transform.rotation = Quaternion.identity;
+            }
+
+            objRoomPositions[i].GetComponent<SphereCollider>().enabled = false;
+            objRoomPositions[i].GetComponent<RoomManager>().DisableRoom();
+            GameManager.instance.objectFactory.roomFactory.SetObject(objRoomPositions[i]);
+        }
+    }
+
+    private void ClearRoom()
+    {
+        sParams.nRoomcount++;
+        if (sParams.nRoomcount >= sParams.nClearRoomCount)
+        {
+            objRoomPositions[_nBossIdx].GetComponent<RoomManager>().PortalSpawn.SetActive(true);
+        }
     }
 }
 

@@ -35,17 +35,28 @@ public class ItemDatamanager : MonoBehaviour
                 
         InitInven();
         CreateAll();
-        
-        GameManager.instance.objectFactory.ItemSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB,
+        ObjectFactory objFactory = GameManager.instance.objectFactory;
+        objFactory.ItemSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB,
                                                                         AllItemId.Count);
-        slotManager.SetSlot(GameManager.instance.objectFactory.ItemSlotFactory.listPool, // 인벤토리에 표시할 슬롯 이미지 (전체 개수만큼)  AllItemId
-                            GameManager.instance.objectFactory.ItemObjectFactory.listPool, // Uicellview 정보 담겨있는 리스트(전체 개수만큼)  
+        if(objFactory.ItemSlotFactory.listPool[0] == null)
+        {
+            objFactory.ItemSlotFactory.DeCreatePool();
+            objFactory.ItemSlotFactory.CreateFactory(FolderPath.PREFABS_CHAR_SLOT + PrefabName.STR_SLOT_PREFAB,
+                                                                        AllItemId.Count);
+            for (int i = 0; i < objFactory.ItemSlotFactory.listPool.Count; i++)
+            {
+                objFactory.ItemObjectFactory.listPool.RemoveAt(objFactory.ItemObjectFactory.listPool.Count - 1);
+            }
+        }
+
+        slotManager.SetSlot(objFactory.ItemSlotFactory.listPool, // 인벤토리에 표시할 슬롯 이미지 (전체 개수만큼)  AllItemId
+                            objFactory.ItemObjectFactory.listPool, // Uicellview 정보 담겨있는 리스트(전체 개수만큼)  
                             slotManager.SlotsInViewport,
                             SlotManager.OBJECT_TYPE.ITEM);
-        for(int i = 0; i < GameManager.instance.objectFactory.ItemObjectFactory.listPool.Count; i++)
+        for(int i = 0; i < objFactory.ItemObjectFactory.listPool.Count; i++)
         {
-            if (GameManager.instance.objectFactory.ItemSlotFactory.listPool[i].activeSelf)
-                GameManager.instance.objectFactory.SetItemFactory.listPool.Add(GameManager.instance.objectFactory.ItemObjectFactory.listPool[i]);
+            if (objFactory.ItemSlotFactory.listPool[i].activeSelf)
+                objFactory.SetItemFactory.listPool.Add(objFactory.ItemObjectFactory.listPool[i]);
         }
         // 슬롯 getchild 해서 텍스트에 개수 표시해주기>>슬롯에 표시된 아이템 순번과 정보담긴 프리팹의 순번이 같음
         CountSetUp();        
@@ -97,6 +108,7 @@ public class ItemDatamanager : MonoBehaviour
         }
         int poolIdx = 0;
         int idx = 0;
+
         foreach (string key in AllItemId)
         {
             int nKey = int.Parse(key);
@@ -210,7 +222,6 @@ public class ItemDatamanager : MonoBehaviour
     {
         List<GameObject> Slot = GameManager.instance.objectFactory.ItemSlotFactory.listPool;
         List<GameObject> ItemData = GameManager.instance.objectFactory.ItemObjectFactory.listPool;
-        Debug.Log(Slot.Count);
         for (int i = 0; i < Slot.Count; i++)
         {
             if (Slot[i].activeSelf && ItemData[i].GetComponent<UiCellView>().COUNT != 0)
