@@ -214,7 +214,7 @@ public class StageManager : MonoBehaviour
         {
             enemy.transform.position = Vector3.zero;
             enemy.transform.rotation = Quaternion.identity;
-            GameManager.instance.objectFactory.BossMonsterFactory.SetObject(enemy);
+            //GameManager.instance.objectFactory.BossMonsterFactory.SetObject(enemy);
 
             StageClear();
             return;

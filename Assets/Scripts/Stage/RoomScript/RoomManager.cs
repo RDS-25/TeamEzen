@@ -41,7 +41,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
             {
                 bState = true;
 
-                Boss = GameManager.instance.objectFactory.BossMonsterFactory.GetObject();
+              //  Boss = GameManager.instance.objectFactory.BossMonsterFactory.GetObject();
                 Boss.transform.position = vRoomPos;
                 Boss.SetActive(true);
                 Debug.Log("Å×½ºÆ®");

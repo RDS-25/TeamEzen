@@ -28,11 +28,15 @@ public class SkillBullet : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         fRancri = UnityEngine.Random.Range(0f, 100f);
         fRanmondod = UnityEngine.Random.Range(0f, 100f);
-        Firepiont = gameObject.GetComponent<Transform>().position;
+   
         count = 0;
     }
+	private void OnEnable()
+	{
+        Firepiont = gameObject.GetComponent<Transform>().position;
+    }
 
-    public virtual void myFactory(FactoryManager myFactoryManager)
+	public virtual void myFactory(FactoryManager myFactoryManager)
     {
         myfactoryManager = myFactoryManager;
     }
@@ -107,10 +111,11 @@ public class SkillBullet : MonoBehaviour
         Effect.transform.position = contactpoint;
         Effect.SetActive(true);
     }
-    public void moveBullet()
+    protected virtual void moveBullet()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * skillinfo.fSpeed * Time.deltaTime);
-        Debug.Log("sda");
+        Debug.Log("이동 실행");
+        //GetComponent<Rigidbody>().AddForce(transform.forward * 10f, ForceMode.Impulse);
+        GetComponent<Rigidbody>().velocity = transform.forward * 10f;
     }
     public virtual void CheckDistance()
     {
@@ -118,7 +123,7 @@ public class SkillBullet : MonoBehaviour
         //Debug.Log("ran" + range);
         //Debug.Log("dis" + distance);
         // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
-        if (distance > skillinfo.fRange)//Ex_Active1Params의 Range를 가져오는 방법??
+        if (distance > skillinfo.fMaxRange)//Ex_Active1Params의 Range를 가져오는 방법??
         {
             // setactive 해주기
             myfactoryManager.SetObject(gameObject);

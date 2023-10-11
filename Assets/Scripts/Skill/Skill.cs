@@ -208,7 +208,7 @@ public class Skill: SkillParams
         {
             bisCanUse = false;
             bisActtivate = true;            
-            ShotEffect(playerposition);
+            ShotEffect(playerposition,  firePointRotate);
             StartCoroutine(SkillCoolDown());
         }
 

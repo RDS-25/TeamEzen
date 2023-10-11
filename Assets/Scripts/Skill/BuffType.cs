@@ -26,9 +26,9 @@ public class BuffType : Skill
         //추가기능 구현
 
     }
-    public override void SkillTriger(Vector3 playerposition)
+    public override void SkillTriger(Vector3 playerposition, Quaternion firePointRotate)
     {
-        base.SkillTriger(playerposition);
+        base.SkillTriger(playerposition, firePointRotate);
         CharaterStatUp();
 
     }
