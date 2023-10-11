@@ -35,9 +35,7 @@ public class RoomManager : MonoBehaviour, DefaultRoom
 
     public void Update()
     {
-        //if(nClearCount >= nGimmickCount)
-        //{
-        if (Input.GetKeyUp(KeyCode.Space))
+        if(nClearCount >= nGimmickCount)
         {
             if (!bState)
             {
@@ -49,7 +47,6 @@ public class RoomManager : MonoBehaviour, DefaultRoom
                 Debug.Log("Å×½ºÆ®");
             }
         }
-        //}
     }
 
     public void ClearRoom()
