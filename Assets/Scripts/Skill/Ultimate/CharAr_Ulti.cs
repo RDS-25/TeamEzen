@@ -11,7 +11,8 @@ public class CharAr_Ulti : AttackType
 
 
     private void OnDisable()
-    {        
+    {
+        myBulletFactory(GameManager.instance.objectFactory.CharAr_Ultimate_Bullet_Factory);
         strSkillFolderPath = FolderPath.PARAMS_ULTIMATE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARAR_ULTIMATE_PARAMS;
         PLUS_VAL = 10f;
