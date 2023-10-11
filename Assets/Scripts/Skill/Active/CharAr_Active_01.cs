@@ -44,8 +44,8 @@ public class CharAr_Active_01 : AttackType
     {
         fCharToUse = 1;
         fSkillLevel = 1;
-        fId = 200;
-        strName = "ArActive01";
+        fId = 201;
+        strName = "";
         strDiscription = "ACTIVE010150";
         strIconName = "CharArActive01.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_BULLET;
@@ -58,7 +58,7 @@ public class CharAr_Active_01 : AttackType
         fCoolTime = 1;
         fDuration = 1;
         fSkillCoolReduce = 0;
-        fRange = 15;
+        fRange = 10;
         fMaxRange = 20;
         fValue = 10;
         fHidenValue = 10;
@@ -70,6 +70,10 @@ public class CharAr_Active_01 : AttackType
         bisUnlockHiden = false;
         bisCanUse = false;
         bisActtivate = false;
+        fSpeed = 100;
     }
-   
+    public override void SkillHidenUnlock()
+    {
+        base.SkillHidenUnlock();
+    }
 }

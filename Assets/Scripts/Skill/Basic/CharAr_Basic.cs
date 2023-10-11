@@ -9,9 +9,9 @@ public class CharAr_Basic : AttackType
 {
     private void OnDisable()
     {
-        myBulletFactory(GameManager.instance.objectFactory.Char_Basic_Bullet_Factory);                
+        myBulletFactory(GameManager.instance.objectFactory.CharAr_Basic_Bullet_Factory);                
         strSkillFolderPath = FolderPath.PARAMS_BASIC_SKILL;
-        strSkillParamsName = FileName.STR_JSON_CHAR_BASIC_PARAMS;
+        strSkillParamsName = FileName.STR_JSON_CHARAR_BASIC_PARAMS;
         PLUS_VAL = 10f;
         PLUS_MAG = 10f;
         PLUS_TARGET_COUNT = 0f;
@@ -35,12 +35,12 @@ public class CharAr_Basic : AttackType
 
         fSkillLevel = 1;
         fId = 0;
-        fCharToUse = 1;//??
+        fCharToUse = 1;
         strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharArBasic.png";
         strEffectPath = FolderPath.PREFABS_BASIC_BULLET;
-        strEffectName = PrefabName.STR_CHA_BASIC_BULLET;
+        strEffectName = PrefabName.STR_CHA_AR_BASIC_BULLET;
         fSkillExp = 0;
         fSkillRequireExp = 100;
         fUnlockLevel = 1;
@@ -49,8 +49,8 @@ public class CharAr_Basic : AttackType
         fCoolTime = 1;
         fDuration = 1;
         fSkillCoolReduce = 0;
-        fRange = 15;
-        fMaxRange = 20;
+        fRange = 50;
+        fMaxRange = 10;
         fValue = 10;
         fHidenValue = 10;
         fMagnification = 10;

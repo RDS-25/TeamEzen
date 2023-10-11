@@ -9,7 +9,6 @@ public class CharHg_Active_03 : BuffType
 {
     private void OnDisable()
     {
-        
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARHG_ACTIVE_03_PARAMS;
         PLUS_VAL = 10f;
@@ -21,11 +20,6 @@ public class CharHg_Active_03 : BuffType
         InitParams();
      //LoadEffect();
     }
-    private void Start()
-    {
-        stat1 = ChaStat.fMoveSpeed;
-        stat2 = ChaStat.fAtkSpeed;
-    }
     public override void SetType()
     {
         base.SetType();
@@ -34,28 +28,33 @@ public class CharHg_Active_03 : BuffType
     }
     public override void SetDefault()
     {//액티브스킬에 다시 복붙
-        fCharToUse = 3f;
-        fSkillLevel = 1f;
-        fId = 205f;
-        strName = "HgActive03";
+        fCharToUse = 3;
+        fSkillLevel = 1;
+        fId = 205;
+        strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharHgActive03.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
         strEffectName = FileName.STR_CHA_HG_ACTIVE_03_EFFECT;
-        fSkillExp = 0f;
-        fSkillRequireExp = 100f;
-        fUnlockLevel = 1f;
-        fUnlockHidenLevel = 20f;
-        fCoolTime = 30f;
-        fDuration = 1f;
-        fSkillCoolReduce = 1f;
-        fBuffDuration = 10f;
-        fValue = 10f;
+        fSkillExp = 0;
+        fSkillRequireExp = 100;
+        fUnlockLevel = 1;
+        fUnlockHidenLevel = 20;
+        fCoolTime = 30;
+        fDuration = 1;
+        fSkillCoolReduce = 1;
+        fBuffDuration = 10;
+        fValue = 10;
         fHidenValue = 10;
-        fMagnification = 10f;
+        fMagnification = 10;
         bisUnlockSkill = false;
         bisUnlockHiden = false;
         bisCanUse = false;
         bisActtivate = false;
+    }
+
+    public override void CharaterStatUp(ref float stat1, ref float stat2)
+    {
+        base.CharaterStatUp(ref ChaStat.fAtkSpeed, ref ChaStat.fDefBreak);
     }
 }

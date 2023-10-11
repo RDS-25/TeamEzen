@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6087128710168211001}
   - component: {fileID: 6248475934546230811}
   - component: {fileID: 6247436764838000979}
-  - component: {fileID: 8372748417211674582}
   m_Layer: 0
   m_Name: CharAr_Active_01Effect
   m_TagString: Untagged
@@ -4913,18 +4912,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &8372748417211674582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6084842137611194931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f5ced61fbc3a64b9970c620a18ecb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6085085892975765165
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,10 +24,10 @@ public class CharSr_Ulti_Bullet : SkillBullet
             monsterStat.fHealth -= fTotalDamage;
         }
     }
-    //protected override void moveBullet()
-    //{
+    protected override void moveBullet()
+    {
 
-    //}
+    }
     void EndBullet()
     {
         StartCoroutine("time");

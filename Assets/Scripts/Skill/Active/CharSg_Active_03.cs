@@ -9,7 +9,6 @@ public class CharSg_Active_03 : BuffType
 {
     private void OnDisable()
     {
-       
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSG_ACTIVE_03_PARAMS;
         PLUS_VAL = 10f;
@@ -19,12 +18,7 @@ public class CharSg_Active_03 : BuffType
         SetType();
         LevelUpValue();
         InitParams();
-        //LoadEffect();
-    }
-    private void Start()
-    {
-        stat1 = ChaStat.fCriticalDmg;
-        stat2 = ChaStat.fCriticalResist;
+     //LoadEffect();
     }
     public override void SetType()
     {
@@ -34,31 +28,38 @@ public class CharSg_Active_03 : BuffType
     }
     public override void SetDefault()
     {//액티브스킬에 다시 복붙
-        fCharToUse = 4f;
-        fSkillLevel = 1f;
-        fId = 208f;
-        strName = "SgActive03";
+        fCharToUse = 4;
+        fSkillLevel = 1;
+        fId = 208;
+        strName = "Act1";
         strDiscription = "ok";
         strIconName = "CharSgActive03.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
         strEffectName = FileName.STR_CHA_SG_ACTIVE_03_EFFECT;
-        fSkillExp = 0f;
-        fSkillRequireExp = 100f;
-        fUnlockLevel = 1f;
-        fUnlockHidenLevel = 20f;
-        fCoolTime = 30f;
-        fDuration = 1f;
-        fSkillCoolReduce = 1f;
-        fBuffDuration = 10f;
-        fValue = 10f;
-        fHidenValue = 10f;
-        fMagnification = 10f;
+        fSkillExp = 0;
+        fSkillRequireExp = 100;
+        fUnlockLevel = 1;
+        fUnlockHidenLevel = 20;
+        fCoolTime = 30;
+        fDuration = 1;
+        fSkillCoolReduce = 1;
+        fBuffDuration = 10;
+        fValue = 10;
+        fHidenValue = 10;
+        fMagnification = 10;
         bisUnlockSkill = false;
         bisUnlockHiden = false;
         bisCanUse = false;
         bisActtivate = false;
     }
+    public override void CharaterStatUp(ref float stat1, ref float stat2)
+    {
+        base.CharaterStatUp(ref ChaStat.fAtk, ref ChaStat.fAtk);
+    }
 
-    
 
+    public override void SkillHidenUnlock()
+    {
+        base.SkillHidenUnlock();
+    }
 }
