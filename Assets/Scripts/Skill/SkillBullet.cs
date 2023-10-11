@@ -26,13 +26,17 @@ public class SkillBullet : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         fRancri = UnityEngine.Random.Range(0f, 100f);
         fRanmondod = UnityEngine.Random.Range(0f, 100f);
-        Firepiont = gameObject.GetComponent<Transform>().position;
-        count = 0;
   
-
+        count = 0;
+ 
     }
 
-    public virtual void myFactory(FactoryManager myFactoryManager)
+	private void OnEnable()
+	{
+        Firepiont = gameObject.GetComponent<Transform>().position;
+    }
+
+	public virtual void myFactory(FactoryManager myFactoryManager)
     {
         myfactoryManager = myFactoryManager;
     }
@@ -118,6 +122,7 @@ public class SkillBullet : MonoBehaviour
     }
     public virtual void CheckDistance()
     {
+     
         float distance = Vector3.Distance(Firepiont, this.transform.position);
         //Debug.Log("ran" + range);
         //Debug.Log("dis" + distance);
@@ -139,6 +144,6 @@ public class SkillBullet : MonoBehaviour
 	void Update()
     {
         moveBullet();
-        //CheckDistance();
+        CheckDistance();
     }
 }

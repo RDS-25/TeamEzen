@@ -74,7 +74,7 @@ public class Skill : SkillParams
         fSkillCoolReduce = 0;
         fBuffDuration = 0;
         fRange = 0;
-        fMaxRange = 0;
+        fMaxRange = 10;
         fValue = 0;
         fHidenValue = 0;
         fMagnification = 0;
@@ -196,15 +196,13 @@ public class Skill : SkillParams
             //SkillStat.Add("bisUnlockHiden", true.ToString());
         }
         SaveParams();
-        //�߰����
+      
 
     }
-    public virtual void SkillTriger(Vector3 playerposition, Quaternion firePointRotate)//��ų �ߵ�(�ܹ���)
-    {//�ִϸ��̼�, ȿ����, ����ü�߻�, ������ ������ֱ�, 
-        Debug.Log("x����ü �߻� ");
-
+    public virtual void SkillTriger(Vector3 playerposition, Quaternion firePointRotate)
+    {
         ShotEffect(playerposition, firePointRotate);
-        Debug.Log("�߻�");
+        
         if (bisCanUse == true || bisActtivate == false)
         {
             bisCanUse = false;

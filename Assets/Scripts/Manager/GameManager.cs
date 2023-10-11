@@ -82,6 +82,10 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         FolderInit();
+        fCharid[0] = -1;
+        fCharid[1] = -1;
+        fCharid[2] = -1;
+
         _strGameManagerFolderPath = FolderPath.PARAMS_GAMEMANAGER;
         _strGameManagerFileName = FileName.STR_GAME_MANAGER;
         if (GameManager.instance.CheckExist(_strGameManagerFolderPath, _strGameManagerFileName))
