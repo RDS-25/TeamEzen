@@ -9,8 +9,7 @@ public class CharSr_Active_03 : BuffType
 {
     private void OnDisable()
     {
-        stat1 = ChaStat.fAtk;
-        stat2 = ChaStat.fDefBreak;
+        
         strSkillFolderPath = FolderPath.PARAMS_ACTIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSR_ACTIVE_03_PARAMS;
         PLUS_VAL = 10f;
@@ -22,6 +21,11 @@ public class CharSr_Active_03 : BuffType
         InitParams();
      //LoadEffect();
     }
+    private void Start()
+    {
+        stat1 = ChaStat.fAtk;
+        stat2 = ChaStat.fDefBreak;
+    }
     public override void SetType()
     {
         base.SetType();
@@ -30,25 +34,25 @@ public class CharSr_Active_03 : BuffType
     }
     public override void SetDefault()
     {//액티브스킬에 다시 복붙
-        fCharToUse = 2;
-        fSkillLevel = 1;
-        fId = 211;
-        strName = "Act1";
+        fCharToUse = 2f;
+        fSkillLevel = 1f;
+        fId = 211f;
+        strName = "SrActive03";
         strDiscription = "ok";
         strIconName = "CharSrActive03.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
         strEffectName = FileName.STR_CHA_SR_ACTIVE_03_EFFECT;
-        fSkillExp = 0;
-        fSkillRequireExp = 100;
-        fUnlockLevel = 1;
-        fUnlockHidenLevel = 20;
-        fCoolTime = 30;
-        fDuration = 1;
-        fSkillCoolReduce = 1;
-        fBuffDuration = 10;
-        fValue = 10;
-        fHidenValue = 10;
-        fMagnification = 10;
+        fSkillExp = 0f;
+        fSkillRequireExp = 100f;
+        fUnlockLevel = 1f;
+        fUnlockHidenLevel = 20f;
+        fCoolTime = 30f;
+        fDuration = 1f;
+        fSkillCoolReduce = 1f;
+        fBuffDuration = 10f;
+        fValue = 10f;
+        fHidenValue = 10f;
+        fMagnification = 10f;
         bisUnlockSkill = false;
         bisUnlockHiden = false;
         bisCanUse = false;

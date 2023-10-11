@@ -107,9 +107,10 @@ public class SkillBullet : MonoBehaviour
         Effect.transform.position = contactpoint;
         Effect.SetActive(true);
     }
-    protected virtual void moveBullet()
+    public void moveBullet()
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * skillinfo.fSpeed * Time.deltaTime);
+        Debug.Log("sda");
     }
     public virtual void CheckDistance()
     {

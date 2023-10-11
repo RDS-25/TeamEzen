@@ -74,7 +74,7 @@ public class Skill: SkillParams
         fSkillCoolReduce = 0;
         fBuffDuration = 0;
         fRange = 0;
-        fMaxRange = 0;
+        fMaxRange = 25;
         fValue = 0;
         fHidenValue = 0;
         fMagnification = 0;

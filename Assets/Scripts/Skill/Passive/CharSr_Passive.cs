@@ -8,8 +8,7 @@ public class CharSr_Passive : BuffType
 
     private void OnDisable()
     {
-        stat1 = ChaStat.fCriticalPer;
-        stat2 = ChaStat.fCriticalDmg;
+        
         strSkillFolderPath = FolderPath.PARAMS_PASSIVE_SKILL;
         strSkillParamsName = FileName.STR_JSON_CHARSR_PASSIVE_PARAMS;
         PLUS_VAL = 10f;
@@ -20,6 +19,11 @@ public class CharSr_Passive : BuffType
         LevelUpValue();
         InitParams();
         //CharaterStatUp(ref ChaStat.fCriticalPer,ref ChaStat.fCriticalDmg);
+    }
+    private void Start()
+    {
+        stat1 = ChaStat.fCriticalPer;
+        stat2 = ChaStat.fCriticalDmg;
     }
     public override void SetType()
     {

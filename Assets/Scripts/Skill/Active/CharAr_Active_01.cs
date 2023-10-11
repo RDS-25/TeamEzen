@@ -58,7 +58,7 @@ public class CharAr_Active_01 : AttackType
         fCoolTime = 1;
         fDuration = 1;
         fSkillCoolReduce = 0;
-        fRange = 10;
+        fRange = 15;
         fMaxRange = 20;
         fValue = 10;
         fHidenValue = 10;

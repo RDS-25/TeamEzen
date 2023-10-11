@@ -14,7 +14,7 @@ public class AttackType : Skill
     {
         GameObject bullet = myFactory.GetObject();
         bullet.transform.position = Bulletpos;
-        bullet.SetActive(true);                
+        bullet.SetActive(true);
     }
 
     public override void SetType()
