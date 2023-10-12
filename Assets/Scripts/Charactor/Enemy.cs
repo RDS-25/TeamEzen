@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class Enemy : MonoBehaviour
 	public float SightRange; //서치 시야 사거리 
 	public float DefaultRange;//공격사거리 
 	public GameObject gBullet;
+	BoxCollider box;
+
+	public bool isalive;
 	
 	public delegate void DieDelegate(EnemyType Etype,GameObject game);
 
@@ -49,15 +53,17 @@ public class Enemy : MonoBehaviour
         ani = GetComponentInChildren<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         stat = GetComponent<Stat>();
+		box = GetComponent<BoxCollider>();
 
-     
 
-       
+
+
+
     }
     void Start()
 	{
 		state = State.IDLE;
-
+		
         //추적 사거리
         SightRange = GetComponent<Stat>().fSightRange;
         //공격 사거리 
@@ -68,14 +74,14 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-		Scene sc = SceneManager.GetActiveScene();
-
+        isalive = true;
+        Scene sc = SceneManager.GetActiveScene();
 		if (sc.name == "StageScene") {
 			if (nav == null)
 			{
 				nav = GetComponent<NavMeshAgent>();
 				nav.enabled = true;
-			}
+            }
 			else {
 				nav.enabled = true;
 			}
@@ -257,7 +263,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-		if (other.tag == "Bullet") {
+		if (other.tag == "Bullet" && isalive) {
 			Vector3 reactVec = transform.position - other.transform.position;
 			Debug.Log(reactVec);
             StartCoroutine(onDamage(reactVec));
@@ -282,10 +288,15 @@ public class Enemy : MonoBehaviour
 
 			reactVec = reactVec.normalized;
 			reactVec += Vector3.up;
-			rigidbody.AddForce(reactVec *5,ForceMode.Impulse);
-
-            yield return new WaitForSeconds(2f);
-			ani.SetBool("doDie", true);
+            ani.SetTrigger("doDie");
+            rigidbody.AddForce(reactVec *5,ForceMode.Impulse);
+			//콜라이더 끄기
+			if (isalive)
+			{
+				isalive = !isalive;
+			}
+            yield return new WaitForSeconds(10f);
+			
             gameObject.SetActive(false);
         }
       
