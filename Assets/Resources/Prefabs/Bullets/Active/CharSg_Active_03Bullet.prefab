@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1231558692242428311}
   - component: {fileID: 1255206310867295275}
   m_Layer: 0
-  m_Name: CharSr_Active_03Effect
+  m_Name: CharSg_Active_03Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

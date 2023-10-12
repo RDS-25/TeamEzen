@@ -6,9 +6,9 @@ public class CharAr_Active_01_Bullet : SkillBullet
 {
     private void OnDisable()
     {
-        fMaxRange = GameObject.FindObjectOfType<CharAr_Active_01>().fMaxRange;
-        AttackCount = GameObject.FindObjectOfType<CharAr_Active_01>().fAttackCount;
-        TartgetCount = GameObject.FindObjectOfType<CharAr_Active_01>().fTargetCount;
+        //fMaxRange = GameObject.FindObjectOfType<CharAr_Active_01>().fMaxRange;
+        //AttackCount = GameObject.FindObjectOfType<CharAr_Active_01>().fAttackCount;
+        //TartgetCount = GameObject.FindObjectOfType<CharAr_Active_01>().fTargetCount;
     }
     private void OnEnable()
     {

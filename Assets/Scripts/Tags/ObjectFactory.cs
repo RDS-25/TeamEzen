@@ -172,19 +172,15 @@ public class ObjectFactory
 
         CharARActive01EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_AR_ACTIVE_01EFFECT, 5);
         CharARActive02EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_AR_ACTIVE_02EFFECT, 5);
-        CharARActive03EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_AR_ACTIVE_03EFFECT, 5);
 
         CharSRActive01EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SR_ACTIVE_01EFFECT, 5);
         CharSRActive02EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SR_ACTIVE_02EFFECT, 5);
-        CharSRActive03EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SR_ACTIVE_03EFFECT, 5);
 
         CharHGActive01EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_HG_ACTIVE_01EFFECT, 5);
         CharHGActive02EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_HG_ACTIVE_02EFFECT, 5);
-        CharHGActive03EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_HG_ACTIVE_03EFFECT, 5);
 
         CharSGActive01EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SG_ACTIVE_01EFFECT, 5);
         CharSGActive02EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SG_ACTIVE_02EFFECT, 5);
-        CharSGActive03EffectFactory.CreateObject(FolderPath.PREFABS_ACTIVE_EFFECT + PrefabName.STR_CHAR_SG_ACTIVE_03EFFECT, 5);
 
         Common01EffectFactory.CreateObject(FolderPath.PREFABS_COMMON_EFFECT + PrefabName.STR_COMMON_01EFFECT, 5);
         Common02EffectFactory.CreateObject(FolderPath.PREFABS_COMMON_EFFECT + PrefabName.STR_COMMON_02EFFECT, 5);
@@ -195,12 +191,16 @@ public class ObjectFactory
     {
         CharAr_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_01_BULLET, 5);
         CharAr_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_02_BULLET, 5);
+        CharAr_Active_03_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_03_BULLET, 5);
         CharHg_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_HG_ACTIVE_01_BULLET, 5);
         CharHg_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_HG_ACTIVE_02_BULLET, 5);
+        CharHg_Active_03_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_HG_ACTIVE_03_BULLET, 5);
         CharSg_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SG_ACTIVE_01_BULLET, 5);
         CharSg_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SG_ACTIVE_02_BULLET, 5);
+        CharSg_Active_03_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SG_ACTIVE_03_BULLET, 5);
         CharSr_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SR_ACTIVE_01_BULLET, 5);
         CharSr_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SR_ACTIVE_02_BULLET, 5);
+        CharSr_Active_03_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_SR_ACTIVE_03_BULLET, 5);
         Char_Basic_Bullet_Factory.CreateObject(FolderPath.PREFABS_BASIC_BULLET + PrefabName.STR_CHA_BASIC_BULLET, 5);        
         CharAr_Ultimate_Bullet_Factory.CreateObject(FolderPath.PREFABS_ULTIMATE_BULLET + PrefabName.STR_CHA_AR_ULTIMATE_BULLET, 1);
         CharAr_Ultimate_Bullet_Factory.CreateObject(FolderPath.PREFABS_ULTIMATE_BULLET + PrefabName.STR_CHA_HG_ULTIMATE_BULLET, 1);

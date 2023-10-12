@@ -27,21 +27,17 @@ public class PrefabName
     public const string STR_CHAR_BASIC_EFFECT = "Char_Basic_Effect";
 
     public const string STR_CHAR_AR_ACTIVE_01EFFECT = "CharAr_Active_01Effect";
-    public const string STR_CHAR_AR_ACTIVE_02EFFECT = "CharAr_Active_02Effect";
-    public const string STR_CHAR_AR_ACTIVE_03EFFECT = "CharAr_Active_03Effect";
+    public const string STR_CHAR_AR_ACTIVE_02EFFECT = "CharAr_Active_02Effect";    
 
     public const string STR_CHAR_SR_ACTIVE_01EFFECT = "CharSr_Active_01Effect";
     public const string STR_CHAR_SR_ACTIVE_02EFFECT = "CharSr_Active_02Effect";
-    public const string STR_CHAR_SR_ACTIVE_03EFFECT = "CharSr_Active_03Effect";
 
     public const string STR_CHAR_HG_ACTIVE_01EFFECT = "CharHg_Active_01Effect";
     public const string STR_CHAR_HG_ACTIVE_02EFFECT = "CharHg_Active_02Effect";
-    public const string STR_CHAR_HG_ACTIVE_03EFFECT = "CharHg_Active_03Effect";
-
+    
     public const string STR_CHAR_SG_ACTIVE_01EFFECT = "CharSg_Active_01Effect";
     public const string STR_CHAR_SG_ACTIVE_02EFFECT = "CharSg_Active_02Effect";
-    public const string STR_CHAR_SG_ACTIVE_03EFFECT = "CharSg_Active_03Effect";
-
+    
     public const string STR_COMMON_01EFFECT         = "Common_01Effect";
     public const string STR_COMMON_02EFFECT         = "Common_02Effect";
     public const string STR_COMMON_03EFFECT         = "Common_03Effect";
@@ -51,17 +47,19 @@ public class PrefabName
 
     public const string STR_CHA_AR_ACTIVE_01_BULLET = "CharAr_Active_01Bullet";
     public const string STR_CHA_AR_ACTIVE_02_BULLET = "CharAr_Active_02Bullet";
+    public const string STR_CHA_AR_ACTIVE_03_BULLET = "CharAr_Active_03Bullet";
 
     public const string STR_CHA_HG_ACTIVE_01_BULLET = "CharHg_Active_01Bullet";
     public const string STR_CHA_HG_ACTIVE_02_BULLET = "CharHg_Active_02Bullet";
-
+    public const string STR_CHA_HG_ACTIVE_03_BULLET = "CharHg_Active_03Bullet";
 
     public const string STR_CHA_SG_ACTIVE_01_BULLET = "CharSg_Active_01Bullet";
     public const string STR_CHA_SG_ACTIVE_02_BULLET = "CharSg_Active_02Bullet";
-
+    public const string STR_CHA_SG_ACTIVE_03_BULLET = "CharSg_Active_03Bullet";
 
     public const string STR_CHA_SR_ACTIVE_01_BULLET = "CharSr_Active_01Bullet";
     public const string STR_CHA_SR_ACTIVE_02_BULLET = "CharSr_Active_02Bullet";
+    public const string STR_CHA_SR_ACTIVE_03_BULLET = "CharSr_Active_03Bullet";
 
     public const string STR_COMMON_01_BULLET = "Common_01Bullet";
     public const string STR_COMMON_02_BULLET = "Common_02Bullet";

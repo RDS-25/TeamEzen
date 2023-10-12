@@ -72,19 +72,19 @@ public class FileName
 
     public const string STR_CHA_AR_ACTIVE_01_EFFECT = "CharAr_Active_01Effect";
     public const string STR_CHA_AR_ACTIVE_02_EFFECT = "CharAr_Active_02Effect";
-    public const string STR_CHA_AR_ACTIVE_03_EFFECT = "CharAr_Active_03Effect";
+    
 
     public const string STR_CHA_HG_ACTIVE_01_EFFECT = "CharHg_Active_01Effect";
     public const string STR_CHA_HG_ACTIVE_02_EFFECT = "CharHg_Active_02Effect";
-    public const string STR_CHA_HG_ACTIVE_03_EFFECT = "CharHg_Active_03Effect";
+    
 
     public const string STR_CHA_SG_ACTIVE_01_EFFECT = "CharSg_Active_01Effect";
     public const string STR_CHA_SG_ACTIVE_02_EFFECT = "CharSg_Active_02Effect";
-    public const string STR_CHA_SG_ACTIVE_03_EFFECT = "CharSg_Active_03Effect";
+    
 
     public const string STR_CHA_SR_ACTIVE_01_EFFECT = "CharSr_Active_01Effect";
     public const string STR_CHA_SR_ACTIVE_02_EFFECT = "CharSr_Active_02Effect";
-    public const string STR_CHA_SR_ACTIVE_03_EFFECT = "CharSr_Active_03Effect";
+    
  
     //public const string STR_CHAR_AR_ACTIVESKILL1=
 

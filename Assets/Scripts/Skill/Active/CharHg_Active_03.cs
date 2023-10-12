@@ -41,7 +41,7 @@ public class CharHg_Active_03 : BuffType
         strDiscription = "ok";
         strIconName = "CharHgActive03.png";
         strEffectPath = FolderPath.PREFABS_ACTIVE_EFFECT;
-        strEffectName = FileName.STR_CHA_HG_ACTIVE_03_EFFECT;
+        strEffectName = PrefabName.STR_CHA_HG_ACTIVE_03_BULLET;
         fSkillExp = 0f;
         fSkillRequireExp = 100f;
         fUnlockLevel = 1f;
