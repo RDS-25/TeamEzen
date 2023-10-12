@@ -33,11 +33,13 @@ public class CharAr_Ulti_Bullet : SkillBullet
     {
         StartCoroutine("time");
         //factoryManager.SetObject(gameObject);
-
+        Debug.Log("스타트코루틴");
     }
     IEnumerator time()
     {
+        Debug.Log(GetComponent<ParticleSystem>().main.duration);
         yield return new WaitForSeconds(GetComponent<ParticleSystem>().main.duration);
+        
         myfactoryManager.SetObject(gameObject);
     }
     // Update is called once per frame

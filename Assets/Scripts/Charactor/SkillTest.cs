@@ -93,7 +93,7 @@ public class SkillTest : MonoBehaviour
         {
             if ((!EventSystem.current.IsPointerOverGameObject()))
             {
-                Debug.Log("겟마우스 다운 실행");
+                //Debug.Log("겟마우스 다운 실행");
                /* if (isCancel)
                 {
                     isCancel = !isCancel;
@@ -121,18 +121,18 @@ public class SkillTest : MonoBehaviour
         if (temp.enumSkillType == Params.SkillParams.SkillType.ACTIVE) {
             targetCircleSize = temp.fRange;
             maxActiveSkillDistance = temp.fMaxRange;
-            Debug.Log(temp.name);
-            Debug.Log("액티브 스킬 가동 범위 :" + temp.fRange);
-            Debug.Log("액티브 스킬 최대 범위 :" + temp.fMaxRange);
+            //Debug.Log(temp.name);
+            //Debug.Log("액티브 스킬 가동 범위 :" + temp.fRange);
+            //Debug.Log("액티브 스킬 최대 범위 :" + temp.fMaxRange);
 
         }
         else if (temp.enumSkillType == Params.SkillParams.SkillType.ULTIMATE)
         {
             targetCircleSize = temp.fRange;
             maxActiveSkillDistance = temp.fMaxRange;
-            Debug.Log(temp.name);
-            Debug.Log("궁극기 스킬 가동 범위 :" + temp.fRange);
-            Debug.Log("궁극기 스킬 최대 범위 :" + temp.fMaxRange);
+            //Debug.Log(temp.name);
+            //Debug.Log("궁극기 스킬 가동 범위 :" + temp.fRange);
+            //Debug.Log("궁극기 스킬 최대 범위 :" + temp.fMaxRange);
         }
     }
 

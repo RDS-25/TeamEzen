@@ -21,7 +21,7 @@ public class CharHg_Active_03 : BuffType
         InitParams();
      //LoadEffect();
     }
-    private void Start()
+    private void Starrt()
     {
         stat1 = ChaStat.fMoveSpeed;
         stat2 = ChaStat.fAtkSpeed;

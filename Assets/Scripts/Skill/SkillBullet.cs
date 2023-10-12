@@ -29,20 +29,20 @@ public class SkillBullet : MonoBehaviour
     int count;
     protected Skill skillinfo;
     public SkillParams skillParams;
-
+    //fTargetCount,fAttackCount,fMaxRange
+    protected float TartgetCount;
+    protected float AttackCount;
+    protected float fMaxRange;    
     void Start()
     {       //skllinfo 총알마다 할당해주기  skllinfo = new CharAr_Active_01();
         /*id = ChaStat.fId;*/
-        rig = GetComponent<Rigidbody>();
-
-        
-
-   
+        rig = GetComponent<Rigidbody>();  
         count = 0;
     }
 	private void OnEnable()
 	{
-        Firepiont = gameObject.GetComponent<Transform>().position;
+        //Firepiont = gameObject.GetComponent<Transform>().position;
+        //Firepiont = GameObject.FindWithTag("Player").transform.position;
     }
 
 	public virtual void myFactory(FactoryManager myFactoryManager)
@@ -164,7 +164,7 @@ public class SkillBullet : MonoBehaviour
         //Debug.Log("ran" + range);
         //Debug.Log("dis" + distance);
         // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
-        if (distance > skillParams.fMaxRange)//Ex_Active1Params의 Range를 가져오는 방법??
+        if (distance > 20)//skillParams.fMaxRange)//Ex_Active1Params의 Range를 가져오는 방법??
         {
             // setactive 해주기
             myfactoryManager.SetObject(gameObject);
@@ -175,6 +175,7 @@ public class SkillBullet : MonoBehaviour
     
     void Update()
     {
+        
         moveBullet();
         CheckDistance();
     }

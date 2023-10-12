@@ -17,7 +17,6 @@ public class OnClickSkills : MonoBehaviour
 
 		scSKill.enabled = true;
 	
-		Debug.Log(BtnSKills.IndexOf(Skill));
 		Skill.GetComponent<SkillTest>().isSkilling = true;
 		switch (BtnSKills.IndexOf(Skill)) {
 			case 0://active
@@ -57,7 +56,7 @@ public class OnClickSkills : MonoBehaviour
 
 		foreach (GameObject btn in BtnSKills)
 		{
-			Debug.Log(btn);
+			//Debug.Log(btn);
 			if (btn != Skill)
 			{
 				btn.GetComponent<SkillTest>().enabled = false;

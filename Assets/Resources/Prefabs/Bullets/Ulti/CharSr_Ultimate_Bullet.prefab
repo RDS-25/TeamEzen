@@ -4857,13 +4857,14 @@ GameObject:
   - component: {fileID: 1394474705944959490}
   - component: {fileID: 1264305701715183170}
   - component: {fileID: 1264948947852276434}
+  - component: {fileID: 7272434765413081430}
   m_Layer: 0
   m_Name: CharSr_Ultimate_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1394474705944959490
 Transform:
   m_ObjectHideFlags: 0
@@ -9685,6 +9686,26 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7272434765413081430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390831831398523220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349837165da47884481abf47e9f09b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fRancri: 0
+  fRanmondod: 0
+  fMonDadge: 0
+  fMonDefense: 0
+  fMonCriresi: 0
+  fTotalDamage: 0
+  fMonProperty: 0
+  skillParams: {fileID: 0}
 --- !u!1 &1391020891778823416
 GameObject:
   m_ObjectHideFlags: 0

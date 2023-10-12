@@ -12,16 +12,16 @@ public class Basic_Bullet : SkillBullet
         switch (id)
         {
             case 1f:
-                skillinfo = new CharAr_Basic();
+                skillParams = GameObject.FindObjectOfType<CharAr_Basic>();
                 break;
             case 2f:
-                skillinfo = new CharHg_Basic();
+                skillParams = GameObject.FindObjectOfType<CharHg_Basic>();
                 break;
             case 3f:
-                skillinfo = new CharSg_Basic();
+                skillParams = GameObject.FindObjectOfType<CharSg_Basic>();
                 break;
             case 4f:
-                skillinfo = new CharSr_Basic();
+                skillParams = GameObject.FindObjectOfType<CharSr_Basic>();
                 break;                    
         }              
     }

@@ -5,9 +5,14 @@ using UnityEngine;
 public class CommonSkill_01_Bullet : SkillBullet
 {
     // Start is called before the first frame update
+    private void OnEnable()
+    {
+        skillParams = GameObject.FindObjectOfType<CharAr_Active_01>();
+
+    }
     void Start()
     {
-        skillinfo = new CommonSkill_01();       
+        //skillinfo = new CommonSkill_01();
         myFactory(GameManager.instance.objectFactory.Common_01_BulletFactory);
         EffectFactory(GameManager.instance.objectFactory.Common01EffectFactory);
     }

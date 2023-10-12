@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6174686393939602773
 Transform:
   m_ObjectHideFlags: 0
@@ -4838,6 +4838,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efbe6754b9d10e74d9e6b82b29b726ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fRancri: 0
+  fRanmondod: 0
+  fMonDadge: 0
+  fMonDefense: 0
+  fMonCriresi: 0
+  fTotalDamage: 0
+  fMonProperty: 0
+  skillParams: {fileID: 0}
 --- !u!54 &8124991919734408424
 Rigidbody:
   m_ObjectHideFlags: 0

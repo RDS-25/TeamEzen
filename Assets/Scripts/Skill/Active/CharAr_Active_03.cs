@@ -36,7 +36,7 @@ public class CharAr_Active_03 : BuffType
     }
     public override void SetDefault()
     {//액티브스킬에 다시 복붙
-        fCharToUse = 1f;
+        fCharToUse = 5f;
         fSkillLevel = 1f;
         fId = 202f;
         strName = "ArActive03";
