@@ -7,7 +7,7 @@ public class CharHg_Active_01_Bullet : SkillBullet
     // Start is called before the first frame update
     void Start()
     {
-        skillinfo = new CharHg_Active_01();
+        skillParams = GameObject.FindObjectOfType<CharHg_Active_01>();
         myFactory(GameManager.instance.objectFactory.CharHg_Active_01_Bullet_Factory);
         EffectFactory(GameManager.instance.objectFactory.CharHGActive01EffectFactory);
     }

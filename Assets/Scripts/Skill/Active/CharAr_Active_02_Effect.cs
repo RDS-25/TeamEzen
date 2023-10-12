@@ -5,11 +5,10 @@ using UnityEngine;
 public class CharAr_Active_02_Effect : SkillEffrct
 {
     
-    void Start()
-    {
-        
+    void OnEnable()
+    {        
         myFactory(GameManager.instance.objectFactory.CharARActive02EffectFactory);
-
+        EndEffect();
     }
 
 }

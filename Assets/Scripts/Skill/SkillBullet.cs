@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Params;
 
 public class SkillBullet : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class SkillBullet : MonoBehaviour
     protected float id;
     int count;
     protected Skill skillinfo;
-
+    public SkillParams skillParams;
 
     void Start()
     {       //skllinfo 총알마다 할당해주기  skllinfo = new CharAr_Active_01();
@@ -69,12 +70,12 @@ public class SkillBullet : MonoBehaviour
         {
             if (fRancri <= ChaStat.fCriticalPer - fMonCriresi)
             {
-                fTotalDamage = (ChaStat.fAtk * ChaStat.fCriticalDmg * (fMonDefense - ChaStat.fDefBreak / fMonDefense + 100)) * CheckPro(ChaStat.fProperty, fMonProperty) * skillinfo.fAttackCount;
+                fTotalDamage = (ChaStat.fAtk * ChaStat.fCriticalDmg * (fMonDefense - ChaStat.fDefBreak / fMonDefense + 100)) * CheckPro(ChaStat.fProperty, fMonProperty) * skillParams.fAttackCount;
             }
             else
             {
                 //데미지 계산식 수정
-                fTotalDamage = ChaStat.fAtk * (fMonDefense - ChaStat.fDefBreak / (fMonDefense + 100)) * CheckPro(ChaStat.fProperty, fMonProperty) * skillinfo.fAttackCount;
+                fTotalDamage = ChaStat.fAtk * (fMonDefense - ChaStat.fDefBreak / (fMonDefense + 100)) * CheckPro(ChaStat.fProperty, fMonProperty) * skillParams.fAttackCount;
             }
             return fTotalDamage;
         }
@@ -163,7 +164,7 @@ public class SkillBullet : MonoBehaviour
         //Debug.Log("ran" + range);
         //Debug.Log("dis" + distance);
         // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
-        if (distance > skillinfo.fMaxRange)//Ex_Active1Params의 Range를 가져오는 방법??
+        if (distance > skillParams.fMaxRange)//Ex_Active1Params의 Range를 가져오는 방법??
         {
             // setactive 해주기
             myfactoryManager.SetObject(gameObject);

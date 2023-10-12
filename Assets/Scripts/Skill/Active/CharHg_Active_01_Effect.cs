@@ -5,16 +5,11 @@ using UnityEngine;
 public class CharHg_Active_01_Effect : SkillEffrct
 {
     
-    void Start()
+    void OnEnable()
     {
         
         myFactory(GameManager.instance.objectFactory.CharHGActive01EffectFactory);
-
+        EndEffect();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
- 
-    }
 }

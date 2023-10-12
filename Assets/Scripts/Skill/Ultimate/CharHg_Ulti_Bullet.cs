@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharHg_Ulti_Bullet : SkillBullet
 {
     
-    void Start()
+    void OnEnable()
     {
         skillinfo = new CharHg_Ulti();        
         myFactory(GameManager.instance.objectFactory.CharHg_Ultimate_Bullet_Factory);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharAr_Ulti_Bullet : SkillBullet
 {
     
-    void Start()
+    void OnEnable()
     {
         skillinfo = new CharAr_Ulti();
         myFactory(GameManager.instance.objectFactory.CharAr_Ultimate_Bullet_Factory);

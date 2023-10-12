@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Basic_Effect : SkillEffrct
 {
-    void Start()
+    void OnEnable()
     {        
-        myFactory(GameManager.instance.objectFactory.CharBasicEffectFactory);        
+        myFactory(GameManager.instance.objectFactory.CharBasicEffectFactory);
+        EndEffect();
     }
 }
