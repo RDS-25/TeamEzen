@@ -285,6 +285,7 @@ public class Enemy : MonoBehaviour
 			rigidbody.AddForce(reactVec *5,ForceMode.Impulse);
 
             yield return new WaitForSeconds(2f);
+			ani.SetBool("doDie", true);
             gameObject.SetActive(false);
         }
       
