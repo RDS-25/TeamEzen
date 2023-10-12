@@ -10,16 +10,17 @@ public class HpUI : MonoBehaviour
     Camera m_cam = null;
 
     public float HpBarPos;
- 
 
-    void Start()
+
+    private void OnEnable()
     {
-        obj = transform.parent.parent.parent.gameObject;
-        Debug.Log("부모는"+obj);
+        obj = GameObject.FindWithTag("Enemy");
+        Debug.Log("부모는" + obj);
         m_cam = Camera.main;
     }
 
-    // Update is called once per frame
+
+    //2023.10.12  ENEMY 수정본
     void Update()
     {
         transform.position = m_cam.WorldToScreenPoint(obj.transform.position);

@@ -33,8 +33,8 @@ MonoBehaviour:
   fIBD: 1
   fHRR: 1
   fRecoveryRate: 1
-  fSightRange: 0
-  fDefaultRange: 1.5
+  fSightRange: 10
+  fDefaultRange: 4
   fProperty: 1
   strDescription: 1
   fType: 1

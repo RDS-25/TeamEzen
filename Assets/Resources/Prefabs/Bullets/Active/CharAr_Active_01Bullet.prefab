@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2500481304961203849}
   m_Layer: 0
   m_Name: CharAr_Active_01Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8e038baa7b32c42997060f9e527351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fRancri: 0
+  fRanmondod: 0
+  fMonDadge: 0
+  fMonDefense: 0
+  fMonCriresi: 0
+  fTotalDamage: 0
+  fMonProperty: 0
 --- !u!1 &4997652625730394695
 GameObject:
   m_ObjectHideFlags: 0
