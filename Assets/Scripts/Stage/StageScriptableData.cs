@@ -36,7 +36,6 @@ public class StageScriptableData : ScriptableObject
     }
     public void DataInit(StageParams sparam)
     {
-
         sparam.bClear = bClear;
         sparam.nMaxRoomCount = nMaxRoomCount;
         sparam.nRoomcount = nRoomcount;

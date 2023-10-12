@@ -55,7 +55,7 @@ public class MonsterGimmick : Gimmick
         yield return new WaitForSeconds(2.0f);
         for (var i = 0; i < monsterCount; i++)
         {
-            Vector3 randomPosition = new Vector3(Random.Range(-mb.transform.lossyScale.x / 2, mb.transform.lossyScale.x / 2), 0, Random.Range(-mb.transform.lossyScale.z / 2, mb.transform.lossyScale.z / 2));
+            Vector3 randomPosition = new Vector3(Random.Range(-mb.transform.lossyScale.x / 4, mb.transform.lossyScale.x / 4), 0, Random.Range(-mb.transform.lossyScale.z / 4, mb.transform.lossyScale.z / 4));
 
             if (randomPosition.x > Player.transform.position.x + playerRange
                 || randomPosition.x < Player.transform.position.x - playerRange
