@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
 	public GameObject target;
 	Animator ani;
 	public GameObject AtkRange;
-	public float SightRange;
-	public float DefaultRange;
+	public float SightRange; //서치 시야 사거리 
+	public float DefaultRange;//공격사거리 
 	public GameObject gBullet;
 	
 	public delegate void DieDelegate(EnemyType Etype,GameObject game);
@@ -40,6 +40,8 @@ public class Enemy : MonoBehaviour
 
 	Rigidbody rigidbody;
 
+	Material mat;
+
 	
 	void Start()
 	{
@@ -48,21 +50,35 @@ public class Enemy : MonoBehaviour
 		rigidbody = GetComponent<Rigidbody>();
 		state = State.IDLE;
 		stat = GetComponent<Stat>();
+        //추적 사거리
+        SightRange = GetComponent<Stat>().fSightRange;
+        //공격 사거리 
+        DefaultRange = GetComponent<Stat>().fDefaultRange;
 
-		//추적 사거리
-	    SightRange = GetComponent<Stat>().fSightRange;
-		//공격 사거리 
-	    DefaultRange = GetComponent<Stat>().fDefaultRange;
+        mat = GetComponentInChildren<MeshRenderer>().material;
+
 	}
+    private void OnEnable()
+    {
+		if (!nav.enabled) {
+            nav.enabled = true;
+        }
+		
+    }
 
 
-	private void FixedUpdate()
+
+
+
+    private void FixedUpdate()
 	{
 		target = GameObject.FindWithTag("Player");
-		FreezeVelocity();
-		
-	    Search();
-	    Targeting();
+		//FreezeVelocity();
+		if (GetComponent<Stat>().fHealth > 0)
+		{
+			Search();
+			Targeting();
+		}
 	}
 
 	public void Dodie() {
@@ -82,7 +98,7 @@ public class Enemy : MonoBehaviour
 	//시야 사거리안에 적 찾아서   추적하기 
 	void Search()
 	{
-		float targetRadius = 20f;// 적의 사거리로  바꾸기
+		float targetRadius = SightRange;// 적의 사거리로  바꾸기
 		float targetRange = 0; //구체가 나가는 거리 
 		RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
 
@@ -118,7 +134,7 @@ public class Enemy : MonoBehaviour
 	// 공격사거리안의 적 찾아서 적 공격하기 
 	void Targeting()
 	{
-		float targetRadius = 10f;// 적의 사거리로  바꾸기
+		float targetRadius = DefaultRange;// 적의 사거리로  바꾸기
 		float targetRange = 0;// 적의 사거리로 바꾸기 
 
 
@@ -218,4 +234,40 @@ public class Enemy : MonoBehaviour
 			rigidbody.freezeRotation = true;
 		}
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+		if (other.tag == "Bullet") {
+			Vector3 reactVec = transform.position - other.transform.position;
+			Debug.Log(reactVec);
+            StartCoroutine(onDamage(reactVec));
+		}
+    }
+
+	//2023.10.12 ENEMY 피격로직 수정
+	IEnumerator onDamage(Vector3 reactVec) 
+	{
+		mat.color = Color.red;
+		yield return new WaitForSeconds(0.1f);
+
+		if (GetComponent<Stat>().fHealth > 0)
+		{
+			mat.color = Color.white;
+			Debug.Log("살았어요");
+		}
+		else {
+            nav.enabled = false;
+            mat.color = Color.gray;
+			Debug.Log("죽었어요");
+
+			reactVec = reactVec.normalized;
+			reactVec += Vector3.up;
+			rigidbody.AddForce(reactVec *5,ForceMode.Impulse);
+
+            yield return new WaitForSeconds(2f);
+            gameObject.SetActive(false);
+        }
+      
+
+    }
 }

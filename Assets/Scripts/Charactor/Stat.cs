@@ -27,6 +27,10 @@ public class Stat : StatParams
         // SpriteRenderer 컴포넌트 가져오기
         
     }
+    private void OnEnable()
+    {
+        ReadParams();
+    }
 
 
     void Init()

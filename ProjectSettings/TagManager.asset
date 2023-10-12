@@ -10,6 +10,7 @@ TagManager:
   - GIMMICKROOM
   - SubCarmera
   - Button
+  - Bullet
   layers:
   - Default
   - TransparentFX
