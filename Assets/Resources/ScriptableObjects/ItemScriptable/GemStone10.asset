@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 209
   strName: GemStone Orange
   strDiscription: ss
-  strImage: Orange.png
+  strImage: BigOrange.png
   fDropRate: 3
   fUpDamage: 50
   fCount: 0

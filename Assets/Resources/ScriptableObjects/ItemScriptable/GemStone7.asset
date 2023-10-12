@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 206
   strName: GemStone Blue
   strDiscription: pp
-  strImage: Blue.png
+  strImage: BigBlue.png
   fDropRate: 5
   fUpDamage: 40
   fCount: 0

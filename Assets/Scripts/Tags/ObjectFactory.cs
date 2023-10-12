@@ -58,7 +58,7 @@ public class ObjectFactory
     public FactoryManager Common04EffectFactory = new FactoryManager();
 
     //ÃÑ¾Ë
-    public FactoryManager BulletFactory = new FactoryManager();
+    public FactoryManager EnemyBulletFactory = new FactoryManager();
 
     public FactoryManager Char_Basic_Bullet_Factory = new FactoryManager();
 
@@ -189,6 +189,8 @@ public class ObjectFactory
     }
     public void SkillBulletInit()
     {
+        EnemyBulletFactory.CreateObject(FolderPath.PREFABS_BULLET + PrefabName.STR_ENEMY_BULLET, 5);
+
         CharAr_Active_01_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_01_BULLET, 5);
         CharAr_Active_02_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_02_BULLET, 5);
         CharAr_Active_03_Bullet_Factory.CreateObject(FolderPath.PREFABS_ACTIVE_BULLET + PrefabName.STR_CHA_AR_ACTIVE_03_BULLET, 5);

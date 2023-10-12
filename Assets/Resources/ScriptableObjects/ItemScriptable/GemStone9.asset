@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 208
   strName: GemStone Lilac
   strDiscription: rr
-  strImage: Lilac.png
+  strImage: BigLilac.png
   fDropRate: 3
   fUpDamage: 50
   fCount: 0

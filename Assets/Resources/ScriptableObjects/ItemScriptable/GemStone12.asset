@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 211
   strName: 'GemStone Yellow '
   strDiscription: uu
-  strImage: Yellow.png
+  strImage: BigYellow.png
   fDropRate: 1
   fUpDamage: 60
   fCount: 0

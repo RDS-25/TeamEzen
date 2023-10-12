@@ -41,8 +41,7 @@ public class SkillBullet : MonoBehaviour
     }
 	private void OnEnable()
 	{
-        //Firepiont = gameObject.GetComponent<Transform>().position;
-        //Firepiont = GameObject.FindWithTag("Player").transform.position;
+     
     }
 
 	public virtual void myFactory(FactoryManager myFactoryManager)
@@ -98,6 +97,7 @@ public class SkillBullet : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
+            Debug.Log("히트");
             fRancri = UnityEngine.Random.Range(0f, 100f);
             fRanmondod = UnityEngine.Random.Range(0f, 100f);
 
@@ -114,7 +114,7 @@ public class SkillBullet : MonoBehaviour
             monsterStat.fHealth -= fTotalDamage;
 
 
-            if (count >= skillinfo.fTargetCount)
+            if (count >= skillParams.fTargetCount)
             {
                 myfactoryManager.SetObject(gameObject);
             }
@@ -164,7 +164,7 @@ public class SkillBullet : MonoBehaviour
         //Debug.Log("ran" + range);
         //Debug.Log("dis" + distance);
         // Debug.Log("ran" + Ex_Active1Skill.Ex_Active1Params.fRange);
-        if (distance > 20)//skillParams.fMaxRange)//Ex_Active1Params의 Range를 가져오는 방법??
+        if (distance > skillParams.fMaxRange)//skillParams.fMaxRange)//Ex_Active1Params의 Range를 가져오는 방법??
         {
             // setactive 해주기
             myfactoryManager.SetObject(gameObject);

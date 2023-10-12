@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 207
   strName: GemStone Green
   strDiscription: qq
-  strImage: Green.png
+  strImage: BigGreen.png
   fDropRate: 5
   fUpDamage: 40
   fCount: 0

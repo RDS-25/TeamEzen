@@ -16,7 +16,7 @@ MonoBehaviour:
   fId: 210
   strName: GemStone Red
   strDiscription: tt
-  strImage: Red.png
+  strImage: BigRed.png
   fDropRate: 1
   fUpDamage: 60
   fCount: 0

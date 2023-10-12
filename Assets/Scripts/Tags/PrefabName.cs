@@ -44,6 +44,7 @@ public class PrefabName
     public const string STR_COMMON_04EFFECT         = "Common_04Effect";
 
     public const string STR_CHA_BASIC_BULLET = "Char_Basic_Bullet";
+    public const string STR_ENEMY_BULLET = "Enemy_Bullet";
 
     public const string STR_CHA_AR_ACTIVE_01_BULLET = "CharAr_Active_01Bullet";
     public const string STR_CHA_AR_ACTIVE_02_BULLET = "CharAr_Active_02Bullet";
