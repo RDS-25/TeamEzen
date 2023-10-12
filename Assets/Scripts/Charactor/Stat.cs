@@ -19,7 +19,7 @@ public class Stat : StatParams
 	{
         if (fId != 0) {
             Debug.Log("이미 정보 들어감");
-            return;
+          
         }
         _sFolderPath = FolderPath.PARAMS_CHARACTER;
         _sFileName = gameObject.name;
@@ -27,10 +27,7 @@ public class Stat : StatParams
         // SpriteRenderer 컴포넌트 가져오기
         
     }
-    private void OnEnable()
-    {
-        ReadParams();
-    }
+
 
 
     void Init()

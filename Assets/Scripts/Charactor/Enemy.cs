@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -42,28 +43,44 @@ public class Enemy : MonoBehaviour
 
 	Material mat;
 
-	
-	void Start()
+    private void Awake()
+    {
+        nav = GetComponent<NavMeshAgent>();
+        ani = GetComponentInChildren<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
+        stat = GetComponent<Stat>();
+
+     
+
+       
+    }
+    void Start()
 	{
-		nav = GetComponent<NavMeshAgent>();
-		ani = GetComponentInChildren<Animator>();
-		rigidbody = GetComponent<Rigidbody>();
 		state = State.IDLE;
-		stat = GetComponent<Stat>();
+
         //추적 사거리
         SightRange = GetComponent<Stat>().fSightRange;
         //공격 사거리 
         DefaultRange = GetComponent<Stat>().fDefaultRange;
 
         mat = GetComponentInChildren<MeshRenderer>().material;
+    }
 
-	}
     private void OnEnable()
     {
-		if (!nav.enabled) {
-            nav.enabled = true;
-        }
-		
+		Scene sc = SceneManager.GetActiveScene();
+
+		if (sc.name == "StageScene") {
+			if (nav == null)
+			{
+				nav = GetComponent<NavMeshAgent>();
+				nav.enabled = true;
+			}
+			else {
+				nav.enabled = true;
+			}
+		}
+
     }
 
 
@@ -73,11 +90,14 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
 	{
 		target = GameObject.FindWithTag("Player");
-		//FreezeVelocity();
-		if (GetComponent<Stat>().fHealth > 0)
+		FreezeVelocity();
+		if (nav.enabled)
 		{
-			Search();
-			Targeting();
+			if (GetComponent<Stat>().fHealth > 0)
+			{
+				Search();
+				Targeting();
+			}
 		}
 	}
 
