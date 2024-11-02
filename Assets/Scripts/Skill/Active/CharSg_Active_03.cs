@@ -23,8 +23,9 @@ public class CharSg_Active_03 : BuffType
     }
     private void Start()
     {
-        stat1 = ChaStat.fCriticalDmg;
-        stat2 = ChaStat.fCriticalResist;
+        //2023.11.15 수정 임시 주석
+     /*   stat1 = ChaStat.fCriticalDmg;
+        stat2 = ChaStat.fCriticalResist;*/
     }
     public override void SetType()
     {

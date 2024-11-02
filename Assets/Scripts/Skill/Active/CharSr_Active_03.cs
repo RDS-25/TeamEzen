@@ -23,8 +23,8 @@ public class CharSr_Active_03 : BuffType
     }
     private void Start()
     {
-        stat1 = ChaStat.fAtk;
-        stat2 = ChaStat.fDefBreak;
+        /*stat1 = ChaStat.fAtk;
+        stat2 = ChaStat.fDefBreak;*/
     }
     public override void SetType()
     {

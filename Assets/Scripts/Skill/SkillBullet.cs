@@ -176,7 +176,7 @@ public class SkillBullet : MonoBehaviour
     void Update()
     {
         
-        moveBullet();
-        CheckDistance();
+        /*moveBullet();
+        CheckDistance();*/
     }
 }

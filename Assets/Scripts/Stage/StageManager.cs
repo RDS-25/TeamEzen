@@ -66,7 +66,8 @@ public class StageManager : MonoBehaviour
         Charactors = GameManager.instance.arrCurCharacters;
         player = Charactors[0];
         player.SetActive(true);
-        AudioManager.instance.PlayBackgroundSound(GetComponent<AudioSource>(), AudioName.STR_MAIN_BACKGROUND);
+       /*2023.11.15 배경음악 잠시 주석
+        * AudioManager.instance.PlayBackgroundSound(GetComponent<AudioSource>(), AudioName.STR_MAIN_BACKGROUND);*/
         CreateStageFactory();
         InitializeStage(GameManager.instance.stageType, player);
         Debug.Log(GameManager.instance.stageType);

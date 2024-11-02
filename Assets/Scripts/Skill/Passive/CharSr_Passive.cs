@@ -22,8 +22,8 @@ public class CharSr_Passive : BuffType
     }
     private void Start()
     {
-        stat1 = ChaStat.fCriticalPer;
-        stat2 = ChaStat.fCriticalDmg;
+        /*stat1 = ChaStat.fCriticalPer;
+        stat2 = ChaStat.fCriticalDmg;*/
     }
     public override void SetType()
     {

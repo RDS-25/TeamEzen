@@ -24,8 +24,8 @@ public class CharAr_Active_03 : BuffType
     }
     private void Start()
     {
-        stat1 = ChaStat.fCriticalDmg;
-        stat2 = ChaStat.fAtkSpeed;
+       /* stat1 = ChaStat.fCriticalDmg;
+        stat2 = ChaStat.fAtkSpeed;*/
 
     }
     public override void SetType()
